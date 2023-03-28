@@ -20,5 +20,7 @@ public class MainController {
     protected void hantaeClick() {
     	testTitle.setText("method 테스트");
     	System.out.println("test");
+
+    	System.out.println("test!!");
     }
 }
