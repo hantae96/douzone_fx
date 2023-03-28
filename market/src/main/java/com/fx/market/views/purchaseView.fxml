@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="360.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fx.market.controller.MainController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="360.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fx.market.controller.PurchaseController">
 
    <top>
       <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
@@ -98,17 +98,17 @@
                         <Font size="19.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="title2" prefHeight="126.0" prefWidth="360.0" promptText="context" style="-fx-border: grey;">
+                  <TextField fx:id="context" prefHeight="126.0" prefWidth="360.0" promptText="context" style="-fx-border: grey;">
                      <font>
                         <Font size="19.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="price1" promptText="local" style="-fx-border: grey;">
+                  <TextField fx:id="local" promptText="local" style="-fx-border: grey;">
                      <font>
                         <Font size="19.0" />
                      </font>
                   </TextField>
-                  <Button fx:id="submit" alignment="CENTER" mnemonicParsing="false" prefHeight="86.0" prefWidth="346.0" style="-fx-background-color: orange;" text="submit">
+                  <Button fx:id="submit" alignment="CENTER" mnemonicParsing="false" onAction="#onSubmitButtonClick" prefHeight="86.0" prefWidth="346.0" style="-fx-background-color: orange;" text="submit">
                      <font>
                         <Font size="25.0" />
                      </font>
