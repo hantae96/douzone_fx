@@ -21,4 +21,11 @@ public class MainController {
     	testTitle.setText("method 테스트");
     	System.out.println("test");
     }
+
+    
+    @FXML
+    protected void test() {
+       System.out.println("create branch!!");
+    }
+
 }
