@@ -14,7 +14,7 @@ public class HelloController {
     
     @FXML
     protected void test() {
-       System.out.println("hello");
+       System.out.println("create branch");
     }
     
 }
