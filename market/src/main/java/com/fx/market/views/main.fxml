@@ -13,6 +13,7 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="360.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1"
 fx:controller="com.fx.market.controller.MainController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="360.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fx.market.controller.HelloController">
    <top>
       <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
@@ -84,6 +85,7 @@ fx:controller="com.fx.market.controller.MainController">
       <ScrollPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <content>
             <Button fx:id="hantae" mnemonicParsing="false" onAction="#hantaeClick" text="Button" />
+            <Button mnemonicParsing="false" onMouseClicked="#test" text="테스트버튼" />
          </content></ScrollPane>
    </center>
 </BorderPane>
