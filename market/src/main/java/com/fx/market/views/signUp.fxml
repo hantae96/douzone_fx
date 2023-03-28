@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="360.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fx.market.controller.SignUpController">
+   <children>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label text="더존 마켓 회원가입">
+               <font>
+                  <Font size="34.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="360.0" spacing="10.0">
+         <children>
+            <VBox alignment="TOP_RIGHT" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label text="아이디" />
+               </children>
+            </VBox>
+            <VBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <TextField fx:id="idInput" />
+                  <Label fx:id="idAlert" maxWidth="200.0" text="*영문, 숫자로만 5~15글자 입력해주세요." textFill="#ee0000" wrapText="true">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Button mnemonicParsing="false" onMouseClicked="#idCheck" text="중복확인" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="360.0" spacing="10.0">
+         <children>
+            <VBox alignment="TOP_RIGHT" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label text="이름" />
+               </children>
+            </VBox>
+            <VBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <TextField fx:id="nameInput" />
+                  <Label fx:id="nameAlert" maxWidth="200.0" text="*이름 주의사항" textFill="#ee0000" wrapText="true">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0" />
+         </children>
+      </HBox>
+      <HBox alignment="TOP_CENTER" prefHeight="118.0" prefWidth="360.0" spacing="10.0">
+         <children>
+            <VBox alignment="TOP_RIGHT" prefHeight="200.0" prefWidth="100.0" spacing="18.0">
+               <children>
+                  <Label text="비밀번호" />
+                  <Label maxWidth="60.0" text="비밀번호 확인" wrapText="true" />
+               </children>
+            </VBox>
+            <VBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+               <children>
+                  <PasswordField fx:id="pwInput" />
+                  <PasswordField fx:id="pwcInput" />
+                  <Label fx:id="pwAlert" maxWidth="200.0" text="*비밀번호 확인이 틀립니다." textFill="#ee0000" wrapText="true">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0" />
+         </children>
+      </HBox>
+      <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="360.0" spacing="10.0">
+         <children>
+            <VBox alignment="TOP_RIGHT" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label text="주소" />
+               </children>
+            </VBox>
+            <VBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <TextField fx:id="addressInput" />
+                  <Label fx:id="addressAlert" maxWidth="200.0" text="*~시 ~구 ~동 으로 입력해주세요" textFill="#ee0000" wrapText="true">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0" />
+         </children>
+      </HBox>
+      <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="360.0" spacing="10.0">
+         <children>
+            <VBox alignment="TOP_RIGHT" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label text="이메일" />
+               </children>
+            </VBox>
+            <VBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <TextField fx:id="emailInput" />
+                  <Label fx:id="emailAlert" maxWidth="200.0" text="*제대로 된 이메일을 입력해주세요" textFill="#ee0000" wrapText="true">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="360.0" spacing="50.0">
+         <children>
+            <Button fx:id="signUpButton" mnemonicParsing="false" onMouseClicked="#signUpExecute" text="회원가입" />
+            <Button mnemonicParsing="false" onMouseClicked="#cancelSignUp" text="취소" />
+         </children>
+      </HBox>
+   </children>
+</VBox>
