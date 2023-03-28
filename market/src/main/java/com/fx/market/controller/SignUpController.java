@@ -5,6 +5,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public class SignUpController {
 
@@ -32,6 +34,8 @@ public class SignUpController {
     private TextField emailInput;
     @FXML
     private Button signUpButton;
+    @FXML
+    private ImageView photo;
     
     @FXML
     protected void idCheck() {
@@ -56,6 +60,13 @@ public class SignUpController {
     	
     }
     
+    @FXML
+    protected void selectPhoto() {
+    	// 이미지 파일 경로
+        String imagePath = "file:" + System.getProperty("user.dir") + "/src/main/java/com/fx/market/controller/logo.jpg";
+        Image image = new Image(imagePath);
+    	photo.setImage(image);
+    }
 //    @FXML
 //    protected void onHelloButtonClick() {
 //        welcomeText.setText("Welcome to JavaFX Application!");

@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -20,7 +21,7 @@
             </Label>
          </children>
       </HBox>
-      <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="360.0" spacing="10.0">
+      <HBox alignment="TOP_CENTER" prefHeight="77.0" prefWidth="360.0" spacing="10.0">
          <children>
             <VBox alignment="TOP_RIGHT" prefHeight="200.0" prefWidth="100.0">
                <children>
@@ -44,7 +45,7 @@
             </VBox>
          </children>
       </HBox>
-      <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="360.0" spacing="10.0">
+      <HBox alignment="TOP_CENTER" prefHeight="67.0" prefWidth="360.0" spacing="10.0">
          <children>
             <VBox alignment="TOP_RIGHT" prefHeight="200.0" prefWidth="100.0">
                <children>
@@ -69,7 +70,7 @@
             <VBox alignment="TOP_RIGHT" prefHeight="200.0" prefWidth="100.0" spacing="18.0">
                <children>
                   <Label text="비밀번호" />
-                  <Label maxWidth="60.0" text="비밀번호 확인" wrapText="true" />
+                  <Label maxWidth="60.0" text="비밀번호      확인" wrapText="true" />
                </children>
             </VBox>
             <VBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
@@ -86,7 +87,7 @@
             <VBox prefHeight="200.0" prefWidth="100.0" />
          </children>
       </HBox>
-      <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="360.0" spacing="10.0">
+      <HBox alignment="TOP_CENTER" prefHeight="67.0" prefWidth="360.0" spacing="10.0">
          <children>
             <VBox alignment="TOP_RIGHT" prefHeight="200.0" prefWidth="100.0">
                <children>
@@ -106,7 +107,7 @@
             <VBox prefHeight="200.0" prefWidth="100.0" />
          </children>
       </HBox>
-      <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="360.0" spacing="10.0">
+      <HBox alignment="TOP_CENTER" prefHeight="66.0" prefWidth="360.0" spacing="10.0">
          <children>
             <VBox alignment="TOP_RIGHT" prefHeight="200.0" prefWidth="100.0">
                <children>
@@ -124,6 +125,38 @@
                </children>
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0" />
+         </children>
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+         <children>
+            <VBox alignment="TOP_RIGHT" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label text="사진" />
+               </children>
+            </VBox>
+            <VBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fx:id="photo" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
+                        <Label fx:id="photoAlert" maxWidth="200.0" text="*사진을 추가해 주세요" textFill="#ee0000" wrapText="true">
+                           <font>
+                              <Font size="10.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Button mnemonicParsing="false" onMouseClicked="#selectPhoto" text="사진 선택">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Button>
+               </children>
+            </VBox>
          </children>
       </HBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="360.0" spacing="50.0">
