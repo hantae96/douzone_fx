@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -86,7 +88,31 @@
             <VBox prefHeight="531.0" prefWidth="360.0">
                <children>
                   <Pane prefHeight="200.0" prefWidth="200.0" />
-                  <Label prefHeight="50.0" prefWidth="360.0" text="title" />
+                  <TextField fx:id="title" promptText="title" style="-fx-border: grey;">
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="price" promptText="price" style="-fx-border: grey;">
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="title2" prefHeight="126.0" prefWidth="360.0" promptText="context" style="-fx-border: grey;">
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="price1" promptText="local" style="-fx-border: grey;">
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                  </TextField>
+                  <Button fx:id="submit" alignment="CENTER" mnemonicParsing="false" prefHeight="86.0" prefWidth="346.0" style="-fx-background-color: orange;" text="submit">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Button>
                </children>
             </VBox>
          </content></ScrollPane>
