@@ -19,6 +19,11 @@ public class HelloApplication extends Application {
         Scene main = new Scene(fxmlLoader1.load(), 320, 240);
         stage.setTitle("main");
         stage.setScene(main);
+        
+        FXMLLoader fxmlLoaderH = new FXMLLoader(HelloApplication.class.getResource("views/signUp.fxml"));
+        Scene hyesong = new Scene(fxmlLoaderH.load(), 360, 700);
+        stage.setTitle("hyesong");
+        stage.setScene(hyesong);
 
         stage.show();
     }

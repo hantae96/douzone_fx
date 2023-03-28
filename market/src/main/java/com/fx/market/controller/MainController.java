@@ -23,4 +23,11 @@ public class MainController {
 
     	System.out.println("test!!");
     }
+
+    
+    @FXML
+    protected void test() {
+       System.out.println("create branch!!");
+    }
+
 }
