@@ -18,12 +18,16 @@ public class HelloApplication extends Application {
         FXMLLoader fxmlLoader1 = new FXMLLoader(HelloApplication.class.getResource("main.fxml"));
         Scene main = new Scene(fxmlLoader1.load(), 320, 240);
         stage.setTitle("main");
+        System.out.println("hihihi");
+        System.out.println("hihihi");
+        System.out.println("hihihi");System.out.println("hihihi");
+
         stage.setScene(main);
 
         stage.show();
     }
-
     public static void main(String[] args) {
         launch();
     }
+
 }
