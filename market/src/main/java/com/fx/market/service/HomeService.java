@@ -1,12 +1,13 @@
 package com.fx.market.service;
 
 import java.io.IOException;
-
 import com.fx.market.HelloApplication;
+import com.fx.market.dao.HomeDao;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -14,9 +15,10 @@ public class HomeService {
 	
 	private Stage stage;
 	@FXML VBox main;
+	HomeDao dao = new HomeDao();
 	
 	public void view(Stage stage) {
-		stage = this.stage;
+		this.stage = stage;
 		// 디비 객체들을 다 화면에 뿌리는 방법
 		// 디비에커서를 돌면서 while
 		// 반복문을 돌면서 버튼 객체를생성하고,
@@ -36,7 +38,9 @@ public class HomeService {
 	}
 	
 	public void printAllItem() {
-		VBox rootBox = 
+		Label label = new Label();
+		//main.getChildren().add(label);
+		dao.getItemAll();
 	}
 	
 }

@@ -30,7 +30,7 @@ public class HelloApplication extends Application {
 //        
 // 홈 화면 테스트
     	HomeController homeController = new HomeController();
-        homeController.viewHome(stage);
+        homeController.setViewHome(stage);
         stage.show();
     	
     }

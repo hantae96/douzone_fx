@@ -12,10 +12,8 @@ public class HomeController {
 	// 홈화면 실행하는 거 하는중..
 	public void setViewHome(Stage stage) {
 		homeService.view(stage);
-	}
-
-	public void viewHome(Stage stage) {
-
+		homeService.printAllItem();
+		
 	}
 
 	@FXML
