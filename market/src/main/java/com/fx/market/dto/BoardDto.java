@@ -117,16 +117,16 @@ public class BoardDto {
 	public void setPerson(int person) {
 		this.person = person;
 	}
-	public Date getMeetingDate() {
+	public String getMeetingDate() {
 		return meetingDate;
 	}
-	public void setMeetingDate(Date meetingDate) {
+	public void setMeetingDate(String meetingDate) {
 		this.meetingDate = meetingDate;
 	}
-	public Time getMeetingTime() {
+	public String getMeetingTime() {
 		return meetingTime;
 	}
-	public void setMeetingTime(Time meetingTime) {
+	public void setMeetingTime(String meetingTime) {
 		this.meetingTime = meetingTime;
 	}
 	public String getPlace() {
