@@ -31,7 +31,6 @@ public class HelloApplication extends Application {
         MainController mainController = fxmlLoader.getController();
         mainController.setViewer(viwer);
         
-
         stage.show();
         stage.show();
     	
