@@ -7,6 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class Viewer {
@@ -46,7 +47,7 @@ public class Viewer {
 	}
 
 	public void purchaseList() {
-		FXMLLoader loader = new FXMLLoader(Viewer.class.getResource("/com/fx/market/views/signUp.fxml"));
+		FXMLLoader loader = new FXMLLoader(Viewer.class.getResource("/com/fx/market/views/purchaseView.fxml"));
         Parent menuForm = null;
 
         try {
@@ -60,6 +61,25 @@ public class Viewer {
         ScrollPane sroot = (ScrollPane) root.getCenter();
         sroot.setContent(null);
         sroot.setContent(boarderPane);
+		
+	}
+
+	public void accountList() {
+		FXMLLoader loader = new FXMLLoader(Viewer.class.getResource("/com/fx/market/views/signUp.fxml"));
+        Parent menuForm = null;
+
+        try {
+            menuForm = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        Stage stage = new Stage();
+
+        Scene scene = new Scene(menuForm);
+        primaryStage.setTitle("메인 화면");
+        primaryStage.setScene(scene);
+        primaryStage.show();
 		
 	}
 

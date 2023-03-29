@@ -38,4 +38,10 @@ public class MainController implements Initializable {
 		viewer.aroundList();
 	}
 
+	public void accountNavClick() {
+		viewer.accountList();
+	}
+	
+	
+
 }
