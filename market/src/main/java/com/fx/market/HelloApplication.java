@@ -26,10 +26,10 @@ public class HelloApplication extends Application {
         stage.setScene(purchase);
         
         
-//        FXMLLoader fxmlLoaderH = new FXMLLoader(HelloApplication.class.getResource("views/signUp.fxml"));
-//        Scene hyesong = new Scene(fxmlLoaderH.load(), 360, 700);
-//        stage.setTitle("hyesong");
-//        stage.setScene(hyesong);
+        FXMLLoader fxmlLoaderH = new FXMLLoader(HelloApplication.class.getResource("views/signUp.fxml"));
+        Scene hyesong = new Scene(fxmlLoaderH.load(), 360, 700);
+        stage.setTitle("hyesong");
+        stage.setScene(hyesong);
 
         stage.show();
     }

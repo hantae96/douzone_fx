@@ -1,5 +1,7 @@
 package com.fx.market.controller;
 
+import com.fx.market.service.SignUpService;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -7,6 +9,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 
 public class SignUpController {
 
@@ -37,17 +41,25 @@ public class SignUpController {
     @FXML
     private ImageView photo;
     
+    private SignUpService service = new SignUpService();
+    
     @FXML
     protected void idCheck() {
-    	if(idInput.getText().equals("id")) {
-    		idAlert.setText("*중복된 아이디 입니다!");
+    	String accounts_id = idInput.getText();
+    	if(accounts_id=="" || accounts_id==" ") {
+    		idAlert.setText("아이디를 입력해주세요.");
+    		 idAlert.setTextFill(Color.RED);
     	}else {
-    		idAlert.setText("*사용가능한 아이디 입니다!");
+	    	int result = service.idCheck(accounts_id);
+	    	switch(result) {
+	    	case 0 : idAlert.setText("아이디를 생성하실 수 있습니다."); idAlert.setTextFill(Color.BLUE); break;
+	    	case 1 : idAlert.setText("중복된 아이디입니다."); idAlert.setTextFill(Color.RED); break;
+	    	}
     	}
     }
     
     @FXML
-    protected void signUpExecute() {
+    protected void signUpButtonClick() {
     	if(pwInput.getText().isBlank()) {
     		pwAlert.setText("*비밀번호를 입력하세요!");
     	}else {
