@@ -1,8 +1,7 @@
 module com.fx.market {
     requires javafx.controls;
     requires javafx.fxml;
-	requires java.sql;
-
+    requires java.sql;
 
     opens com.fx.market to javafx.fxml;
     exports com.fx.market;
