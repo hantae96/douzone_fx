@@ -30,7 +30,6 @@ public class HelloApplication extends Application {
        
         Scene scene2 = new Scene(regForm);
         stage.setTitle("main");
-        stage.setScene(main);
 
         FXMLLoader PurchasefxmlLoader = new FXMLLoader(HelloApplication.class.getResource("views/purchaseView.fxml"));
         Scene purchase = new Scene(PurchasefxmlLoader.load(), 370, 650);
