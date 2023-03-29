@@ -2,11 +2,10 @@ package com.fx.market.repository;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import com.fx.market.Dto.ItemDto;
+import com.fx.market.dto.ItemDto;
 
 public class MemoryRepository {
 	
