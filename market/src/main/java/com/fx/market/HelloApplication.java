@@ -7,19 +7,28 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+
+
+import com.fx.market.controller.MainController;
+
+
 public class HelloApplication extends Application {
-    private int troll;
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("views/hello-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
+    	
+    	
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("views/main.fxml"));
+        System.out.println(HelloApplication.class.getResource("views/main.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Hello!");
         stage.setScene(scene);
 
-        FXMLLoader fxmlLoader1 = new FXMLLoader(HelloApplication.class.getResource("views/main.fxml"));
-        Scene main = new Scene(fxmlLoader1.load(), 320, 240);
-        stage.setTitle("main");
-        stage.setScene(main);
+        Viewer viwer = new Viewer();
+        viwer.setPrimaryStage(stage);
+        
+        MainController mainController = fxmlLoader.getController();
+        mainController.setViewer(viwer);
+        
 
         stage.show();
     }
