@@ -1,11 +1,13 @@
 package com.fx.market.service;
 
-import com.fx.market.DAO.SignUpDao;
+import com.fx.market.dao.SignUpDao;
+import com.fx.market.dto.SignUpDto;
 
 public class SignUpService {
 
 	private SignUpDao dao = new SignUpDao();
 	
+	// 아이디 중복확인 버튼
 	public int idCheck(String accounts_id) {
 		String checkedId = dao.idCheck(accounts_id);
 		if(checkedId==null || checkedId=="") {
@@ -13,7 +15,12 @@ public class SignUpService {
 		}else {
 			return 1;
 		}
-		
 	}
+	
+	// 회원가입 버튼
+	public void signInsert(SignUpDto dto) {
+		dao.signInsert(dto);
+	}
+	
 	
 }
