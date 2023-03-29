@@ -1,4 +1,4 @@
-package com.fx.market.dao.town;
+package com.fx.market.dao;
 
 import java.util.Collection;
 
