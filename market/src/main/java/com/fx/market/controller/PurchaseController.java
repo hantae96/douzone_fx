@@ -1,9 +1,6 @@
 	package com.fx.market.controller;
 
-import java.util.Iterator;
-import java.util.List;
-
-import com.fx.market.Dto.ItemDto;
+import com.fx.market.dto.ItemDto;
 import com.fx.market.repository.MemoryRepository;
 
 import javafx.fxml.FXML;
