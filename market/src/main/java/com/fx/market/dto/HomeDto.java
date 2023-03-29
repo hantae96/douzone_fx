@@ -8,6 +8,11 @@ public class HomeDto {
 	private String date;
 	
 	
+	@Override
+	public String toString() {
+		return "HomeDto [itemName=" + itemName + ", address=" + address + ", price=" + price + ", recommend="
+				+ recommend + ", date=" + date + "]";
+	}
 	public String getDate() {
 		return date;
 	}
