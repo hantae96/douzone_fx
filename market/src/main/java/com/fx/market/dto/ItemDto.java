@@ -1,4 +1,4 @@
-package com.fx.market.Dto;
+package com.fx.market.dto;
 
 public class ItemDto {
 	private int itemId;
