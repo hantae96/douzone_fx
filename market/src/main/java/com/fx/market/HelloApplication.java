@@ -23,13 +23,6 @@ public class HelloApplication extends Application {
         stage.setTitle("Hello!");
         stage.setScene(scene);
 
-        Viewer viwer = new Viewer();
-        viwer.setPrimaryStage(stage);
-        
-        MainController mainController = fxmlLoader.getController();
-        mainController.setViewer(viwer);
-        
-
         stage.show();
     }
 

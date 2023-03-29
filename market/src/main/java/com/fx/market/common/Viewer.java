@@ -1,4 +1,4 @@
-package com.fx.market;
+package com.fx.market.common;
 
 import java.io.IOException;
 
