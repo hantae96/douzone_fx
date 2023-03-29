@@ -1,33 +1,41 @@
 package com.fx.market.controller;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
+import com.fx.market.common.Viewer;
+
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
-public class MainController {
-    @FXML
-    private Label welcomeText;
-    @FXML
-    private Button hantae;
-    @FXML private Label testTitle;
+public class MainController implements Initializable {
+	
+	private Viewer viewer;
 
-    @FXML
-    protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
-    }
-    
-    @FXML
-    protected void hantaeClick() {
-    	testTitle.setText("method 테스트");
-    	System.out.println("test");
+	public void setViewer(Viewer viewer) {
+		this.viewer = viewer;
+		
+	}
 
-    	System.out.println("test!!");
-    }
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	public void purchaseNavClick() {
+		viewer.purchaseList();
+	}
+	
+	public void boardNavClick() {
+		viewer.boardList();
+	}
 
-    
-    @FXML
-    protected void test() {
-       System.out.println("create branch!!");
-    }
+	
+	public void aroundNavClick() {
+		viewer.aroundList();
+	}
 
 }
