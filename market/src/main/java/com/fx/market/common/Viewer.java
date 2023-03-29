@@ -23,7 +23,21 @@ public class Viewer {
 	}
 
 	public void boardList() {
-	
+		  FXMLLoader loader = new FXMLLoader(Viewer.class.getResource("/com/fx/market/views/meetingBoardWriteForm.fxml"));
+	        Parent menuForm = null;
+
+	        try {
+	            menuForm = loader.load();
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        }
+
+	        Stage stage = new Stage();
+
+	        Scene scene = new Scene(menuForm);
+	        primaryStage.setTitle("메인 화면");
+	        primaryStage.setScene(scene);
+	        primaryStage.show();
 		
 	}
 

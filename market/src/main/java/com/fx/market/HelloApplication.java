@@ -25,11 +25,11 @@ public class HelloApplication extends Application {
         stage.setScene(scene);
 
 
-        FXMLLoader PurchasefxmlLoader = new FXMLLoader(HelloApplication.class.getResource("views/purchaseView.fxml"));
-        Scene purchase = new Scene(PurchasefxmlLoader.load(), 370, 650);
-        stage.setTitle("구매");
-        stage.setScene(purchase);
-        new PurchaseDao();
+//        FXMLLoader PurchasefxmlLoader = new FXMLLoader(HelloApplication.class.getResource("views/purchaseView.fxml"));
+//        Scene purchase = new Scene(PurchasefxmlLoader.load(), 370, 650);
+//        stage.setTitle("구매");
+//        stage.setScene(purchase);
+//        new com.fx.market.DAO.PurchaseDao();
 
         
         Viewer viewer = new Viewer();
