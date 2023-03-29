@@ -60,13 +60,29 @@ public class SignUpController {
     
     @FXML
     protected void signUpButtonClick() {
-    	if(pwInput.getText().isBlank()) {
+    	if(idInput.getText().isBlank()) {
+    		pwAlert.setText("*아이디를 입력하세요!");
+    	}else if(nameInput.getText().isBlank()){
+    		pwAlert.setText("*이름을 입력하세요!");
+    	}else if(pwInput.getText().isBlank()){
     		pwAlert.setText("*비밀번호를 입력하세요!");
-    	}else {
-    		signUpButton.setStyle("-fx-background-color: white");
+    	}else if(pwcInput.getText().isBlank()){
+    		pwAlert.setText("*비밀번호확인을 입력하세요!");
+    	}else if(addressInput.getText().isBlank()){
+    		pwAlert.setText("*주소를 입력하세요!");
+    	}else if(emailInput.getText().isBlank()){
+    		pwAlert.setText("*이메일을 입력하세요!");
+    	}else{
+    		String accounts_id = idInput.getText();
+    		String name = nameInput.getText();
+    		String pw = pwInput.getText();
+//    		String pwc = ;
+//    		String address = ;
+//    		String email = ;
     	}
     }
     
+//    		signUpButton.setStyle("-fx-background-color: white");
     @FXML
     protected void cancelSignUp() {
     	
@@ -79,10 +95,6 @@ public class SignUpController {
         Image image = new Image(imagePath);
     	photo.setImage(image);
     }
-//    @FXML
-//    protected void onHelloButtonClick() {
-//        welcomeText.setText("Welcome to JavaFX Application!");
-//    }
    
     
 }
