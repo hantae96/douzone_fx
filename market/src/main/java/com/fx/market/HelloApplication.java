@@ -7,6 +7,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+import com.fx.market.dao.PurchaseDao;
+
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
@@ -19,6 +21,7 @@ public class HelloApplication extends Application {
         Scene purchase = new Scene(PurchasefxmlLoader.load(), 370, 650);
         stage.setTitle("구매");
         stage.setScene(purchase);
+        new PurchaseDao();
         
         
 //        FXMLLoader fxmlLoaderH = new FXMLLoader(HelloApplication.class.getResource("views/signUp.fxml"));

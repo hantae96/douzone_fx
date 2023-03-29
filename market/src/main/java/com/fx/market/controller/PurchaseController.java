@@ -26,7 +26,10 @@ public class PurchaseController {
 	@FXML
 	protected String saveItemData() {
 		ItemDto dto = new ItemDto();
-		dto.setItemId(seq++);
+		
+		// item의 id == goods_id (DB)에서 예시 : g1
+		// g를 붙이기 위해서 문자열 처리가 필요
+		dto.setItemId(makeItemId(seq++));
 		dto.setItemName(title.getText());
 		dto.setItemPrice(Long.valueOf(price.getText()));
 		dto.setItemLocal(local.getText());
@@ -47,8 +50,10 @@ public class PurchaseController {
 		 	alert.setHeaderText("거래가 완료되었습니다.");
 		 	alert.setContentText(saveItemId + " 거래가 완료되었다고!!");
 		 	alert.showAndWait();
-		 	
-		 	
 	    }
+	 
+	 	private String makeItemId(int seq) {
+	 		return "g".concat(String.valueOf(seq));
+	 	}
 }
 
