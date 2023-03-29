@@ -10,8 +10,6 @@ import java.util.List;
 import com.fx.market.dto.HomeDto;
 import com.fx.market.dto.ItemDto;
 
-import javafx.scene.paint.PhongMaterial;
-
 public class HomeDao {
 	private Connection con;
 	
@@ -26,6 +24,7 @@ public class HomeDao {
 			System.out.println("연결성공");
 		} catch (Exception e) {
 			e.printStackTrace();
+			
 		}
 	}
 	

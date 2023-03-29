@@ -16,23 +16,13 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class HomeService {
-
-	@FXML VBox main;
-
-	public void view() {
-					
-		printAllItem();
-
-	}
-
-	public void printAllItem() {
+	public List<HomeDto> makeViewItem() {
 		HomeDao dao = new HomeDao();
 		List<HomeDto> items = dao.getItemAll();
-		for (HomeDto item : items) {
-				Button button = new Button(item.getItemName());
-				main.getChildren().add(button);
-	
-		}
+		return items;
 	}
+	
+
+	
 
 }
