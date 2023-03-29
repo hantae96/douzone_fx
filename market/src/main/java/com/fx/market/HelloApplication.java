@@ -16,8 +16,8 @@ import com.fx.market.controller.MainController;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-    	
-    	
+
+       	
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("views/main.fxml"));
         System.out.println(HelloApplication.class.getResource("views/main.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
