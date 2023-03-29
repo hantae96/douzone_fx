@@ -13,8 +13,7 @@ import com.fx.market.controller.HomeController;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-    	
-// 구매 상세 페이지 테스트
+
 //        FXMLLoader PurchasefxmlLoader = new FXMLLoader(HelloApplication.class.getResource("views/purchaseView.fxml"));
 //        Scene purchase = new Scene(PurchasefxmlLoader.load(), 370, 650);
 //        stage.setTitle("구매");

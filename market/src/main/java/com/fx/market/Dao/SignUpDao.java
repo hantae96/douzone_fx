@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import com.fx.market.dto.SignUpDto;
+
 public class SignUpDao {
 	
 	private Connection con;
@@ -36,6 +38,21 @@ public class SignUpDao {
 			e.printStackTrace();
 		}
 		return null;
+	}
+	
+	public void signInsert(SignUpDto dto) {
+		String sql = "insert into accounts values(?, ?, ?, ?, ?, '36.5', SYSDATE, null)";
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString(1, dto.getAccounts_id());
+			ps.setString(2, dto.getPw());
+			ps.setString(3, dto.getName());
+			ps.setString(4, dto.getAddress());
+			ps.setString(5, dto.getEmail());
+			ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 }
