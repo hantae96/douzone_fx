@@ -15,6 +15,11 @@ public class HelloApplication extends Application {
         stage.setTitle("Hello!");
         stage.setScene(scene);
 
+        FXMLLoader fxmlLoader1 = new FXMLLoader(HelloApplication.class.getResource("views/main.fxml"));
+        Scene main = new Scene(fxmlLoader1.load(), 320, 240);
+        stage.setTitle("main");
+        stage.setScene(main);
+
         FXMLLoader PurchasefxmlLoader = new FXMLLoader(HelloApplication.class.getResource("views/purchaseView.fxml"));
         Scene purchase = new Scene(PurchasefxmlLoader.load(), 370, 650);
         stage.setTitle("구매");
