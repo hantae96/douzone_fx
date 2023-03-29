@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="360.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fx.market.controller.MainController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="360.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fx.market.controller.MainController">
    <top>
       <HBox prefHeight="60.0" prefWidth="360.0" style="-fx-background-color: yellow;" BorderPane.alignment="CENTER" />
    </top>
@@ -59,7 +59,7 @@
                   <Label text="채팅" />
                </children>
             </VBox>
-            <VBox alignment="TOP_CENTER" prefHeight="60.0" prefWidth="72.0">
+            <VBox alignment="TOP_CENTER" onMouseClicked="#accountNavClick" prefHeight="60.0" prefWidth="72.0">
                <children>
                   <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                      <VBox.margin>
