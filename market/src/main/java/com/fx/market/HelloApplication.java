@@ -2,7 +2,9 @@ package com.fx.market;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -24,6 +26,8 @@ public class HelloApplication extends Application {
         stage.setScene(scene);
 
         stage.show();
+        stage.show();
+    	
     }
 
     public static void main(String[] args) {
