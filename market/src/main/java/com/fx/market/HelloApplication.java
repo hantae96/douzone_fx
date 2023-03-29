@@ -34,24 +34,16 @@ public class HelloApplication extends Application {
 //        stage.setScene(purchase);
 //        new PurchaseDao();
 // 홈 화면 테스트
-//    	HomeController homeController = new HomeController();
-//        homeController.viewAllItem();
-//            
-//        Stage homeStage = new Stage();
-//        homeStage.setTitle("홈 화면");
-//        homeStage.show();
-//        
-//        
-//        Viewer viewer = new Viewer();
-//        viewer.setPrimaryStage(stage);
-    	
-    	//로그인 화면
-    	FXMLLoader loader = new FXMLLoader(getClass().getResource("views/login.fxml"));
-		Parent form = loader.load();
-		
-		stage.setScene(new Scene(form));
-		stage.setTitle("login");
-		stage.show();
+    	HomeController homeController = new HomeController();
+        homeController.viewAllItem();
+            
+        Stage homeStage = new Stage();
+        homeStage.setTitle("홈 화면");
+        homeStage.show();
+        
+        
+        Viewer viewer = new Viewer();
+        viewer.setPrimaryStage(stage);
         
 //        MainController mainController = fxmlLoader.getController();
 //        mainController.setViewer(viewer);
