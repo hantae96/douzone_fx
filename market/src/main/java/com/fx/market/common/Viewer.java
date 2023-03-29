@@ -80,6 +80,9 @@ public class Viewer {
         primaryStage.setTitle("메인 화면");
         primaryStage.setScene(scene);
         primaryStage.show();
+        
+      Session session = Session.getInstance();
+      session.setStage(primaryStage);
 		
 	}
 
