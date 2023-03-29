@@ -1,10 +1,19 @@
 package com.fx.market.dto;
 
-public class HomeItemListDto {
+public class HomeDto {
 	private String itemName;
 	private String address;
 	private String price;
 	private Integer recommend;
+	private String date;
+	
+	
+	public String getDate() {
+		return date;
+	}
+	public void setDate(String date) {
+		this.date = date;
+	}
 	public String getItemName() {
 		return itemName;
 	}
