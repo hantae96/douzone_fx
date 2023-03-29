@@ -1,4 +1,4 @@
-package com.fx.market.dao;
+package com.fx.market.dto;
 
 public class HomeItemListDto {
 	private String itemName;
