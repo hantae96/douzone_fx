@@ -1,5 +1,6 @@
 	package com.fx.market.controller;
 
+import com.fx.market.dao.PurchaseDao;
 import com.fx.market.dto.ItemDto;
 import com.fx.market.repository.MemoryRepository;
 
@@ -20,7 +21,8 @@ public class PurchaseController {
 	@FXML private Button submit;
 	
 	
-	MemoryRepository repository = new MemoryRepository();
+	//MemoryRepository repository = new MemoryRepository();
+	PurchaseDao goodsDao = new PurchaseDao();
 	int seq;
 	
 	@FXML
@@ -34,7 +36,7 @@ public class PurchaseController {
 		dto.setItemPrice(Long.valueOf(price.getText()));
 		dto.setItemLocal(local.getText());
 		dto.setItemContext(context.getText());
-		repository.save(dto);
+		goodsDao.saveItem(dto);
 		System.out.println(dto.getItemName() + "이 저장되었습니다.");
 		return dto.getItemName();
 	}
