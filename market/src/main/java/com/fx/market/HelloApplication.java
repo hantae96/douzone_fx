@@ -36,7 +36,7 @@ public class HelloApplication extends Application {
         stage.setTitle("구매");
         stage.setScene(purchase);
         
-        
+        System.out.println("git commit test");
 //        FXMLLoader fxmlLoaderH = new FXMLLoader(HelloApplication.class.getResource("views/signUp.fxml"));
 //        Scene hyesong = new Scene(fxmlLoaderH.load(), 360, 700);
 //        stage.setTitle("hyesong");
