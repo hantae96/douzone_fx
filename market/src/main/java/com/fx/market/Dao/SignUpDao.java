@@ -1,4 +1,4 @@
-package com.fx.market.Dao;
+package com.fx.market.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
