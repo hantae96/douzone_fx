@@ -4,41 +4,36 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
+
+
+import com.fx.market.controller.MainController;
+
+
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-//        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("views/hello-view.fxml"));
-//        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-//        stage.setTitle("Hello!");
-//        stage.setScene(scene);
-//
-//        FXMLLoader fxmlLoader1 = new FXMLLoader(HelloApplication.class.getResource("views/main.fxml"));
-//        Scene main = new Scene(fxmlLoader1.load(), 320, 240);
-//        stage.setTitle("main");
-//        stage.setScene(main);
-//
-//        FXMLLoader PurchasefxmlLoader = new FXMLLoader(HelloApplication.class.getResource("views/purchaseView.fxml"));
-//        Scene purchase = new Scene(PurchasefxmlLoader.load(), 370, 650);
-//        stage.setTitle("구매");
-//        stage.setScene(purchase);
-        
-        
-//        FXMLLoader fxmlLoaderH = new FXMLLoader(HelloApplication.class.getResource("views/signUp.fxml"));
-//        Scene hyesong = new Scene(fxmlLoaderH.load(), 360, 700);
-//        stage.setTitle("hyesong");
-//        stage.setScene(hyesong);
-    	
-    	FXMLLoader loader = new FXMLLoader(getClass().getResource("views/login.fxml"));
-		Parent form = loader.load();   
-		
-		stage.setTitle("login");
-		stage.setScene(new Scene(form));
 
+       	
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("views/main.fxml"));
+        System.out.println(HelloApplication.class.getResource("views/main.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setTitle("Hello!");
+        stage.setScene(scene);
+
+        Viewer viwer = new Viewer();
+        viwer.setPrimaryStage(stage);
+        
+        MainController mainController = fxmlLoader.getController();
+        mainController.setViewer(viwer);
+        
         stage.show();
+        stage.show();
+    	
     }
 
     public static void main(String[] args) {
