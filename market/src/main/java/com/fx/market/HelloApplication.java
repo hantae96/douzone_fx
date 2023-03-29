@@ -9,8 +9,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-
-
+import com.fx.market.common.Viewer;
 import com.fx.market.controller.MainController;
 
 
@@ -24,14 +23,13 @@ public class HelloApplication extends Application {
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Hello!");
         stage.setScene(scene);
-
-        Viewer viwer = new Viewer();
-        viwer.setPrimaryStage(stage);
+        
+        Viewer viewer = new Viewer();
+        viewer.setPrimaryStage(stage);
         
         MainController mainController = fxmlLoader.getController();
-        mainController.setViewer(viwer);
+        mainController.setViewer(viewer);
         
-        stage.show();
         stage.show();
     	
     }
