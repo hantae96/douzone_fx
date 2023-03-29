@@ -1,5 +1,8 @@
 package com.fx.market.service;
+<<<<<<< HEAD
 
+=======
+>>>>>>> main
 import com.fx.market.dao.SignUpDao;
 
 public class SignUpService {
