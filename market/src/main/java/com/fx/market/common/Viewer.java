@@ -21,14 +21,13 @@ public class Viewer {
 		this.primaryStage = primaryStage;
 	}
 
-	public void meetingBoardList() {
+	public void boardList() {
 	
 		
 	}
 
-	public void aroundBoardList() {
-		  FXMLLoader loader = new FXMLLoader(Viewer.class.getResource("../views/purchaseView.fxml"));
-	        System.out.println(getClass().getResource("../views/purchaseView.fxml"));
+	public void aroundList() {
+		  FXMLLoader loader = new FXMLLoader(Viewer.class.getResource("/com/fx/market/views/purchaseView.fxml"));
 	        Parent menuForm = null;
 
 	        try {
@@ -47,8 +46,7 @@ public class Viewer {
 	}
 
 	public void purchaseList() {
-		FXMLLoader loader = new FXMLLoader(Viewer.class.getResource("../views/purchaseView.fxml"));
-		System.out.println(getClass().getResource("../views/purchaseView.fxml"));
+		FXMLLoader loader = new FXMLLoader(Viewer.class.getResource("/com/fx/market/views/signUp.fxml"));
         Parent menuForm = null;
 
         try {
@@ -64,6 +62,7 @@ public class Viewer {
         sroot.setContent(boarderPane);
 		
 	}
+
 	
 	
 
