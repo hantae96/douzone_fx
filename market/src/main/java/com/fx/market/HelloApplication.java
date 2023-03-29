@@ -2,20 +2,13 @@ package com.fx.market;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
-import javax.xml.stream.events.StartElement;
-
-import com.fx.market.dao.PurchaseDao;
-import com.fx.market.common.Viewer;
 import com.fx.market.controller.HomeController;
-import com.fx.market.controller.MainController;
-import com.fx.market.controller.PurchaseController;
+
 
 public class HelloApplication extends Application {
     @Override

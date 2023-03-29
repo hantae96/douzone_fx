@@ -75,7 +75,10 @@
    <center>
       <ScrollPane minViewportHeight="580.0" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <content>
-            <VBox fx:id="main" prefHeight="598.0" prefWidth="361.0" />
-         </content></ScrollPane>
+         </content>
+         <content>
+            <VBox fx:id="main" prefHeight="596.0" prefWidth="360.0" />
+         </content>
+                  </ScrollPane>
    </center>
 </BorderPane>
