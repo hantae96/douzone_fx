@@ -44,8 +44,11 @@ public class PurchaseDao {
 			ps.setString(4,item.getItemContext());
 			ps.setString(5,item.getItemLocal());
 			ps.setString(6,String.valueOf(item.getItemPrice()));
-			ps.setString(6,saled_id);
+			ps.setString(7,saled_id);
 			ps.executeUpdate();
+			System.out.println("DB 저장 완료");
+			
+			con.close();
 		}catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
