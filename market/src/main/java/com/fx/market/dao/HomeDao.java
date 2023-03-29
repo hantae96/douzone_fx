@@ -80,12 +80,10 @@ public class HomeDao {
 				item.setDate(String.valueOf(rs.getDate("created_at")));
 				item.setRecommend(rs.getInt("recommends"));
 				
-				System.out.println(item.getItemName());
-				
 				allItem.add(item);
 			}
 			con.close();
-
+		
 			
 		}catch (Exception e) {
 			e.printStackTrace();
