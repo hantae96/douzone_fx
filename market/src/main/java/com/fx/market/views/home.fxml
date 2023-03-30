@@ -71,7 +71,7 @@
             </VBox>
             <VBox alignment="TOP_CENTER" prefHeight="60.0" prefWidth="72.0">
                <children>
-                  <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="35.0" fitWidth="35.0" onMouseClicked="#myPageNavClick" pickOnBounds="true" preserveRatio="true">
                      <VBox.margin>
                         <Insets bottom="3.0" top="5.0" />
                      </VBox.margin>

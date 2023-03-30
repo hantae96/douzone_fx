@@ -58,8 +58,14 @@ public class HomeController implements Initializable {
 
 	@FXML
 	private void boardNavClick(Event event) {
-		Viewer viewer = new Viewer();
+		viewer = new Viewer();
 		viewer.boardList();
+	}
+	
+	@FXML
+	private void myPageNavClick(Event event) {
+		viewer = new Viewer();
+		viewer.myPageList();
 	}
 
 	@FXML
