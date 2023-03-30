@@ -62,8 +62,8 @@ public class Viewer {
 		
 	}
 
-	public void purchaseList() {
-		FXMLLoader loader = new FXMLLoader(Viewer.class.getResource("/com/fx/market/views/purchaseView.fxml"));
+	public void registList() {
+		FXMLLoader loader = new FXMLLoader(Viewer.class.getResource("/com/fx/market/views/register.fxml"));
         Parent menuForm = null;
 
         try {
@@ -166,6 +166,7 @@ public class Viewer {
         sroot.setContent(boarderPane);
 		
 	}
+	
 	
 
 }

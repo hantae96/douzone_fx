@@ -25,8 +25,8 @@ public class MainController implements Initializable {
 		
 	}
 	
-	public void purchaseNavClick() {
-		viewer.purchaseList();
+	public void homeNavClick() {
+		viewer.homeList();
 	}
 	
 	public void boardNavClick() {
