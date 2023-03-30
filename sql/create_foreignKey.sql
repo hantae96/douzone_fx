@@ -27,5 +27,4 @@ ALTER table goods
 add constraint accounts_id5 foreign key(accounts_id) REFERENCES accounts(accounts_id);
 
 commit;
-
-
+--alter table goods drop constraint ACCOUNTS_ID5;

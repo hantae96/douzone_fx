@@ -78,12 +78,15 @@ public class SignUpController {
     	}else if(emailInput.getText().isBlank()){
     		emailAlert.setText("*이메일을 입력하세요!");
     	}else{
+
+
     		service.signInsert(new SignUpDto(
-    				idInput.getText(),
-    				nameInput.getText(),
-    				pwInput.getText(),
-    				addressInput.getText(),
-    				emailInput.getText()
+    				idInput.getText(),			//아이디
+    				nameInput.getText(),		//이름
+    				pwInput.getText(),			//비밀번호
+    				addressInput.getText(),		//주소
+    				emailInput.getText()		//이메일
+
     				));
     		
     		Session session = Session.getInstance();

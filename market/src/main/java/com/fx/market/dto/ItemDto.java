@@ -7,6 +7,15 @@ public class ItemDto {
 	private String itemContext;
 	private String itemLocal;
 	
+	
+	
+	public ItemDto(String itemId, String itemName, Long itemPrice, String itemContext, String itemLocal) {
+		this.itemId = itemId;
+		this.itemName = itemName;
+		this.itemPrice = itemPrice;
+		this.itemContext = itemContext;
+		this.itemLocal = itemLocal;
+	}
 	public String getItemId() {
 		return itemId;
 	}

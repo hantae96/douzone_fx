@@ -8,6 +8,7 @@ public class SignUpDto {
 	private String address;
 	private String email;
 	
+
 	public SignUpDto(String accounts_id, String name, String pw, String address, String email) {
 		this.accounts_id = accounts_id;
 		this.name = name;
