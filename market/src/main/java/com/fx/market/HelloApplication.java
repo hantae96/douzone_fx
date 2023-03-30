@@ -24,7 +24,7 @@ public class HelloApplication extends Application {
 // 홈 화면 테스트
 
 		FXMLLoader homeFxmlLoader = new FXMLLoader(HelloApplication.class.getResource("views/home.fxml"));
-		Scene home = new Scene(homeFxmlLoader.load(), 370, 650);
+		Scene home = new Scene(homeFxmlLoader.load(), 370, 700);
 		stage.setTitle("홈 화면");
 		stage.setScene(home);
 
