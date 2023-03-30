@@ -1,1 +1,0 @@
-grant create table to douzone;
