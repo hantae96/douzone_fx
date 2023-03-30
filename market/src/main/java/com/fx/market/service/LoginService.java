@@ -1,9 +1,12 @@
 package com.fx.market.service;
 
+import com.fx.market.common.Session;
+import com.fx.market.common.Viewer;
 import com.fx.market.dao.LoginDao;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.stage.Stage;
 
 public class LoginService {
 	private LoginDao dao;
@@ -34,7 +37,13 @@ public class LoginService {
 			alert.setHeaderText("알림");
 			alert.setContentText("로그인 성공");
 			alert.show();
+			Session session = Session.getInstance();
+			Stage stage = session.getStage();
 			
+			Viewer viewer = new Viewer();
+			viewer.setPrimaryStage(stage);
+			
+			viewer.aroundList();
 		}else {
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.setHeaderText("알림");

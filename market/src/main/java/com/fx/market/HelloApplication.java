@@ -12,6 +12,7 @@ import java.io.IOException;
 import javax.xml.stream.events.StartElement;
 
 import com.fx.market.dao.PurchaseDao;
+import com.fx.market.common.Session;
 import com.fx.market.common.Viewer;
 import com.fx.market.controller.HomeController;
 import com.fx.market.controller.MainController;
@@ -21,11 +22,11 @@ public class HelloApplication extends Application {
     public void start(Stage stage) throws IOException {
 
        	
-//        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("views/main.fxml"));
-//        System.out.println(HelloApplication.class.getResource("views/main.fxml"));
-//        Scene scene = new Scene(fxmlLoader.load());
-//        stage.setTitle("Hello!");
-//        stage.setScene(scene);
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("views/login.fxml"));
+        //System.out.println(HelloApplication.class.getResource("views/main.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setTitle("login");
+        stage.setScene(scene);
 
 // 구매 상세 페이지 테스트
 //        FXMLLoader PurchasefxmlLoader = new FXMLLoader(HelloApplication.class.getResource("views/purchaseView.fxml"));
@@ -34,12 +35,12 @@ public class HelloApplication extends Application {
 //        stage.setScene(purchase);
 //        new PurchaseDao();
 // 홈 화면 테스트
-    	HomeController homeController = new HomeController();
-        homeController.viewAllItem();
-            
-        Stage homeStage = new Stage();
-        homeStage.setTitle("홈 화면");
-        homeStage.show();
+//    	HomeController homeController = new HomeController();
+//        homeController.viewAllItem();
+//            
+//        Stage homeStage = new Stage();
+//        homeStage.setTitle("홈 화면");
+//        homeStage.show();
         
         
         Viewer viewer = new Viewer();
@@ -47,7 +48,10 @@ public class HelloApplication extends Application {
         
 //        MainController mainController = fxmlLoader.getController();
 //        mainController.setViewer(viewer);
-//        stage.show();
+        Session session = Session.getInstance();
+        session.setStage(stage);
+        
+        stage.show();
     	
     }
 
