@@ -57,7 +57,7 @@
                   <Insets bottom="10.0" left="60.0" />
                </GridPane.margin>
             </Label>
-            <Label alignment="CENTER" text="회원가입" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
+            <Label alignment="CENTER" onMouseClicked="#regClickedMethod" text="회원가입" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
                <font>
                   <Font name="System Bold Italic" size="12.0" />
                </font>
