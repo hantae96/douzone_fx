@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import com.fx.market.common.Viewer;
 import com.fx.market.dto.HomeDto;
 import com.fx.market.service.HomeService;
 
@@ -33,6 +34,13 @@ public class HomeController implements Initializable {
 	@FXML
 	VBox main;
 	HomeService homeService;
+	
+	private Viewer viewer;
+	
+	public void setViewer(Viewer viewer) {
+
+		this.viewer = viewer;
+	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -48,7 +56,7 @@ public class HomeController implements Initializable {
 
 	@FXML
 	private void boardNavClick(Event event) {
-
+		viewer.boardList();
 	}
 
 	@FXML
@@ -103,6 +111,9 @@ public class HomeController implements Initializable {
 
 		}
 	}
+
+
+
 
 
 }

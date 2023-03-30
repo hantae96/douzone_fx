@@ -24,7 +24,8 @@ public class HelloApplication extends Application {
 
         Viewer viewer = new Viewer();
         viewer.setPrimaryStage(stage);
-        HomeController homeController = new HomeController();
+        HomeController homeController = homeFxmlLoader.getController();
+        homeController.setViewer(viewer);
         
 
         stage.show();
