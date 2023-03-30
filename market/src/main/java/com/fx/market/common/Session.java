@@ -18,8 +18,9 @@ public class Session {
     private static Session instance;
     private String accountId;
     private String name;
-    private int loginChk;
-    private Stage stage;
+    private int loginChk;     
+    
+	private Stage stage;
 
     public String getAccountId() {
         return accountId;
@@ -46,6 +47,14 @@ public class Session {
         }
         return instance;
     }
+	
+	public int getLoginChk() {
+		return loginChk;
+	}
+
+	public void setLoginChk(int loginChk) {
+		this.loginChk = loginChk;
+	}
 
 	public Stage getStage() {
 		return stage;

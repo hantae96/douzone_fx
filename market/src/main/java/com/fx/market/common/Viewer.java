@@ -104,48 +104,48 @@ public class Viewer {
       session.setStage(primaryStage);
 		
 	}
-	// 로그인으로 이동
 	public void loginList() {
 		FXMLLoader loader = new FXMLLoader(Viewer.class.getResource("/com/fx/market/views/login.fxml"));
-		Parent menuForm = null;
-		
-		try {
-			menuForm = loader.load();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-		Stage stage = new Stage();
-		
-		Scene scene = new Scene(menuForm);
-		primaryStage.setTitle("로그인");
-		primaryStage.setScene(scene);
-		primaryStage.show();
-		
-		Session session = Session.getInstance();
-		session.setStage(primaryStage);
+        Parent menuForm = null;
+
+        try {
+            menuForm = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        Stage stage = new Stage();
+
+        Scene scene = new Scene(menuForm);
+        primaryStage.setTitle("로그인");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+        
+      Session session = Session.getInstance();
+      session.setStage(primaryStage);
 		
 	}
-
+	
 	public void homeList() {
 		FXMLLoader loader = new FXMLLoader(Viewer.class.getResource("/com/fx/market/views/home.fxml"));
-		Parent menuForm = null;
+        Parent menuForm = null;
+
+        try {
+            menuForm = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        Stage stage = new Stage();
+
+        Scene scene = new Scene(menuForm);
+        primaryStage.setTitle("메인 화면");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+        
+      Session session = Session.getInstance();
+      session.setStage(primaryStage);
 		
-		try {
-			menuForm = loader.load();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-		Stage stage = new Stage();
-		
-		Scene scene = new Scene(menuForm);
-		primaryStage.setTitle("로그인");
-		primaryStage.setScene(scene);
-		primaryStage.show();
-		
-		Session session = Session.getInstance();
-		session.setStage(primaryStage);
 	}
 
 	

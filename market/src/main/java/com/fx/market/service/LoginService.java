@@ -14,14 +14,14 @@ public class LoginService {
 	public LoginService() {
 	dao = new LoginDao();
 }
-	public void buttonLoginMethod(String id, String pw) {
+	public int buttonLoginMethod(String id, String pw) {
 
 		if(id.isEmpty() || pw.isEmpty()) {
 			Alert alert = new Alert(AlertType.WARNING);
 			alert.setHeaderText("알림");
 			alert.setContentText("아이디 또는 비밀번호를 입력하세요.");
 			alert.show();
-			return;}
+			return 0;}
 		
 		String dbPw = dao.idCheck(id);
 		
@@ -30,28 +30,22 @@ public class LoginService {
 			alert.setHeaderText("알림");
 			alert.setContentText("로그인 실패");
 			alert.show();
-			return;}
+			return 0;}
 	
 		if(dbPw.equals(pw)) {
 			Alert alert = new Alert(AlertType.INFORMATION);
 			alert.setHeaderText("알림");
 			alert.setContentText("로그인 성공");
 			alert.show();
-			Session session = Session.getInstance();
-			Stage stage = session.getStage();
 			
-			Viewer viewer = new Viewer();
-			viewer.setPrimaryStage(stage);
-			
-			viewer.homeList();
-			return;
+			return 1;
 			
 		}else {
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.setHeaderText("알림");
 			alert.setContentText("로그인 실패");
 			alert.show();
-			return;
+			return 0;
 	}
 }
 }
