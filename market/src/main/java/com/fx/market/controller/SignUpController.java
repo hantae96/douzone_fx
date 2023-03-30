@@ -78,18 +78,14 @@ public class SignUpController {
     	}else if(emailInput.getText().isBlank()){
     		emailAlert.setText("*이메일을 입력하세요!");
     	}else{
-    		String accounts_id = idInput.getText();
-    		String name = nameInput.getText();
-    		String pw = pwInput.getText();
-    		String address = addressInput.getText();
-    		String email = emailInput.getText();
-    		SignUpDto dto = new SignUpDto();
-    		dto.setAccounts_id(accounts_id);
-    		dto.setPw(pw);
-    		dto.setName(name);
-    		dto.setAddress(address);
-    		dto.setEmail(email);
-    		service.signInsert(dto);
+
+    		service.signInsert(new SignUpDto(
+    				idInput.getText(),			//아이디
+    				nameInput.getText(),		//이름
+    				pwInput.getText(),			//비밀번호
+    				addressInput.getText(),		//주소
+    				emailInput.getText()		//이메일
+    				));
     		
     		Session session = Session.getInstance();
     		Stage stage = session.getStage();

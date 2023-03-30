@@ -1,6 +1,7 @@
 package com.fx.market.service;
 
 import com.fx.market.dao.SignUpDao;
+import com.fx.market.dto.SignUpDto;
 
 public class SignUpService {
 
