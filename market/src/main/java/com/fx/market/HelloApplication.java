@@ -1,23 +1,19 @@
 package com.fx.market;
 
+import java.io.IOException;
+
+import com.fx.market.common.Session;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.io.IOException;
-
-import com.fx.market.common.Session;
-import com.fx.market.common.Viewer;
-import com.fx.market.controller.HomeController;
-
 
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-    	        
-// 홈 화면 테스트
-		FXMLLoader homeFxmlLoader = new FXMLLoader(HelloApplication.class.getResource("views/login.fxml"));
+    FXMLLoader homeFxmlLoader = new FXMLLoader(HelloApplication.class.getResource("views/login.fxml"));
 		Scene home = new Scene(homeFxmlLoader.load(), 360, 750);
 
 		stage.setTitle("홈 화면");

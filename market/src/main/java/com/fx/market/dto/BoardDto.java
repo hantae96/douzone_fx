@@ -51,6 +51,12 @@ public class BoardDto {
 
 
 
+	public BoardDto() {
+		// TODO Auto-generated constructor stub
+	}
+
+
+
 	public String getBoardId() {
 		return boardId;
 	}

@@ -5,7 +5,6 @@ import java.util.ResourceBundle;
 
 import com.fx.market.common.Session;
 import com.fx.market.common.Viewer;
-import com.fx.market.dao.LoginDao;
 import com.fx.market.service.LoginService;
 
 import javafx.fxml.FXML;
@@ -37,9 +36,7 @@ public class LoginController implements Initializable{
 		session.setAccountId(id.getText());
 		
 		Viewer viewer = new Viewer();
-		viewer.setPrimaryStage(stage);
-		
-		viewer.homeList();
+		viewer.setView("home");
 		}
 	}
 
@@ -50,8 +47,6 @@ public class LoginController implements Initializable{
 		Stage stage = session.getStage();
 		
 		Viewer viewer = new Viewer();
-		viewer.setPrimaryStage(stage);
-		
-		viewer.accountList();
+		viewer.setView("signUp");
 	}
 }

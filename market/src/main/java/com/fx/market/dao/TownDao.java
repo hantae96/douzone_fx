@@ -1,16 +1,16 @@
-package com.fx.market.dao.town;
+package com.fx.market.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class TownDAO implements ITownDAO{
+public class TownDao implements ITownDao{
 	private Connection con;
 	private PreparedStatement ps;
 	private ResultSet rs;
 	
-	public TownDAO() {
+	public TownDao() {
 		String url = "jdbc:oracle:thin:@localhost:1521:xe";
 		String userId = "douzone";
 		String userPw = "1234";

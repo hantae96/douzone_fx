@@ -11,159 +11,49 @@ import javafx.stage.Stage;
 
 public class Viewer {
 
-
 	private Stage primaryStage;
 
 	public Stage getPrimaryStage() {
 		return primaryStage;
 	}
+	
 
-	public void setPrimaryStage(Stage primaryStage) {
-		this.primaryStage = primaryStage;
-	}
-	//화면 전체를 전환하여 회원가입으로 이동
-	public void boardList() {
-		FXMLLoader loader = new FXMLLoader(Viewer.class.getResource("/com/fx/market/views/signUp.fxml"));
-        Parent menuForm = null;
-
-        try {
-            menuForm = loader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        setPrimaryStage(Session.getInstance().getStage());
-
-        Scene scene = new Scene(menuForm);
-        primaryStage.setTitle("메인 화면");
-        primaryStage.setScene(scene);
-        primaryStage.show();
-
-		
-	}
-
-	public void aroundList() {
-		  FXMLLoader loader = new FXMLLoader(Viewer.class.getResource("/com/fx/market/views/purchaseView.fxml"));
+	public void setView(String viewName) {
+			FXMLLoader loader = new FXMLLoader(Viewer.class.getResource("/com/fx/market/views/"+viewName+".fxml"));
 	        Parent menuForm = null;
-
+	
 	        try {
 	            menuForm = loader.load();
 	        } catch (IOException e) {
 	            e.printStackTrace();
 	        }
-
-	        Stage stage = new Stage();
-
+	
+	        this.primaryStage = Session.getInstance().getStage();
+	
 	        Scene scene = new Scene(menuForm);
-	        primaryStage.setTitle("메인 화면");
+	        primaryStage.setTitle("등록 화면");
 	        primaryStage.setScene(scene);
 	        primaryStage.show();
-		
 	}
 
-	public void purchaseList() {
-		FXMLLoader loader = new FXMLLoader(Viewer.class.getResource("/com/fx/market/views/purchaseView.fxml"));
-        Parent menuForm = null;
-
-        try {
-            menuForm = loader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        BorderPane boarderPane = (BorderPane) menuForm;
-        BorderPane root = (BorderPane) primaryStage.getScene().getRoot();
-        ScrollPane sroot = (ScrollPane) root.getCenter();
-        sroot.setContent(null);
-        sroot.setContent(boarderPane);
-		
-	}
-
-	// 화면 전체를 전환하여 회원가입 페이지로 이동
-	public void accountList() {
-		FXMLLoader loader = new FXMLLoader(Viewer.class.getResource("/com/fx/market/views/signUp.fxml"));
-        Parent menuForm = null;
-
-        try {
-            menuForm = loader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        setPrimaryStage(Session.getInstance().getStage());
-
-        Scene scene = new Scene(menuForm);
-        primaryStage.setTitle("메인 화면");
-        primaryStage.setScene(scene);
-        primaryStage.show();
-        
-      Session session = Session.getInstance();
-      session.setStage(primaryStage);
-		
-	}
-	public void loginList() {
-		FXMLLoader loader = new FXMLLoader(Viewer.class.getResource("/com/fx/market/views/login.fxml"));
-        Parent menuForm = null;
-
-        try {
-            menuForm = loader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        Stage stage = new Stage();
-
-        Scene scene = new Scene(menuForm);
-        primaryStage.setTitle("로그인");
-        primaryStage.setScene(scene);
-        primaryStage.show();
-        
-      Session session = Session.getInstance();
-      session.setStage(primaryStage);
-		
-	}
-
-	// 판매목록 페이지로 이동
-	public void homeList() {
-		FXMLLoader loader = new FXMLLoader(Viewer.class.getResource("/com/fx/market/views/home.fxml"));
-        Parent menuForm = null;
-
-        try {
-            menuForm = loader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        Stage stage = new Stage();
-
-        Scene scene = new Scene(menuForm);
-        primaryStage.setTitle("메인 화면");
-        primaryStage.setScene(scene);
-        primaryStage.show();
-        
-      Session session = Session.getInstance();
-      session.setStage(primaryStage);
-		
-	}
-
-	// 스크롤판 자식을 마이페이지로 전환
-	public void myPageList() {
-		FXMLLoader loader = new FXMLLoader(Viewer.class.getResource("/com/fx/market/views/myDouzone.fxml"));
-        Parent menuForm = null;
-
-        try {
-            menuForm = loader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        setPrimaryStage(Session.getInstance().getStage());
-
-        BorderPane boarderPane = (BorderPane) menuForm;
-        BorderPane root = (BorderPane) primaryStage.getScene().getRoot();
-        ScrollPane sroot = (ScrollPane) root.getCenter();
-        sroot.setContent(boarderPane);
-
-	}
+	public void setViewCenter(String viewName) {
+			FXMLLoader loader = new FXMLLoader(Viewer.class.getResource("/com/fx/market/views/"+viewName+".fxml"));
+	        Parent menuForm = null;
 	
+	        try {
+	            menuForm = loader.load();
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        }
+	
+	        this.primaryStage = Session.getInstance().getStage();
+	
+	
+	        BorderPane boarderPane = (BorderPane) menuForm;
+	        BorderPane root = (BorderPane) primaryStage.getScene().getRoot();
+	        ScrollPane sroot = (ScrollPane) root.getCenter();
+	        sroot.setContent(null);
+	        sroot.setContent(boarderPane);
+	}
 
 }
