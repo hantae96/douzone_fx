@@ -79,12 +79,14 @@ public class SignUpController {
     		emailAlert.setText("*이메일을 입력하세요!");
     	}else{
 
+
     		service.signInsert(new SignUpDto(
     				idInput.getText(),			//아이디
     				nameInput.getText(),		//이름
     				pwInput.getText(),			//비밀번호
     				addressInput.getText(),		//주소
     				emailInput.getText()		//이메일
+
     				));
     		
     		Session session = Session.getInstance();
@@ -101,7 +103,13 @@ public class SignUpController {
 
     @FXML
     protected void cancelSignUp() {
-    	
+    	Session session = Session.getInstance();
+		Stage stage = session.getStage();
+		
+		Viewer viewer = new Viewer();
+		viewer.setPrimaryStage(stage);
+		
+		viewer.loginList();
     }
     
     @FXML

@@ -15,7 +15,7 @@ public class LoginService {
 	dao = new LoginDao();
 }
 	public void buttonLoginMethod(String id, String pw) {
-		
+
 		if(id.isEmpty() || pw.isEmpty()) {
 			Alert alert = new Alert(AlertType.WARNING);
 			alert.setHeaderText("알림");
@@ -43,12 +43,15 @@ public class LoginService {
 			Viewer viewer = new Viewer();
 			viewer.setPrimaryStage(stage);
 			
-			viewer.aroundList();
+			viewer.homeList();
+			return;
+			
 		}else {
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.setHeaderText("알림");
 			alert.setContentText("로그인 실패");
 			alert.show();
+			return;
 	}
 }
 }

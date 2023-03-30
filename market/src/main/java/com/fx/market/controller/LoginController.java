@@ -5,6 +5,7 @@ import java.util.ResourceBundle;
 
 import com.fx.market.common.Session;
 import com.fx.market.common.Viewer;
+import com.fx.market.dao.LoginDao;
 import com.fx.market.service.LoginService;
 
 import javafx.fxml.FXML;
@@ -18,14 +19,20 @@ public class LoginController implements Initializable{
 	@FXML PasswordField pw;
 	private LoginService service;
 
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		service = new LoginService();
+
 	}
 		
 	public void buttonLoginMethod() {
+
 		service.buttonLoginMethod(id.getText(),pw.getText());
-	}
+
+		}
+
+
 	
 	public void regClickedMethod() {
 		Session session = Session.getInstance();
