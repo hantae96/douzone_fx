@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import com.fx.market.common.Session;
 import com.fx.market.common.Viewer;
 import com.fx.market.dto.HomeDto;
 import com.fx.market.service.HomeService;
@@ -75,7 +76,7 @@ public class HomeController implements Initializable {
 	@FXML
 	private void aroundNavClick(Event event) {
 		Viewer viewer = new Viewer();
-		viewer.WriteMeetingBoard();
+//		viewer.WriteMeetingBoard();
 	}
 
 	@FXML
