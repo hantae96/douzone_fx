@@ -24,19 +24,17 @@ public class HelloApplication extends Application {
 
         FXMLLoader fxmlLoader2 = new FXMLLoader(HelloApplication.class.getResource("views/Main_Bulletin.fxml"));
         Parent regForm = fxmlLoader2.load();
+   
         
-        ComboBox<String> jujeBox = (ComboBox<String>)regForm.lookup("#jujeCombo");
-        jujeBox.getItems().addAll("동네질문","동네사건사고","동네맛집","동네소식","생활정보","취미생활");
-       
-        Scene scene2 = new Scene(regForm);
-        stage.setTitle("main");
-
-        FXMLLoader PurchasefxmlLoader = new FXMLLoader(HelloApplication.class.getResource("views/purchaseView.fxml"));
-        Scene purchase = new Scene(PurchasefxmlLoader.load(), 370, 650);
-        stage.setTitle("구매");
-        stage.setScene(purchase);
+        Scene Town = new Scene(regForm);
+        stage.setTitle("Town");
+        stage.setScene(Town);
+//        FXMLLoader PurchasefxmlLoader = new FXMLLoader(HelloApplication.class.getResource("views/purchaseView.fxml"));
+//        Scene purchase = new Scene(PurchasefxmlLoader.load(), 370, 650);
+//        stage.setTitle("구매");
+//        stage.setScene(purchase);
         
-        System.out.println("git commit test");
+      
 //        FXMLLoader fxmlLoaderH = new FXMLLoader(HelloApplication.class.getResource("views/signUp.fxml"));
 //        Scene hyesong = new Scene(fxmlLoaderH.load(), 360, 700);
 //        stage.setTitle("hyesong");

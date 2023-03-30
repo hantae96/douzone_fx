@@ -9,9 +9,8 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="553.0" prefWidth="321.0" style="-fx-background-color: WHITE;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="553.0" prefWidth="321.0" style="-fx-background-color: WHITE;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fx.market.controller.TownController">
    <top>
       <GridPane prefHeight="46.0" prefWidth="310.0" BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -26,32 +25,32 @@
         </rowConstraints>
          <children>
             <Button mnemonicParsing="false" style="-fx-background-color: WHITE;" text="X" />
-            <Button alignment="TOP_RIGHT" ellipsisString="완료" mnemonicParsing="false" prefHeight="43.0" prefWidth="49.0" style="-fx-background-color: WHITE;" text="완료" GridPane.columnIndex="2" />
+            <Button alignment="TOP_RIGHT" ellipsisString="완료" mnemonicParsing="false" onMouseClicked="#boardClick" prefHeight="29.0" prefWidth="62.0" style="-fx-background-color: WHITE;" text="완료" GridPane.columnIndex="2" />
             <TextField alignment="TOP_CENTER" prefHeight="29.0" prefWidth="120.0" style="-fx-background-color: WHITE;" text="동네생활 글쓰기" GridPane.columnIndex="1" />
          </children>
       </GridPane>
    </top>
    <bottom>
-      <GridPane prefHeight="23.0" prefWidth="280.0" BorderPane.alignment="CENTER">
+      <GridPane prefHeight="40.0" prefWidth="321.0" BorderPane.alignment="CENTER">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="156.0" minWidth="10.0" prefWidth="36.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="291.0" minWidth="10.0" prefWidth="285.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="156.0" minWidth="10.0" prefWidth="71.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="291.0" minWidth="10.0" prefWidth="250.0" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="사진" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="장소" GridPane.columnIndex="1" />
+            <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="59.0" style="-fx-background-color: white;" text="사진" />
+            <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="65.0" style="-fx-background-color: white;" text="장소" GridPane.columnIndex="1" />
          </children>
       </GridPane>
    </bottom>
    <center>
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <ComboBox fx:id="jujeCombo" prefHeight="29.0" prefWidth="323.0" promptText="주제를 선택하세요." style="-fx-background-color: white;" />
-            <TextField promptText="제목" />
-            <TextArea prefHeight="418.0" prefWidth="321.0" promptText="질문이나 이야기를 해보세요." />
+            <ComboBox fx:id="middle_category" prefHeight="29.0" prefWidth="323.0" promptText="주제를 선택하세요." style="-fx-background-color: white;" />
+            <TextField fx:id="title" promptText="제목" />
+            <TextArea fx:id="content" prefHeight="418.0" prefWidth="321.0" promptText="질문이나 이야기를 해보세요." />
          </children>
       </VBox>
    </center>
