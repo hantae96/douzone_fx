@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 
 public class Viewer {
 
+
 	private Stage primaryStage;
 
 	public Stage getPrimaryStage() {
@@ -23,7 +24,25 @@ public class Viewer {
 	}
 
 	public void boardList() {
-	
+		FXMLLoader loader = new FXMLLoader(Viewer.class.getResource("/com/fx/market/views/signUp.fxml"));
+        Parent menuForm = null;
+
+        try {
+            menuForm = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        Session session = Session.getInstance();
+        this.primaryStage = session.getStage();
+
+        Scene scene = new Scene(menuForm);
+        primaryStage.setTitle("메인 화면");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+        
+	    Session.getInstance();
+	    session.setStage(primaryStage);
 		
 	}
 
