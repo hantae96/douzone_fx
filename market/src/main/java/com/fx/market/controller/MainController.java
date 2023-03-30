@@ -35,7 +35,7 @@ public class MainController implements Initializable {
 
 	
 	public void aroundNavClick() {
-		viewer.aroundList();
+//		viewer.aroundList();
 	}
 
 	public void accountNavClick() {

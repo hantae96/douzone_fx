@@ -30,6 +30,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import javafx.stage.Stage;
 
 // initalize 는 fxml 로더가 fx 변수를 모두 파싱한다음에 호출됨
 // 컨트롤러 단에 놓지 않으면 ex) 컨트롤러로 선언되지 않은 다른 클래스에 놓으면 실행순서가 보장되지 않기때문에
@@ -132,8 +133,13 @@ public class HomeController implements Initializable {
 	    
 	    
 	    wrtieButton.setOnAction(event -> {
-	        // 버튼을 클릭했을 때 실행될 코드를 여기에 작성합니다.
-	        System.out.println("글쓰기 버튼이 클릭되었습니다.");
+	        // 버튼을 클릭했을 때 실행될 코드를 여기에 작성합니다.	        
+	    	Session session = Session.getInstance();
+			Stage stage = session.getStage();
+			
+			Viewer viewer = new Viewer();
+			viewer.registerList();			
+			
 	    });
 	    
 	    main.getChildren().add(wrtieButton);

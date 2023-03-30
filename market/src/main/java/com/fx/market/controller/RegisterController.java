@@ -9,10 +9,8 @@ public class RegisterController {
 	RegisterService registerService = new RegisterService();
 	
 	@FXML
-	//MemoryRepository repository = new MemoryRepository();
 	private void onSubmitButtonClick() {
 		registerService.saveItem();
-		
 	}
 }
 

@@ -43,26 +43,7 @@ public class Viewer {
 		
 	}
 
-	public void aroundList() {
-		  FXMLLoader loader = new FXMLLoader(Viewer.class.getResource("/com/fx/market/views/purchaseView.fxml"));
-	        Parent menuForm = null;
-
-	        try {
-	            menuForm = loader.load();
-	        } catch (IOException e) {
-	            e.printStackTrace();
-	        }
-
-	        Stage stage = new Stage();
-
-	        Scene scene = new Scene(menuForm);
-	        primaryStage.setTitle("메인 화면");
-	        primaryStage.setScene(scene);
-	        primaryStage.show();
-		
-	}
-
-	public void registList() {
+	public void registerList() {
 		FXMLLoader loader = new FXMLLoader(Viewer.class.getResource("/com/fx/market/views/register.fxml"));
         Parent menuForm = null;
 
@@ -72,11 +53,13 @@ public class Viewer {
             e.printStackTrace();
         }
 
-        BorderPane boarderPane = (BorderPane) menuForm;
-        BorderPane root = (BorderPane) primaryStage.getScene().getRoot();
-        ScrollPane sroot = (ScrollPane) root.getCenter();
-        sroot.setContent(null);
-        sroot.setContent(boarderPane);
+        setPrimaryStage(Session.getInstance().getStage());
+
+        Scene scene = new Scene(menuForm);
+        primaryStage.setTitle("등록 화면");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+
 		
 	}
 
