@@ -13,6 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.BorderStroke;
@@ -30,14 +31,17 @@ import javafx.scene.text.FontWeight;
 
 public class HomeController implements Initializable {
 
-	@FXML
-	VBox main;
+	@FXML VBox main;
 	HomeService homeService;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		homeService = new HomeService();
 		printAllItem();
+	}
+	@FXML
+	private void writeButtonClicked(MouseEvent event) {
+		
 	}
 
 	
