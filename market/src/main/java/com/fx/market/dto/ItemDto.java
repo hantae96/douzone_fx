@@ -1,16 +1,24 @@
 package com.fx.market.dto;
 
 public class ItemDto {
-	private int itemId;
+	private String itemId;
 	private String itemName;
 	private Long itemPrice;
 	private String itemContext;
 	private String itemLocal;
 	
-	public int getItemId() {
+	
+	
+	public ItemDto(String itemName, Long itemPrice, String itemContext, String itemLocal) {
+		this.itemName = itemName;
+		this.itemPrice = itemPrice;
+		this.itemContext = itemContext;
+		this.itemLocal = itemLocal;
+	}
+	public String getItemId() {
 		return itemId;
 	}
-	public void setItemId(int itemId) {
+	public void setItemId(String itemId) {
 		this.itemId = itemId;
 	}
 	public String getItemName() {

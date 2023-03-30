@@ -2,25 +2,23 @@ package com.fx.market;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
+import com.fx.market.common.Session;
+import com.fx.market.common.Viewer;
+import com.fx.market.controller.HomeController;
+
+
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-//        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("views/hello-view.fxml"));
-//        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-//        stage.setTitle("Hello!");
-//        stage.setScene(scene);
-//
-//        FXMLLoader fxmlLoader1 = new FXMLLoader(HelloApplication.class.getResource("views/main.fxml"));
-//        Scene main = new Scene(fxmlLoader1.load(), 320, 240);
-//        stage.setTitle("main");
-//        stage.setScene(main);
+    	        
+// 홈 화면 테스트
+		FXMLLoader homeFxmlLoader = new FXMLLoader(HelloApplication.class.getResource("views/login.fxml"));
+		Scene home = new Scene(homeFxmlLoader.load(), 360, 750);
 
         FXMLLoader fxmlLoader2 = new FXMLLoader(HelloApplication.class.getResource("views/Main_Bulletin.fxml"));
         Parent regForm = fxmlLoader2.load();

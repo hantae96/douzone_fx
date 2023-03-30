@@ -9,12 +9,15 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="360.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fx.market.controller.MainController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="360.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fx.market.controller.HomeController">
    <top>
-      <HBox prefHeight="60.0" prefWidth="360.0" style="-fx-background-color: yellow;" BorderPane.alignment="CENTER" />
+      <HBox prefHeight="60.0" prefWidth="360.0" style="-fx-border-color: grey;" BorderPane.alignment="CENTER">
+         <children>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" />
+         </children></HBox>
    </top>
    <bottom>
-      <HBox prefHeight="60.0" prefWidth="369.0" style="-fx-background-color: skyblue;" BorderPane.alignment="CENTER">
+      <HBox prefHeight="60.0" prefWidth="369.0" style="-fx-background-color: orange;" BorderPane.alignment="CENTER">
          <children>
             <VBox alignment="TOP_CENTER" prefHeight="60.0" prefWidth="72.0">
                <children>
@@ -49,19 +52,9 @@
                   <Label text="내 근처" />
                </children>
             </VBox>
-            <VBox alignment="TOP_CENTER" prefHeight="60.0" prefWidth="72.0">
+            <VBox alignment="TOP_CENTER" prefHeight="60.0" prefWidth="75.0">
                <children>
-                  <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
-                     <VBox.margin>
-                        <Insets bottom="3.0" top="5.0" />
-                     </VBox.margin>
-                  </ImageView>
-                  <Label text="채팅" />
-               </children>
-            </VBox>
-            <VBox alignment="TOP_CENTER" onMouseClicked="#accountNavClick" prefHeight="60.0" prefWidth="72.0">
-               <children>
-                  <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="35.0" fitWidth="35.0" onMouseClicked="#myPageNavClick" pickOnBounds="true" preserveRatio="true">
                      <VBox.margin>
                         <Insets bottom="3.0" top="5.0" />
                      </VBox.margin>
@@ -73,6 +66,12 @@
       </HBox>
    </bottom>
    <center>
-      <ScrollPane minViewportHeight="580.0" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+      <ScrollPane minViewportHeight="580.0" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <content>
+         </content>
+         <content>
+            <VBox fx:id="main" prefHeight="596.0" prefWidth="360.0" />
+         </content>
+                  </ScrollPane>
    </center>
 </BorderPane>

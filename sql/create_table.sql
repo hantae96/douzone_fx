@@ -1,18 +1,18 @@
-CREATE TABLE "Accounts" (
-  "accounts_id" VARCHAR2(25),
-  "pw" VARCHAR2(50),
-  "name" VARCHAR2(25),
-  "address" VARCHAR2(200),
-  "email" VARCHAR2(50),
-  "temperature" NUMBER(5),
-  "created_at" DATE,
-  "deleted_at" DATE,
-  PRIMARY KEY ("accounts_id")
+CREATE TABLE accounts (
+  accounts_id VARCHAR2(25),
+  pw VARCHAR2(50),
+  name VARCHAR2(100),
+  address VARCHAR2(200),
+  email VARCHAR2(50),
+  temperature NUMBER(5),
+  created_at DATE,
+  deleted_at DATE,
+    PRIMARY KEY (accounts_id)
 );
 
 CREATE TABLE boards (
   boards_id VARCHAR2(25),
-  accounts_Id NUMBER(20),
+  accounts_id VARCHAR2(20),
   main_category VARCHAR2(20),
   middle_category VARCHAR2(20),
   title VARCHAR2(50),
@@ -20,10 +20,9 @@ CREATE TABLE boards (
   recommends NUMBER(5),
   views NUMBER(5),
   address VARCHAR2(200),
-  created_a date,
+  created_at DATE,
   PRIMARY KEY (boards_id)
 );
-
 CREATE TABLE photos (
   photos_id VARCHAR2(25),
   name VARCHAR2(50),
@@ -65,11 +64,11 @@ CREATE TABLE favorites (
 
 CREATE TABLE Goods (
   goods_id VARCHAR2(25),
-  accounts_id VARCHAR2(25),
-  title VARCHAR2(50),
+  accounts_id VARCHAR2(50),
+  title VARCHAR2(100),
   content VARCHAR2(200),
   address VARCHAR2(100),
-  price NUMBER(5),
+  price NUMBER(25),
   saled_id VARCHAR2(25),
   sale VARCHAR2(5),
   grade NUMBER(2),
