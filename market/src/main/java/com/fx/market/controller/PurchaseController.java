@@ -12,12 +12,7 @@ public class PurchaseController {
 	//MemoryRepository repository = new MemoryRepository();
 	private void onSubmitButtonClick() {
 		purchaseService.saveItem();
+		
 	}
-	
-	
-	
-	
-	
-	 
 }
 
