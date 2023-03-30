@@ -69,7 +69,7 @@ public class HomeController implements Initializable {
 
 	@FXML
 	private void accountNavClick(Event event) {
-
+		
 	}
 	public void printAllItem() {
 		List<HomeDto> items = homeService.makeViewItem();
