@@ -3,14 +3,25 @@ package com.fx.market.service;
 import com.fx.market.dao.RegisterDao;
 import com.fx.market.dto.ItemDto;
 
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+
 public class RegisterService {
-	
-	RegisterDao goodsDao = new RegisterDao();
+    RegisterDao registerDao;
 
+    public RegisterService(RegisterDao registerDao) {
+        this.registerDao = registerDao;
+    }
 
-	public void saveItemData(ItemDto itemDto) {
-    	System.out.println("!!");
-    	
-		goodsDao.saveItem(itemDto);
-	}
+    public void saveItemData(ItemDto itemDto) {
+        registerDao.saveItem(itemDto);
+        alert(itemDto.getItemName());
+    }
+    
+    public void alert(String itemName) {	 
+	 	Alert alert = new Alert(AlertType.WARNING);
+	 	alert.setTitle("등록 완료 창");
+	 	alert.setHeaderText(itemName + "거래가 완료되었습니다.");
+	 	alert.showAndWait();
+    }
 }

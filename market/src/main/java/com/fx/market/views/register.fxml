@@ -4,6 +4,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
@@ -13,13 +15,23 @@
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="643.0" prefWidth="360.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fx.market.controller.RegisterController">
 
    <top>
-      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <HBox prefHeight="45.0" prefWidth="360.0" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="testTitle" alignment="CENTER" prefHeight="17.0" prefWidth="357.0" text="My title">
+            <Button fx:id="close" mnemonicParsing="false" onMouseClicked="#onCancelButtonClick" prefHeight="60.0" prefWidth="60.0" style="-fx-background-color: white;" text="X">
                <font>
-                  <Font size="76.0" />
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+            <Label fx:id="testTitle" alignment="CENTER" prefHeight="60.0" prefWidth="267.0" style="-fx-background-color: white;" text="내 물건 팔기" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="20.0" />
                </font>
             </Label>
+            <Button fx:id="submit" alignment="CENTER" mnemonicParsing="false" onAction="#onRegsistButtonClick" prefHeight="60.0" prefWidth="60.0" style="-fx-background-color: white;" text="완료" textFill="#ff7f00">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
          </children></HBox>
    </top>
    <center>
@@ -27,32 +39,34 @@
          <content>
             <VBox prefHeight="531.0" prefWidth="360.0">
                <children>
-                  <Pane prefHeight="200.0" prefWidth="200.0" />
-                  <TextField fx:id="title" promptText="title" style="-fx-border: grey;">
+                  <Pane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fx:id="photo" fitHeight="200.0" fitWidth="350.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../source/image/placeHolder.png" />
+                           </image>
+                        </ImageView>
+                     </children></Pane>
+                  <TextField fx:id="title" promptText="글 제목" style="-fx-border: grey;">
                      <font>
                         <Font size="19.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="price" promptText="price" style="-fx-border: grey;">
+                  <TextField fx:id="price" promptText="₩ 가격" style="-fx-border: grey;">
                      <font>
                         <Font size="19.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="context" prefHeight="126.0" prefWidth="360.0" promptText="context" style="-fx-border: grey;">
+                  <TextField fx:id="context" prefHeight="126.0" prefWidth="360.0" promptText="게시글 내용을 작성해 주세요." style="-fx-border: grey;">
                      <font>
                         <Font size="19.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="local" promptText="local" style="-fx-border: grey;">
+                  <TextField fx:id="address" promptText="거래 희망 장소" style="-fx-border: grey;">
                      <font>
                         <Font size="19.0" />
                      </font>
                   </TextField>
-                  <Button fx:id="submit" alignment="CENTER" mnemonicParsing="false" onAction="#onRegsistButtonClick" prefHeight="86.0" prefWidth="346.0" style="-fx-background-color: orange;" text="submit">
-                     <font>
-                        <Font size="25.0" />
-                     </font>
-                  </Button>
                </children>
             </VBox>
          </content></ScrollPane>

@@ -34,7 +34,6 @@ public class Viewer {
 	        primaryStage.setTitle("등록 화면");
 	        primaryStage.setScene(scene);
 	        primaryStage.show();
-	
 	}
 
 	public void setViewCenter(String viewName) {
