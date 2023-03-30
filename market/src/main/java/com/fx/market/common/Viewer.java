@@ -24,7 +24,7 @@ public class Viewer {
 	}
 
 	public void boardList() {
-		FXMLLoader loader = new FXMLLoader(Viewer.class.getResource("/com/fx/market/views/signUp.fxml"));
+		FXMLLoader loader = new FXMLLoader(Viewer.class.getResource("/com/fx/market/views/meetingBoardListForm.fxml"));
         Parent menuForm = null;
 
         try {
@@ -36,13 +36,11 @@ public class Viewer {
         Session session = Session.getInstance();
         this.primaryStage = session.getStage();
 
-        Scene scene = new Scene(menuForm);
-        primaryStage.setTitle("메인 화면");
-        primaryStage.setScene(scene);
-        primaryStage.show();
-        
-	    Session.getInstance();
-	    session.setStage(primaryStage);
+        BorderPane boarderPane = (BorderPane) menuForm;
+        BorderPane root = (BorderPane) primaryStage.getScene().getRoot();
+        ScrollPane sroot = (ScrollPane) root.getCenter();
+        sroot.setContent(null);
+        sroot.setContent(boarderPane);
 		
 	}
 
@@ -146,6 +144,26 @@ public class Viewer {
 		
 		Session session = Session.getInstance();
 		session.setStage(primaryStage);
+	}
+
+	public void WriteMeetingBoard() {
+		FXMLLoader loader = new FXMLLoader(Viewer.class.getResource("/com/fx/market/views/meetingBoardWriteForm.fxml"));
+        Parent menuForm = null;
+
+        try {
+            menuForm = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        Session session = Session.getInstance();
+        this.primaryStage = session.getStage();
+
+        Scene scene = new Scene(menuForm);
+        primaryStage.setTitle("메인 화면");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+		
 	}
 
 	
