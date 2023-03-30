@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.FlowPane?>
@@ -12,206 +10,128 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="360.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fx.market.controller.MainController">
-   <top>
-      <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="360.0" spacing="70.0" style="-fx-background-color: white;" BorderPane.alignment="TOP_CENTER">
-         <children>
-            <Label onMouseClicked="#purchaseNavClick" prefHeight="16.0" prefWidth="43.0" text=" &lt;">
-               <font>
-                  <Font size="38.0" />
-               </font>
-            </Label>
-            <Label text="나의 더존">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Label>
-            <Label text="Log out" wrapText="true" />
-         </children></HBox>
-   </top>
-   <bottom>
-      <HBox prefHeight="60.0" prefWidth="369.0" style="-fx-background-color: skyblue;" BorderPane.alignment="CENTER">
-         <children>
-            <VBox alignment="TOP_CENTER" prefHeight="60.0" prefWidth="72.0">
-               <children>
-                  <ImageView fitHeight="35.0" fitWidth="35.0" onMouseClicked="#purchaseNavClick" pickOnBounds="true" preserveRatio="true">
-                     <VBox.margin>
-                        <Insets bottom="3.0" top="5.0" />
-                     </VBox.margin>
-                  </ImageView>
-                  <Label text="홈" />
-               </children>
-            </VBox>
-            <VBox alignment="TOP_CENTER" onMouseClicked="#boardNavClick" prefHeight="60.0" prefWidth="72.0">
-               <children>
-                  <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
-                     <VBox.margin>
-                        <Insets bottom="3.0" top="5.0" />
-                     </VBox.margin>
-                  </ImageView>
-                  <Label text="동네생활" />
-               </children>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </VBox>
-            <VBox alignment="TOP_CENTER" onMouseClicked="#aroundNavClick" prefHeight="60.0" prefWidth="72.0">
-               <children>
-                  <ImageView fitHeight="35.0" fitWidth="35.0" onMouseClicked="#aroundNavClick" pickOnBounds="true" preserveRatio="true">
-                     <VBox.margin>
-                        <Insets bottom="3.0" top="5.0" />
-                     </VBox.margin>
-                  </ImageView>
-                  <Label text="내 근처" />
-               </children>
-            </VBox>
-            <VBox alignment="TOP_CENTER" prefHeight="60.0" prefWidth="72.0">
-               <children>
-                  <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
-                     <VBox.margin>
-                        <Insets bottom="3.0" top="5.0" />
-                     </VBox.margin>
-                  </ImageView>
-                  <Label text="채팅" />
-               </children>
-            </VBox>
-            <VBox alignment="TOP_CENTER" onMouseClicked="#accountNavClick" prefHeight="60.0" prefWidth="72.0">
-               <children>
-                  <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
-                     <VBox.margin>
-                        <Insets bottom="3.0" top="5.0" />
-                     </VBox.margin>
-                  </ImageView>
-                  <Label text="나의 마켓" />
-               </children>
-            </VBox>
-         </children>
-      </HBox>
-   </bottom>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="360.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fx.market.controller.MyPageController">
    <center>
-      <ScrollPane minViewportHeight="580.0" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <content>
-            <VBox minWidth="333.0" prefHeight="600.0" prefWidth="333.0">
+      <VBox minWidth="333.0" prefHeight="600.0" prefWidth="333.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER_LEFT" minWidth="333.0" prefHeight="100.0" prefWidth="333.0" spacing="20.0">
                <children>
-                  <HBox alignment="CENTER_LEFT" minWidth="333.0" prefHeight="100.0" prefWidth="333.0" spacing="20.0">
+                  <ImageView fx:id="photo" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
+                  <Label fx:id="name" text="name!" />
+                  <Label fx:id="id" text="id!" textFill="#00000090">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </HBox>
+            <BorderPane prefHeight="58.0" prefWidth="333.0">
+               <left>
+                  <Label onMouseClicked="#showAnnotation" text="매너 온도" underline="true" BorderPane.alignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+               </left>
+               <right>
+                  <Label fx:id="temp" text="temp" BorderPane.alignment="CENTER" />
+               </right>
+               <padding>
+                  <Insets left="30.0" right="30.0" />
+               </padding>
+            </BorderPane>
+            <StackPane alignment="CENTER_LEFT" prefHeight="79.0" prefWidth="333.0">
+               <children>
+                  <FlowPane maxWidth="200.0" prefHeight="69.0" prefWidth="196.0">
+                     <StackPane.margin>
+                        <Insets left="10.0" top="10.0" />
+                     </StackPane.margin>
                      <children>
-                        <ImageView fx:id="photo" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
-                        <Label fx:id="name" text="name!" />
-                        <Label fx:id="id" text="id!" textFill="#00000090">
+                        <Label fx:id="tempAnnotation" maxWidth="150.0" style="-fx-background-color: black;" text="매너온도는 더존마켓 사용자로부터 받은 평가를 보여주는 매너 지표에요" textAlignment="CENTER" textFill="WHITE" visible="false" wrapText="true">
                            <font>
                               <Font size="10.0" />
                            </font>
                         </Label>
                      </children>
-                     <VBox.margin>
+                  </FlowPane>
+                  <BorderPane prefHeight="200.0" prefWidth="200.0">
+                     <left>
+                        <Label fx:id="text" text="가입 일자" BorderPane.alignment="CENTER" />
+                     </left>
+                     <right>
+                        <Label fx:id="created_at" text="created_at" BorderPane.alignment="CENTER" />
+                     </right>
+                     <StackPane.margin>
                         <Insets />
-                     </VBox.margin>
-                     <padding>
-                        <Insets left="10.0" />
-                     </padding>
-                  </HBox>
-                  <BorderPane prefHeight="58.0" prefWidth="333.0">
-                     <left>
-                        <Label onMouseClicked="#showAnnotation" text="매너 온도" underline="true" BorderPane.alignment="CENTER">
-                           <font>
-                              <Font name="System Bold" size="15.0" />
-                           </font>
-                        </Label>
-                     </left>
-                     <right>
-                        <Label fx:id="temp" text="temp" BorderPane.alignment="CENTER" />
-                     </right>
-                     <padding>
-                        <Insets left="30.0" right="30.0" />
-                     </padding>
-                  </BorderPane>
-                  <StackPane alignment="CENTER_LEFT" prefHeight="79.0" prefWidth="333.0">
-                     <children>
-                        <FlowPane maxWidth="200.0" prefHeight="69.0" prefWidth="196.0">
-                           <StackPane.margin>
-                              <Insets left="10.0" top="10.0" />
-                           </StackPane.margin>
-                           <children>
-                              <Label fx:id="tempAnnotation" maxWidth="150.0" style="-fx-background-color: black;" text="매너온도는 더존마켓 사용자로부터 받은 평가를 보여주는 매너 지표에요" textAlignment="CENTER" textFill="WHITE" visible="false" wrapText="true">
-                                 <font>
-                                    <Font size="10.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </FlowPane>
-                        <BorderPane prefHeight="200.0" prefWidth="200.0">
-                           <left>
-                              <Label text="가입 일자" BorderPane.alignment="CENTER" />
-                           </left>
-                           <right>
-                              <Label fx:id="created_at" text="created_at" BorderPane.alignment="CENTER" />
-                           </right>
-                           <StackPane.margin>
-                              <Insets />
-                           </StackPane.margin>
-                           <padding>
-                              <Insets left="30.0" right="30.0" />
-                           </padding>
-                        </BorderPane>
-                     </children>
-                  </StackPane>
-                  <BorderPane prefHeight="58.0" prefWidth="333.0">
-                     <left>
-                        <Label text="받은 평가" BorderPane.alignment="CENTER" />
-                     </left>
-                     <right>
-                        <Label fx:id="rating_num" text="rating_num" BorderPane.alignment="CENTER" />
-                     </right>
-                     <padding>
-                        <Insets left="30.0" right="30.0" />
-                     </padding>
-                  </BorderPane>
-                  <BorderPane prefHeight="58.0" prefWidth="333.0">
-                     <left>
-                        <Label text="관심 목록" BorderPane.alignment="CENTER" />
-                     </left>
-                     <right>
-                        <Label fx:id="favor_num" text="favor_num" BorderPane.alignment="CENTER" />
-                     </right>
-                     <padding>
-                        <Insets left="30.0" right="30.0" />
-                     </padding>
-                  </BorderPane>
-                  <BorderPane prefHeight="58.0" prefWidth="333.0">
-                     <left>
-                        <Label text="판매 내역" BorderPane.alignment="CENTER" />
-                     </left>
-                     <right>
-                        <Label fx:id="sell_num" text="sell_num" BorderPane.alignment="CENTER" />
-                     </right>
-                     <padding>
-                        <Insets left="30.0" right="30.0" />
-                     </padding>
-                  </BorderPane>
-                  <BorderPane prefHeight="58.0" prefWidth="333.0">
-                     <left>
-                        <Label text="구매 내역" BorderPane.alignment="CENTER" />
-                     </left>
-                     <right>
-                        <Label fx:id="buy_num" text="buy_num" BorderPane.alignment="CENTER" />
-                     </right>
-                     <padding>
-                        <Insets left="30.0" right="30.0" />
-                     </padding>
-                  </BorderPane>
-                  <BorderPane prefHeight="58.0" prefWidth="333.0">
-                     <left>
-                        <Label text="동네생활 글/댓글" BorderPane.alignment="CENTER" />
-                     </left>
-                     <right>
-                        <Label fx:id="document_num" text="document_num" BorderPane.alignment="CENTER" />
-                     </right>
+                     </StackPane.margin>
                      <padding>
                         <Insets left="30.0" right="30.0" />
                      </padding>
                   </BorderPane>
                </children>
-            </VBox>
-         </content></ScrollPane>
+            </StackPane>
+            <BorderPane prefHeight="58.0" prefWidth="333.0">
+               <left>
+                  <Label text="받은 평가" BorderPane.alignment="CENTER" />
+               </left>
+               <right>
+                  <Label fx:id="rating_num" text="rating_num" BorderPane.alignment="CENTER" />
+               </right>
+               <padding>
+                  <Insets left="30.0" right="30.0" />
+               </padding>
+            </BorderPane>
+            <BorderPane prefHeight="58.0" prefWidth="333.0">
+               <left>
+                  <Label text="관심 목록" BorderPane.alignment="CENTER" />
+               </left>
+               <right>
+                  <Label fx:id="favor_num" text="favor_num" BorderPane.alignment="CENTER" />
+               </right>
+               <padding>
+                  <Insets left="30.0" right="30.0" />
+               </padding>
+            </BorderPane>
+            <BorderPane prefHeight="58.0" prefWidth="333.0">
+               <left>
+                  <Label text="판매 내역" BorderPane.alignment="CENTER" />
+               </left>
+               <right>
+                  <Label fx:id="sell_num" text="sell_num" BorderPane.alignment="CENTER" />
+               </right>
+               <padding>
+                  <Insets left="30.0" right="30.0" />
+               </padding>
+            </BorderPane>
+            <BorderPane prefHeight="58.0" prefWidth="333.0">
+               <left>
+                  <Label text="구매 내역" BorderPane.alignment="CENTER" />
+               </left>
+               <right>
+                  <Label fx:id="buy_num" text="buy_num" BorderPane.alignment="CENTER" />
+               </right>
+               <padding>
+                  <Insets left="30.0" right="30.0" />
+               </padding>
+            </BorderPane>
+            <BorderPane prefHeight="58.0" prefWidth="333.0">
+               <left>
+                  <Label text="동네생활 글/댓글" BorderPane.alignment="CENTER" />
+               </left>
+               <right>
+                  <Label fx:id="document_num" text="document_num" BorderPane.alignment="CENTER" />
+               </right>
+               <padding>
+                  <Insets left="30.0" right="30.0" />
+               </padding>
+            </BorderPane>
+         </children>
+      </VBox>
    </center>
 </BorderPane>
