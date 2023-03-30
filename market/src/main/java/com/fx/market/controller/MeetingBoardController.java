@@ -46,10 +46,8 @@ public class MeetingBoardController implements Initializable{
 	
 	public void printAllItem() {
 		List<BoardDto> boards = boardService.selectMeetingBoardList();
-		Viewer viewer = new Viewer();
-		System.out.println("Aa");
+
 		for (BoardDto board : boards) {
-			
 			System.out.println(board.getBoardId());
 			Label name = new Label(board.getTitle());
 			name.setPadding(new Insets(10));
@@ -85,11 +83,6 @@ public class MeetingBoardController implements Initializable{
 //			section.setRight(recommand);
 
 			section.setPadding(new Insets(10)); // 모든 방향에 대해 10px의 패딩 적용
-			
-			section.setOnMouseClicked(event->{
-				System.out.println(board.getBoardId());
-				viewer.setViewCenter("meetingBoardDetailForm");	
-			});
 
 			main.getChildren().add(section);
 
@@ -104,8 +97,11 @@ public class MeetingBoardController implements Initializable{
 	    wrtieButton.setOnAction(event -> {
 	    	System.out.print("aa");
 //	        // 버튼을 클릭했을 때 실행될 코드를 여기에 작성합니다.	        
-
-			viewer.setView("meetingBoardWriteForm");			
+//	    	Session session = Session.getInstance();
+//			Stage stage = session.getStage();
+//			
+//			Viewer viewer = new Viewer();
+//			viewer.List();			
 //			
 	    });
 	    
