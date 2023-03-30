@@ -21,7 +21,7 @@ public class Viewer {
 	public void setPrimaryStage(Stage primaryStage) {
 		this.primaryStage = primaryStage;
 	}
-
+	//화면 전체를 전환하여 회원가입으로 이동
 	public void boardList() {
 		FXMLLoader loader = new FXMLLoader(Viewer.class.getResource("/com/fx/market/views/signUp.fxml"));
         Parent menuForm = null;
@@ -79,7 +79,7 @@ public class Viewer {
 		
 	}
 
-	// 회원가입 페이지로 이동
+	// 화면 전체를 전환하여 회원가입 페이지로 이동
 	public void accountList() {
 		FXMLLoader loader = new FXMLLoader(Viewer.class.getResource("/com/fx/market/views/signUp.fxml"));
         Parent menuForm = null;
@@ -90,7 +90,7 @@ public class Viewer {
             e.printStackTrace();
         }
 
-        Stage stage = new Stage();
+        setPrimaryStage(Session.getInstance().getStage());
 
         Scene scene = new Scene(menuForm);
         primaryStage.setTitle("메인 화면");
@@ -146,7 +146,7 @@ public class Viewer {
 		
 	}
 
-	// 마이페이지로 이동
+	// 스크롤판 자식을 마이페이지로 전환
 	public void myPageList() {
 		FXMLLoader loader = new FXMLLoader(Viewer.class.getResource("/com/fx/market/views/myDouzone.fxml"));
         Parent menuForm = null;
@@ -161,9 +161,8 @@ public class Viewer {
         BorderPane boarderPane = (BorderPane) menuForm;
         BorderPane root = (BorderPane) primaryStage.getScene().getRoot();
         ScrollPane sroot = (ScrollPane) root.getCenter();
-        sroot.setContent(null);
         sroot.setContent(boarderPane);
-		
+
 	}
 	
 

@@ -4,11 +4,11 @@ public class SignUpDto {
 	//accounts 테이블
 	private String accounts_id;	//아이디	
 	private String name;		//이름
-	private String pw;			//
-	private String address;
-	private String email;
+	private String pw;			//비밀번호
+	private String address;		//주소
+	private String email;		//이메일
 	
-
+	//생성자
 	public SignUpDto(String accounts_id, String name, String pw, String address, String email) {
 		this.accounts_id = accounts_id;
 		this.name = name;
