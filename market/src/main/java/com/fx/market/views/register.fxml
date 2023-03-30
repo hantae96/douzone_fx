@@ -48,7 +48,7 @@
                         <Font size="19.0" />
                      </font>
                   </TextField>
-                  <Button fx:id="submit" alignment="CENTER" mnemonicParsing="false" onAction="#onSubmitButtonClick" prefHeight="86.0" prefWidth="346.0" style="-fx-background-color: orange;" text="submit">
+                  <Button fx:id="submit" alignment="CENTER" mnemonicParsing="false" onAction="#onRegsistButtonClick" prefHeight="86.0" prefWidth="346.0" style="-fx-background-color: orange;" text="submit">
                      <font>
                         <Font size="25.0" />
                      </font>

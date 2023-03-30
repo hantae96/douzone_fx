@@ -15,18 +15,16 @@ import com.fx.market.controller.HomeController;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-
-
+    	        
+// 홈 화면 테스트
 		FXMLLoader homeFxmlLoader = new FXMLLoader(HelloApplication.class.getResource("views/login.fxml"));
-		Scene home = new Scene(homeFxmlLoader.load(), 380, 750);
+		Scene home = new Scene(homeFxmlLoader.load(), 360, 750);
 
 		stage.setTitle("홈 화면");
 		stage.setScene(home);
 		
 		Session session = Session.getInstance();
 	    session.setStage(stage);
-	    stage.setResizable(false);
-    	//HomeController homeController = new HomeController();
         stage.show();
     	
     }

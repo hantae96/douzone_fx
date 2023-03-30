@@ -9,8 +9,7 @@ public class ItemDto {
 	
 	
 	
-	public ItemDto(String itemId, String itemName, Long itemPrice, String itemContext, String itemLocal) {
-		this.itemId = itemId;
+	public ItemDto(String itemName, Long itemPrice, String itemContext, String itemLocal) {
 		this.itemName = itemName;
 		this.itemPrice = itemPrice;
 		this.itemContext = itemContext;

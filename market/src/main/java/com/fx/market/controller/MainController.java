@@ -25,8 +25,8 @@ public class MainController implements Initializable {
 		
 	}
 	
-	public void purchaseNavClick() {
-		viewer.purchaseList();
+	public void homeNavClick() {
+		viewer.homeList();
 	}
 	
 	public void boardNavClick() {
@@ -35,7 +35,7 @@ public class MainController implements Initializable {
 
 	
 	public void aroundNavClick() {
-		viewer.aroundList();
+//		viewer.aroundList();
 	}
 
 	public void accountNavClick() {

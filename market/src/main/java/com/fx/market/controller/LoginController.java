@@ -27,10 +27,21 @@ public class LoginController implements Initializable{
 	}
 		
 	public void buttonLoginMethod() {
-
-		service.buttonLoginMethod(id.getText(),pw.getText());
-
+		int result = service.buttonLoginMethod(id.getText(),pw.getText());
+		if(result == 1) {
+			
+		Session session = Session.getInstance();
+		Stage stage = session.getStage();
+		
+		session.setLoginChk(result);
+		session.setAccountId(id.getText());
+		
+		Viewer viewer = new Viewer();
+		viewer.setPrimaryStage(stage);
+		
+		viewer.homeList();
 		}
+	}
 
 
 	
