@@ -2,29 +2,22 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="360.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fx.market.controller.HomeController">
    <top>
-      <HBox prefHeight="60.0" prefWidth="360.0" style="-fx-background-color: yellow;" BorderPane.alignment="CENTER">
+      <HBox prefHeight="60.0" prefWidth="360.0" style="-fx-border-color: grey;" BorderPane.alignment="CENTER">
          <children>
             <BorderPane prefHeight="200.0" prefWidth="200.0" />
-            <Button fx:id="writeButton" mnemonicParsing="false" onMouseClicked="#writeButtonClicked" prefHeight="54.0" prefWidth="165.0" text="글쓰기">
-               <font>
-                  <Font name="System Bold" size="13.0" />
-               </font>
-            </Button>
          </children></HBox>
    </top>
    <bottom>
-      <HBox prefHeight="60.0" prefWidth="369.0" style="-fx-background-color: skyblue;" BorderPane.alignment="CENTER">
+      <HBox prefHeight="60.0" prefWidth="369.0" style="-fx-background-color: orange;" BorderPane.alignment="CENTER">
          <children>
             <VBox alignment="TOP_CENTER" prefHeight="60.0" prefWidth="72.0">
                <children>
@@ -59,17 +52,7 @@
                   <Label text="내 근처" />
                </children>
             </VBox>
-            <VBox alignment="TOP_CENTER" prefHeight="60.0" prefWidth="72.0">
-               <children>
-                  <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
-                     <VBox.margin>
-                        <Insets bottom="3.0" top="5.0" />
-                     </VBox.margin>
-                  </ImageView>
-                  <Label text="채팅" />
-               </children>
-            </VBox>
-            <VBox alignment="TOP_CENTER" prefHeight="60.0" prefWidth="72.0">
+            <VBox alignment="TOP_CENTER" prefHeight="60.0" prefWidth="75.0">
                <children>
                   <ImageView fitHeight="35.0" fitWidth="35.0" onMouseClicked="#myPageNavClick" pickOnBounds="true" preserveRatio="true">
                      <VBox.margin>
