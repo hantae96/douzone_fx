@@ -9,8 +9,8 @@ public class RegisterController {
 	RegisterService registerService = new RegisterService();
 	
 	@FXML
-	private void onSubmitButtonClick() {
-		registerService.saveItem();
+	private void onRegsistButtonClick() {
+		registerService.saveItemData();
 	}
 }
 

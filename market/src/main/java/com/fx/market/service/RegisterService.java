@@ -11,7 +11,6 @@ import javafx.scene.control.TextField;
 
 public class RegisterService {
 	RegisterDao goodsDao = new RegisterDao();
-	int seq;
 
 	@FXML private Label testTitle;
 	@FXML private TextField title;
@@ -19,29 +18,22 @@ public class RegisterService {
 	@FXML private TextField context;
 	@FXML private TextField local;
 
-	
-	
-	
-    public void saveItem() {	 
+    public void alertItem() {	 
+    	System.out.println("??");
 	 	Alert alert = new Alert(AlertType.WARNING);
 	 	alert.setTitle("거래 완료 창");
 	 	alert.setHeaderText("거래가 완료되었습니다.");
 	 	alert.showAndWait();
     }
     
-    @FXML	
-    protected void saveItemData() {
-		// item의 id == goods_id (DB)에서 예시 : g1
-		// g를 붙이기 위해서 문자열 처리가 필요
-		goodsDao.saveItem(new ItemDto(makeItemId(seq++), 
+    @FXML
+	public void saveItemData() {
+    	System.out.println("!!");
+
+		goodsDao.saveItem(new ItemDto( 
 										title.getText(), 
 										Long.valueOf(price.getText()), 
 										local.getText(),
 										context.getText()));
 	}
-	
- 
- 	private String makeItemId(int seq) {
- 		return "g".concat(String.valueOf(seq));
- 	}
 }
