@@ -72,8 +72,6 @@ public class HomeController implements Initializable {
 
 	@FXML
 	private void aroundNavClick(Event event) {
-		Viewer viewer = new Viewer();
-//		viewer.WriteMeetingBoard();
 	}
 
 	@FXML

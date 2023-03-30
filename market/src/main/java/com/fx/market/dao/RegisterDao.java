@@ -38,7 +38,7 @@ public class RegisterDao {
 		String saled_id = null;
 		
 		
-		String sql = "insert into goods(goods_id,accounts_id,title,content,address,price,saled_id) values (concat('b', boards_seq.nextval),?,?,?,?,?,?)";
+		String sql = "insert into goods(goods_id,accounts_id,title,content,address,price,saled_id) values (concat('a', goods_seq.nextval),?,?,?,?,?,?)";
 		try {
 			
 			ps = con.prepareStatement(sql);
