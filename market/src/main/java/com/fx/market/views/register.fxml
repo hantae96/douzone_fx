@@ -15,7 +15,7 @@
    <top>
       <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Label alignment="CENTER" prefHeight="17.0" prefWidth="357.0" text="My title">
+            <Label fx:id="testTitle" alignment="CENTER" prefHeight="17.0" prefWidth="357.0" text="My title">
                <font>
                   <Font size="76.0" />
                </font>
@@ -28,7 +28,7 @@
             <VBox prefHeight="531.0" prefWidth="360.0">
                <children>
                   <Pane prefHeight="200.0" prefWidth="200.0" />
-                  <TextField fx:id="name" promptText="title" style="-fx-border: grey;">
+                  <TextField fx:id="title" promptText="title" style="-fx-border: grey;">
                      <font>
                         <Font size="19.0" />
                      </font>
@@ -43,7 +43,7 @@
                         <Font size="19.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="address" promptText="local" style="-fx-border: grey;">
+                  <TextField fx:id="local" promptText="local" style="-fx-border: grey;">
                      <font>
                         <Font size="19.0" />
                      </font>

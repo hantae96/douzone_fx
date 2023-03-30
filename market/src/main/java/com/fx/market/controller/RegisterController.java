@@ -29,6 +29,12 @@ public class RegisterController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		this.registerService = new RegisterService(new RegisterDao());
+		price.textProperty().addListener((observable, oldValue, newValue) -> {
+	        // 새로 입력된 문자열이 숫자가 아니면, 이전 값으로 되돌립니다.
+	        if (!newValue.matches("\\d*")) {
+	            price.setText(oldValue);
+	        }
+	    });
 	}
 
 	@FXML
@@ -37,14 +43,5 @@ public class RegisterController implements Initializable {
 				new ItemDto(name.getText(), Long.valueOf(price.getText()), context.getText(), address.getText()));
 	}
 	
-
-    public void alertItem() {	 
-    	System.out.println("??");
-	 	Alert alert = new Alert(AlertType.WARNING);
-	 	alert.setTitle("거래 완료 창");
-	 	alert.setHeaderText("거래가 완료되었습니다.");
-	 	alert.showAndWait();
-    }
- 
 	
 }
