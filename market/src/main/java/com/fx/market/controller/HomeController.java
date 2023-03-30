@@ -32,7 +32,6 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
-import oracle.net.aso.s;
 
 // initalize 는 fxml 로더가 fx 변수를 모두 파싱한다음에 호출됨
 // 컨트롤러 단에 놓지 않으면 ex) 컨트롤러로 선언되지 않은 다른 클래스에 놓으면 실행순서가 보장되지 않기때문에
@@ -50,20 +49,12 @@ public class HomeController implements Initializable {
 		homeService = new HomeService();
 		printAllItem();
 	}
-	@FXML
-	private void writeButtonClicked(MouseEvent event) {
-		
-	}
 	
-	@FXML
-	private void onSeachButtonClicked() {
-		// 찾기버튼 기능 구현중
-	}
-
 	
 	@FXML
 	private void purchaseNavClick(Event event) {
-		// 홈화면
+		viewer = new Viewer();
+		viewer.setView("home");
 	}
 
 	@FXML
@@ -77,6 +68,18 @@ public class HomeController implements Initializable {
 		viewer = new Viewer();
 		viewer.setViewCenter("myDouzone");
 	}
+	
+	////////
+	
+	@FXML
+	private void writeButtonClicked(MouseEvent event) {
+		
+	}
+	
+	@FXML
+	private void onSeachButtonClicked() {
+		// 찾기버튼 기능 구현중
+	}
 
 	@FXML
 	private void aroundNavClick(Event event) {
@@ -88,8 +91,13 @@ public class HomeController implements Initializable {
 	}
 	
 	private void openItemDetails(HomeDto item) {
-		System.out.println("상세 페이지 클");
+		// 상세 페이지 구현중
+		// item 정보를 받아서 뷰에서 뿌리면 됨.
+		// viewr 에서 상세 페이지를 작성하자
+		
+		System.out.println("상세 페이지 클릭");
 	}
+	
 	public void printAllItem() {
 	    List<HomeDto> items = homeService.makeViewItem();
 
