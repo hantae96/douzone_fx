@@ -23,7 +23,7 @@ public class Viewer {
 	}
 
 	public void boardList() {
-		FXMLLoader loader = new FXMLLoader(Viewer.class.getResource("/com/fx/market/views/signUp.fxml"));
+		FXMLLoader loader = new FXMLLoader(Viewer.class.getResource("/com/fx/market/views/meetingBoardListForm.fxml"));
         Parent menuForm = null;
 
         try {
@@ -34,10 +34,25 @@ public class Viewer {
 
         setPrimaryStage(Session.getInstance().getStage());
 
-        Scene scene = new Scene(menuForm);
-        primaryStage.setTitle("메인 화면");
-        primaryStage.setScene(scene);
-        primaryStage.show();
+
+        BorderPane boarderPane = (BorderPane) menuForm;
+        BorderPane root = (BorderPane) primaryStage.getScene().getRoot();
+        ScrollPane sroot = (ScrollPane) root.getCenter();
+        sroot.setContent(null);
+        sroot.setContent(boarderPane);
+		
+	}
+
+	public void aroundList() {
+		  FXMLLoader loader = new FXMLLoader(Viewer.class.getResource("/com/fx/market/views/purchaseView.fxml"));
+	        Parent menuForm = null;
+
+	        try {
+	            menuForm = loader.load();
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        }
+
 
 		
 	}
@@ -129,9 +144,11 @@ public class Viewer {
 		
 	}
 
+
 	// 마이페이지로 이동
 	public void myPageList() {
 		FXMLLoader loader = new FXMLLoader(Viewer.class.getResource("/com/fx/market/views/myDouzone.fxml"));
+
         Parent menuForm = null;
 
         try {
@@ -139,6 +156,7 @@ public class Viewer {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
         setPrimaryStage(Session.getInstance().getStage());
 
         BorderPane boarderPane = (BorderPane) menuForm;
@@ -148,6 +166,7 @@ public class Viewer {
         sroot.setContent(boarderPane);
 		
 	}
+
 	
 	
 
