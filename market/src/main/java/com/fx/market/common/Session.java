@@ -12,42 +12,50 @@ import javafx.stage.Stage;
 //String accountId = session.getAccountId();
 //String name = session.getName(); 
 
-
 public class Session {
 
-    private static Session instance;
-    private String accountId;
-    private String name;
-    private int loginChk;     
-    
+	private static Session instance;
+	private String accountId;
+	private String name;
+	private String address;
+	private int loginChk;
+
 	private Stage stage;
 
-    public String getAccountId() {
-        return accountId;
-    }
+	public String getAccountId() {
+		return accountId;
+	}
 
-    public void setAccountId(String accountId) {
-        this.accountId = accountId;
-    }
+	public String getaddress() {
+		return address;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public void setAccountId(String accountId) {
+		this.accountId = accountId;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public String getName() {
+		return name;
+	}
 
-    private Session() {
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	private Session() {
+	}
 
 	public static Session getInstance() {
-        if (instance == null) {
-            instance = new Session();
-        }
-        return instance;
-    }
-	
+		if (instance == null) {
+			instance = new Session();
+		}
+		return instance;
+	}
+
 	public int getLoginChk() {
 		return loginChk;
 	}
@@ -63,6 +71,5 @@ public class Session {
 	public void setStage(Stage stage) {
 		this.stage = stage;
 	}
-    
-    
+
 }
