@@ -27,10 +27,13 @@ public class BoardDao {
 	}
 
 	public void insertMeetingBoard(BoardDto boardDto) {
-		String insertBoardSql = "insert into boards(boards_id, accounts_id, main_category, middle_category, title, content) values (concat('b', boards_seq.nextval), ?, ?, ?, ?, ?)";
+		String insertBoardSql = "insert into boards(boards_id, accounts_id, main_category, middle_category, title, content) "
+				+ "values (concat('b', boards_seq.nextval), ?, ?, ?, ?, ?)";
 		
 
-	    String insertMeetingSql = "INSERT INTO meetings (boards_id, person, meeting_date, meeting_time, place, gender, age) VALUES (concat('b', boards_seq.currval), ?, ?, ?, ?, ?, ?)";
+	    String insertMeetingSql = "INSERT INTO meetings (boards_id, person, meeting_date, meeting_time_ampm, meeting_time_hour, meeting_time_minute, place, gender, age) "
+	    		+ "VALUES (concat('b', boards_seq.currval), ?, ?, ?, ?, ?, ?, ?, ?)";
+	    
 
 	    PreparedStatement boardPs = null;
 	    PreparedStatement meetingPs = null;
@@ -50,11 +53,13 @@ public class BoardDao {
 			
 	        meetingPs = con.prepareStatement(insertMeetingSql);
 	        meetingPs.setInt(1, boardDto.getPerson());
-	        meetingPs.setString(2, boardDto.getMeetingDate());
-	        meetingPs.setString(3, boardDto.getMeetingTime());
-	        meetingPs.setString(4, boardDto.getPlace());
-	        meetingPs.setString(5, boardDto.getGender());
-	        meetingPs.setString(6, boardDto.getAge());
+	        meetingPs.setDate(2, boardDto.getMeetingDate());
+	        meetingPs.setString(3, boardDto.getMeetingTimeAmpm());
+	        meetingPs.setInt(4, boardDto.getMeetingTimeHour());
+	        meetingPs.setInt(5, boardDto.getMeetingTimeMinute());
+	        meetingPs.setString(6, boardDto.getPlace());
+	        meetingPs.setString(7, boardDto.getGender());
+	        meetingPs.setString(8, boardDto.getAge());
 	        
 	        meetingPs.executeUpdate();
 
@@ -67,7 +72,8 @@ public class BoardDao {
 	}
 
 	public List<BoardDto> findByMeetingBoardList() {
-		String sql = "SELECT b.boards_id, b.accounts_id, b.main_category, b.middle_category, b.title, b.content, m.meeting_date, m.meeting_time, m.place "
+	
+		String sql = "SELECT b.boards_id, b.accounts_id, b.main_category, b.middle_category, b.title, b.content, m.meeting_date, m.meeting_time_ampm, m.meeting_time_hour, m.meeting_time_minute, m.place, m.gender, m.age "
 				+ "FROM boards b "
 				+ "INNER JOIN meetings m ON b.boards_id = m.boards_id";
 		PreparedStatement ps = null;
@@ -78,17 +84,22 @@ public class BoardDao {
 			
 			rs = ps.executeQuery();
 			
+			System.out.println(rs.getRow());
+			
 			List<BoardDto> boards = new ArrayList<>();
 			while(rs.next()) {
 				BoardDto board = new BoardDto();
+				System.out.println(rs.getString("boards_id"));
 				board.setBoardId(rs.getString("boards_id"));
 				board.setMainCategory(rs.getString("main_category"));
 				board.setTitle(rs.getString("title"));
 				board.setContent(rs.getString("content"));
-//				board.setGender(rs.getString("gender"));
-//				board.setAge(rs.getInt("age"));
-				board.setMeetingDate(rs.getString("meeting_date"));
-				board.setMeetingTime(rs.getString("meeting_time"));
+				board.setGender(rs.getString("gender"));
+				board.setAge(rs.getString("age"));
+				board.setMeetingDate(rs.getDate("meeting_date"));
+				board.setMeetingTimeAmpm(rs.getString("meeting_time_ampm"));
+				board.setMeetingTimeHour(rs.getInt("meeting_time_hour"));
+				board.setMeetingTimeMinute(rs.getInt("meeting_time_minute"));
 				System.out.println(board.getBoardId());
 				boards.add(board);
 			}

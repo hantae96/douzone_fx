@@ -1,10 +1,8 @@
 package com.fx.market.dto;
 
 import java.sql.Date;
-import java.sql.Time;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
+
 
 public class BoardDto {
 	
@@ -21,35 +19,59 @@ public class BoardDto {
 	private int views;				//게시글 조회수
 	private String address;			//게시글 주소
 	private Date createdAt;			//게시글 생성일시
-	
+
 	/* meetings 테이블 */
 	private int person;				//만남 인원수
-	private String meetingDate;		//만남 일자
-	private String meetingTime;		//만남 시간
+	private Date meetingDate;		//만남 일자
+	private String meetingTimeAmpm;		//만남 시간
+	private int meetingTimeHour;		//만남 시간
+	private int meetingTimeMinute;		//만남 시간
 	private String place;			//만남 장소
 	private String gender;			//만남 성별
 	private String age;				//만남 나이연령
 	
 	
+	public void setMeetingTimeHour(int meetingTimeHour) {
+		this.meetingTimeHour = meetingTimeHour;
+	}
+
+	public int getMeetingTimeHour() {
+		return meetingTimeHour;
+	}
+
+	public int getMeetingTimeMinute() {
+		return meetingTimeMinute;
+	}
+
+	public void setMeetingTimeMinute(int meetingTimeMinute) {
+		this.meetingTimeMinute = meetingTimeMinute;
+	}
+
+	public String getMeetingTimeAmpm() {
+		return meetingTimeAmpm;
+	}
+
+	public void setMeetingTimeAmpm(String meetingTimeAmpm) {
+		this.meetingTimeAmpm = meetingTimeAmpm;
+	}
+
 	
-	
-	public BoardDto(String boardId, String accountId, String mainCategory, String middleCategory, String title,
-			String content, String person, String meetingDate, String meetingTime, String place, String gender, String age) {
-		this.boardId = boardId;
+	public BoardDto(String accountId, String mainCategory, String middleCategory, String title,
+			String content, String person, LocalDate meetingDate, String meetingTimeAmpm, Integer meetingTimeHour, Integer meetingTimeMinute, String place, String gender, String age) {
 		this.accountId = accountId;
 		this.mainCategory = mainCategory;
 		this.middleCategory = middleCategory;
 		this.title = title;
 		this.content = content;
 		this.person = Integer.valueOf(person);
-		this.meetingDate = meetingDate;
-		this.meetingTime = meetingTime;
+		this.meetingDate = Date.valueOf(meetingDate);
+		this.meetingTimeAmpm = meetingTimeAmpm;
+		this.meetingTimeHour = Integer.valueOf(meetingTimeHour);
+		this.meetingTimeMinute = Integer.valueOf(meetingTimeMinute);
 		this.place = place;
 		this.gender = gender;
 		this.age = age;
 	}
-
-
 
 	public BoardDto() {
 		// TODO Auto-generated constructor stub
@@ -123,18 +145,15 @@ public class BoardDto {
 	public void setPerson(int person) {
 		this.person = person;
 	}
-	public String getMeetingDate() {
+
+	public Date getMeetingDate() {
 		return meetingDate;
 	}
-	public void setMeetingDate(String meetingDate) {
-		this.meetingDate = meetingDate;
+
+	public void setMeetingDate(Date date) {
+		this.meetingDate = date;
 	}
-	public String getMeetingTime() {
-		return meetingTime;
-	}
-	public void setMeetingTime(String meetingTime) {
-		this.meetingTime = meetingTime;
-	}
+
 	public String getPlace() {
 		return place;
 	}
