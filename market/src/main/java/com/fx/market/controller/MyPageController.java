@@ -37,12 +37,14 @@ public class MyPageController implements Initializable {
 
 		@Override
 		public void initialize(URL location, ResourceBundle resources) {
-			
 //			homeService = new HomeService();
 //			printAllItem();
+			
+			
+			
 		}
 	
-		
+		// 매너온도 설명 출력
 		@FXML
 		private void showAnnotation(Event event) {
 			if(text.isVisible()) {

@@ -1,10 +1,10 @@
 package com.fx.market.dto;
 
 public class SignUpDto {
-
-	private String accounts_id;
-	private String name;
-	private String pw;
+	//accounts 테이블
+	private String accounts_id;	//아이디	
+	private String name;		//이름
+	private String pw;			//
 	private String address;
 	private String email;
 	

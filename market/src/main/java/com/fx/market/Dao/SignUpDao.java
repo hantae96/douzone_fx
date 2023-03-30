@@ -13,6 +13,7 @@ public class SignUpDao {
 	private PreparedStatement ps;
 	private ResultSet rs;
 	
+	//생성자
 	public SignUpDao() {
 		String user = "douzone";
 		String password = "1234";
@@ -24,7 +25,7 @@ public class SignUpDao {
 			e.printStackTrace();
 		}
 	}
-	
+	//아이디 중복확인
 	public String idCheck(String id) {
 		String sql = "select accounts_id from accounts where accounts_id=?";
 		try {
@@ -39,7 +40,7 @@ public class SignUpDao {
 		}
 		return null;
 	}
-	
+	//회원가입 실시
 	public void signInsert(SignUpDto dto) {
 		String sql = "insert into accounts values(?, ?, ?, ?, ?, '36.5', SYSDATE, null)";
 		try {
