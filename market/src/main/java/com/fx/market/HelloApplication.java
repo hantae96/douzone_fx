@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 import com.fx.market.common.Session;
+import com.fx.market.common.Viewer;
 import com.fx.market.controller.HomeController;
 
 
@@ -19,13 +20,12 @@ public class HelloApplication extends Application {
 		FXMLLoader homeFxmlLoader = new FXMLLoader(HelloApplication.class.getResource("views/login.fxml"));
 		Scene home = new Scene(homeFxmlLoader.load(), 380, 750);
 
-
 		stage.setTitle("홈 화면");
 		stage.setScene(home);
 		
 		Session session = Session.getInstance();
 	    session.setStage(stage);
-
+	    stage.setResizable(false);
     	//HomeController homeController = new HomeController();
         stage.show();
     	
