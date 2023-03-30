@@ -95,7 +95,7 @@ public class SignUpController {
     		Viewer viewer = new Viewer();
     		viewer.setPrimaryStage(stage);
     		
-    		viewer.aroundList();
+    		viewer.loginList();
     		
     		
     	}
