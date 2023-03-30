@@ -51,6 +51,11 @@ public class HomeController implements Initializable {
 	private void writeButtonClicked(MouseEvent event) {
 		
 	}
+	
+	@FXML
+	private void onSeachButtonClicked() {
+		// 찾기버튼 기능 구현중
+	}
 
 	
 	@FXML
