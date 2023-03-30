@@ -1,134 +1,84 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="me.mkdomain.deeplearning.D"
-            prefHeight="400.0" prefWidth="600.0">
-<AnchorPane id="AnchorPane">
-    <VBox layoutY="170.0" prefWidth="557.0">
-        // Start Loop
-          <Pane>
-             <children>
-                  <Label text="test" />
-                <Label text="date" />
-                <TextArea text="context"/>
-             </children>
-          </Pane>
-       // End Loop
-    </VBox>
-</AnchorPane><AnchorPane id="AnchorPane">
-    <VBox layoutY="170.0" prefWidth="557.0">
-        // Start Loop
-          <Pane>
-             <children>
-                  <Label text="test" />
-                <Label text="date" />
-                <TextArea text="context"/>
-             </children>
-          </Pane>
-       // End Loop
-    </VBox>
-</AnchorPane><AnchorPane id="AnchorPane">
-    <VBox layoutY="170.0" prefWidth="557.0">
-        // Start Loop
-          <Pane>
-             <children>
-                  <Label text="test" />
-                <Label text="date" />
-                <TextArea text="context"/>
-             </children>
-          </Pane>
-       // End Loop
-    </VBox>
-</AnchorPane><AnchorPane id="AnchorPane">
-    <VBox layoutY="170.0" prefWidth="557.0">
-        // Start Loop
-          <Pane>
-             <children>
-                  <Label text="test" />
-                <Label text="date" />
-                <TextArea text="context"/>
-             </children>
-          </Pane>
-       // End Loop
-    </VBox>
-</AnchorPane><AnchorPane id="AnchorPane">
-    <VBox layoutY="170.0" prefWidth="557.0">
-        // Start Loop
-          <Pane>
-             <children>
-                  <Label text="test" />
-                <Label text="date" />
-                <TextArea text="context"/>
-             </children>
-          </Pane>
-       // End Loop
-    </VBox>
-</AnchorPane><AnchorPane id="AnchorPane">
-    <VBox layoutY="170.0" prefWidth="557.0">
-        // Start Loop
-          <Pane>
-             <children>
-                  <Label text="test" />
-                <Label text="date" />
-                <TextArea text="context"/>
-             </children>
-          </Pane>
-       // End Loop
-    </VBox>
-</AnchorPane><AnchorPane id="AnchorPane">
-    <VBox layoutY="170.0" prefWidth="557.0">
-        // Start Loop
-          <Pane>
-             <children>
-                  <Label text="test" />
-                <Label text="date" />
-                <TextArea text="context"/>
-             </children>
-          </Pane>
-       // End Loop
-    </VBox>
-</AnchorPane><AnchorPane id="AnchorPane">
-    <VBox layoutY="170.0" prefWidth="557.0">
-        // Start Loop
-          <Pane>
-             <children>
-                  <Label text="test" />
-                <Label text="date" />
-                <TextArea text="context"/>
-             </children>
-          </Pane>
-       // End Loop
-    </VBox>
-</AnchorPane><AnchorPane id="AnchorPane">
-    <VBox layoutY="170.0" prefWidth="557.0">
-        // Start Loop
-          <Pane>
-             <children>
-                  <Label text="test" />
-                <Label text="date" />
-                <TextArea text="context"/>
-             </children>
-          </Pane>
-       // End Loop
-    </VBox>
-</AnchorPane><AnchorPane id="AnchorPane">
-    <VBox layoutY="170.0" prefWidth="557.0">
-        // Start Loop
-          <Pane>
-             <children>
-                  <Label text="test" />
-                <Label text="date" />
-                <TextArea text="context"/>
-             </children>
-          </Pane>
-       // End Loop
-    </VBox>
-</AnchorPane>
-</AnchorPane>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="360.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fx.market.controller.HomeController">
+   <top>
+      <HBox prefHeight="60.0" prefWidth="360.0" style="-fx-background-color: yellow;" BorderPane.alignment="CENTER" />
+   </top>
+   <bottom>
+      <HBox prefHeight="60.0" prefWidth="369.0" style="-fx-background-color: skyblue;" BorderPane.alignment="CENTER">
+         <children>
+            <VBox alignment="TOP_CENTER" prefHeight="60.0" prefWidth="72.0">
+               <children>
+                  <ImageView fitHeight="35.0" fitWidth="35.0" onMouseClicked="#purchaseNavClick" pickOnBounds="true" preserveRatio="true">
+                     <VBox.margin>
+                        <Insets bottom="3.0" top="5.0" />
+                     </VBox.margin>
+                  </ImageView>
+                  <Label text="홈" />
+               </children>
+            </VBox>
+            <VBox alignment="TOP_CENTER" onMouseClicked="#boardNavClick" prefHeight="60.0" prefWidth="72.0">
+               <children>
+                  <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <VBox.margin>
+                        <Insets bottom="3.0" top="5.0" />
+                     </VBox.margin>
+                  </ImageView>
+                  <Label text="동네생활" />
+               </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </VBox>
+            <VBox alignment="TOP_CENTER" onMouseClicked="#aroundNavClick" prefHeight="60.0" prefWidth="72.0">
+               <children>
+                  <ImageView fitHeight="35.0" fitWidth="35.0" onMouseClicked="#aroundNavClick" pickOnBounds="true" preserveRatio="true">
+                     <VBox.margin>
+                        <Insets bottom="3.0" top="5.0" />
+                     </VBox.margin>
+                  </ImageView>
+                  <Label text="내 근처" />
+               </children>
+            </VBox>
+            <VBox alignment="TOP_CENTER" prefHeight="60.0" prefWidth="72.0">
+               <children>
+                  <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <VBox.margin>
+                        <Insets bottom="3.0" top="5.0" />
+                     </VBox.margin>
+                  </ImageView>
+                  <Label text="채팅" />
+               </children>
+            </VBox>
+            <VBox alignment="TOP_CENTER" prefHeight="60.0" prefWidth="72.0">
+               <children>
+                  <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <VBox.margin>
+                        <Insets bottom="3.0" top="5.0" />
+                     </VBox.margin>
+                  </ImageView>
+                  <Label text="나의 마켓" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </bottom>
+   <center>
+      <ScrollPane minViewportHeight="580.0" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <content>
+         </content>
+         <content>
+            <VBox fx:id="main" prefHeight="596.0" prefWidth="360.0" />
+         </content>
+                  </ScrollPane>
+   </center>
+</BorderPane>
