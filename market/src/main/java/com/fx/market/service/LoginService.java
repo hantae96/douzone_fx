@@ -1,12 +1,9 @@
 package com.fx.market.service;
 
-import com.fx.market.common.Session;
-import com.fx.market.common.Viewer;
 import com.fx.market.dao.LoginDao;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-import javafx.stage.Stage;
 
 public class LoginService {
 	private LoginDao dao;
