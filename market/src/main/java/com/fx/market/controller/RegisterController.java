@@ -1,17 +1,17 @@
 	package com.fx.market.controller;
 
-import com.fx.market.service.PurchaseService;
+import com.fx.market.service.RegisterService;
 
 import javafx.fxml.FXML;
 
-public class PurchaseController {
+public class RegisterController {
 
-	PurchaseService purchaseService = new PurchaseService();
+	RegisterService registerService = new RegisterService();
 	
 	@FXML
 	//MemoryRepository repository = new MemoryRepository();
 	private void onSubmitButtonClick() {
-		purchaseService.saveItem();
+		registerService.saveItem();
 		
 	}
 }

@@ -1,6 +1,6 @@
 package com.fx.market.service;
 
-import com.fx.market.dao.PurchaseDao;
+import com.fx.market.dao.RegisterDao;
 import com.fx.market.dto.ItemDto;
 
 import javafx.fxml.FXML;
@@ -9,8 +9,8 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-public class PurchaseService {
-	PurchaseDao goodsDao = new PurchaseDao();
+public class RegisterService {
+	RegisterDao goodsDao = new RegisterDao();
 	int seq;
 
 	@FXML private Label testTitle;

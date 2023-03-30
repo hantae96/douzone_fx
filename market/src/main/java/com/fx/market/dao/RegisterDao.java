@@ -7,10 +7,10 @@ import java.sql.ResultSet;
 
 import com.fx.market.dto.ItemDto;
 
-public class PurchaseDao {
+public class RegisterDao {
 	private Connection con;
 	
-	public PurchaseDao() {
+	public RegisterDao(){
 		String url = "jdbc:oracle:thin:@localhost:1521:xe";
 		String user = "douzone";
 		String password = "1234";
