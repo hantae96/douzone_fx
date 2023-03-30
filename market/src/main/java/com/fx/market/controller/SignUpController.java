@@ -1,6 +1,5 @@
 package com.fx.market.controller;
 
-import com.fx.market.common.Session;
 import com.fx.market.common.Viewer;
 import com.fx.market.dto.SignUpDto;
 import com.fx.market.service.SignUpService;
@@ -13,7 +12,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
-import javafx.stage.Stage;
 
 public class SignUpController {
 
@@ -89,22 +87,18 @@ public class SignUpController {
 
     				));
     		
-    		Session session = Session.getInstance();
-    		Stage stage = session.getStage();
     		
     		Viewer viewer = new Viewer();
-    		viewer.setView("signUp");
+    		viewer.setView("login");
+    		
     		
     	}
     }
 
     @FXML
     protected void cancelSignUp() {
-    	Session session = Session.getInstance();
-		Stage stage = session.getStage();
 		
 		Viewer viewer = new Viewer();
-
 		viewer.setView("login");
     }
     
