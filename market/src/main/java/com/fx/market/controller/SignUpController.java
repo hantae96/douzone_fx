@@ -78,18 +78,13 @@ public class SignUpController {
     	}else if(emailInput.getText().isBlank()){
     		emailAlert.setText("*이메일을 입력하세요!");
     	}else{
-    		String accounts_id = idInput.getText();
-    		String name = nameInput.getText();
-    		String pw = pwInput.getText();
-    		String address = addressInput.getText();
-    		String email = emailInput.getText();
-    		SignUpDto dto = new SignUpDto();
-    		dto.setAccounts_id(accounts_id);
-    		dto.setPw(pw);
-    		dto.setName(name);
-    		dto.setAddress(address);
-    		dto.setEmail(email);
-    		service.signInsert(dto);
+    		service.signInsert(new SignUpDto(
+    				idInput.getText(),
+    				nameInput.getText(),
+    				pwInput.getText(),
+    				addressInput.getText(),
+    				emailInput.getText()
+    				));
     		
     		Session session = Session.getInstance();
     		Stage stage = session.getStage();
@@ -105,7 +100,13 @@ public class SignUpController {
 
     @FXML
     protected void cancelSignUp() {
-    	
+    	Session session = Session.getInstance();
+		Stage stage = session.getStage();
+		
+		Viewer viewer = new Viewer();
+		viewer.setPrimaryStage(stage);
+		
+		viewer.loginList();
     }
     
     @FXML
