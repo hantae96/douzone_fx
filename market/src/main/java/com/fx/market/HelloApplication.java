@@ -25,7 +25,7 @@ public class HelloApplication extends Application {
 		
 		Session session = Session.getInstance();
 	    session.setStage(stage);
-
+	    
     	//HomeController homeController = new HomeController();
         stage.show();
     	

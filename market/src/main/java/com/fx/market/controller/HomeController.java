@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import com.fx.market.common.Session;
 import com.fx.market.dto.HomeDto;
 import com.fx.market.service.HomeService;
 
@@ -36,6 +37,11 @@ public class HomeController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		
+		Session session = Session.getInstance();
+		
+		Viewer viwer = 
+		
 		homeService = new HomeService();
 		printAllItem();
 	}
