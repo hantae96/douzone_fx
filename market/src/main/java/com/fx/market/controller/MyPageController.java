@@ -12,8 +12,8 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.stage.Stage;
 
 public class MyPageController implements Initializable {
 
@@ -66,7 +66,14 @@ public class MyPageController implements Initializable {
 			this.id.setText(id);
 			temp.setText(dto.getTemp());
 			created_at.setText(dto.getCreated_at());
-
+			rating_num.setText(Integer.toString(dto.getRating_num()));
+			favor_num.setText(Integer.toString(dto.getFavor_num()));
+			sell_num.setText(Integer.toString(dto.getSell_num()));
+			buy_num.setText(Integer.toString(dto.getBuy_num()));
+			document_num.setText(Integer.toString(dto.getDocument_num()));
+			String imagePath = "file:" + System.getProperty("user.dir") + "/src/main/java/com/fx/market/controller/logo.jpg";
+	        Image image = new Image(imagePath);
+	    	photo.setImage(image);
 		}
 		
 		
