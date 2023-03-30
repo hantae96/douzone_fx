@@ -1,15 +1,13 @@
 package com.fx.market;
 
+import java.io.IOException;
+
+import com.fx.market.common.Session;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
-import java.io.IOException;
-
-import com.fx.market.common.Session;
-import com.fx.market.common.Viewer;
-import com.fx.market.controller.HomeController;
 
 
 public class HelloApplication extends Application {

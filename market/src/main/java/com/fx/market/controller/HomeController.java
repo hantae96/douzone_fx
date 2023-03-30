@@ -17,17 +17,14 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.BorderStroke;
 import javafx.scene.layout.BorderStrokeStyle;
 import javafx.scene.layout.BorderWidths;
 import javafx.scene.layout.CornerRadii;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
@@ -64,13 +61,13 @@ public class HomeController implements Initializable {
 	@FXML
 	private void boardNavClick(Event event) {
 		viewer = new Viewer();
-		viewer.boardList();
+		viewer.setViewCenter("meetingBoardListForm");
 	}
 	
 	@FXML
 	private void myPageNavClick(Event event) {
 		viewer = new Viewer();
-		viewer.myPageList();
+		viewer.setViewCenter("myDouzone");
 	}
 
 	@FXML
@@ -135,11 +132,9 @@ public class HomeController implements Initializable {
 	    
 	    wrtieButton.setOnAction(event -> {
 	        // 버튼을 클릭했을 때 실행될 코드를 여기에 작성합니다.	        
-	    	Session session = Session.getInstance();
-			Stage stage = session.getStage();
 			
 			Viewer viewer = new Viewer();
-			viewer.registerList();			
+			viewer.setView("register");
 			
 	    });
 	    
