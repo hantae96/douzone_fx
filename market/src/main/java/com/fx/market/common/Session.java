@@ -1,5 +1,7 @@
 package com.fx.market.common;
 
+import javafx.stage.Stage;
+
 //Session의 인스턴스를 가져온 후 계정 ID과 이름을 Set한다
 //Session session = Session.getInstance();
 //session.setAccountId("ragoha");
@@ -16,7 +18,9 @@ public class Session {
     private static Session instance;
     private String accountId;
     private String name;
-    private int loginChk;
+    private int loginChk;     
+    
+	private Stage stage;
 
     public String getAccountId() {
         return accountId;
@@ -37,10 +41,28 @@ public class Session {
     private Session() {
     }
 
-    public static Session getInstance() {
+	public static Session getInstance() {
         if (instance == null) {
             instance = new Session();
         }
         return instance;
     }
+	
+	public int getLoginChk() {
+		return loginChk;
+	}
+
+	public void setLoginChk(int loginChk) {
+		this.loginChk = loginChk;
+	}
+
+	public Stage getStage() {
+		return stage;
+	}
+
+	public void setStage(Stage stage) {
+		this.stage = stage;
+	}
+    
+    
 }

@@ -8,6 +8,14 @@ public class SignUpDto {
 	private String address;
 	private String email;
 	
+
+	public SignUpDto(String accounts_id, String name, String pw, String address, String email) {
+		this.accounts_id = accounts_id;
+		this.name = name;
+		this.pw = pw;
+		this.address = address;
+		this.email = email;
+	}
 	public String getAccounts_id() {
 		return accounts_id;
 	}
