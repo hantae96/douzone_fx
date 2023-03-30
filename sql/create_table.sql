@@ -1,7 +1,7 @@
 CREATE TABLE accounts (
   accounts_id VARCHAR2(25),
   pw VARCHAR2(50),
-  name VARCHAR2(25),
+  name VARCHAR2(100),
   address VARCHAR2(200),
   email VARCHAR2(50),
   temperature NUMBER(5),
@@ -64,11 +64,11 @@ CREATE TABLE favorites (
 
 CREATE TABLE Goods (
   goods_id VARCHAR2(25),
-  accounts_id VARCHAR2(25),
-  title VARCHAR2(50),
+  accounts_id VARCHAR2(50),
+  title VARCHAR2(100),
   content VARCHAR2(200),
   address VARCHAR2(100),
-  price NUMBER(5),
+  price NUMBER(25),
   saled_id VARCHAR2(25),
   sale VARCHAR2(5),
   grade NUMBER(2),

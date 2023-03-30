@@ -1,4 +1,5 @@
 package com.fx.market.controller;
+
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -23,73 +24,26 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
-
 // initalize 는 fxml 로더가 fx 변수를 모두 파싱한다음에 호출됨
 // 컨트롤러 단에 놓지 않으면 ex) 컨트롤러로 선언되지 않은 다른 클래스에 놓으면 실행순서가 보장되지 않기때문에
 // fx : id 로 지정된 변수들이 메모리에 로드 되지 않아서 npe 가 발생한다.
 
-public class HomeController implements Initializable{
-	
-	@FXML VBox main;
+public class HomeController implements Initializable {
+
+	@FXML
+	VBox main;
 	HomeService homeService;
-	
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		homeService = new HomeService();
 		printAllItem();
 	}
 
-	public void printAllItem() {
-		List<HomeDto> items =homeService.makeViewItem();
-		
-		for (HomeDto item : items) {
-			
-			Label name = new Label(item.getItemName());
-			name.setPadding(new Insets(10));
-			// 폰트 크기 변경
-			name.setFont(new Font(16));
-			// 굵기 변경
-			name.setFont(Font.font("System", FontWeight.BOLD, 16));
-			Label address = new Label(item.getAddress());
-//			address.setPadding(new Insets(10));
-			Label price = new Label(item.getPrice());
-			price.setPadding(new Insets(0,0,5,20));
-
-			Label recommand;
-			
-			if (item.getRecommend() != 0) {
-				recommand = new Label("♡".concat(String.valueOf(item.getRecommend())));
-			}else{
-				recommand = new Label("");
-			}
-		
-			BorderPane section = new BorderPane();
-			section.setBorder(new Border(new BorderStroke(Color.BLACK, 
-					BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(1))));
-			
-			section.setTop(name);
-			section.setLeft(new Label("photo"));
-			section.getLeft().setStyle("-fx-border-color: black;");
-
-			section.setCenter(price);
-			BorderPane.setAlignment(price, Pos.CENTER_LEFT);
-
-			section.setBottom(address);
-			section.setRight(recommand);
-
-			section.setPadding(new Insets(10)); // 모든 방향에 대해 10px의 패딩 적용
-
-
-			main.getChildren().add(section);
 	
-
-	}
-
-	}
-
 	@FXML
 	private void purchaseNavClick(Event event) {
-
+		// 홈화면
 	}
 
 	@FXML
@@ -106,7 +60,49 @@ public class HomeController implements Initializable{
 	private void accountNavClick(Event event) {
 
 	}
+	public void printAllItem() {
+		List<HomeDto> items = homeService.makeViewItem();
 
-	
+		for (HomeDto item : items) {
+			Label name = new Label(item.getItemName());
+			name.setPadding(new Insets(10));
+			// 폰트 크기 변경
+			name.setFont(new Font(16));
+			// 굵기 변경
+			name.setFont(Font.font("System", FontWeight.BOLD, 16));
+			Label address = new Label(item.getAddress());
+//			address.setPadding(new Insets(10));
+			Label price = new Label(item.getPrice());
+			price.setPadding(new Insets(0, 0, 5, 20));
+
+			Label recommand;
+
+			if (item.getRecommend() != 0) {
+				recommand = new Label("♡".concat(String.valueOf(item.getRecommend())));
+			} else {
+				recommand = new Label("");
+			}
+
+			BorderPane section = new BorderPane();
+			section.setBorder(new Border(
+					new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(1))));
+
+			section.setTop(name);
+			section.setLeft(new Label("photo"));
+			section.getLeft().setStyle("-fx-border-color: black;");
+
+			section.setCenter(price);
+			BorderPane.setAlignment(price, Pos.CENTER_LEFT);
+
+			section.setBottom(address);
+			section.setRight(recommand);
+
+			section.setPadding(new Insets(10)); // 모든 방향에 대해 10px의 패딩 적용
+
+			main.getChildren().add(section);
+
+		}
+	}
+
 
 }
