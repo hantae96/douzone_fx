@@ -37,9 +37,7 @@ public class LoginController implements Initializable{
 		session.setAccountId(id.getText());
 		
 		Viewer viewer = new Viewer();
-		viewer.setPrimaryStage(stage);
-		
-		viewer.homeList();
+		viewer.setView("home");
 		}
 	}
 
@@ -51,7 +49,6 @@ public class LoginController implements Initializable{
 		
 		Viewer viewer = new Viewer();
 		viewer.setPrimaryStage(stage);
-		
-		viewer.accountList();
+		viewer.setView("signUp");
 	}
 }

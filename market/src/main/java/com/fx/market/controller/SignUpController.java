@@ -93,10 +93,7 @@ public class SignUpController {
     		Stage stage = session.getStage();
     		
     		Viewer viewer = new Viewer();
-    		viewer.setPrimaryStage(stage);
-    		
-    		viewer.loginList();
-    		
+    		viewer.setView("signUp");
     		
     	}
     }
@@ -107,9 +104,8 @@ public class SignUpController {
 		Stage stage = session.getStage();
 		
 		Viewer viewer = new Viewer();
-		viewer.setPrimaryStage(stage);
-		
-		viewer.loginList();
+
+		viewer.setView("login");
     }
     
     @FXML

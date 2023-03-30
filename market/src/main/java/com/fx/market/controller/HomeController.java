@@ -64,13 +64,13 @@ public class HomeController implements Initializable {
 	@FXML
 	private void boardNavClick(Event event) {
 		viewer = new Viewer();
-		viewer.boardList();
+		viewer.setViewCenter("meetingBoardListForm");
 	}
 	
 	@FXML
 	private void myPageNavClick(Event event) {
 		viewer = new Viewer();
-		viewer.myPageList();
+		viewer.setViewCenter("myDouzone");
 	}
 
 	@FXML
@@ -139,7 +139,7 @@ public class HomeController implements Initializable {
 			Stage stage = session.getStage();
 			
 			Viewer viewer = new Viewer();
-			viewer.registerList();			
+			viewer.setView("register");
 			
 	    });
 	    
