@@ -40,7 +40,15 @@ public class Session {
     private Session() {
     }
 
-    public static Session getInstance() {
+    public Stage getStage() {
+		return stage;
+	}
+
+	public void setStage(Stage stage) {
+		this.stage = stage;
+	}
+
+	public static Session getInstance() {
         if (instance == null) {
             instance = new Session();
         }

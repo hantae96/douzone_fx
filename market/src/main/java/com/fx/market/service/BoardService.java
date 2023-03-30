@@ -1,3 +1,4 @@
+@@ -0,0 +1,23 @@
 package com.fx.market.service;
 
 import com.fx.market.dao.BoardDao;
