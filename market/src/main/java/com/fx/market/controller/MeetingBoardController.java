@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import com.fx.market.common.Session;
 import com.fx.market.common.Viewer;
 import com.fx.market.dto.BoardDto;
 import com.fx.market.service.BoardService;
@@ -13,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Border;
@@ -25,6 +27,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import javafx.stage.Stage;
 
 public class MeetingBoardController implements Initializable{
 
@@ -84,6 +87,25 @@ public class MeetingBoardController implements Initializable{
 			main.getChildren().add(section);
 
 		}
+
+	    Button wrtieButton = new Button("글쓰기");
+	    wrtieButton.setPrefSize(370, 100);
+	    wrtieButton.setStyle("-fx-background-color: orange; -fx-text-fill: white; -fx-font-weight: bold;");
+	    wrtieButton.setAlignment(Pos.CENTER);
+	    
+	    
+	    wrtieButton.setOnAction(event -> {
+	    	System.out.print("aa");
+//	        // 버튼을 클릭했을 때 실행될 코드를 여기에 작성합니다.	        
+//	    	Session session = Session.getInstance();
+//			Stage stage = session.getStage();
+//			
+//			Viewer viewer = new Viewer();
+//			viewer.List();			
+//			
+	    });
+	    
+	    main.getChildren().add(wrtieButton);
 	}
 
 }
