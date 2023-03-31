@@ -46,6 +46,7 @@ import javafx.scene.text.FontWeight;
 public class HomeController implements Initializable {
 
 	@FXML VBox main;
+	@FXML Label userAddress;
 	HomeService homeService;
 	ItemService itemService;
 	Viewer viewer;
@@ -55,6 +56,8 @@ public class HomeController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		homeService = new HomeService();
 		itemService = new ItemService();
+		Session session = Session.getInstance();
+		userAddress.setText(session.getaddress());
 		printAllItem();
 	}
 	
@@ -188,9 +191,7 @@ public class HomeController implements Initializable {
 	    wrtieButton.setAlignment(Pos.CENTER);
 	    
 	    
-	    wrtieButton.setOnAction(event -> {
-	        // 버튼을 클릭했을 때 실행될 코드를 여기에 작성합니다.	        
-			
+	    wrtieButton.setOnAction(event -> {			
 			Viewer viewer = new Viewer();
 			viewer.setView("register");
 			
