@@ -53,7 +53,7 @@ public class SignUpController implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
     	// 회원가입 버튼 활성화 트리거 0:아이디, 1:이름, 2:PW, 3:주소, 4:이메일
-    	signCheck = new boolean[6];
+    	signCheck = new boolean[5];
     	// 영문과 숫자를 제외한 입력은 받지않도록 해주는 TextFormatter 생성
     	TextFormatter<String> textFormatter = new TextFormatter<String>((UnaryOperator<TextFormatter.Change>) change -> {
     	    String newText = change.getControlNewText();
@@ -65,6 +65,12 @@ public class SignUpController implements Initializable{
     	});
     	// TextFormatter 적용
     	idInput.setTextFormatter(textFormatter);
+    	// Photos default
+    	filePathSession = System.getProperty("user.dir") + "/src/main/java/com/fx/market/source/image/default.jpg";
+    	fileNameSession = "default.jpg";
+    	String imagePath = "file:" + System.getProperty("user.dir") + "/src/main/java/com/fx/market/source/image/default.jpg";
+      	Image image = new Image(imagePath);
+    	photo.setImage(image);
     }
     
     //아이디 중복확인 버튼
@@ -94,7 +100,7 @@ public class SignUpController implements Initializable{
     	String imagePath = "file:"+selectedFilePath;						//image객체를 위한 경로 편집
     	Image image = new Image(imagePath);									//이미지 객체 생성
     	photo.setImage(image);												//이미지 출력
-    	signCheck[5]=true;signUpButton.setDisable(decisionDisable());
+    	
     }
     
     //회원가입 버튼
