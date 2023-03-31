@@ -57,6 +57,18 @@ public class MyPageController implements Initializable {
 			
 		}
 		
+		//정보 수정 버튼 클릭
+		@FXML
+		private void updateAccount(Event event) {
+			
+		}
+		
+		//회원 탈퇴
+		@FXML
+		private void deleteAccount(Event event) {
+			
+		}
+		
 		//마이 페이지 도달시 출력
 		public void showMyPage() {
 			String id = Session.getInstance().getAccountId();
