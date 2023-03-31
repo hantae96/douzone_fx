@@ -16,9 +16,9 @@ CREATE TABLE accounts (
 CREATE TABLE boards (
   boards_id VARCHAR2(25),
   accounts_id VARCHAR2(20),
-  main_category VARCHAR2(20),
-  middle_category VARCHAR2(20),
-  title VARCHAR2(50),
+  main_category VARCHAR2(100),
+  middle_category VARCHAR2(100),
+  title VARCHAR2(100),
   content VARCHAR2(200),
   recommends NUMBER(5),
   views NUMBER(5),
