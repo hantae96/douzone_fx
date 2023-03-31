@@ -24,9 +24,9 @@ public class LoginService {
 			return 0;
 			}
 		
-		LoginDto dbUser = dao.idCheck(id, pw);
+		LoginDto dbUser = dao.idCheck(id, pw);  
 		
-		if(dbUser == null || dbUser.equals("")) {
+		if(dbUser == null ) {
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.setHeaderText("알림");
 			alert.setContentText("로그인 실패");
