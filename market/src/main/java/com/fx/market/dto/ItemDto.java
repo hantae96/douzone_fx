@@ -6,14 +6,39 @@ public class ItemDto {
 	private Long itemPrice;
 	private String itemContext;
 	private String itemLocal;
+	private int view;
+	private int recommend;
 	
 	
-	
+	// home 화면에서 사용하는 ItemDto
 	public ItemDto(String itemName, Long itemPrice, String itemContext, String itemLocal) {
 		this.itemName = itemName;
 		this.itemPrice = itemPrice;
 		this.itemContext = itemContext;
 		this.itemLocal = itemLocal;
+	}
+	// 세부 화면에서 사용하는 ItemDto
+	public ItemDto(String itemName, Long itemPrice, String itemContext, String itemLocal,int view,int recommend) {
+		this.itemName = itemName;
+		this.itemPrice = itemPrice;
+		this.itemContext = itemContext;
+		this.itemLocal = itemLocal;
+		this.view = view;
+		this.recommend = recommend;
+	}
+	
+	
+	public int getView() {
+		return view;
+	}
+	public void setView(int view) {
+		this.view = view;
+	}
+	public int getRecommend() {
+		return recommend;
+	}
+	public void setRecommend(int recommend) {
+		this.recommend = recommend;
 	}
 	public String getItemId() {
 		return itemId;
