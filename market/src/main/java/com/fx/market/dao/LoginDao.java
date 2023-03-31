@@ -34,8 +34,8 @@ public class LoginDao {
 				rs = ps.executeQuery();
 				if(rs.next()) {
 					logindto = new LoginDto();
-					logindto.setAccounts_id(rs.getString(accounts_id));
-					logindto.setAddress(rs.getString(address));
+					logindto.setAccounts_id(rs.getString("accounts_id"));
+					logindto.setAddress(rs.getString("address"));
 					return logindto;
 				}
 			} catch (Exception e) {
