@@ -7,7 +7,7 @@ CREATE TABLE accounts (
   name VARCHAR2(100),
   address VARCHAR2(200),
   email VARCHAR2(50),
-  temperature NUMBER(5),
+  temperature NUMBER(4,1) default 36.5,
   created_at DATE,
   deleted_at DATE,
     PRIMARY KEY (accounts_id)
