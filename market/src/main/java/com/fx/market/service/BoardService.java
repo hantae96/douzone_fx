@@ -29,4 +29,11 @@ public class BoardService {
 		return boardDao.findByMeetingBoardList();
 	}
 
+
+
+	public BoardDto boardDetail(String boardId) {
+		
+		return boardDao.findByMeetingBoardDetail(boardId);
+	}
+
 }

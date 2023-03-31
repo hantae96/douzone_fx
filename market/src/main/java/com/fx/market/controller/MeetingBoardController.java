@@ -1,5 +1,6 @@
 package com.fx.market.controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -11,18 +12,25 @@ import com.fx.market.service.BoardService;
 
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.BorderStroke;
 import javafx.scene.layout.BorderStrokeStyle;
 import javafx.scene.layout.BorderWidths;
 import javafx.scene.layout.CornerRadii;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -43,6 +51,36 @@ public class MeetingBoardController implements Initializable{
 		boardService = new BoardService();
 		printAllItem();
 	}
+	
+//	public void printAllItem() {
+//	    Stage stage = Session.getInstance().getStage();
+//	    BorderPane root = (BorderPane) stage.getScene().getRoot();
+//	    ScrollPane sroot = (ScrollPane) root.getCenter();
+//	    
+//
+//	    VBox vbox = new VBox();
+//	    FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/fx/market/views/meetingBoardWriteForm.fxml"));
+//	    System.out.println(getClass().getResource("/com/fx/market/views/meetingBoardWriteForm.fxml"));
+//	    Pane pane = null;
+//		try {
+//			pane = loader.load();
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//        vbox.getChildren().add(pane);
+////	    for (int i = 0; i < 5; i++) {
+////	    	
+////	        try {
+////	            
+////	        } catch (IOException e) {
+////	            e.printStackTrace();
+////	        }
+////	    }
+//
+//	    sroot.setContent(vbox);
+//	}
+
 	
 	public void printAllItem() {
 		List<BoardDto> boards = boardService.selectMeetingBoardList();
@@ -88,6 +126,7 @@ public class MeetingBoardController implements Initializable{
 			
 			section.setOnMouseClicked(event->{
 				System.out.println(board.getBoardId());
+				Session.getInstance().setTempId(board.getBoardId());
 				Viewer viewer = new Viewer();
 				viewer.setViewCenter("meetingBoardDetailForm");	
 			});
