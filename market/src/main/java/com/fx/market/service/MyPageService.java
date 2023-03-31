@@ -2,7 +2,7 @@ package com.fx.market.service;
 
 import com.fx.market.dao.MyPageDao;
 import com.fx.market.dto.MyPageDto;
-import com.fx.market.dto.SignUpDto;
+
 
 public class MyPageService {
 
@@ -13,4 +13,5 @@ public class MyPageService {
 		return dao.getMyInfo(id);
 	}
 	
+
 }

@@ -6,12 +6,16 @@ import java.util.ResourceBundle;
 import com.fx.market.common.Session;
 import com.fx.market.common.Viewer;
 import com.fx.market.dto.MyPageDto;
+import com.fx.market.service.LoginService;
 import com.fx.market.service.MyPageService;
 
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -34,14 +38,18 @@ public class MyPageController implements Initializable {
 		@FXML private Label buy_num;
 		@FXML private Label document_num;
 		@FXML private Label text;
+		@FXML private PasswordField pw;
 		
 		private MyPageService service;
+		
 
 		//마이페이지 이동시 내 정보 불러오기
 		@Override
 		public void initialize(URL location, ResourceBundle resources) {
 			service = new MyPageService();
 			showMyPage();
+			
+			
 		}
 	
 		// 매너온도 설명 출력
@@ -57,17 +65,25 @@ public class MyPageController implements Initializable {
 			
 		}
 		
-		//정보 수정 버튼 클릭
 		@FXML
-		private void updateAccount(Event event) {
+		private void confirmAccount(Event event) {//수정버튼 누르면 확인창으로 이동!
+			Viewer viewer = new Viewer();
+			viewer.setViewCenter("confirm");//수정 버튼 누르면 -> 확인창 그리고 다시 이동해서 -> 계정변경창으로
 			
 		}
 		
+				
 		//회원 탈퇴
 		@FXML
 		private void deleteAccount(Event event) {
-			
-		}
+			Alert alert = new Alert(AlertType.CONFIRMATION);
+			alert.setHeaderText("알림");
+			alert.setContentText("정말로 탈퇴하시겠습니까?");
+			alert.show();
+		
+			}
+		
+		
 		
 		//마이 페이지 도달시 출력
 		public void showMyPage() {
