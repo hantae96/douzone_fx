@@ -10,7 +10,10 @@ import java.util.ResourceBundle;
 import java.util.concurrent.TimeUnit;
 
 import com.fx.market.common.Viewer;
+import com.fx.market.dao.HomeDao;
+import com.fx.market.dao.ItemDao;
 import com.fx.market.dto.HomeDto;
+import com.fx.market.dto.ItemDto;
 import com.fx.market.service.HomeService;
 
 import javafx.event.Event;
@@ -20,6 +23,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.SplitMenuButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
@@ -41,12 +45,14 @@ public class HomeController implements Initializable {
 
 	@FXML VBox main;
 	HomeService homeService;
+	ItemDao itemDao;
 	Viewer viewer;
 	
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		homeService = new HomeService();
+		itemDao = new ItemDao();
 		printAllItem();
 	}
 	
@@ -93,9 +99,11 @@ public class HomeController implements Initializable {
 	private void openItemDetails(HomeDto item) {
 		// 상세 페이지 구현중
 		// item 정보를 받아서 뷰에서 뿌리면 됨.
-		// viewr 에서 상세 페이지를 작성하자
+		// viewer 에서 상세 페이지를 작성하자
+		String clickItemId = item.getItemId();
+		ItemDto clickedItem =itemDao.getItemById(clickItemId);
+		System.out.println(clickedItem.getItemName());
 		
-		System.out.println("상세 페이지 클릭");
 	}
 	
 	public void printAllItem() {

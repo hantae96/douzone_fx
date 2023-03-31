@@ -37,7 +37,7 @@ public class RegisterController implements Initializable {
 	@FXML
 	private void onRegsistButtonClick() {
 		registerService.saveItemData(
-				new ItemDto(name.getText(), Long.valueOf(price.getText()), context.getText(), address.getText()));
+				new ItemDto(name.getText(), price.getText(), context.getText(), address.getText()));
 		Viewer viewer = new Viewer();
 		viewer.setView("home");
 	}

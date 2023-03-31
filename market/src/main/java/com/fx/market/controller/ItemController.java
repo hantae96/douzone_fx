@@ -2,63 +2,37 @@ package com.fx.market.controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import com.fx.market.common.Viewer;
-import com.fx.market.dao.RegisterDao;
-import com.fx.market.dto.ItemDto;
-import com.fx.market.service.RegisterService;
+
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
+import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
+import javafx.scene.shape.Circle;
 
 public class ItemController implements Initializable {
-	RegisterService registerService;
 
-	@FXML
-	private TextField name;
-
-	@FXML
-	private TextField price;
-
-	@FXML
-	private TextField context;
-
-	@FXML
-	private TextField address;
-	@FXML
-	Button close;
-
+	@FXML ImageView photo;
+	@FXML Circle profilePhoto;
+	@FXML Label username;
+	@FXML Label address;
+	@FXML Label temperature;
+	@FXML Label itemName;
+	@FXML Label date;
+	@FXML Label context;
+	@FXML Label viewAndLike;
+	@FXML Label close;
+	@FXML Label title;
+	@FXML Label recommandButton;
+	@FXML Label price;
+	@FXML Button submitButton;
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		this.registerService = new RegisterService(new RegisterDao());
-		checkPrice(price);
+		// TODO Auto-generated method stub
+		
 	}
-
-	@FXML
-	private void onRegsistButtonClick() {
-		registerService.saveItemData(
-				new ItemDto(name.getText(), Long.valueOf(price.getText()), context.getText(), address.getText()));
-		Viewer viewer = new Viewer();
-		viewer.setView("home");
-	}
-
-	@FXML
-	private void onCancelButtonClick() {
-		Viewer viewer = new Viewer();
-		viewer.setView("home");
-	}
-
-	private void checkPrice(TextField price) {
-		// 가격 입력값 유효성검사
-		price.textProperty().addListener((observable, oldValue, newValue) -> {
-			if (!newValue.matches("\\d*")) {
-				price.setText(oldValue);
-				price.setStyle("-fx-text-fill: red;");
-				price.setPromptText("가격");
-			} else {
-				price.setStyle("-fx-text-fill: black;");
-				price.setPromptText("");
-			}
-		});
-	}
+	
+	
+	
 }
