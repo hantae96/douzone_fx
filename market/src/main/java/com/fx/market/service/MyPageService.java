@@ -13,5 +13,15 @@ public class MyPageService {
 		return dao.getMyInfo(id);
 	}
 	
+	//탈퇴할 계정의 사진 파일 경로 불러오기
+	public String getMyPhoto(String id) {
+		return dao.getMyPhoto(id);
+	}
+	
+	//회원 탈퇴
+	public void deleteAccount(String id) {
+		dao.deleteAccount(id);
+	}
+	
 
 }
