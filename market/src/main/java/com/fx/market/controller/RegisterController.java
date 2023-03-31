@@ -38,6 +38,8 @@ public class RegisterController implements Initializable {
 	private void onRegsistButtonClick() {
 		registerService.saveItemData(
 				new ItemDto(name.getText(), Long.valueOf(price.getText()), context.getText(), address.getText()));
+		Viewer viewer = new Viewer();
+		viewer.setView("home");
 	}
 
 	@FXML
