@@ -15,7 +15,7 @@ public class BoardDto {
 	private String subCategory;		//게시글 카테고리 중분류
 	private String title;			//게시글 제목
 	private String content;			//게시글 내용
-	private int recomends;			//게시글 추천수
+	private int recommends;			//게시글 추천수
 	private int views;				//게시글 조회수
 	private String address;			//게시글 주소
 	private Date createdAt;			//게시글 생성일시
@@ -98,12 +98,12 @@ public class BoardDto {
 		this.content = content;
 	}
 
-	public int getRecomends() {
-		return recomends;
+	public int getRecommends() {
+		return recommends;
 	}
 
-	public void setRecomends(int recomends) {
-		this.recomends = recomends;
+	public void setRecommends(int recommends) {
+		this.recommends = recommends;
 	}
 
 	public int getViews() {
@@ -199,30 +199,71 @@ public class BoardDto {
 
 
 
-
+///* boards 시퀀시 */
+//CREATE SEQUENCE boards_seq START WITH 8;
 //
+///* boards 테이블 */
 //CREATE TABLE boards (
-//		  boards_id VARCHAR2(25),
-//		  accounts_id VARCHAR2(20),
-//		  main_category VARCHAR2(20),
-//		  middle_category VARCHAR2(20),
-//		  title VARCHAR2(50),
-//		  content VARCHAR2(200),
-//		  recommends NUMBER(5),
-//		  views NUMBER(5),
-//		  address VARCHAR2(200),
-//		  created_at DATE,
-//		  PRIMARY KEY (boards_id)
-//		);
+//  boards_id VARCHAR2(25),
+//  accounts_id VARCHAR2(20),
+//  main_category VARCHAR2(20),
+//  sub_category VARCHAR2(20),
+//  title VARCHAR2(50),
+//  content VARCHAR2(200),
+//  address VARCHAR2(50),
+//  recommends NUMBER(5) default 0,
+//  views NUMBER(5) default 0,
+//  created_at DATE default sysdate,
+//  PRIMARY KEY (boards_id)
+//);
 //
 //
-//		CREATE TABLE meetings (
-//		  boards_id VARCHAR2(25),
-//		  person NUMBER(2),
-//		  meeting_date VARCHAR2(50),
-//		  meeting_time VARCHAR2(50),
-//		  place VARCHAR2(50),
-//		  gender VARCHAR2(10),
-//		  age NUMBER(2),
-//		  PRIMARY KEY (boards_id)
-//		);
+//
+//
+//
+//insert into boards (boards_id, accounts_id, main_category, sub_category, title, content, address)
+//values('b1', 'test', '함께해요', '산책', '산책 같이해요', '한강 산책하실분?', '서울시 종로구');
+//insert into boards (boards_id, accounts_id, main_category, sub_category, title, content, address)
+//values('b2', 'test', '함께해요', '산책', '산책 같이해요', '한강 산책하실분?', '서울시 종로구');
+//insert into boards (boards_id, accounts_id, main_category, sub_category, title, content, address)
+//values('b3', 'test', '함께해요', '산책', '산책 같이해요', '한강 산책하실분?', '서울시 종로구');
+//insert into boards (boards_id, accounts_id, main_category, sub_category, title, content, address)
+//values('b4', 'test', '함께해요', '산책', '산책 같이해요', '한강 산책하실분?', '서울시 종로구');
+//insert into boards (boards_id, accounts_id, main_category, sub_category, title, content, address)
+//values('b5', 'test', '함께해요', '산책', '산책 같이해요', '한강 산책하실분?', '서울시 종로구');
+//insert into boards (boards_id, accounts_id, main_category, sub_category, title, content, address)
+//values('b6', 'test', '함께해요', '산책', '산책 같이해요', '한강 산책하실분?', '서울시 종로구');
+//insert into boards (boards_id, accounts_id, main_category, sub_category, title, content, address)
+//values('b7', 'test', '함께해요', '산책', '산책 같이해요', '한강 산책하실분?', '서울시 종로구');
+//
+//
+///*  테이블 */
+//CREATE TABLE meetings (
+//  boards_id VARCHAR2(25),
+//  person VARCHAR2(10),
+//  meeting_date Date,
+//  meeting_time_ampm VARCHAR2(6),
+//  meeting_time_hour VARCHAR2(6),
+//  meeting_time_minute VARCHAR2(6),
+//  place VARCHAR2(50),
+//  gender VARCHAR2(10),
+//  age VARCHAR2(10),
+//  PRIMARY KEY (boards_id)
+//);
+//
+//insert into meetings (boards_id, person, meeting_date, meeting_time_ampm, meeting_time_hour, meeting_time_minute, place, gender, age)
+//values('b1', 4, '2021-11-12','오전', '11시', '30분', '한강', '여자만', '20대');
+//insert into meetings (boards_id, person, meeting_date, meeting_time_ampm, meeting_time_hour, meeting_time_minute, place, gender, age)
+//values('b2', 4, '2021-11-12','오전', '11시', '30분', '한강', '여자만', '20대');
+//insert into meetings (boards_id, person, meeting_date, meeting_time_ampm, meeting_time_hour, meeting_time_minute, place, gender, age)
+//values('b3', 4, '2021-11-12','오전', '11시', '30분', '한강', '여자만', '20대');
+//insert into meetings (boards_id, person, meeting_date, meeting_time_ampm, meeting_time_hour, meeting_time_minute, place, gender, age)
+//values('b4', 4, '2021-11-12','오전', '11시', '30분', '한강', '여자만', '20대');
+//insert into meetings (boards_id, person, meeting_date, meeting_time_ampm, meeting_time_hour, meeting_time_minute, place, gender, age)
+//values('b5', 4, '2021-11-12','오전', '11시', '30분', '한강', '여자만', '20대');
+//
+//
+//ALTER TABLE meetings ADD CONSTRAINT fk_meetings_boards_id
+//FOREIGN KEY (boards_id) REFERENCES boards(boards_id);
+//
+//ALTER TABLE meetings DROP CONSTRAINT fk_meetings_boards_id;

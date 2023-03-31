@@ -25,8 +25,8 @@ public class MeetingBoardDetailController implements Initializable{
 		
 		BoardDto board = boardService.boardDetail(Session.getInstance().getTempId());
 		
-		ageLabel.setText(board.getAge());
-		titleLabel.setText(board.getTitle());
+//		ageLabel.setText(board.getAge());
+//		titleLabel.setText(board.getTitle());
 		System.out.println(board.getAge());
 		
 	}

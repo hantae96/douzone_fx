@@ -13,19 +13,21 @@ CREATE TABLE accounts (
     PRIMARY KEY (accounts_id)
 );
 
+/* 2023-03-31 변경 */
 CREATE TABLE boards (
   boards_id VARCHAR2(25),
   accounts_id VARCHAR2(20),
-  main_category VARCHAR2(100),
-  middle_category VARCHAR2(100),
-  title VARCHAR2(100),
+  main_category VARCHAR2(20),
+  sub_category VARCHAR2(20),
+  title VARCHAR2(50),
   content VARCHAR2(200),
-  recommends NUMBER(5),
-  views NUMBER(5),
-  address VARCHAR2(200),
-  created_at DATE,
+  address VARCHAR2(50),
+  recommends NUMBER(5) default 0,
+  views NUMBER(5) default 0,
+  created_at DATE default sysdate,
   PRIMARY KEY (boards_id)
 );
+
 CREATE TABLE photos (
   photos_id VARCHAR2(25),
   name VARCHAR2(50),
@@ -34,14 +36,17 @@ CREATE TABLE photos (
   PRIMARY KEY (photos_id)
 );
 
+/* 2023-03-31 변경 */
 CREATE TABLE meetings (
   boards_id VARCHAR2(25),
-  person NUMBER(2),
-  meeting_date DATE,
-  meeting_time DATE,
+  person VARCHAR2(10),
+  meeting_date Date,
+  meeting_time_ampm VARCHAR2(6),
+  meeting_time_hour VARCHAR2(6),
+  meeting_time_minute VARCHAR2(6),
   place VARCHAR2(50),
   gender VARCHAR2(10),
-  age NUMBER(2),
+  age VARCHAR2(10),
   PRIMARY KEY (boards_id)
 );
 
