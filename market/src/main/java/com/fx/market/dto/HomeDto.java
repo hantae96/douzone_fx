@@ -1,6 +1,7 @@
 package com.fx.market.dto;
 
 public class HomeDto {
+	private String itemId;
 	private String itemName;
 	private String address;
 	private String price;
@@ -8,10 +9,12 @@ public class HomeDto {
 	private String date;
 	
 	
-	@Override
-	public String toString() {
-		return "HomeDto [itemName=" + itemName + ", address=" + address + ", price=" + price + ", recommend="
-				+ recommend + ", date=" + date + "]";
+
+	public String getItemId() {
+		return itemId;
+	}
+	public void setItemId(String itemId) {
+		this.itemId = itemId;
 	}
 	public String getDate() {
 		return date;

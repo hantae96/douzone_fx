@@ -24,8 +24,10 @@ public class BoardDto {
 	
 	/* meetings 테이블 */
 	private int person;				//만남 인원수
-	private String meetingDate;		//만남 일자
-	private String meetingTime;		//만남 시간
+	private Date meetingDate;		//만남 일자
+	private String meetingTimeAmpm;		//만남 시간
+	private int meetingTimeHour;		//만남 시간
+	private int meetingTimeMinute;	
 	private String place;			//만남 장소
 	private String gender;			//만남 성별
 	private String age;				//만남 나이연령
@@ -33,22 +35,46 @@ public class BoardDto {
 	
 	
 	
-	public BoardDto(String boardId, String accountId, String mainCategory, String middleCategory, String title,
-			String content, String person, String meetingDate, String meetingTime, String place, String gender, String age) {
-		this.boardId = boardId;
+	public BoardDto(String accountId, String mainCategory, String middleCategory, String title,
+			String content, String person, LocalDate meetingDate, String meetingTimeAmpm, Integer meetingTimeHour, Integer meetingTimeMinute, String place, String gender, String age) {	this.boardId = boardId;
 		this.accountId = accountId;
 		this.mainCategory = mainCategory;
 		this.middleCategory = middleCategory;
 		this.title = title;
 		this.content = content;
 		this.person = Integer.valueOf(person);
-		this.meetingDate = meetingDate;
-		this.meetingTime = meetingTime;
+		this.meetingDate = Date.valueOf(meetingDate);
+		this.meetingTimeAmpm = meetingTimeAmpm;
+		this.meetingTimeHour = Integer.valueOf(meetingTimeHour);
+		this.meetingTimeMinute = Integer.valueOf(meetingTimeMinute);
 		this.place = place;
 		this.gender = gender;
 		this.age = age;
 	}
 
+	public void setMeetingTimeHour(int meetingTimeHour) {
+		this.meetingTimeHour = meetingTimeHour;
+	}
+
+	public int getMeetingTimeHour() {
+		return meetingTimeHour;
+	}
+
+	public int getMeetingTimeMinute() {
+		return meetingTimeMinute;
+	}
+
+	public void setMeetingTimeMinute(int meetingTimeMinute) {
+		this.meetingTimeMinute = meetingTimeMinute;
+	}
+
+	public String getMeetingTimeAmpm() {
+		return meetingTimeAmpm;
+	}
+
+	public void setMeetingTimeAmpm(String meetingTimeAmpm) {
+		this.meetingTimeAmpm = meetingTimeAmpm;
+	}
 
 
 	public BoardDto() {
@@ -123,18 +149,10 @@ public class BoardDto {
 	public void setPerson(int person) {
 		this.person = person;
 	}
-	public String getMeetingDate() {
+	public Date getMeetingDate() {
 		return meetingDate;
 	}
-	public void setMeetingDate(String meetingDate) {
-		this.meetingDate = meetingDate;
-	}
-	public String getMeetingTime() {
-		return meetingTime;
-	}
-	public void setMeetingTime(String meetingTime) {
-		this.meetingTime = meetingTime;
-	}
+
 	public String getPlace() {
 		return place;
 	}
@@ -150,6 +168,10 @@ public class BoardDto {
 	public String getAge() {
 		return age;
 	}
+	public void setMeetingDate(Date meetingDate) {
+		this.meetingDate = meetingDate;
+	}
+
 	public void setAge(String age) {
 		this.age = age;
 	}

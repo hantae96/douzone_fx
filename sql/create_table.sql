@@ -1,10 +1,13 @@
+CREATE SEQUENCE goods_seq;
+CREATE SEQUENCE boards_seq;
+
 CREATE TABLE accounts (
   accounts_id VARCHAR2(25),
   pw VARCHAR2(50),
   name VARCHAR2(100),
   address VARCHAR2(200),
   email VARCHAR2(50),
-  temperature NUMBER(5),
+  temperature NUMBER(4,1) default 36.5,
   created_at DATE,
   deleted_at DATE,
     PRIMARY KEY (accounts_id)
@@ -13,9 +16,9 @@ CREATE TABLE accounts (
 CREATE TABLE boards (
   boards_id VARCHAR2(25),
   accounts_id VARCHAR2(20),
-  main_category VARCHAR2(20),
-  middle_category VARCHAR2(20),
-  title VARCHAR2(50),
+  main_category VARCHAR2(100),
+  middle_category VARCHAR2(100),
+  title VARCHAR2(100),
   content VARCHAR2(200),
   recommends NUMBER(5),
   views NUMBER(5),

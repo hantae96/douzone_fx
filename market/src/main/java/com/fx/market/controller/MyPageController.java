@@ -1,5 +1,6 @@
 package com.fx.market.controller;
 
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -11,7 +12,11 @@ import com.fx.market.service.MyPageService;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -34,14 +39,18 @@ public class MyPageController implements Initializable {
 		@FXML private Label buy_num;
 		@FXML private Label document_num;
 		@FXML private Label text;
+		@FXML private PasswordField pw;
 		
 		private MyPageService service;
+		
 
 		//마이페이지 이동시 내 정보 불러오기
 		@Override
 		public void initialize(URL location, ResourceBundle resources) {
 			service = new MyPageService();
 			showMyPage();
+			
+			
 		}
 	
 		// 매너온도 설명 출력
@@ -57,6 +66,54 @@ public class MyPageController implements Initializable {
 			
 		}
 		
+		//수정 전 비밀번호 확인 페이지 이동
+		@FXML
+		private void confirmAccount(Event event) {//수정버튼 누르면 확인창으로 이동!
+			Viewer viewer = new Viewer();
+			viewer.setViewCenter("confirm");//수정 버튼 누르면 -> 확인창 그리고 다시 이동해서 -> 계정변경창으로	
+		}
+		
+				
+		//회원 탈퇴
+		@FXML
+		private void deleteAccount(Event event) {
+			Alert alert = new Alert(AlertType.CONFIRMATION);
+			alert.setHeaderText("알림");
+			alert.setContentText("정말로 탈퇴하시겠습니까?");
+			ButtonType result = alert.showAndWait().orElse(ButtonType.CANCEL);
+				if (result == ButtonType.OK) {
+					//경로 검색해와서 파일삭제
+//					String path = service.getMyPhoto(Session.getInstance().getAccountId());
+//					String[] tmp = path.split("/", 4);
+//					String filePath = tmp[3];
+//					File file = new File(filePath);
+//					file.delete();
+					//Accounts, Photos Delete
+					service.deleteAccount(Session.getInstance().getAccountId());
+					
+					//세션 초기화 후 로그인페이지로 이동
+					Session session = Session.getInstance();
+					session.setLoginChk(0);
+					session.setAccountId(null);
+					session.setAddress(null);
+					Viewer viewer = new Viewer();
+					viewer.setView("login");
+				}
+			}
+		
+		//로그아웃
+		@FXML
+		private void logOut(Event event) {
+			Session session = Session.getInstance();
+			
+			session.setLoginChk(0);
+			session.setAccountId(null);
+			session.setAddress(null);
+			Viewer viewer = new Viewer();
+			viewer.setView("login");
+		}
+		
+		
 		//마이 페이지 도달시 출력
 		public void showMyPage() {
 			String id = Session.getInstance().getAccountId();
@@ -71,13 +128,9 @@ public class MyPageController implements Initializable {
 			sell_num.setText(Integer.toString(dto.getSell_num()));
 			buy_num.setText(Integer.toString(dto.getBuy_num()));
 			document_num.setText(Integer.toString(dto.getDocument_num()));
-			String imagePath = "file:" + System.getProperty("user.dir") + "/src/main/java/com/fx/market/controller/logo.jpg";
+			String imagePath = "file:" + System.getProperty("user.dir") + "/"+dto.getPhoto();
 	        Image image = new Image(imagePath);
 	    	photo.setImage(image);
 		}
-		
-		
-		
-		
-		
+	
 }

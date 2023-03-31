@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import com.fx.market.dto.PhotoDto;
 import com.fx.market.dto.SignUpDto;
 
 public class SignUpDao {
@@ -40,8 +41,9 @@ public class SignUpDao {
 		}
 		return null;
 	}
-	//회원가입 실시
-	public void signInsert(SignUpDto dto) {
+	
+	//회원가입 Accounts Insert 실시
+	public void accountsInsert(SignUpDto dto) {
 		String sql = "insert into accounts values(?, ?, ?, ?, ?, '36.5', SYSDATE, null)";
 		try {
 			ps = con.prepareStatement(sql);
@@ -50,6 +52,20 @@ public class SignUpDao {
 			ps.setString(3, dto.getName());
 			ps.setString(4, dto.getAddress());
 			ps.setString(5, dto.getEmail());
+			ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	//회원가입 Photos Insert 실시
+	public void photosInsert(PhotoDto dto) {
+		String sql = "insert into photos values(?, ?, ?, SYSDATE)";
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString(1, dto.getPhotos_id());
+			ps.setString(2, dto.getName());
+			ps.setString(3, dto.getPath());
 			ps.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();

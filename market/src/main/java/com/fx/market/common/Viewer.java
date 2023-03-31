@@ -20,10 +20,12 @@ public class Viewer {
 
 	public void setView(String viewName) {
 			FXMLLoader loader = new FXMLLoader(Viewer.class.getResource("/com/fx/market/views/"+viewName+".fxml"));
+			System.out.println(Viewer.class.getResource("/com/fx/market/views/"+viewName+".fxml"));
 	        Parent menuForm = null;
 	
 	        try {
 	            menuForm = loader.load();
+
 	        } catch (IOException e) {
 	            e.printStackTrace();
 	        }
@@ -36,6 +38,7 @@ public class Viewer {
 	        primaryStage.show();
 	}
 
+
 	public void setViewCenter(String viewName) {
 			FXMLLoader loader = new FXMLLoader(Viewer.class.getResource("/com/fx/market/views/"+viewName+".fxml"));
 	        Parent menuForm = null;
@@ -47,6 +50,7 @@ public class Viewer {
 	        }
 	
 	        this.primaryStage = Session.getInstance().getStage();
+
 	
 	
 	        BorderPane boarderPane = (BorderPane) menuForm;
