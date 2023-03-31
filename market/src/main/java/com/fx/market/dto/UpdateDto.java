@@ -1,6 +1,6 @@
 package com.fx.market.dto;
 
-public class LoginDto {
+public class UpdateDto {
 	
 	private String accounts_id;	//아이디	
 	private String name;		//이름
@@ -38,6 +38,7 @@ public class LoginDto {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
 	
 
 }

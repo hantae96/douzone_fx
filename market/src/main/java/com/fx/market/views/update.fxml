@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="380.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="380.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fx.market.controller.UpdateAccountController">
    <top>
       <FlowPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
    </top>
@@ -51,10 +51,10 @@
                   <Insets right="20.0" />
                </GridPane.margin>
             </Label>
-            <TextField fx:id="name" maxWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <TextField fx:id="address" maxWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-            <TextField fx:id="email" maxWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-            <Button fx:id="button" alignment="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="101.0" text="확인" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+            <TextField fx:id="name" maxWidth="150.0" onKeyPressed="#checkNameLength" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <TextField fx:id="address" maxWidth="150.0" onKeyPressed="#checkAddressLength" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <TextField fx:id="email" maxWidth="150.0" onKeyPressed="#checkEmailLength" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <Button fx:id="button" alignment="CENTER" mnemonicParsing="false" onAction="#updateAccount" prefHeight="25.0" prefWidth="101.0" text="확인" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="5" GridPane.valignment="CENTER">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
@@ -64,12 +64,12 @@
                   <Insets right="20.0" />
                </GridPane.margin>
             </Label>
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="95.0" text="취소" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="5">
+            <Button mnemonicParsing="false" onAction="#updateCancel" prefHeight="25.0" prefWidth="95.0" text="취소" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="5">
                <GridPane.margin>
                   <Insets left="80.0" />
                </GridPane.margin>
             </Button>
-            <PasswordField fx:id="pw" maxWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <PasswordField fx:id="pw" maxWidth="150.0" onKeyPressed="#checkPwLength" GridPane.columnIndex="2" GridPane.rowIndex="1" />
          </children>
       </GridPane>
    </center>
