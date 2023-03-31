@@ -2,7 +2,7 @@ package com.fx.market.dto;
 
 import java.sql.Date;
 
-public class TownDto {
+public class FreeBoardDto {
 	private String title; 					// 제목
 	private String content;					// 내용
 	private String main_category; 			// 대분류

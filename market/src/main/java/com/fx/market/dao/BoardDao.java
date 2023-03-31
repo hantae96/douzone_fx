@@ -67,9 +67,7 @@ public class BoardDao {
 	}
 
 	public List<BoardDto> findByMeetingBoardList() {
-		String sql = "SELECT b.boards_id, b.accounts_id, b.main_category, b.middle_category, b.title, b.content, m.meeting_date, m.meeting_time, m.place "
-				+ "FROM boards b "
-				+ "INNER JOIN meetings m ON b.boards_id = m.boards_id";
+		String sql = "SELECT * from boards";
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		
