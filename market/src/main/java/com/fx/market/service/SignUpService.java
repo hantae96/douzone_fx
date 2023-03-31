@@ -28,12 +28,4 @@ public class SignUpService {
 		dao.photosInsert(dto);
 	}
 	
-	// 이벤트 발생 장소 리턴
-	public String eventHall(String e) {
-		String[] a = new String[2];
-		a = e.split("=");
-		a = a[1].split(",");
-		return a[0];
-	}
-	
 }
