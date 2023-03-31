@@ -92,6 +92,8 @@ public class HomeController implements Initializable {
 
 	@FXML
 	private void aroundNavClick(Event event) {
+		viewer = new Viewer();
+		viewer.setViewCenter("updateBulletin");
 	}
 
 	@FXML

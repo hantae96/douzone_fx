@@ -3,7 +3,7 @@ package com.fx.market.controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import com.fx.market.dto.town.TownDto;
+import com.fx.market.common.Viewer;
 import com.fx.market.service.FreeBoardService;
 
 import javafx.collections.FXCollections;
@@ -15,12 +15,13 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
-public class TownController implements Initializable{
+public class FreeBoardController implements Initializable{
 	@FXML ComboBox<String> middle_category;
+	@FXML TextField main_category;
 	@FXML TextField title;
 	@FXML TextArea content;
-	@FXML Button button1;
-	@FXML Button button2;
+	@FXML Button closebutton;
+	@FXML Button imagebutton;
 	@FXML private ComboBox combo_box;
 	
 	private FreeBoardService freeboardService;  
@@ -29,7 +30,8 @@ public class TownController implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		middle_category.setItems(list);
-		freeboardService = new FreeBoardService(); 
+		freeboardService = new FreeBoardService();
+		
 	}
 	
 	
@@ -37,10 +39,19 @@ public class TownController implements Initializable{
 	String Nmiddle_category = middle_category.getValue();
 	String Ncontent = content.getText(); 
 	String Ntitle = title.getText();
-		freeboardService.boardClick(Nmiddle_category, Ntitle, Ncontent);
+	String Nmain_category = main_category.getText();
+		freeboardService.boardClick(Nmain_category,Nmiddle_category, Ntitle, Ncontent);
 	}
-//	public void insertFreeBoard(s) {
-//		freeboardService.insertFreeBoard(middle_category.getValue(), title.getText(), content.getText());
-//	}
-//	
+	public void closebtn() {
+		Viewer viewer = new Viewer();
+		viewer.setView("home");
+		
+	}
+	
+	public void imagebtn() {
+		System.out.println("imagebutton test");
+	}
+	
+//	Session session = Session.getInstance();
+	
 }

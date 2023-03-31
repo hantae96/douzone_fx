@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="560.0" prefWidth="360.0" style="-fx-background-color: WHITE;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fx.market.controller.FreeBoardController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="560.0" prefWidth="360.0" style="-fx-background-color: WHITE;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fx.market.controller.TownController">
    <top>
       <GridPane prefHeight="46.0" prefWidth="310.0" BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -26,7 +26,7 @@
          <children>
             <Button mnemonicParsing="false" onMouseClicked="#closebtn" style="-fx-background-color: WHITE;" text="X" />
             <Button alignment="TOP_RIGHT" ellipsisString="완료" mnemonicParsing="false" onMouseClicked="#boardClick" prefHeight="29.0" prefWidth="62.0" style="-fx-background-color: WHITE;" text="완료" GridPane.columnIndex="2" />
-            <TextField fx:id="main_category" alignment="TOP_CENTER" prefHeight="29.0" prefWidth="120.0" style="-fx-background-color: WHITE;" text="동네생활 글쓰기" GridPane.columnIndex="1" />
+            <TextField fx:id="main_category" alignment="TOP_CENTER" prefHeight="29.0" prefWidth="120.0" style="-fx-background-color: WHITE;" text="나의 글 수정" GridPane.columnIndex="1" />
          </children>
       </GridPane>
    </top>
@@ -48,7 +48,7 @@
    <center>
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <ComboBox fx:id="middle_category" prefHeight="29.0" prefWidth="323.0" promptText="주제를 선택하세요." style="-fx-background-color: white;" />
+            <ComboBox fx:id="middle_category" prefHeight="29.0" prefWidth="323.0" promptText="수정할 주제를 선택해주세요." style="-fx-background-color: white;" />
             <TextField fx:id="title" promptText="제목" />
             <TextArea fx:id="content" prefHeight="418.0" prefWidth="321.0" promptText="질문이나 이야기를 해보세요." />
          </children>
