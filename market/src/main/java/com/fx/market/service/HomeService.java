@@ -11,8 +11,4 @@ public class HomeService {
 		List<HomeDto> items = dao.getItemAll();
 		return items;
 	}
-	
-
-	
-
 }

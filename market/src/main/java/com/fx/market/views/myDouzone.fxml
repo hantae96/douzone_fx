@@ -15,7 +15,7 @@
    <center>
       <VBox minWidth="333.0" prefHeight="500.0" prefWidth="333.0" BorderPane.alignment="CENTER">
          <children>
-            <HBox alignment="CENTER_LEFT" minWidth="333.0" prefHeight="100.0" prefWidth="333.0" spacing="20.0">
+            <HBox alignment="CENTER_LEFT" minWidth="333.0" prefHeight="100.0" prefWidth="333.0" spacing="20.0" style="-fx-border-color: black;">
                <children>
                   <ImageView fx:id="photo" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
                   <Label fx:id="name" text="name!" />
@@ -27,7 +27,7 @@
                               <Font size="10.0" />
                            </font>
                         </Label>
-                        <Button mnemonicParsing="false" onMouseClicked="#updateAccount" text="정보 수정">
+                        <Button mnemonicParsing="false" onAction="#confirmAccount" text="정보 수정">
                            <font>
                               <Font size="11.0" />
                            </font>
@@ -42,7 +42,7 @@
                   <Insets left="10.0" />
                </padding>
             </HBox>
-            <BorderPane prefHeight="58.0" prefWidth="333.0">
+            <BorderPane prefHeight="58.0" prefWidth="333.0" style="-fx-border-color: black;">
                <left>
                   <Label onMouseClicked="#showAnnotation" text="매너 온도" underline="true" BorderPane.alignment="CENTER">
                      <font>
@@ -60,9 +60,9 @@
                   <Insets left="30.0" right="30.0" />
                </padding>
             </BorderPane>
-            <StackPane alignment="CENTER_LEFT" prefHeight="79.0" prefWidth="333.0">
+            <StackPane alignment="CENTER_LEFT" prefHeight="58.0" prefWidth="333.0">
                <children>
-                  <FlowPane maxWidth="200.0" prefHeight="69.0" prefWidth="196.0">
+                  <FlowPane maxWidth="200.0" prefHeight="48.0" prefWidth="196.0">
                      <StackPane.margin>
                         <Insets left="10.0" top="10.0" />
                      </StackPane.margin>
@@ -74,7 +74,7 @@
                         </Label>
                      </children>
                   </FlowPane>
-                  <BorderPane prefHeight="200.0" prefWidth="200.0">
+                  <BorderPane prefHeight="58.0" prefWidth="200.0" style="-fx-border-color: black;">
                      <left>
                         <Label fx:id="text" text="가입 일자" BorderPane.alignment="CENTER">
                            <font>
@@ -96,7 +96,7 @@
                   </BorderPane>
                </children>
             </StackPane>
-            <BorderPane prefHeight="58.0" prefWidth="333.0">
+            <BorderPane prefHeight="58.0" prefWidth="333.0" style="-fx-border-color: black;">
                <left>
                   <Label text="받은 평가" BorderPane.alignment="CENTER">
                      <font>
@@ -113,7 +113,7 @@
                   <Insets left="30.0" right="30.0" />
                </padding>
             </BorderPane>
-            <BorderPane prefHeight="58.0" prefWidth="333.0">
+            <BorderPane prefHeight="58.0" prefWidth="333.0" style="-fx-border-color: black;">
                <left>
                   <Label text="관심 목록" BorderPane.alignment="CENTER">
                      <font>
@@ -130,7 +130,7 @@
                   <Insets left="30.0" right="30.0" />
                </padding>
             </BorderPane>
-            <BorderPane prefHeight="58.0" prefWidth="333.0">
+            <BorderPane prefHeight="58.0" prefWidth="333.0" style="-fx-border-color: black;">
                <left>
                   <Label text="판매 내역" BorderPane.alignment="CENTER">
                      <font>
@@ -147,7 +147,7 @@
                   <Insets left="30.0" right="30.0" />
                </padding>
             </BorderPane>
-            <BorderPane prefHeight="58.0" prefWidth="333.0">
+            <BorderPane prefHeight="58.0" prefWidth="333.0" style="-fx-border-color: black;">
                <left>
                   <Label text="구매 내역" BorderPane.alignment="CENTER">
                      <font>
@@ -164,7 +164,7 @@
                   <Insets left="30.0" right="30.0" />
                </padding>
             </BorderPane>
-            <BorderPane prefHeight="58.0" prefWidth="333.0">
+            <BorderPane prefHeight="58.0" prefWidth="333.0" style="-fx-border-color: black;">
                <left>
                   <Label text="동네생활 글/댓글" BorderPane.alignment="CENTER">
                      <font>
@@ -181,9 +181,21 @@
                   <Insets left="30.0" right="30.0" />
                </padding>
             </BorderPane>
-            <BorderPane prefHeight="58.0" prefWidth="333.0">
+            <BorderPane prefHeight="58.0" prefWidth="333.0" style="-fx-border-color: black;">
                <left>
                   <Label onMouseClicked="#deleteAccount" text="회원 탈퇴" underline="true" BorderPane.alignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="19.0" />
+                     </font>
+                  </Label>
+               </left>
+               <padding>
+                  <Insets left="30.0" right="30.0" />
+               </padding>
+            </BorderPane>
+            <BorderPane prefHeight="58.0" prefWidth="333.0" style="-fx-border-color: black;">
+               <left>
+                  <Label onMouseClicked="#logOut" text="로그 아웃" underline="true" BorderPane.alignment="CENTER">
                      <font>
                         <Font name="System Bold" size="19.0" />
                      </font>
