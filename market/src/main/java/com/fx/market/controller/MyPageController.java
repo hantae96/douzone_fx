@@ -99,7 +99,7 @@ public class MyPageController implements Initializable {
 			sell_num.setText(Integer.toString(dto.getSell_num()));
 			buy_num.setText(Integer.toString(dto.getBuy_num()));
 			document_num.setText(Integer.toString(dto.getDocument_num()));
-			String imagePath = "file:" + System.getProperty("user.dir") + "/src/main/java/com/fx/market/controller/logo.jpg";
+			String imagePath = "file:" + System.getProperty("user.dir") + "/"+dto.getPhoto();
 	        Image image = new Image(imagePath);
 	    	photo.setImage(image);
 		}

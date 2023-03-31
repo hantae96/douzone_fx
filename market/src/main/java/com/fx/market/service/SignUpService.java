@@ -1,6 +1,7 @@
 package com.fx.market.service;
 
 import com.fx.market.dao.SignUpDao;
+import com.fx.market.dto.PhotoDto;
 import com.fx.market.dto.SignUpDto;
 
 public class SignUpService {
@@ -17,9 +18,14 @@ public class SignUpService {
 		}
 	}
 	
-	// 회원가입 버튼
-	public void signInsert(SignUpDto dto) {
-		dao.signInsert(dto);
+	// 회원가입 accounts Insert
+	public void accountsInsert(SignUpDto dto) {
+		dao.accountsInsert(dto);
+	}
+	
+	// 회원가입 photos Insert
+	public void photosInsert(PhotoDto dto) {
+		dao.photosInsert(dto);
 	}
 	
 	// 이벤트 발생 장소 리턴

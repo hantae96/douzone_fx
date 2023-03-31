@@ -74,9 +74,15 @@ public class MyPageDao {
 			rs = ps.executeQuery();
 			if(rs.next()) {
 				dto.setDocument_num(rs.getInt("document_num"));
-				return dto;
 			}
-			
+			sql = "select path from photos where photos_id=?";
+			ps = con.prepareStatement(sql);
+			ps.setString(1, id);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				dto.setPhoto(rs.getString("path"));
+				return dto;				
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
