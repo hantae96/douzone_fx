@@ -9,9 +9,14 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.concurrent.TimeUnit;
 
+import com.fx.market.common.Session;
 import com.fx.market.common.Viewer;
+import com.fx.market.dao.HomeDao;
+import com.fx.market.dao.ItemDao;
 import com.fx.market.dto.HomeDto;
+import com.fx.market.dto.ItemDto;
 import com.fx.market.service.HomeService;
+import com.fx.market.service.ItemService;
 
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -20,6 +25,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.SplitMenuButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
@@ -41,12 +47,14 @@ public class HomeController implements Initializable {
 
 	@FXML VBox main;
 	HomeService homeService;
+	ItemService itemService;
 	Viewer viewer;
 	
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		homeService = new HomeService();
+		itemService = new ItemService();
 		printAllItem();
 	}
 	
@@ -90,13 +98,9 @@ public class HomeController implements Initializable {
 	private void accountNavClick(Event event) {
 		
 	}
-	
+
 	private void openItemDetails(HomeDto item) {
-		// 상세 페이지 구현중
-		// item 정보를 받아서 뷰에서 뿌리면 됨.
-		// viewr 에서 상세 페이지를 작성하자
 		
-		System.out.println("상세 페이지 클릭");
 	}
 	
 	public void printAllItem() {
@@ -161,7 +165,16 @@ public class HomeController implements Initializable {
 	        section.setRight(recommand);
 	        
 	        section.setPadding(new Insets(10)); // 모든 방향에 대해 10px의 패딩 적용
-	        section.setOnMouseClicked(event -> openItemDetails(item)); // 클릭 이벤트 핸들러 등록
+	        section.setOnMouseClicked(event -> {
+	        	// 상세 페이지 구현중
+	    		// item 정보를 받아서 뷰에서 뿌리면 됨.
+	    		// viewer 에서 상세 페이지를 작성하자
+	    		ItemDto clickedItem = itemService.getItemById(item.getItemId());
+	    		Session session =Session.getInstance();
+	    		session.setModel(clickedItem);
+	    		Viewer viwer= new Viewer();
+	    		viwer.setView("item");
+	        	}); // 클릭 이벤트 핸들러 등록
 
 	        main.getChildren().add(section);
 	  
