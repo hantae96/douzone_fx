@@ -1,10 +1,17 @@
 package com.fx.market.controller;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.function.UnaryOperator;
 
 import com.fx.market.common.Viewer;
+import com.fx.market.dto.PhotoDto;
 import com.fx.market.dto.SignUpDto;
 import com.fx.market.service.SignUpService;
 
@@ -19,6 +26,8 @@ import javafx.scene.control.TextFormatter;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 public class SignUpController implements Initializable{
 
@@ -38,6 +47,8 @@ public class SignUpController implements Initializable{
     
     private SignUpService service = new SignUpService();
     private boolean[] signCheck;
+    private String filePathSession;
+    private String fileNameSession;
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -70,35 +81,71 @@ public class SignUpController implements Initializable{
     	}
     }
     
+    //사진 선택 버튼
+    @FXML
+    protected void selectPhoto() throws Exception {
+    	// 파일 선택
+    	FileChooser fileChooser = new FileChooser();						//FileChooser 객체 생성
+    	Stage stage = new Stage();											//Stage 객체 생성
+    	File selectedFile = fileChooser.showOpenDialog(stage);				//stage에 fileChooser로 고른걸 selectedFile에 저장
+    	String selectedFilePath = selectedFile.getAbsolutePath();			//selectedFile의 절대경로를 selectedFilePath에 저장
+    	filePathSession = selectedFilePath;									//controller에 경로 임시 저장
+    	fileNameSession = selectedFile.getName();							//controller에 이름 임시 저장
+    	String imagePath = "file:"+selectedFilePath;						//image객체를 위한 경로 편집
+    	Image image = new Image(imagePath);									//이미지 객체 생성
+    	photo.setImage(image);												//이미지 출력
+    	
+    	
+
+    	
+    	
+    }
+    
     //회원가입 버튼
     @FXML
-    protected void signUpButtonClick() {
-    		service.signInsert(new SignUpDto(
-    				idInput.getText(),			//아이디
-    				nameInput.getText(),		//이름
-    				pwInput.getText(),			//비밀번호
-    				addressInput.getText(),		//주소
-    				emailInput.getText()		//이메일
-    				));
+    protected void signUpButtonClick() throws Exception {
+    	//Accounts Insert
+    	service.accountsInsert(new SignUpDto(
+    			idInput.getText(),			//아이디
+    			nameInput.getText(),		//이름
+    			pwInput.getText(),			//비밀번호
+    			addressInput.getText(),		//주소
+    			emailInput.getText()		//이메일
+    			));
+    	
+    	//파일 실질적인 저장
+    	InputStream inputStream = new FileInputStream(filePathSession);								//경로를 inputStream에 저장
+    	String outputName = idInput.getText()+fileNameSession;										//중복 안되도록 이름 수정
+    	String outputPass = "src/main/java/com/fx/market/source/image/"+outputName;					//파일 저장 경로
+    	File outputFile = new File(outputPass);														//output할 파일의 경로를 지정해 File객체 생성
+    	OutputStream outputStream = new FileOutputStream(outputFile);								//outputFile을 outputStream에 저장
+    	
+    	byte[] buffer = new byte[1024];
+    	int length;
+    	while ((length = inputStream.read(buffer)) > 0) {
+    	    outputStream.write(buffer, 0, length);
+    	}
 
-    		Viewer viewer = new Viewer();
-    		viewer.setView("login");
+    	inputStream.close();
+    	outputStream.close();
+    	
+    	//Photos Insert
+    	service.photosInsert(new PhotoDto(
+    			idInput.getText(),			//photos_id = accounts_id
+    			outputName,					//사진 파일 이름
+    			outputPass,					//사진 파일 경로
+    			null						//입력 날짜
+    			));
+    	
+    	Viewer viewer = new Viewer();
+    	viewer.setView("login");
     }
     
     //취소 버튼
     @FXML
     protected void cancelSignUp() {
-		Viewer viewer = new Viewer();
-		viewer.setView("login");
-    }
-    
-    //사진 선택 버튼
-    @FXML
-    protected void selectPhoto() {
-    	// 이미지 파일 경로
-        String imagePath = "file:" + System.getProperty("user.dir") + "/src/main/java/com/fx/market/controller/logo.jpg";
-        Image image = new Image(imagePath);
-    	photo.setImage(image);
+    	Viewer viewer = new Viewer();
+    	viewer.setView("login");
     }
    
     
