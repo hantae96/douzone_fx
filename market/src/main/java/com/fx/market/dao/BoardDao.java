@@ -26,7 +26,7 @@ public class BoardDao {
 		}
 	}
 
-	public void insertMeetingBoard(BoardDto boardDto) {
+	public int insertMeetingBoard(BoardDto boardDto) {
 		String insertBoardSql = "insert into boards(boards_id, accounts_id, main_category, sub_category, title, content, address) "
 				+ "values (concat('b', boards_seq.nextval), ?, ?, ?, ?, ?, ?)";
 
@@ -35,7 +35,7 @@ public class BoardDao {
 	    
 	    PreparedStatement boardPs = null;
 	    PreparedStatement meetingPs = null;
-	 
+	    int result = 0;
 		
 		try {
 			con.setAutoCommit(false);
@@ -48,7 +48,7 @@ public class BoardDao {
 			boardPs.setString(4, boardDto.getTitle());
 			boardPs.setString(5, boardDto.getContent());
 			boardPs.setString(6,  boardDto.getAddress());
-			boardPs.executeUpdate();
+			result = boardPs.executeUpdate();
 			
 	        meetingPs = con.prepareStatement(insertMeetingSql);
 	        meetingPs.setString(1, boardDto.getPerson());
@@ -67,6 +67,8 @@ public class BoardDao {
 			
 			e.printStackTrace();
 		}
+		
+		return result;
 		
 	}
 
