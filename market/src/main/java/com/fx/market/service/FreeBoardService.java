@@ -34,11 +34,9 @@ public class FreeBoardService {
 			townDto.setMiddle_category(middle_category);
 			townDto.setTitle(title);
 			townDto.setContent(content);
-<<<<<<< Updated upstream
+
 //			townDao.insertFreeBoard(townDto);
-=======
-			//townDao.insertFreeBoard(townDto);
->>>>>>> Stashed changes
+
 			alert.setHeaderText("게시물이 등록되었습니다");
 			alert.show();
 		}
