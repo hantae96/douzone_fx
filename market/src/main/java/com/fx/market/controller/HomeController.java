@@ -69,6 +69,7 @@ public class HomeController implements Initializable {
 		viewer.setViewCenter("myDouzone");
 	}
 	
+	
 	////////
 	
 	@FXML
