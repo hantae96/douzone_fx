@@ -1,3 +1,6 @@
+CREATE SEQUENCE goods_seq;
+CREATE SEQUENCE boards_seq;
+
 CREATE TABLE accounts (
   accounts_id VARCHAR2(25),
   pw VARCHAR2(50),

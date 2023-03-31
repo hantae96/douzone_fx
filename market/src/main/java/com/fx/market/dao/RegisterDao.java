@@ -19,7 +19,6 @@ public class RegisterDao {
 		try {
 			Class.forName("oracle.jdbc.OracleDriver");
 			con = DriverManager.getConnection(url, user, password);
-			System.out.println("연결성공");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -30,10 +29,7 @@ public class RegisterDao {
 		
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		
-		System.out.println("test");
-		
-		//아직 회원가입 기능 미구현 account_id , saled_id는 여기서 입력
+				
 		String account_id = Session.getInstance().getAccountId();
 		String saled_id = null;
 		
@@ -49,7 +45,6 @@ public class RegisterDao {
 			ps.setString(5,String.valueOf(item.getItemPrice()));
 			ps.setString(6,saled_id);
 			ps.executeUpdate();
-			System.out.println("DB 저장 완료");
 			
 			con.close();
 		}catch (Exception e) {
