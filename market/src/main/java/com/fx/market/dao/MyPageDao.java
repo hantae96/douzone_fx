@@ -89,4 +89,32 @@ public class MyPageDao {
 		return null;
 	}
 	
+	//삭제할 계정의 사진 경로 불러오기
+	public String getMyPhoto(String id) {
+		String sql = "select path from photos where photos_id=?";
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString(1, id);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				return rs.getString("path");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	// Accounts, Photos delete;
+	public void deleteAccount(String id) {
+		String sql = "update accounts set deleted_at=SYSDATE where accounts_id=?";
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString(1, id);
+			ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 }
