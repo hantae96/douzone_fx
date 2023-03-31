@@ -37,9 +37,12 @@ public class SignUpController implements Initializable{
     @FXML private ImageView photo;
     
     private SignUpService service = new SignUpService();
+    private boolean[] signCheck;
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+    	// 회원가입 버튼 활성화 트리거 0:아이디, 1:이름, 2:PW, 3:주소, 4:이메일
+    	signCheck = new boolean[5];
     	// 영문과 숫자를 제외한 입력은 받지않도록 해주는 TextFormatter 생성
     	TextFormatter<String> textFormatter = new TextFormatter<String>((UnaryOperator<TextFormatter.Change>) change -> {
     	    String newText = change.getControlNewText();
@@ -58,45 +61,28 @@ public class SignUpController implements Initializable{
     protected void idCheck() {
     	String accounts_id = idInput.getText();
     	if(accounts_id.length()<5) {idAlert.setText("5글자 이상의 아이디를 입력해주세요.");idAlert.setTextFill(Color.RED);
+    	signCheck[0]=false;signUpButton.setDisable(decisionDisable());
     	}else {
 	    	String result = service.idCheck(accounts_id);
 	    	idAlert.setText(result);
-	    	if(result.length()>15) {idAlert.setTextFill(Color.BLUE);
-	    	}else {idAlert.setTextFill(Color.RED);}
+	    	if(result.length()>15) {idAlert.setTextFill(Color.BLUE);signCheck[0]=true;signUpButton.setDisable(decisionDisable());
+	    	}else {idAlert.setTextFill(Color.RED);signCheck[0]=false;signUpButton.setDisable(decisionDisable());}
     	}
     }
     
     //회원가입 버튼
     @FXML
     protected void signUpButtonClick() {
-    	if(idInput.getText().isBlank()) {
-    		idAlert.setText("*아이디를 입력하세요!");
-    	}else if(nameInput.getText().isBlank()){
-    		nameAlert.setText("*이름을 입력하세요!");
-    	}else if(pwInput.getText().isBlank()){
-    		pwAlert.setText("*비밀번호를 입력하세요!");
-    	}else if(pwcInput.getText().isBlank()){
-    		pwAlert.setText("*비밀번호확인을 입력하세요!");
-    	}else if(!pwInput.getText().equals(pwcInput.getText())){
-    		pwAlert.setText("*비밀번호를 확인하세요!");
-    	}else if(addressInput.getText().isBlank()){
-    		addressAlert.setText("*주소를 입력하세요!");
-    	}else if(emailInput.getText().isBlank()){
-    		emailAlert.setText("*이메일을 입력하세요!");
-    	}else{
-
     		service.signInsert(new SignUpDto(
     				idInput.getText(),			//아이디
     				nameInput.getText(),		//이름
     				pwInput.getText(),			//비밀번호
     				addressInput.getText(),		//주소
     				emailInput.getText()		//이메일
-
     				));
 
     		Viewer viewer = new Viewer();
     		viewer.setView("login");
-    	}
     }
     
     //취소 버튼
@@ -121,9 +107,14 @@ public class SignUpController implements Initializable{
     @FXML
     protected void checkIdLength(Event e) {
     	int maxLength = 15; // 최대 입력 길이
-//    	String target = service.eventHall(e.getTarget().toString());
     	idInput.textProperty().addListener((observable, oldValue, newValue) -> {
     		if (newValue.length() > maxLength) {idInput.setText(oldValue);}
+    		if(idAlert.getTextFill().equals(Color.BLUE)) {
+    			idAlert.setTextFill(Color.RED);
+    			idAlert.setText("*필수 입력 항목");
+    			signCheck[0]=false;
+    			signUpButton.setDisable(decisionDisable());
+    		}
     	});
     }
     
@@ -133,6 +124,13 @@ public class SignUpController implements Initializable{
     	int maxLength = 5; // 최대 입력 길이
     	nameInput.textProperty().addListener((observable, oldValue, newValue) -> {
     		if (newValue.length() > maxLength) {nameInput.setText(oldValue);}
+    		if(newValue.length()> 0) {
+    			signCheck[1]=true;
+    			signUpButton.setDisable(decisionDisable());
+    		}else {
+    			signCheck[1]=false;    			
+    			signUpButton.setDisable(decisionDisable());
+    		}
     	});
     }
     
@@ -142,6 +140,16 @@ public class SignUpController implements Initializable{
     	int maxLength = 15; // 최대 입력 길이
     	pwInput.textProperty().addListener((observable, oldValue, newValue) -> {
     		if (newValue.length() > maxLength) {pwInput.setText(oldValue);}
+    		if(newValue.length()<1) {
+    			signCheck[2] = false;    			
+    			signUpButton.setDisable(decisionDisable());
+    		}else if(newValue.equals(pwcInput.getText())) {
+    			signCheck[2] = true;
+    			signUpButton.setDisable(decisionDisable());
+    		}else {
+    			signCheck[2] = false;    			    			
+    			signUpButton.setDisable(decisionDisable());
+    		}
     	});
     }
     
@@ -151,6 +159,77 @@ public class SignUpController implements Initializable{
     	int maxLength = 15; // 최대 입력 길이
     	pwcInput.textProperty().addListener((observable, oldValue, newValue) -> {
     		if (newValue.length() > maxLength) {pwcInput.setText(oldValue);}
+    		if(newValue.length()<1) {
+    			signCheck[2] = false;    			
+    			signUpButton.setDisable(decisionDisable());
+    		}else if(newValue.equals(pwInput.getText())) {
+    			signCheck[2] = true;
+    			signUpButton.setDisable(decisionDisable());
+    		}else {
+    			signCheck[2] = false;    			    			
+    			signUpButton.setDisable(decisionDisable());
+    		}
     	});
+    }
+    
+    //주소 확인 입력칸 리스너
+    @FXML
+    protected void checkAddressLength(Event e) {
+    	int maxLength = 20; // 최대 입력 길이
+    	addressInput.textProperty().addListener((observable, oldValue, newValue) -> {
+    		if (newValue.length() > maxLength) {addressInput.setText(oldValue);}
+    		if(checkAddress(newValue)) {
+    			signCheck[3] = true;
+    			signUpButton.setDisable(decisionDisable());    			
+    		}else {
+    		signCheck[3] = false;
+    		signUpButton.setDisable(decisionDisable());
+    		}
+    	});
+    }
+    
+    //이메일 확인 입력칸 리스너
+    @FXML
+    protected void checkEmailLength(Event e) {
+    	int maxLength = 30; // 최대 입력 길이
+    	emailInput.textProperty().addListener((observable, oldValue, newValue) -> {
+    		if (newValue.length() > maxLength) {emailInput.setText(oldValue);}
+    		if(checkEmail(newValue)) {
+    			signCheck[4] = true;
+    			signUpButton.setDisable(decisionDisable());    			
+    		}else {
+    			signCheck[4] = false;
+    			signUpButton.setDisable(decisionDisable());    			
+    		}
+    	});
+    }
+    
+    //회원가입 버튼의 활성화 판단 메서드
+    protected boolean decisionDisable() {
+    	for(boolean x : signCheck) {
+    		if(x==false) {
+    			return true;}
+    	}
+    	return false;
+    }
+    
+    //주소 형식 확인 메서드
+    protected boolean checkAddress(String a) {
+		String[] b = a.split(" ");
+		if(b.length==2) {
+			if(b[0].contains("시")&&b[1].contains("구")) {
+				return true;
+			}
+		}
+		return false;
+    }
+    
+    //이메일 형식 확인 메서드
+    protected boolean checkEmail(String a) {
+    	String[] b = a.split("[@\\.]");
+    	if(b.length==3) {
+    		return true;
+    	}
+    	return false;
     }
 }
