@@ -26,7 +26,7 @@
          <children>
             <Button mnemonicParsing="false" onMouseClicked="#closebtn" style="-fx-background-color: WHITE;" text="X" />
             <Button alignment="TOP_RIGHT" ellipsisString="완료" mnemonicParsing="false" onMouseClicked="#boardClick" prefHeight="29.0" prefWidth="62.0" style="-fx-background-color: WHITE;" text="완료" GridPane.columnIndex="2" />
-            <TextField fx:id="main_category" alignment="TOP_CENTER" prefHeight="29.0" prefWidth="120.0" style="-fx-background-color: WHITE;" text="동네생활 글쓰기" GridPane.columnIndex="1" />
+            <TextField alignment="TOP_CENTER" prefHeight="29.0" prefWidth="120.0" style="-fx-background-color: WHITE;" text="동네생활 글쓰기" GridPane.columnIndex="1" />
          </children>
       </GridPane>
    </top>
