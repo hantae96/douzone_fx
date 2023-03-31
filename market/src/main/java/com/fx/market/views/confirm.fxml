@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="380.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fx.market.controller.UpdateAccountController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="380.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fx.market.controller.CheckPasswordController">
    <top>
       <FlowPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
    </top>
@@ -37,7 +37,7 @@
                </padding>
             </Label>
             <PasswordField fx:id="pw" maxWidth="150.0" prefHeight="25.0" prefWidth="180.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Button fx:id="button" mnemonicParsing="false" onAction="#updateAccount" prefHeight="25.0" prefWidth="89.0" text="확인" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Button fx:id="button" mnemonicParsing="false" onAction="#checkAccount" prefHeight="25.0" prefWidth="89.0" text="확인" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          </children>
       </GridPane>
    </center>
