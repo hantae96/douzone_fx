@@ -36,6 +36,7 @@ public class Viewer {
 	        primaryStage.show();
 	}
 
+
 	public void setViewCenter(String viewName) {
 			FXMLLoader loader = new FXMLLoader(Viewer.class.getResource("/com/fx/market/views/"+viewName+".fxml"));
 	        Parent menuForm = null;
@@ -47,6 +48,7 @@ public class Viewer {
 	        }
 	
 	        this.primaryStage = Session.getInstance().getStage();
+
 	
 	
 	        BorderPane boarderPane = (BorderPane) menuForm;
