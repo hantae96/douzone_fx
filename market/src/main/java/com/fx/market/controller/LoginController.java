@@ -27,13 +27,7 @@ public class LoginController implements Initializable{
 		
 	public void buttonLoginMethod() {
 		int result = service.buttonLoginMethod(id.getText(),pw.getText());
-		if(result == 1) {
-			
-		Session session = Session.getInstance();
-		Stage stage = session.getStage();
-		
-		session.setLoginChk(result);
-		session.setAccountId(id.getText());
+		if(result == 1) {  //로그인 성공 시
 		
 		Viewer viewer = new Viewer();
 		viewer.setView("home");
@@ -43,8 +37,6 @@ public class LoginController implements Initializable{
 
 	
 	public void regClickedMethod() {
-		Session session = Session.getInstance();
-		Stage stage = session.getStage();
 		
 		Viewer viewer = new Viewer();
 		viewer.setView("signUp");

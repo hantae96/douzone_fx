@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import com.fx.market.dto.LoginDto;
+
 public class LoginDao {
 	private Connection con;
 	private PreparedStatement ps;
@@ -21,19 +23,24 @@ public class LoginDao {
 			e.printStackTrace();
 		}
 	}
-	public String idCheck(String id) {
-		String sql = "select pw from accounts where accounts_id=?";
-		String pw = null;
+	public LoginDto idCheck(String id,String pw) {
+		LoginDto logindto=null;
+		String sql = "select accounts_id, address from accounts where accounts_id = ? and pw =?";
+		String address=""; String accounts_id="";
 		try {
 				ps = con.prepareStatement(sql);
 				ps.setString(1, id);
+				ps.setString(2, pw);
 				rs = ps.executeQuery();
 				if(rs.next()) {
-					pw = rs.getString("pw");
+					logindto = new LoginDto();
+					logindto.setAccounts_id(rs.getString(accounts_id));
+					logindto.setAddress(rs.getString(address));
+					return logindto;
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			return pw;
+			return logindto;
 		}
 }
