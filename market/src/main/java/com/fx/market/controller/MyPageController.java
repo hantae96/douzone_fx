@@ -66,6 +66,14 @@ public class MyPageController implements Initializable {
 			
 		}
 		
+		// 판매내역 페이지 이동
+		@FXML
+		private void mySellList(Event event) {
+			Viewer viewer = new Viewer();
+			viewer.setViewCenter("mySellList");			
+		}
+		
+		
 		//수정 전 비밀번호 확인 페이지 이동
 		@FXML
 		private void confirmAccount(Event event) {//수정버튼 누르면 확인창으로 이동!
