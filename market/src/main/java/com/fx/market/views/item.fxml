@@ -134,7 +134,7 @@
    <bottom>
       <HBox prefHeight="54.0" prefWidth="360.0" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="recommandButton" onMouseClicked="#onLikeButtonClicked" prefHeight="54.0" prefWidth="71.0" text="♡">
+            <Label fx:id="recommandButton" onMouseClicked="#LikeButtonClicked" prefHeight="54.0" prefWidth="71.0" text="♡">
                <font>
                   <Font name="System Bold" size="27.0" />
                </font>
