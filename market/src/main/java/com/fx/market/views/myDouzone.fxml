@@ -130,7 +130,7 @@
                   <Insets left="30.0" right="30.0" />
                </padding>
             </BorderPane>
-            <BorderPane prefHeight="58.0" prefWidth="333.0" style="-fx-border-color: black;">
+            <BorderPane onMouseClicked="#mySellList" prefHeight="58.0" prefWidth="333.0" style="-fx-border-color: black;">
                <left>
                   <Label text="판매 내역" BorderPane.alignment="CENTER">
                      <font>
