@@ -3,6 +3,7 @@ package com.fx.market.controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 import com.fx.market.common.Session;
+import com.fx.market.common.Util;
 import com.fx.market.common.Viewer;
 import com.fx.market.dto.ItemDto;
 import com.fx.market.dto.ItemUserDto;
@@ -68,7 +69,7 @@ public class ItemController implements Initializable {
 		itemName.setText(item.getItemName());
 		context.setText(item.getItemContext());
 		date.setText(item.getDate());
-		price.setText(item.getItemPrice().concat(" 원"));
+		price.setText(Util.priceAddComma(item.getItemPrice()).concat(" 원"));
 		viewAndLike.setText("조회수 "
 				.concat(String.valueOf(item.getView()).concat(" · 추천수 ").concat(String.valueOf(item.getRecommend()))));
 	}

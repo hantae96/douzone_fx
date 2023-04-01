@@ -10,6 +10,7 @@ import java.util.ResourceBundle;
 import java.util.concurrent.TimeUnit;
 
 import com.fx.market.common.Session;
+import com.fx.market.common.Util;
 import com.fx.market.common.Viewer;
 import com.fx.market.dao.HomeDao;
 import com.fx.market.dao.ItemDao;
@@ -148,7 +149,7 @@ public class HomeController implements Initializable {
 	        address.setPadding(new Insets(10,0,0,20));
 	        
 	        //가격
-	        Label price = new Label(item.getPrice().concat(" 원"));
+	        Label price = new Label(Util.priceAddComma(item.getPrice()).concat(" 원"));
 
 
 	        // 날짜
