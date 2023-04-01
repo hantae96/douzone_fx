@@ -66,7 +66,7 @@
                            <children>
                               <VBox prefHeight="252.0" prefWidth="360.0">
                                  <children>
-                                    <Label fx:id="itemName" alignment="BOTTOM_LEFT" prefHeight="39.0" prefWidth="360.0" text="itemName" wrapText="true">
+                                    <Label fx:id="itemName" alignment="BOTTOM_LEFT" prefHeight="39.0" prefWidth="360.0" text="itemName">
                                        <font>
                                           <Font name="System Bold" size="26.0" />
                                        </font>
@@ -85,7 +85,7 @@
                                           <Insets left="10.0" />
                                        </padding>
                                     </Label>
-                                    <Label fx:id="context" alignment="TOP_LEFT" prefHeight="156.0" prefWidth="360.0" text="context" wrapText="true">
+                                    <Label fx:id="context" alignment="TOP_LEFT" prefHeight="156.0" prefWidth="360.0" text="context">
                                        <font>
                                           <Font size="20.0" />
                                        </font>
@@ -134,7 +134,7 @@
    <bottom>
       <HBox prefHeight="54.0" prefWidth="360.0" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="recommandButton" prefHeight="54.0" prefWidth="71.0" text="like">
+            <Label fx:id="recommandButton" onMouseClicked="#onLikeButtonClicked" prefHeight="54.0" prefWidth="71.0" text="like">
                <font>
                   <Font size="21.0" />
                </font>
