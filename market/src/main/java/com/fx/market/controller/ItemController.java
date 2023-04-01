@@ -5,7 +5,6 @@ import java.util.ResourceBundle;
 
 import com.fx.market.common.Session;
 import com.fx.market.common.Viewer;
-import com.fx.market.dao.ItemDao;
 import com.fx.market.dto.ItemDto;
 import com.fx.market.dto.ItemUserDto;
 import com.fx.market.service.ItemService;
@@ -15,7 +14,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Circle;
 
 public class ItemController implements Initializable {
@@ -38,11 +36,11 @@ public class ItemController implements Initializable {
 	ItemDto item;
 	ItemService itemService;
 	ItemUserDto user;
-	
+	Session session;
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// itemDao부르고, 해당 데이터를 item Dto에 넣는다.
-		Session session = Session.getInstance();
+		this.session = Session.getInstance();
 		this.item = (ItemDto) session.getModel();
 		this.itemService = new ItemService();
 		this.user = itemService.getUserById(item.getItemId());
@@ -68,6 +66,12 @@ public class ItemController implements Initializable {
 	public void onCancelButtonClick() {
 		Viewer viewer = new Viewer();
 		viewer.setView("home");
+	}
+	
+	public void onLikeButtonClicked() {
+		recommandButton.setText("♥");
+		String accountId = session.getAccountId();
+		itemService.addLike(accountId,item.getItemId());
 	}
 	
 	

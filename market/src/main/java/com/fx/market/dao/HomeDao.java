@@ -54,8 +54,24 @@ public class HomeDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 		return allItem;
-
 	}
+	
+	public void addView(String itemId){
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		String sql = "update goods set views = NVL(views,0)+1 where goods_id = ?";
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString(1, itemId);
+			
+			int count = ps.executeUpdate();
+			con.close();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}	
+	}
+	
 }

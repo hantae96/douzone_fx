@@ -13,13 +13,16 @@ values ('g104','a015','아이패드 에어5','새상품입니다.','서울시 �
 -- 어카운트 테이블 더미--
 insert into accounts(accounts_id,pw,name,address) 
 values ('a100','1234','애플 사과농장 주인','서울시 종로구');
-insert into accounts(accounts_id,pw,name) 
+insert into accounts(accounts_id,pw,name,address) 
 values ('a101','5678','신발 구멍 난놈','서울시 종로구');
-insert into accounts(accounts_id,pw,name) 
+insert into accounts(accounts_id,pw,name,address) 
 values ('a102','1234','구라쟁이','서울시 강남구');
-insert into accounts(accounts_id,pw,name) 
+insert into accounts(accounts_id,pw,name,address) 
 values ('a103','1234','길거리의 음악가','서울시 강북구');
-insert into accounts(accounts_id,pw,name) 
+insert into accounts(accounts_id,pw,name,address) 
 values ('a104','1234','중고나라 VIP','서울시 강남구');
+
+-- 좋아요 테이블 더미-
+insert into favorites (favorites_id,accounts_id,goods_id) values (favorites_seq.nextval,'a100','g100');
 
 commit;
