@@ -53,4 +53,9 @@ public class ItemService {
 		FavoritesDao dao = new FavoritesDao();
 		dao.deleteFavorites(accountId,itemId);
 	}
+
+	public void buy(String accountId, String itemId) {
+		ItemDao dao = new ItemDao();
+		dao.updateSaled(accountId,itemId);
+	}
 }
