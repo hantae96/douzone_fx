@@ -55,22 +55,22 @@ public class FavoritesDao {
 	}
 
 	public Boolean checkFavorites(String accountId, String itemId) {
-				PreparedStatement ps = null;
-				ResultSet rs = null;
-				int check = 0;
-				String sql = "select * from favorites where accounts_id = ? AND goods_id = ?";
-				try {
-					ps = con.prepareStatement(sql);
-					ps.setString(1, accountId);
-					ps.setString(2,itemId);
-					check = ps.executeUpdate();
-					
-					con.close();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-		if(check != 0) return true;
-		else return false;
+			PreparedStatement ps = null;
+			ResultSet rs = null;
+			int check = 0;
+			String sql = "select * from favorites where accounts_id = ? AND goods_id = ?";
+			try {
+				ps = con.prepareStatement(sql);
+				ps.setString(1, accountId);
+				ps.setString(2,itemId);
+				check = ps.executeUpdate();
+				
+				con.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			if(check != 0) return true;
+			else return false;
 	}
 
 	public void deleteFavorites(String accountId, String itemId) {
@@ -78,12 +78,17 @@ public class FavoritesDao {
 		ResultSet rs = null;
 		int check = 0;
 		String sql = "delete from favorites where accounts_id = ? AND goods_id = ?";
+		String updateSql = "update goods set recommends = NVL(recommends,0)-1 where goods_id = ?";
+
 		try {
 			ps = con.prepareStatement(sql);
 			ps.setString(1, accountId);
 			ps.setString(2,itemId);
 			ps.executeUpdate();
 			
+			ps = con.prepareStatement(updateSql);
+			ps.setString(1, itemId);
+			ps.executeUpdate();
 			con.close();
 		} catch (Exception e) {
 			e.printStackTrace();
