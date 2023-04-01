@@ -18,6 +18,24 @@ public class Session {
 	private String accountId;
 	private String name;
 	private String address;
+	private String tempId;
+	
+	public String getTempId() {
+		return tempId;
+	}
+
+	public void setTempId(String tempId) {
+		this.tempId = tempId;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public static void setInstance(Session instance) {
+		Session.instance = instance;
+	}
+
 	private int loginChk;
 	private Object model;
 	

@@ -1,5 +1,6 @@
 package com.fx.market.controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -7,22 +8,31 @@ import java.util.ResourceBundle;
 import com.fx.market.common.Session;
 import com.fx.market.common.Viewer;
 import com.fx.market.dto.BoardDto;
+import com.fx.market.dto.ItemDto;
 import com.fx.market.service.BoardService;
 
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.BorderStroke;
 import javafx.scene.layout.BorderStrokeStyle;
 import javafx.scene.layout.BorderWidths;
 import javafx.scene.layout.CornerRadii;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -44,58 +54,114 @@ public class MeetingBoardController implements Initializable{
 		printAllItem();
 	}
 	
+//	public void printAllItem() {
+//	    Stage stage = Session.getInstance().getStage();
+//	    BorderPane root = (BorderPane) stage.getScene().getRoot();
+//	    ScrollPane sroot = (ScrollPane) root.getCenter();
+//	    
+//
+//	    VBox vbox = new VBox();
+//	    FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/fx/market/views/meetingBoardWriteForm.fxml"));
+//	    System.out.println(getClass().getResource("/com/fx/market/views/meetingBoardWriteForm.fxml"));
+//	    Pane pane = null;
+//		try {
+//			pane = loader.load();
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//        vbox.getChildren().add(pane);
+////	    for (int i = 0; i < 5; i++) {
+////	    	
+////	        try {
+////	            
+////	        } catch (IOException e) {
+////	            e.printStackTrace();
+////	        }
+////	    }
+//
+//	    sroot.setContent(vbox);
+//	}
+
+	
 	public void printAllItem() {
 		List<BoardDto> boards = boardService.selectMeetingBoardList();
 		
 		
 		for (BoardDto board : boards) {
-			
-			System.out.println(board.getBoardId());
 			Label name = new Label(board.getTitle());
-			name.setPadding(new Insets(10));
-			// 폰트 크기 변경
-			name.setFont(new Font(16));
-			// 굵기 변경
-			name.setFont(Font.font("System", FontWeight.BOLD, 16));
-			Label address = new Label(board.getAddress());
-//			address.setPadding(new Insets(10));
-//			Label price = new Label(item.getPrice());
-//			price.setPadding(new Insets(0, 0, 5, 20));
+	        name.setPadding(new Insets(10,0,10,55));
+	        // 폰트 크기 변경
+	        name.setFont(new Font(16));
+	        // 굵기 변경
+	        name.setFont(Font.font("System", FontWeight.BOLD, 16));
+	        
+	       
+	        // 추천 
+	        Label recommand;
+	        if (board.getRecommends() != 0) {
+	            recommand = new Label("♡ ".concat(String.valueOf(board.getRecommends())));
+	        } else {
+	            recommand = new Label("");
+	        }
 
-			Label recommand;
+	        BorderPane section = new BorderPane();
+	        section.setBorder(new Border(
+	                new BorderStroke(Color.LIGHTGREY, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(1))));
 
-//			if (board.getRecommend() != 0) {
-//				recommand = new Label("♡".concat(String.valueOf(item.getRecommend())));
-//			} else {
-//				recommand = new Label("");
-//			}
+	        // 상품이름
+	        section.setTop(name);
+	        section.setLeft(new Label("photo"));
+	        section.getLeft().setStyle("-fx-border-color: grey;");
 
-			BorderPane section = new BorderPane();
-			section.setBorder(new Border(
-					new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(1))));
+	        // 주소 + 날짜를 같이 넣기 위해 HBox 넣기
 
-			section.setTop(name);
-			section.setLeft(new Label("photo"));
-			section.getLeft().setStyle("-fx-border-color: black;");
+	        // 주소
+	        Label address = new Label(board.getAddress());
+	        address.setPadding(new Insets(10,0,0,20));
+	        
+	        //가격
+//	        Label price = new Label(board.getPrice().concat(" 원"));
 
-//			section.setCenter(price);
-//			BorderPane.setAlignment(price, Pos.CENTER_LEFT);
 
-			section.setBottom(address);
-//			section.setRight(recommand);
+	        // 날짜
+	        
+	        
+//	        Label date = new Label("•".concat(String.valueOf(calculateDate(item))).concat("일 전"));
+//	        date.setPadding(new Insets(10,0,0,10));
+//
+//	        section.setCenter(address);
 
-			section.setPadding(new Insets(10)); // 모든 방향에 대해 10px의 패딩 적용
-			
-			section.setOnMouseClicked(event->{
-				System.out.println(board.getBoardId());
-				Viewer viewer = new Viewer();
-				viewer.setViewCenter("meetingBoardDetailForm");	
-			});
+			HBox centerBox = new HBox(10); // 간격 조정을 위해 10의 간격으로 생성
+//			centerBox.getChildren().addAll(address, date);
+			section.setCenter(centerBox);
+	        
+	        // 가격
+//	        section.setBottom(price);
+//	        price.setPadding(new Insets(10,0,0,55)); // 모든 방향에 대해 10px의 패딩 적용
+//	        price.setFont(Font.font("System", FontWeight.BOLD, 16));
 
-			main.getChildren().add(section);
+	        
+	        
+	        // 추천
+	        section.setRight(recommand);
+	        
+	        section.setPadding(new Insets(10)); // 모든 방향에 대해 10px의 패딩 적용
+	        section.setOnMouseClicked(event -> {
+	        	// 상세 페이지 구현중
+	    		// item 정보를 받아서 뷰에서 뿌리면 됨.
+	    		// viewer 에서 상세 페이지를 작성하자
+	    		
+	    		Session session =Session.getInstance();
+	    		session.setTempId(board.getBoardId());
+	    		Viewer viwer= new Viewer();
+	    		viwer.setView("meetingBoardDetailForm");
+	        	}); // 클릭 이벤트 핸들러 등록
 
-		}
-
+	        main.getChildren().add(section);
+	  
+	    }
+	    
 	    Button wrtieButton = new Button("글쓰기");
 	    wrtieButton.setPrefSize(370, 100);
 	    wrtieButton.setStyle("-fx-background-color: orange; -fx-text-fill: white; -fx-font-weight: bold;");
@@ -103,10 +169,11 @@ public class MeetingBoardController implements Initializable{
 	    
 	    
 	    wrtieButton.setOnAction(event -> {
-	    	System.out.print("aa");
-//	        // 버튼을 클릭했을 때 실행될 코드를 여기에 작성합니다.	        
-	    	Viewer viewer = new Viewer();
-			viewer.setView("meetingBoardWriteForm");			
+	        // 버튼을 클릭했을 때 실행될 코드를 여기에 작성합니다.	        
+			
+			Viewer viewer = new Viewer();
+			viewer.setView("meetingBoardWriteForm");
+			
 	    });
 	    
 	    main.getChildren().add(wrtieButton);
