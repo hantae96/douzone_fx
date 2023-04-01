@@ -2,6 +2,7 @@ package com.fx.market.controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
 import com.fx.market.common.Session;
 import com.fx.market.common.Util;
 import com.fx.market.common.Viewer;
@@ -11,6 +12,8 @@ import com.fx.market.service.ItemService;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
@@ -103,7 +106,18 @@ public class ItemController implements Initializable {
 			recommandButton.setText("♡");
 		} else {
 			recommandButton.setText("♥");
-
 		}
+	}
+	
+	public void submitButtonClicked() {
+		String accountId = session.getAccountId();
+		String itemId = item.getItemId();
+		itemService.buy(accountId,itemId);
+		Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setContentText("구매가 완료 되었습니다.");
+        alert.showAndWait();
+        Viewer viewer = new Viewer();
+        viewer.setView("home");
+		
 	}
 }

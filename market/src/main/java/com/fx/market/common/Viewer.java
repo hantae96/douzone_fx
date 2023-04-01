@@ -21,7 +21,6 @@ public class Viewer {
 
 	public void setView(String viewName) {
 			FXMLLoader loader = new FXMLLoader(Viewer.class.getResource("/com/fx/market/views/"+viewName+".fxml"));
-			System.out.println(Viewer.class.getResource("/com/fx/market/views/"+viewName+".fxml"));
 	        Parent menuForm = null;
 	
 	        try {
