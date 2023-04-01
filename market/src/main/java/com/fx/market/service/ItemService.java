@@ -24,4 +24,33 @@ public class ItemService {
 		FavoritesDao dao = new FavoritesDao();
 		dao.addFavorites(accountsId,goodsId);
 	}
+	
+	public Boolean checkLike(String accountId, String itemId) {
+		FavoritesDao dao = new FavoritesDao();
+		if(dao.checkFavorites(accountId,itemId)) {
+			// 참이면 이미 좋아요를 누른것
+			return true;
+		}else{
+			addLike(accountId, itemId);
+			return false;
+		}
+		
+	}
+
+	public Boolean clickLike(String accountId, String itemId) {
+		FavoritesDao dao = new FavoritesDao();
+		if(dao.checkFavorites(accountId,itemId)) {
+			// 참이면 이미 좋아요를 누른것 -> 데이터삭제 쿼리를 다시 진행
+			deleteLike(accountId,itemId);
+			return true;
+		}else{
+			addLike(accountId, itemId);
+			return false;
+		}
+		
+	}
+	public void deleteLike(String accountId,String itemId) {
+		FavoritesDao dao = new FavoritesDao();
+		dao.deleteFavorites(accountId,itemId);
+	}
 }
