@@ -11,6 +11,8 @@ import com.fx.market.dto.HomeDto;
 import com.fx.market.dto.ItemDto;
 import com.fx.market.dto.ItemUserDto;
 
+import javafx.css.PseudoClass;
+
 public class FavoritesDao {
 	private Connection con;
 
@@ -29,8 +31,21 @@ public class FavoritesDao {
 	}
 
 	public void addFavorites(String accountsId,String goodsId) {
-		// favorites 테이블을
+		// favorites 테이블
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		String sql = "insert into favorites (favorites_id,accounts_id,goods_id) values (concat('f',favorites_seq.nextval),?,?)";		
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString(1, accountsId);
+			ps.setString(2, goodsId);
+			ps.executeUpdate();
+			
+			con.close();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}		
 	}
-
-
 }

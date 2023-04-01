@@ -69,7 +69,7 @@ public class ItemController implements Initializable {
 	}
 	
 	public void onLikeButtonClicked() {
-		recommandButton.setText("바뀐다");
+		recommandButton.setText("♥");
 		String accountId = session.getAccountId();
 		itemService.addLike(accountId,item.getItemId());
 	}
