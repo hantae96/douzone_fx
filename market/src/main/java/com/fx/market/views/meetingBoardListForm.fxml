@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="360.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fx.market.controller.MeetingBoardController">
@@ -12,6 +13,9 @@
          <content>
             <VBox fx:id="main" prefHeight="596.0" prefWidth="360.0" />
          </content>
-                  </ScrollPane>
+      </ScrollPane>
    </center>
+   <bottom>
+      <HBox fx:id="listBottomBox" prefWidth="200.0" BorderPane.alignment="CENTER" />
+   </bottom>
 </BorderPane>

@@ -114,7 +114,7 @@ public class BoardDao {
 	}
 
 	public BoardDto findByMeetingBoardDetail(String boardId) {
-		String sql = "SELECT b.boards_id, b.accounts_id, b.main_category, b.middle_category, b.title, b.content, m.meeting_date, m.meeting_time_ampm, m.meeting_time_hour, m.meeting_time_minute, m.place, m.gender, m.age "
+		String sql = "SELECT b.boards_id, b.accounts_id, b.main_category, b.sub_category, b.title, b.content, m.meeting_date, m.meeting_time_ampm, m.meeting_time_hour, m.meeting_time_minute, m.place, m.gender, m.age "
 				+ "FROM boards b "
 				+ "INNER JOIN meetings m ON b.boards_id = m.boards_id where b.boards_id = ?";
 		PreparedStatement ps = null;
@@ -130,6 +130,7 @@ public class BoardDao {
 				BoardDto board = new BoardDto();
 				board.setBoardId(rs.getString("boards_id"));
 				board.setMainCategory(rs.getString("main_category"));
+				board.setSubCategory(rs.getString("sub_category"));
 				board.setTitle(rs.getString("title"));
 				board.setContent(rs.getString("content"));
 				board.setGender(rs.getString("gender"));

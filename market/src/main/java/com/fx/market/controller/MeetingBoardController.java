@@ -8,31 +8,24 @@ import java.util.ResourceBundle;
 import com.fx.market.common.Session;
 import com.fx.market.common.Viewer;
 import com.fx.market.dto.BoardDto;
-import com.fx.market.dto.ItemDto;
 import com.fx.market.service.BoardService;
 
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.BorderStroke;
 import javafx.scene.layout.BorderStrokeStyle;
 import javafx.scene.layout.BorderWidths;
 import javafx.scene.layout.CornerRadii;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -42,6 +35,8 @@ import javafx.stage.Stage;
 public class MeetingBoardController implements Initializable{
 
 	@FXML VBox main;
+	@FXML HBox listBottomBox;
+	
 	BoardService boardService;
 	
 	Viewer viewer;
@@ -175,6 +170,26 @@ public class MeetingBoardController implements Initializable{
 			viewer.setView("meetingBoardWriteForm");
 			
 	    });
+	    
+		FXMLLoader loader = new FXMLLoader(Viewer.class.getResource("/com/fx/market/views/section.fxml"));
+        Parent menuForm = null;
+
+        try {
+            menuForm = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+	    
+	    Stage stage = Session.getInstance().getStage();
+
+		
+//        BorderPane root = (BorderPane) stage.getScene().getRoot();
+//        ScrollPane croot = (ScrollPane) root.getCenter();
+//
+//        VBox broot = (VBox) root.getBottom();
+////        broot.setContent(null);
+//        broot.getChildren().add(0, menuForm);
 	    
 	    main.getChildren().add(wrtieButton);
 	}

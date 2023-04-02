@@ -50,16 +50,6 @@ public class BoardController implements Initializable{
 	
 	public void meetingBoardWriteBtnClick() {
 		
-		System.out.println(title.getText());
-		System.out.println(middleCategory.getValue());
-		System.out.println(content.getText());
-		System.out.println(person.getText());
-		System.out.println(meetingDate.getValue());
-		System.out.println(ampm.getValue()+" "+hour.getValue()+":"+minute.getValue());
-		System.out.println(place.getText());
-//		System.out.println(gender.getText());
-		System.out.println(age.getText());
-		
 		String gender = null;
 		
 		if(freeRadio.isSelected())
