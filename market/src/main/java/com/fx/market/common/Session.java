@@ -19,7 +19,16 @@ public class Session {
 	private String name;
 	private String address;
 	private String tempId;
+	private String whereToGo;
 	
+	public String getWhereToGo() {
+		return whereToGo;
+	}
+
+	public void setWhereToGo(String whereToGo) {
+		this.whereToGo = whereToGo;
+	}
+
 	public String getTempId() {
 		return tempId;
 	}
