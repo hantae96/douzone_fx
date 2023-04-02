@@ -43,7 +43,7 @@ public class BoardService {
 
 
 	public BoardDto boardDetail(String boardId) {
-		
+		System.out.println("service : "+boardId);
 		return boardDao.findByMeetingBoardDetail(boardId);
 	}
 

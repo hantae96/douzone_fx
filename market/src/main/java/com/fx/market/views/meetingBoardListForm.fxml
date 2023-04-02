@@ -1,16 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="590.0" prefWidth="357.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fx.market.controller.MeetingBoardController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="700.0" minWidth="360.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fx.market.controller.MeetingBoardController">
    <center>
       <StackPane prefWidth="344.0" BorderPane.alignment="CENTER">
          <children>
@@ -23,7 +29,7 @@
             </ScrollPane>
             <AnchorPane fx:id="anchorPane" minHeight="500.0" onMouseClicked="#anchorPaneClick" prefHeight="500.0" prefWidth="344.0">
                <children>
-                  <Button fx:id="writeBtn" alignment="CENTER" layoutX="300.0" layoutY="533.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: orange; -fx-border-radius: 30; -fx-background-radius: 30; -fx-text-fill: white;" text="+" textAlignment="CENTER">
+                  <Button fx:id="writeBtn" alignment="CENTER" layoutX="302.0" layoutY="521.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: orange; -fx-border-radius: 30; -fx-background-radius: 30; -fx-text-fill: white;" text="+" textAlignment="CENTER">
                      <contextMenu>
                         <ContextMenu fx:id="contextMenu">
                           <items>
@@ -35,10 +41,119 @@
                      <font>
                         <Font size="20.0" />
                      </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Button>
+                  <VBox fx:id="writeMenu" layoutX="76.0" layoutY="231.0" prefHeight="72.0" prefWidth="220.0" style="-fx-background-color: white;" visible="false">
+                     <children>
+                        <Button minHeight="36.0" mnemonicParsing="false" onAction="#meetingWriteBtnClick" prefWidth="356.0" style="-fx-background-color: orange; -fx-border-color: white;" text="함꼐해요" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button minHeight="36.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="327.0" style="-fx-background-color: orange; -fx-border-color: white;" text="동네생활" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                     </children>
+                  </VBox>
                </children>
             </AnchorPane>
          </children>
       </StackPane>
    </center>
+   <bottom>
+      <HBox minHeight="60.0" minWidth="360.0" style="-fx-background-color: orange;" BorderPane.alignment="CENTER">
+         <children>
+            <VBox alignment="TOP_CENTER" onMouseClicked="#homeNavClick" prefHeight="60.0" prefWidth="72.0">
+               <children>
+                  <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <VBox.margin>
+                        <Insets bottom="3.0" top="5.0" />
+                     </VBox.margin>
+                  </ImageView>
+                  <Label text="홈" />
+               </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </VBox>
+            <VBox alignment="TOP_CENTER" onMouseClicked="#boardNavClick" prefHeight="60.0" prefWidth="72.0">
+               <children>
+                  <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <VBox.margin>
+                        <Insets bottom="3.0" top="5.0" />
+                     </VBox.margin>
+                  </ImageView>
+                  <Label text="동네생활" />
+               </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </VBox>
+            <VBox alignment="TOP_CENTER" onMouseClicked="#arroundNavClick" prefHeight="60.0" prefWidth="72.0">
+               <children>
+                  <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <VBox.margin>
+                        <Insets bottom="3.0" top="5.0" />
+                     </VBox.margin>
+                  </ImageView>
+                  <Label text="내 근처" />
+               </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </VBox>
+            <VBox alignment="TOP_CENTER" onMouseClicked="#myPageNavClick" prefHeight="60.0" prefWidth="75.0">
+               <children>
+                  <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <VBox.margin>
+                        <Insets bottom="3.0" top="5.0" />
+                     </VBox.margin>
+                  </ImageView>
+                  <Label text="나의 마켓" />
+               </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </VBox>
+         </children>
+      </HBox>
+   </bottom>
+   <top>
+      <HBox minHeight="60.0" minWidth="360.0" style="-fx-border-color: grey;" BorderPane.alignment="CENTER">
+         <children>
+            <BorderPane prefHeight="58.0" prefWidth="358.0" style="-fx-background-color: white;">
+               <left>
+                  <Label alignment="BASELINE_LEFT" prefHeight="58.0" prefWidth="176.0" text="Label" textAlignment="CENTER" BorderPane.alignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="21.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets bottom="10.0" />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </Label>
+               </left>
+               <right>
+                  <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" style="-fx-image: white;" BorderPane.alignment="CENTER">
+                     <image>
+                        <Image url="@../source/image/search.png" />
+                     </image>
+                  </ImageView>
+               </right>
+            </BorderPane>
+         </children>
+      </HBox>
+   </top>
 </BorderPane>

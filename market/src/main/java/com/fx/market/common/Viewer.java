@@ -11,14 +11,14 @@ import javafx.stage.Stage;
 
 public class Viewer {
 
-	private Stage primaryStage;
+	private static Stage primaryStage;
 
 	public Stage getPrimaryStage() {
 		return primaryStage;
 	}
 	
-	//화면 전체 전환
-	public void setView(String viewName) {
+
+	public static void setView(String viewName) {
 			FXMLLoader loader = new FXMLLoader(Viewer.class.getResource("/com/fx/market/views/"+viewName+".fxml"));
 	        Parent menuForm = null;
 	
@@ -29,7 +29,7 @@ public class Viewer {
 	            e.printStackTrace();
 	        }
 	
-	        this.primaryStage = Session.getInstance().getStage();
+	        primaryStage = Session.getInstance().getStage();
 	
 	        Scene scene = new Scene(menuForm);
 	        primaryStage.setTitle("등록 화면");
@@ -37,8 +37,8 @@ public class Viewer {
 	        primaryStage.show();
 	}
 
-	//스크롤판 전환 스크롤 숨김
-	public void setViewCenter(String viewName) {
+
+	public static void setViewCenter(String viewName) {
 			FXMLLoader loader = new FXMLLoader(Viewer.class.getResource("/com/fx/market/views/"+viewName+".fxml"));
 	        Parent menuForm = null;
 	
@@ -48,7 +48,7 @@ public class Viewer {
 	            e.printStackTrace();
 	        }
 	
-	        this.primaryStage = Session.getInstance().getStage();
+	        primaryStage = Session.getInstance().getStage();
 
 	
 	

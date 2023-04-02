@@ -73,11 +73,10 @@ public class BoardDao {
 	}
 
 	public List<BoardDto> findByMeetingBoardList() {
-		String sql = "SELECT DISTINCT b.*, m.person, m.meeting_date, m.meeting_time_ampm, m.meeting_time_hour, "
-				+ "m.meeting_time_minute, m.place, m.gender, m.age "
+		String sql = "SELECT DISTINCT b.*, m.* "
 				+ "FROM boards b "
 				+ "LEFT JOIN meetings m "
-				+ "ON b.boards_id = m.boards_id order by b.boards_id desc";
+				+ "ON b.boards_id = m.boards_id order by b.created_at desc";
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		
@@ -114,7 +113,7 @@ public class BoardDao {
 	}
 
 	public BoardDto findByMeetingBoardDetail(String boardId) {
-		String sql = "SELECT b.boards_id, b.accounts_id, b.main_category, b.sub_category, b.title, b.content, m.meeting_date, m.meeting_time_ampm, m.meeting_time_hour, m.meeting_time_minute, m.place, m.gender, m.age "
+		String sql = "SELECT b.*, m.* "
 				+ "FROM boards b "
 				+ "INNER JOIN meetings m ON b.boards_id = m.boards_id where b.boards_id = ?";
 		PreparedStatement ps = null;
@@ -129,16 +128,26 @@ public class BoardDao {
 			if(rs.next()) {
 				BoardDto board = new BoardDto();
 				board.setBoardId(rs.getString("boards_id"));
+				board.setAccountId(rs.getString("accounts_id"));
 				board.setMainCategory(rs.getString("main_category"));
 				board.setSubCategory(rs.getString("sub_category"));
 				board.setTitle(rs.getString("title"));
 				board.setContent(rs.getString("content"));
-				board.setGender(rs.getString("gender"));
-				board.setAge(rs.getString("age"));
+				board.setAddress(rs.getString("address"));
+				board.setRecommends(rs.getInt("recommends"));
+				board.setViews(rs.getInt("views"));
+				board.setCreatedAt(rs.getDate("created_at"));
+				board.setState(rs.getString("state"));
+				board.setPerson(rs.getString("person"));
 				board.setMeetingDate(rs.getDate("meeting_date"));
 				board.setMeetingTimeAmpm(rs.getString("meeting_time_ampm"));
 				board.setMeetingTimeHour(rs.getString("meeting_time_hour"));
 				board.setMeetingTimeMinute(rs.getString("meeting_time_minute"));
+				board.setPlace(rs.getString("place"));
+				board.setGender(rs.getString("gender"));
+				board.setAge(rs.getString("age"));
+
+				System.out.println("dao : "+board.getBoardId());
 		
 				return board;
 			}

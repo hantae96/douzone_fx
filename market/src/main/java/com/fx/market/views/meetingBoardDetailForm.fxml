@@ -13,7 +13,6 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.TextFlow?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="643.0" prefWidth="360.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fx.market.controller.MeetingBoardDetailController">
    <bottom>
@@ -39,15 +38,14 @@
                            <center>
                               <VBox minHeight="50.0" prefHeight="50.0" prefWidth="300.0" BorderPane.alignment="CENTER">
                                  <children>
-                                    <Label minHeight="25.0" text="accountId" />
+                                    <Label fx:id="accountIdLabel" minHeight="25.0" text="accountId" />
                                     <HBox minHeight="25.0" prefWidth="200.0">
                                        <children>
-                                          <Label minHeight="25.0" text="address">
+                                          <Label fx:id="addressLabel" minHeight="25.0" text="address">
                                              <HBox.margin>
                                                 <Insets right="5.0" />
                                              </HBox.margin>
                                           </Label>
-                                          <Label minHeight="25.0" text="createdAt" />
                                        </children>
                                     </HBox>
                                  </children>
@@ -60,77 +58,6 @@
             </ScrollPane>
          </children></FlowPane>
    </bottom>
-   <center>
-      <VBox prefHeight="369.0" prefWidth="360.0" BorderPane.alignment="CENTER">
-         <children>
-            <Label minHeight="36.0" prefWidth="358.0" text="subCategory">
-               <VBox.margin>
-                  <Insets left="8.0" />
-               </VBox.margin>
-            </Label>
-            <HBox minHeight="36.0" prefWidth="200.0">
-               <children>
-                  <Label minHeight="36.0" text="meetingState" textFill="#ff7f00">
-                     <HBox.margin>
-                        <Insets left="8.0" right="8.0" />
-                     </HBox.margin>
-                  </Label>
-                  <Label minHeight="36.0" text="title" />
-               </children>
-            </HBox>
-            <HBox minHeight="20.0" prefWidth="200.0">
-               <children>
-                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                     <HBox.margin>
-                        <Insets left="8.0" right="8.0" />
-                     </HBox.margin>
-                  </ImageView>
-                  <Label minHeight="20.0" text="age" />
-               </children>
-            </HBox>
-            <HBox minHeight="20.0" prefWidth="200.0">
-               <children>
-                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                     <HBox.margin>
-                        <Insets left="8.0" right="8.0" />
-                     </HBox.margin>
-                  </ImageView>
-                  <Label minHeight="20.0" text="meetingDate">
-                     <HBox.margin>
-                        <Insets right="8.0" />
-                     </HBox.margin>
-                  </Label>
-                  <Label minHeight="20.0" text="meetingTime" />
-               </children>
-            </HBox>
-            <HBox minHeight="20.0" prefWidth="200.0">
-               <children>
-                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                     <HBox.margin>
-                        <Insets left="8.0" right="8.0" />
-                     </HBox.margin>
-                  </ImageView>
-                  <Label minHeight="20.0" text="place" />
-               </children>
-            </HBox>
-            <TextFlow prefHeight="150.0" prefWidth="360.0" />
-            <Label text="Label">
-               <contextMenu>
-                  <ContextMenu>
-                    <items>
-                      <MenuItem mnemonicParsing="false" text="ok" />
-                    </items>
-                  </ContextMenu>
-               </contextMenu>
-            </Label>
-            
-            
-         </children>
-         <BorderPane.margin>
-            <Insets top="1.0" />
-         </BorderPane.margin>
-      </VBox>
-   </center>
    <top>
       <HBox prefHeight="45.0" prefWidth="360.0" BorderPane.alignment="CENTER">
          <children>
@@ -142,7 +69,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Label alignment="CENTER" prefHeight="46.0" prefWidth="257.0" style="-fx-background-color: white;" text="동네생활">
+            <Label fx:id="mainCategoryLabel" alignment="CENTER" prefHeight="46.0" prefWidth="257.0" style="-fx-background-color: white;" text="동네생활">
                <font>
                   <Font name="System Bold Italic" size="20.0" />
                </font>
@@ -164,4 +91,82 @@
          </children>
       </HBox>
    </top>
+   <left>
+      <VBox prefHeight="434.0" prefWidth="366.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="subCategoryLabel" minHeight="36.0" prefWidth="358.0" text="subCategory">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </Label>
+            <HBox minHeight="36.0" prefWidth="200.0">
+               <children>
+                  <Label fx:id="stateLabel" minHeight="36.0" text="meetingState" textFill="#ff7f00">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Label>
+                  <Label fx:id="titleLabel" minHeight="36.0" text="title">
+                     <HBox.margin>
+                        <Insets left="8.0" />
+                     </HBox.margin></Label>
+               </children>
+            </HBox>
+            <HBox minHeight="20.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets right="8.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label fx:id="ageLabel" minHeight="20.0" text="age" />
+                  <Label fx:id="genderLabel" minHeight="20.0" text="gender">
+                     <HBox.margin>
+                        <Insets left="8.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox minHeight="20.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets right="8.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label fx:id="meetingDateLabel" minHeight="20.0" text="meetingDate">
+                     <HBox.margin>
+                        <Insets right="8.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label fx:id="meetingTimeLabel" minHeight="20.0" text="meetingTime" />
+               </children>
+            </HBox>
+            <HBox minHeight="20.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets right="8.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label fx:id="placeLabel" minHeight="20.0" text="place" />
+               </children>
+            </HBox>
+            <Label fx:id="contentLabel" alignment="TOP_LEFT" prefHeight="169.0" prefWidth="360.0" text="content">
+               <contextMenu>
+                  <ContextMenu>
+                    <items>
+                      <MenuItem mnemonicParsing="false" text="ok" />
+                    </items>
+                  </ContextMenu>
+               </contextMenu>
+            </Label>
+            
+            
+         </children>
+         <BorderPane.margin>
+            <Insets left="8.0" right="8.0" top="1.0" />
+         </BorderPane.margin>
+      </VBox>
+   </left>
 </BorderPane>

@@ -28,3 +28,9 @@ add constraint accounts_id5 foreign key(accounts_id) REFERENCES accounts(account
 
 commit;
 --alter table goods drop constraint ACCOUNTS_ID5;
+
+
+/* boards - meetings : boards_id(PK)  */
+ALTER TABLE meetings DROP CONSTRAINT fk_meetings_boards_id;
+
+ALTER TABLE meetings ADD CONSTRAINT fk_meetings_boards_id FOREIGN KEY (boards_id) REFERENCES boards(boards_id);

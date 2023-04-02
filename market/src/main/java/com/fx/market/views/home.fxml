@@ -6,12 +6,13 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="360.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fx.market.controller.HomeController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="360.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fx.market.controller.HomeController">
    <top>
       <HBox prefHeight="60.0" prefWidth="360.0" style="-fx-border-color: grey;" BorderPane.alignment="CENTER">
          <children>
@@ -92,7 +93,10 @@
          <content>
          </content>
          <content>
-            <VBox fx:id="main" prefHeight="596.0" prefWidth="360.0" />
+            <VBox fx:id="main" prefHeight="596.0" prefWidth="360.0">
+               <children>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" />
+               </children></VBox>
          </content>
                   </ScrollPane>
    </center>
