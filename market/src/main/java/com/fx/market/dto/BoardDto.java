@@ -1,10 +1,8 @@
 package com.fx.market.dto;
 
 import java.sql.Date;
-import java.sql.Time;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
 
 public class BoardDto {
 
@@ -21,6 +19,7 @@ public class BoardDto {
 	private Date createdAt;			//게시글 생성일시
 	
 	/* meetings 테이블 */
+	private String state;
 	private String person;				//만남 인원수
 	private Date meetingDate;			//만남 일자
 	private String meetingTimeAmpm;		//만남 AM/PM
@@ -194,6 +193,22 @@ public class BoardDto {
 		this.age = age;
 	}
 
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+	
+	public String getMeetingTime() {
+		return meetingTimeAmpm+" "+meetingTimeHour+":"+meetingTimeMinute;
+	}
+	
+	public String getMeetingDateFormat() {
+		
+		return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(meetingDate).substring(0, 10);
+	}
 
 }
 

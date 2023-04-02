@@ -1,6 +1,8 @@
 package com.fx.market.controller;
 
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 import com.fx.market.common.Session;
@@ -16,11 +18,21 @@ import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.text.TextFlow;
 
 public class MeetingBoardDetailController implements Initializable{
 	
-	@FXML private Label ageLabel;
+	@FXML private Label mainCategoryLabel;
+	@FXML private Label subCategoryLabel;
+	@FXML private Label stateLabel;
 	@FXML private Label titleLabel;
+	@FXML private Label ageLabel;
+	@FXML private Label genderLabel;
+	@FXML private Label meetingDateLabel;
+	@FXML private Label meetingTimeLabel;
+	@FXML private Label placeLabel;
+	@FXML private Label contentLabel;
+	
 	@FXML private Button menuBtn;
 	@FXML private ContextMenu menuContextMenu;
 	@FXML private MenuItem meetingEndMenuItem;
@@ -45,7 +57,17 @@ public class MeetingBoardDetailController implements Initializable{
 		
 		BoardDto board = boardService.boardDetail(Session.getInstance().getTempId());
 		
-
+		mainCategoryLabel.setText(board.getMainCategory());
+		subCategoryLabel.setText(board.getSubCategory());
+		stateLabel.setText(board.getState());
+		titleLabel.setText(board.getTitle());
+		ageLabel.setText(board.getAge());
+		genderLabel.setText(board.getGender());
+		meetingDateLabel.setText(board.getMeetingDateFormat());
+		meetingTimeLabel.setText(board.getMeetingTime());
+		placeLabel.setText(board.getPlace());
+		contentLabel.setText(board.getContent());
+		
 		
 	}
 
@@ -54,7 +76,7 @@ public class MeetingBoardDetailController implements Initializable{
 	}
 	
 	public void backBtnClick() {
-		
+		Viewer.setView("meetingBoardListForm");
 	}
 	
 	public void meetingEndMenuItemClick() {
@@ -62,8 +84,7 @@ public class MeetingBoardDetailController implements Initializable{
 	}
 	
 	public void meetingModifyMenuItemClick() {
-		Viewer viewer = new Viewer();
-		viewer.setView("meetingBoardModifyForm");
+		Viewer.setView("meetingBoardModifyForm");
 	}
 	
 	public void meetingDeleteMenuItemClick() {

@@ -72,7 +72,7 @@ public class HomeController implements Initializable {
 	@FXML
 	private void boardNavClick(Event event) {
 		viewer = new Viewer();
-		viewer.setViewCenter("meetingBoardListForm");
+		viewer.setView("meetingBoardListForm");
 	}
 	
 	@FXML

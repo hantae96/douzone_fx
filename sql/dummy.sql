@@ -30,3 +30,31 @@ values ('g104','a105','아이패드 에어5','새상품입니다.','서울시 �
 insert into favorites (favorites_id,accounts_id,goods_id) values (concat('f',favorites_seq.nextval),'a100','g100');
 
 commit;
+
+-- boards 테이블 더미 -
+insert into boards (boards_id, accounts_id, main_category, sub_category, title, content, address)
+values('b1', 'Tester', '같이해요', '산책', '종로3가 산책같이해요', '혼자 산책하기 심심한데 같이 산책해요', '서울시 종로구');
+insert into boards (boards_id, accounts_id, main_category, sub_category, title, content, address)
+values('b2', 'Men', '같이해요', '기타', '전단지 알바하실분?', '전단지 알바 빌딩 나눠서 같이하실분 구해요', '서울시 종로구');
+insert into boards (boards_id, accounts_id, main_category, sub_category, title, content, address)
+values('b3', 'Women', '같이해요', '밥/카페', '카페에서 같이 책읽어요!', '종로3가 근처에 좋은 카페 있어요', '서울시 종로구');
+insert into boards (boards_id, accounts_id, main_category, sub_category, title, content, address)
+values('b4', 'Baby', '같이해요', '밥/카페', '응애 나 애기 밥죠!', '배고파ㅏㅏㅏ', '서울시 종로구');
+insert into boards (boards_id, accounts_id, main_category, sub_category, title, content, address)
+values('b5', 'Boy', '같이해요', '밥/카페', '중간고사 시험 공부 같이해요', '같이 빡공합시다', '서울시 종로구');
+insert into boards (boards_id, accounts_id, main_category, sub_category, title, content, address)
+values('b6', 'Girl', '동네생활', '동네맛집', '같이 점심 드실분 있나요?', '혼밥하기 좀 그런데 같이 먹어요!', '서울시 종로구');
+insert into boards (boards_id, accounts_id, main_category, sub_category, title, content, address)
+values('b7', 'test', '동네생활', '일상', '테스트 하실분 구함', '진짜 아무나 하실수 있어요 같이해요', '서울시 종로구'); 
+
+-- meetings 테이블 더미 -
+insert into meetings (boards_id, person, meeting_date, meeting_time_ampm, meeting_time_hour, meeting_time_minute, place, gender, age)
+values('b1', 4, '2021-11-12','오전', '11시', '19분', '산책로', '누구나', '20대');
+insert into meetings (boards_id, person, meeting_date, meeting_time_ampm, meeting_time_hour, meeting_time_minute, place, gender, age)
+values('b2', 4, '2021-11-12','오전', '11시', '30분', 'XX아파트', '여자만', '20대');
+insert into meetings (boards_id, person, meeting_date, meeting_time_ampm, meeting_time_hour, meeting_time_minute, place, gender, age)
+values('b3', 4, '2021-11-12','오전', '11시', '30분', '스타벅스', '여자만', '20대');
+insert into meetings (boards_id, person, meeting_date, meeting_time_ampm, meeting_time_hour, meeting_time_minute, place, gender, age)
+values('b4', 4, '2021-11-12','오후', '12시', '30분', '유치원', '누구나', '20대');
+insert into meetings (boards_id, person, meeting_date, meeting_time_ampm, meeting_time_hour, meeting_time_minute, place, gender, age)
+values('b5', 4, '2021-11-12','오후', '12시', '30분', '스터디카페', '누구나', '20대');

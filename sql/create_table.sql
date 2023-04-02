@@ -14,7 +14,7 @@ CREATE TABLE accounts (
     PRIMARY KEY (accounts_id)
 );
 
-/* 2023-03-31 변경 */
+/* boards 테이블 2023-03-31 변경 */
 CREATE TABLE boards (
   boards_id VARCHAR2(25),
   accounts_id VARCHAR2(20),
@@ -28,6 +28,9 @@ CREATE TABLE boards (
   created_at DATE default sysdate,
   PRIMARY KEY (boards_id)
 );
+
+/* boards 시퀀시 */
+CREATE SEQUENCE boards_seq START WITH 8;
 
 CREATE TABLE photos (
   photos_id VARCHAR2(25),

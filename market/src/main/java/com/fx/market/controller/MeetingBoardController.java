@@ -1,6 +1,5 @@
 package com.fx.market.controller;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -11,16 +10,14 @@ import com.fx.market.dto.BoardDto;
 import com.fx.market.service.BoardService;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Bounds;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
@@ -37,21 +34,22 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
-import javafx.stage.Stage;
 
 public class MeetingBoardController implements Initializable{
 
 	@FXML VBox main;
+	@FXML VBox writeMenu;
 	@FXML ScrollPane scrollPane; 
 	@FXML HBox listBottomBox;
 	@FXML AnchorPane anchorPane;
 	@FXML Button writeBtn;
 	@FXML ContextMenu contextMenu;
+	@FXML MenuItem meetingWriteBtn;
+	@FXML MenuItem townWriteBtn;
 	
 	BoardService boardService;
 	
-	Viewer viewer;
-	
+	private boolean writeMenuVisible = false;
 	
 	public void anchorPaneClick() {
 		 
@@ -61,51 +59,53 @@ public class MeetingBoardController implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
+		boardService = new BoardService();
+		
+		printAllItem();
+		
 		writeBtn.addEventFilter(MouseEvent.ANY, event -> {
 			if (event.getButton() == MouseButton.PRIMARY) {
-		    	contextMenu.show(writeBtn, event.getScreenX(), event.getScreenY());
+//		    	contextMenu.show(writeBtn, event.getScreenX(), event.getScreenY());
+				if (writeMenuVisible) {
+					writeMenu.setVisible(false);
+					writeMenuVisible = false;
+				} else {
+					writeMenu.setVisible(true);
+					writeMenuVisible = true;
+				}
+		    	
+		    	System.out.println(event.getTarget());
+		    	
 		    }
-			event.consume();
+			
 		});
 		
+		//anchorPane 스크롤 이벤트 scrollPane에게 전달
 		anchorPane.addEventFilter(ScrollEvent.ANY, event -> {
-			System.out.println("스크롤");
 		    scrollPane.fireEvent(event);
 		});
+		
 	    scrollPane.setOnScroll(event -> {
-	        double deltaY = event.getDeltaY() * event.getMultiplierY();
+	        double deltaY = event.getDeltaY(); // * event.getMultiplierY();
 	        scrollPane.setVvalue(scrollPane.getVvalue() - deltaY);
 	    });
 		
 		anchorPane.addEventFilter(MouseEvent.ANY, event -> {
 			 scrollPane.fireEvent(event);
 			 for (Node node : main.getChildren()) {
-				    if (node instanceof BorderPane) {
-				    	 BorderPane section = (BorderPane) node;
-				            Bounds boundsInScene = section.localToScene(section.getBoundsInLocal());
-				            System.out.println(event.getSceneX() +"/" + event.getSceneY());
-				            
-				            if (boundsInScene.contains(event.getSceneX(), event.getSceneY())) {
-				            	 if (event.getSceneX() < 300 || event.getSceneX() > 360 || event.getSceneY() < 580 || event.getSceneY() > 640) {
-				            		section.fireEvent(event);
-					                break;
-				            		 // x 좌표가 300에서 360이 아니거나 y 좌표가 580에서 640이 아닌 경우 이벤트를 무시합니다.
-				            	    }
-				            	 else {
-				            		System.out.println("Aa");
-					                break;
-				            	 }
-				                
-				            }
-				    }
-				}
+			    if (node instanceof BorderPane) {
+			    	BorderPane section = (BorderPane) node;
+		            Bounds boundsInScene = section.localToScene(section.getBoundsInLocal());
+		            
+		            if (boundsInScene.contains(event.getSceneX(), event.getSceneY())) {
+		            	if (event.getSceneX() < 300 || event.getSceneX() > 360 || event.getSceneY() < 580 || event.getSceneY() > 640) {
+		            		section.fireEvent(event);
+			                break;
+	            	    }
+		            }
+			    }
+			}
 		});
-		
-
-		
-
-		boardService = new BoardService();
-		printAllItem();
 		
 		Node node = scrollPane.lookup(".scroll-bar:vertical");
 		if (node != null) {
@@ -116,15 +116,10 @@ public class MeetingBoardController implements Initializable{
 		    node.setStyle("-fx-opacity: 0;");
 		}
 		
-//		scrollPane.lookup(".scroll-bar:vertical").setStyle("-fx-opacity: 0;");
-//		
-//		scrollPane.lookup(".scroll-bar:vertical").setStyle("-fx-opacity: 0;");
-//		scrollPane.lookup(".scroll-bar:horizontal").setStyle("-fx-opacity: 0;");
 	}
 	
 	public void printAllItem() {
 		List<BoardDto> boards = boardService.selectMeetingBoardList();
-		
 		
 		for (BoardDto board : boards) {
 			Label name = new Label(board.getTitle());
@@ -192,8 +187,8 @@ public class MeetingBoardController implements Initializable{
 	    		
 	    		Session session =Session.getInstance();
 	    		session.setTempId(board.getBoardId());
-	    		Viewer viwer= new Viewer();
-	    		viwer.setView("meetingBoardDetailForm");
+	    		
+	    		Viewer.setView("meetingBoardDetailForm");
 	        	}); // 클릭 이벤트 핸들러 등록
 
 	        main.getChildren().add(section);
@@ -201,5 +196,32 @@ public class MeetingBoardController implements Initializable{
 	    }
 	    
 	}
-
+	
+	public void meetingWriteBtnClick() {
+		Viewer.setView("meetingBoardWriteForm");
+	}
+	
+	public void townWriteBtnClick() {
+		
+	}
+	
+	public void meetingWriteMenuClick() {
+	}
+	
+	public void homeNavClick() {
+		Viewer.setView("home");
+	}
+	
+	public void boardNavClick() {
+		Viewer.setView("meetingBoardListForm");
+	}
+	
+	public void arroundNavClick() {
+		System.out.println("내 근처");
+	}
+	
+	public void myPageNavClick() {
+		Viewer.setView("myDouzone");
+	}
+	
 }

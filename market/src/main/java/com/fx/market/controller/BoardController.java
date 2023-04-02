@@ -80,8 +80,7 @@ public class BoardController implements Initializable{
 	}
 	
 	public void cancelBtnClick() {
-		Viewer viewer = new Viewer();
-		viewer.setView("home");
+		Viewer.setView("meetingBoardListForm");
 	}
 	
 
