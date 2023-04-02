@@ -78,7 +78,7 @@ public class HomeController implements Initializable {
 	@FXML
 	private void myPageNavClick(Event event) {
 		viewer = new Viewer();
-		viewer.setViewCenter("myDouzone");
+		viewer.setViewCenterScroll("myDouzone");
 	}
 	
 	

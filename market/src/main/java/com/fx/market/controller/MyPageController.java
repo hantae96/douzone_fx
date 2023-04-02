@@ -69,10 +69,34 @@ public class MyPageController implements Initializable {
 		// 판매내역 페이지 이동
 		@FXML
 		private void mySellList(Event event) {
+			Session.getInstance().setWhereToGo("MySellList");
 			Viewer viewer = new Viewer();
-			viewer.setViewCenter("mySellList");			
+			viewer.setViewCenterScroll("mySellList");			
 		}
 		
+		// 구매내역 페이지 이동
+		@FXML
+		private void myBuyList(Event event) {
+			Session.getInstance().setWhereToGo("MyBuyList");
+			Viewer viewer = new Viewer();
+			viewer.setViewCenterScroll("mySellList");						
+		}
+		
+		// 작성글내역 페이지 이동
+		@FXML
+		private void myBoardList(Event event) {
+			Session.getInstance().setWhereToGo("MyBoardList");
+			Viewer viewer = new Viewer();
+			viewer.setViewCenterScroll("mySellList");						
+		}
+		
+		// 관심내역 페이지 이동
+		@FXML
+		private void myFavorList(Event event) {
+			Session.getInstance().setWhereToGo("MyFavorList");
+			Viewer viewer = new Viewer();
+			viewer.setViewCenterScroll("mySellList");						
+		}
 		
 		//수정 전 비밀번호 확인 페이지 이동
 		@FXML

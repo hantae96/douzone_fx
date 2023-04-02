@@ -14,9 +14,24 @@ public class MySellListService {
 		return dao.getMyPhoto(id);
 	}
 	
-	//게시글 출력
+	//판매글 출력
 	public List<MySellListDto> getMySellList(String id) {
 		return dao.getMySellList(id);
+	}
+	
+	//구매글 출력
+	public List<MySellListDto> getMyBuyList(String id) {
+		return dao.getMyBuyList(id);
+	}	
+	
+	//작성글 출력
+	public List<MySellListDto> getMyBoardList(String id) {
+		return dao.getMyBoardList(id);
+	}
+	
+	//작성글 출력
+	public List<MySellListDto> getMyFavorList(String id) {
+		return dao.getMyFavorList(id);
 	}
 	
 }
