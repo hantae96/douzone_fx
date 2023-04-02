@@ -19,8 +19,10 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.AnchorPane;
@@ -44,6 +46,7 @@ public class MeetingBoardController implements Initializable{
 	@FXML HBox listBottomBox;
 	@FXML AnchorPane anchorPane;
 	@FXML Button writeBtn;
+	@FXML ContextMenu contextMenu;
 	
 	BoardService boardService;
 	
@@ -58,9 +61,10 @@ public class MeetingBoardController implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
-
-		
 		writeBtn.addEventFilter(MouseEvent.ANY, event -> {
+			if (event.getButton() == MouseButton.PRIMARY) {
+		    	contextMenu.show(writeBtn, event.getScreenX(), event.getScreenY());
+		    }
 			event.consume();
 		});
 		
@@ -80,9 +84,18 @@ public class MeetingBoardController implements Initializable{
 				    	 BorderPane section = (BorderPane) node;
 				            Bounds boundsInScene = section.localToScene(section.getBoundsInLocal());
 				            System.out.println(event.getSceneX() +"/" + event.getSceneY());
+				            
 				            if (boundsInScene.contains(event.getSceneX(), event.getSceneY())) {
-				                section.fireEvent(event);
-				                break;
+				            	 if (event.getSceneX() < 300 || event.getSceneX() > 360 || event.getSceneY() < 580 || event.getSceneY() > 640) {
+				            		section.fireEvent(event);
+					                break;
+				            		 // x 좌표가 300에서 360이 아니거나 y 좌표가 580에서 640이 아닌 경우 이벤트를 무시합니다.
+				            	    }
+				            	 else {
+				            		System.out.println("Aa");
+					                break;
+				            	 }
+				                
 				            }
 				    }
 				}

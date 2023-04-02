@@ -25,7 +25,7 @@
                <children>
                   <Button fx:id="writeBtn" alignment="CENTER" layoutX="300.0" layoutY="533.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: orange; -fx-border-radius: 30; -fx-background-radius: 30; -fx-text-fill: white;" text="+" textAlignment="CENTER">
                      <contextMenu>
-                        <ContextMenu>
+                        <ContextMenu fx:id="contextMenu">
                           <items>
                             <MenuItem mnemonicParsing="false" text="같이해요" />
                               <MenuItem mnemonicParsing="false" text="동네생활" />
