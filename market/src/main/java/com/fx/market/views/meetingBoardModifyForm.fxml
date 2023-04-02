@@ -89,11 +89,10 @@
    <center>
       <VBox prefHeight="186.0" prefWidth="360.0" BorderPane.alignment="CENTER">
          <children>
-            <HBox prefHeight="36.0" prefWidth="200.0">
-               <children>
-                  <Label prefHeight="36.0" text="Label" />
-               </children>
-            </HBox>
+            <TextField fx:id="title" prefHeight="36.0" prefWidth="360.0" promptText="이웃과 어떤 활동을 할까요?" style="-fx-border-color: grey;">
+               <VBox.margin>
+                  <Insets top="1.0" />
+               </VBox.margin></TextField>
             <ComboBox fx:id="middleCategory" prefHeight="36.0" prefWidth="360.0" promptText="카테고리를 선택해주세요." style="-fx-border-color: grey; -fx-background-color: white;">
                 <items>
                 
@@ -113,7 +112,7 @@
                   <Font name="System Bold" size="15.0" />
                </font>
             </Button>
-            <Label alignment="CENTER" prefHeight="46.0" prefWidth="258.0" style="-fx-background-color: white;" text="동네생활">
+            <Label alignment="CENTER" prefHeight="46.0" prefWidth="258.0" style="-fx-background-color: white;" text="동네생활 함께해요">
                <font>
                   <Font name="System Bold Italic" size="20.0" />
                </font>
