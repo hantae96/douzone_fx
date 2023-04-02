@@ -10,6 +10,7 @@ import java.util.ResourceBundle;
 import java.util.concurrent.TimeUnit;
 
 import com.fx.market.common.Session;
+import com.fx.market.common.Util;
 import com.fx.market.common.Viewer;
 import com.fx.market.dao.HomeDao;
 import com.fx.market.dao.ItemDao;
@@ -105,7 +106,11 @@ public class HomeController implements Initializable {
 	}
 
 	private void openItemDetails(HomeDto item) {
-		
+		ItemDto clickedItem = itemService.getItemById(item.getItemId());
+		Session session =Session.getInstance();
+		session.setModel(clickedItem);
+		Viewer viwer= new Viewer();
+		viwer.setView("item");
 	}
 	
 	public void printAllItem() {
@@ -144,7 +149,7 @@ public class HomeController implements Initializable {
 	        address.setPadding(new Insets(10,0,0,20));
 	        
 	        //가격
-	        Label price = new Label(item.getPrice().concat(" 원"));
+	        Label price = new Label(Util.priceAddComma(item.getPrice()).concat(" 원"));
 
 
 	        // 날짜
@@ -171,14 +176,8 @@ public class HomeController implements Initializable {
 	        
 	        section.setPadding(new Insets(10)); // 모든 방향에 대해 10px의 패딩 적용
 	        section.setOnMouseClicked(event -> {
-	        	// 상세 페이지 구현중
-	    		// item 정보를 받아서 뷰에서 뿌리면 됨.
-	    		// viewer 에서 상세 페이지를 작성하자
-	    		ItemDto clickedItem = itemService.getItemById(item.getItemId());
-	    		Session session =Session.getInstance();
-	    		session.setModel(clickedItem);
-	    		Viewer viwer= new Viewer();
-	    		viwer.setView("item");
+	        									openItemDetails(item);
+	        									homeService.addView(item.getItemId());
 	        	}); // 클릭 이벤트 핸들러 등록
 
 	        main.getChildren().add(section);

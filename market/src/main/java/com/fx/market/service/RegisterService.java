@@ -21,7 +21,7 @@ public class RegisterService {
     public void alert(String itemName) {	 
 	 	Alert alert = new Alert(AlertType.WARNING);
 	 	alert.setTitle("등록 완료 창");
-	 	alert.setHeaderText(itemName + "거래가 완료되었습니다.");
+	 	alert.setHeaderText(itemName + " 등록이 완료되었습니다.");
 	 	alert.showAndWait();
     }
 }

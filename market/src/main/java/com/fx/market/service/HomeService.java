@@ -6,9 +6,15 @@ import com.fx.market.dao.HomeDao;
 import com.fx.market.dto.HomeDto;
 
 public class HomeService {
+
 	public List<HomeDto> makeViewItem() {
-		HomeDao dao = new HomeDao();
-		List<HomeDto> items = dao.getItemAll();
+		HomeDao homeDao = new HomeDao();
+		List<HomeDto> items = homeDao.getItemAll();
 		return items;
+	}
+	
+	public void addView(String itemId) {
+		HomeDao homeDao = new HomeDao();
+		homeDao.addView(itemId);
 	}
 }

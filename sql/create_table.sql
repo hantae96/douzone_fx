@@ -1,5 +1,6 @@
 CREATE SEQUENCE goods_seq;
 CREATE SEQUENCE boards_seq;
+CREATE SEQUENCE favorites_seq;
 
 CREATE TABLE accounts (
   accounts_id VARCHAR2(25),
@@ -63,10 +64,10 @@ CREATE TABLE comments (
 );
 
 CREATE TABLE favorites (
-  favorites_id NUMBER(20),
+  favorites_id VARCHAR2(25),
   accounts_id VARCHAR2(25),
-  godds_id NUMBER(20),
-  created_at DATE,
+  goods_id VARCHAR2(25),
+  created_at DATE default sysdate,
   PRIMARY KEY (favorites_id)
 );
 

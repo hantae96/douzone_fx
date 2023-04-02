@@ -33,7 +33,9 @@ public class HomeDao {
 		List<HomeDto> allItem = new ArrayList<>();
 
 		// 필요한 정보 : 상품 제목, 위치, 가격, 올린시간, 좋아요
-		String sql = "select goods_id,title,address,price,recommends,created_at from goods order by goods_id desc";
+		String sql = "select goods_id,title,address,price,recommends,created_at from goods "
+				+ "where sale is null "
+				+ "order by goods_id  desc";
 		try {
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
@@ -54,8 +56,24 @@ public class HomeDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 		return allItem;
-
 	}
+	
+	public void addView(String itemId){
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		String sql = "update goods set views = NVL(views,0)+1 where goods_id = ?";
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString(1, itemId);
+			
+			int count = ps.executeUpdate();
+			con.close();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}	
+	}
+	
 }
