@@ -8,21 +8,23 @@ import java.util.ResourceBundle;
 import com.fx.market.common.Session;
 import com.fx.market.common.Viewer;
 import com.fx.market.dto.BoardDto;
-import com.fx.market.dto.ItemDto;
 import com.fx.market.service.BoardService;
 
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Bounds;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
@@ -30,9 +32,7 @@ import javafx.scene.layout.BorderStroke;
 import javafx.scene.layout.BorderStrokeStyle;
 import javafx.scene.layout.BorderWidths;
 import javafx.scene.layout.CornerRadii;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -42,47 +42,85 @@ import javafx.stage.Stage;
 public class MeetingBoardController implements Initializable{
 
 	@FXML VBox main;
+	@FXML ScrollPane scrollPane; 
+	@FXML HBox listBottomBox;
+	@FXML AnchorPane anchorPane;
+	@FXML Button writeBtn;
+	@FXML ContextMenu contextMenu;
+	
 	BoardService boardService;
 	
 	Viewer viewer;
+	
+	
+	public void anchorPaneClick() {
+		 
+	}
 	
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
+		writeBtn.addEventFilter(MouseEvent.ANY, event -> {
+			if (event.getButton() == MouseButton.PRIMARY) {
+		    	contextMenu.show(writeBtn, event.getScreenX(), event.getScreenY());
+		    }
+			event.consume();
+		});
+		
+		anchorPane.addEventFilter(ScrollEvent.ANY, event -> {
+			System.out.println("스크롤");
+		    scrollPane.fireEvent(event);
+		});
+	    scrollPane.setOnScroll(event -> {
+	        double deltaY = event.getDeltaY() * event.getMultiplierY();
+	        scrollPane.setVvalue(scrollPane.getVvalue() - deltaY);
+	    });
+		
+		anchorPane.addEventFilter(MouseEvent.ANY, event -> {
+			 scrollPane.fireEvent(event);
+			 for (Node node : main.getChildren()) {
+				    if (node instanceof BorderPane) {
+				    	 BorderPane section = (BorderPane) node;
+				            Bounds boundsInScene = section.localToScene(section.getBoundsInLocal());
+				            System.out.println(event.getSceneX() +"/" + event.getSceneY());
+				            
+				            if (boundsInScene.contains(event.getSceneX(), event.getSceneY())) {
+				            	 if (event.getSceneX() < 300 || event.getSceneX() > 360 || event.getSceneY() < 580 || event.getSceneY() > 640) {
+				            		section.fireEvent(event);
+					                break;
+				            		 // x 좌표가 300에서 360이 아니거나 y 좌표가 580에서 640이 아닌 경우 이벤트를 무시합니다.
+				            	    }
+				            	 else {
+				            		System.out.println("Aa");
+					                break;
+				            	 }
+				                
+				            }
+				    }
+				}
+		});
+		
+
+		
+
 		boardService = new BoardService();
 		printAllItem();
+		
+		Node node = scrollPane.lookup(".scroll-bar:vertical");
+		if (node != null) {
+		    node.setStyle("-fx-opacity: 0;");
+		}
+		node = scrollPane.lookup(".scroll-bar:horizontal");
+		if (node != null) {
+		    node.setStyle("-fx-opacity: 0;");
+		}
+		
+//		scrollPane.lookup(".scroll-bar:vertical").setStyle("-fx-opacity: 0;");
+//		
+//		scrollPane.lookup(".scroll-bar:vertical").setStyle("-fx-opacity: 0;");
+//		scrollPane.lookup(".scroll-bar:horizontal").setStyle("-fx-opacity: 0;");
 	}
-	
-//	public void printAllItem() {
-//	    Stage stage = Session.getInstance().getStage();
-//	    BorderPane root = (BorderPane) stage.getScene().getRoot();
-//	    ScrollPane sroot = (ScrollPane) root.getCenter();
-//	    
-//
-//	    VBox vbox = new VBox();
-//	    FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/fx/market/views/meetingBoardWriteForm.fxml"));
-//	    System.out.println(getClass().getResource("/com/fx/market/views/meetingBoardWriteForm.fxml"));
-//	    Pane pane = null;
-//		try {
-//			pane = loader.load();
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//        vbox.getChildren().add(pane);
-////	    for (int i = 0; i < 5; i++) {
-////	    	
-////	        try {
-////	            
-////	        } catch (IOException e) {
-////	            e.printStackTrace();
-////	        }
-////	    }
-//
-//	    sroot.setContent(vbox);
-//	}
-
 	
 	public void printAllItem() {
 		List<BoardDto> boards = boardService.selectMeetingBoardList();
@@ -145,7 +183,7 @@ public class MeetingBoardController implements Initializable{
 	        
 	        // 추천
 	        section.setRight(recommand);
-	        
+	        section.resize(357, 500);
 	        section.setPadding(new Insets(10)); // 모든 방향에 대해 10px의 패딩 적용
 	        section.setOnMouseClicked(event -> {
 	        	// 상세 페이지 구현중
@@ -162,21 +200,6 @@ public class MeetingBoardController implements Initializable{
 	  
 	    }
 	    
-	    Button wrtieButton = new Button("글쓰기");
-	    wrtieButton.setPrefSize(370, 100);
-	    wrtieButton.setStyle("-fx-background-color: orange; -fx-text-fill: white; -fx-font-weight: bold;");
-	    wrtieButton.setAlignment(Pos.CENTER);
-	    
-	    
-	    wrtieButton.setOnAction(event -> {
-	        // 버튼을 클릭했을 때 실행될 코드를 여기에 작성합니다.	        
-			
-			Viewer viewer = new Viewer();
-			viewer.setView("meetingBoardWriteForm");
-			
-	    });
-	    
-	    main.getChildren().add(wrtieButton);
 	}
 
 }
