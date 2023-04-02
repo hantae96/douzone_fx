@@ -14,12 +14,12 @@
          <left>
             <VBox alignment="CENTER" prefHeight="150.0" prefWidth="130.0" spacing="20.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label text="나의 판매 내역">
+                  <Label fx:id="where" text="나의 판매 내역">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Button mnemonicParsing="false" onMouseClicked="#writeButtonClick" style="-fx-background-color: orange;" text="글쓰기" />
+                  <Button fx:id="writeButton" mnemonicParsing="false" onMouseClicked="#writeButtonClick" style="-fx-background-color: orange;" text="글쓰기" />
                </children>
             </VBox>
          </left>

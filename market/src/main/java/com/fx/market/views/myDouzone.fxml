@@ -113,7 +113,7 @@
                   <Insets left="30.0" right="30.0" />
                </padding>
             </BorderPane>
-            <BorderPane prefHeight="58.0" prefWidth="333.0" style="-fx-border-color: lightgray;">
+            <BorderPane onMouseClicked="#myFavorList" prefHeight="58.0" prefWidth="333.0" style="-fx-border-color: lightgray;">
                <left>
                   <Label text="관심 목록" BorderPane.alignment="CENTER">
                      <font>
@@ -147,7 +147,7 @@
                   <Insets left="30.0" right="30.0" />
                </padding>
             </BorderPane>
-            <BorderPane prefHeight="58.0" prefWidth="333.0" style="-fx-border-color: lightgray;">
+            <BorderPane onMouseClicked="#myBuyList" prefHeight="58.0" prefWidth="333.0" style="-fx-border-color: lightgray;">
                <left>
                   <Label text="구매 내역" BorderPane.alignment="CENTER">
                      <font>
@@ -164,7 +164,7 @@
                   <Insets left="30.0" right="30.0" />
                </padding>
             </BorderPane>
-            <BorderPane prefHeight="58.0" prefWidth="333.0" style="-fx-border-color: lightgray;">
+            <BorderPane onMouseClicked="#myBoardList" prefHeight="58.0" prefWidth="333.0" style="-fx-border-color: lightgray;">
                <left>
                   <Label text="동네생활 글/댓글" BorderPane.alignment="CENTER">
                      <font>
