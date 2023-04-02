@@ -11,6 +11,8 @@ import com.fx.market.service.MySellListService;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -49,10 +51,17 @@ public class MySellListController implements Initializable{
 		//게시글 출력
 		List<MySellListDto> items = service.getMySellList(myId);
 		
+		if(items.size()<1) {
+			Label announce = new Label();
+			announce.setText("판매글이 존재하지 않습니다.");
+			main.getChildren().add(announce);
+		}
+		
 		for(MySellListDto item : items) {
 			
 			BorderPane bord = new BorderPane();
 			bord.setStyle("-fx-border-color: lightgray;");
+			bord.setMaxHeight(100);
 			
 			//이미지
 			String getPath = ""; 
@@ -72,10 +81,14 @@ public class MySellListController implements Initializable{
 			
 			//제목,장소,가격,날짜
 			VBox box = new VBox();
+			box.setAlignment(Pos.CENTER_LEFT);
+			box.setSpacing(4.0);
+			box.setPadding(new Insets(0, 0, 0, 10));
 			Label title = new Label(item.getGoodsTitle());
 			Label address = new Label(item.getGoodsAddress());
 			Label created_at = new Label(item.getGoodsCreated_at());
-			Label price = new Label(item.getGoodsPrice());
+			String goodsPrice = item.getGoodsPrice()+"원";
+			Label price = new Label(goodsPrice);
 			box.getChildren().addAll(title,address,created_at,price);
 			bord.setCenter(box);
 			

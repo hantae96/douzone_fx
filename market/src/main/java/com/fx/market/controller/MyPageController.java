@@ -70,7 +70,7 @@ public class MyPageController implements Initializable {
 		@FXML
 		private void mySellList(Event event) {
 			Viewer viewer = new Viewer();
-			viewer.setViewCenter("mySellList");			
+			viewer.setViewCenterScroll("mySellList");			
 		}
 		
 		

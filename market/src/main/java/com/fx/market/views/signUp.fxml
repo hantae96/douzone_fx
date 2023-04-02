@@ -39,7 +39,7 @@
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Button mnemonicParsing="false" onMouseClicked="#idCheck" text="중복확인" />
+                  <Button mnemonicParsing="false" onMouseClicked="#idCheck" style="-fx-background-color: orange;" text="중복확인" />
                </children>
             </VBox>
          </children>
@@ -149,7 +149,7 @@
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Button mnemonicParsing="false" onMouseClicked="#selectPhoto" text="사진 선택">
+                  <Button mnemonicParsing="false" onMouseClicked="#selectPhoto" style="-fx-background-color: orange;" text="사진 선택">
                      <font>
                         <Font size="13.0" />
                      </font>
@@ -160,8 +160,8 @@
       </HBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="360.0" spacing="50.0">
          <children>
-            <Button fx:id="signUpButton" disable="true" mnemonicParsing="false" onMouseClicked="#signUpButtonClick" text="회원가입" />
-            <Button mnemonicParsing="false" onMouseClicked="#cancelSignUp" text="취소" />
+            <Button fx:id="signUpButton" disable="true" mnemonicParsing="false" onMouseClicked="#signUpButtonClick" style="-fx-background-color: orange;" text="회원가입" />
+            <Button mnemonicParsing="false" onMouseClicked="#cancelSignUp" style="-fx-background-color: orange;" text="취소" />
          </children>
       </HBox>
    </children>
