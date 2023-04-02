@@ -13,12 +13,17 @@ import com.fx.market.service.BoardService;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Bounds;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.input.ScrollEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.BorderStroke;
@@ -35,49 +40,74 @@ import javafx.stage.Stage;
 public class MeetingBoardController implements Initializable{
 
 	@FXML VBox main;
+	@FXML ScrollPane scrollPane; 
 	@FXML HBox listBottomBox;
+	@FXML AnchorPane anchorPane;
+	@FXML Button writeBtn;
 	
 	BoardService boardService;
 	
 	Viewer viewer;
 	
+	
+	public void anchorPaneClick() {
+		 
+	}
+	
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
+
+		
+		writeBtn.addEventFilter(MouseEvent.ANY, event -> {
+			event.consume();
+		});
+		
+		anchorPane.addEventFilter(ScrollEvent.ANY, event -> {
+			System.out.println("스크롤");
+		    scrollPane.fireEvent(event);
+		});
+	    scrollPane.setOnScroll(event -> {
+	        double deltaY = event.getDeltaY() * event.getMultiplierY();
+	        scrollPane.setVvalue(scrollPane.getVvalue() - deltaY);
+	    });
+		
+		anchorPane.addEventFilter(MouseEvent.ANY, event -> {
+			 scrollPane.fireEvent(event);
+			 for (Node node : main.getChildren()) {
+				    if (node instanceof BorderPane) {
+				    	 BorderPane section = (BorderPane) node;
+				            Bounds boundsInScene = section.localToScene(section.getBoundsInLocal());
+				            System.out.println(event.getSceneX() +"/" + event.getSceneY());
+				            if (boundsInScene.contains(event.getSceneX(), event.getSceneY())) {
+				                section.fireEvent(event);
+				                break;
+				            }
+				    }
+				}
+		});
+		
+
+		
+
 		boardService = new BoardService();
 		printAllItem();
+		
+		Node node = scrollPane.lookup(".scroll-bar:vertical");
+		if (node != null) {
+		    node.setStyle("-fx-opacity: 0;");
+		}
+		node = scrollPane.lookup(".scroll-bar:horizontal");
+		if (node != null) {
+		    node.setStyle("-fx-opacity: 0;");
+		}
+		
+//		scrollPane.lookup(".scroll-bar:vertical").setStyle("-fx-opacity: 0;");
+//		
+//		scrollPane.lookup(".scroll-bar:vertical").setStyle("-fx-opacity: 0;");
+//		scrollPane.lookup(".scroll-bar:horizontal").setStyle("-fx-opacity: 0;");
 	}
-	
-//	public void printAllItem() {
-//	    Stage stage = Session.getInstance().getStage();
-//	    BorderPane root = (BorderPane) stage.getScene().getRoot();
-//	    ScrollPane sroot = (ScrollPane) root.getCenter();
-//	    
-//
-//	    VBox vbox = new VBox();
-//	    FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/fx/market/views/meetingBoardWriteForm.fxml"));
-//	    System.out.println(getClass().getResource("/com/fx/market/views/meetingBoardWriteForm.fxml"));
-//	    Pane pane = null;
-//		try {
-//			pane = loader.load();
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//        vbox.getChildren().add(pane);
-////	    for (int i = 0; i < 5; i++) {
-////	    	
-////	        try {
-////	            
-////	        } catch (IOException e) {
-////	            e.printStackTrace();
-////	        }
-////	    }
-//
-//	    sroot.setContent(vbox);
-//	}
-
 	
 	public void printAllItem() {
 		List<BoardDto> boards = boardService.selectMeetingBoardList();
@@ -140,7 +170,7 @@ public class MeetingBoardController implements Initializable{
 	        
 	        // 추천
 	        section.setRight(recommand);
-	        
+	        section.resize(357, 500);
 	        section.setPadding(new Insets(10)); // 모든 방향에 대해 10px의 패딩 적용
 	        section.setOnMouseClicked(event -> {
 	        	// 상세 페이지 구현중
@@ -157,41 +187,6 @@ public class MeetingBoardController implements Initializable{
 	  
 	    }
 	    
-	    Button wrtieButton = new Button("글쓰기");
-	    wrtieButton.setPrefSize(370, 100);
-	    wrtieButton.setStyle("-fx-background-color: orange; -fx-text-fill: white; -fx-font-weight: bold;");
-	    wrtieButton.setAlignment(Pos.CENTER);
-	    
-	    
-	    wrtieButton.setOnAction(event -> {
-	        // 버튼을 클릭했을 때 실행될 코드를 여기에 작성합니다.	        
-			
-			Viewer viewer = new Viewer();
-			viewer.setView("meetingBoardWriteForm");
-			
-	    });
-	    
-		FXMLLoader loader = new FXMLLoader(Viewer.class.getResource("/com/fx/market/views/section.fxml"));
-        Parent menuForm = null;
-
-        try {
-            menuForm = loader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-	    
-	    Stage stage = Session.getInstance().getStage();
-
-		
-//        BorderPane root = (BorderPane) stage.getScene().getRoot();
-//        ScrollPane croot = (ScrollPane) root.getCenter();
-//
-//        VBox broot = (VBox) root.getBottom();
-////        broot.setContent(null);
-//        broot.getChildren().add(0, menuForm);
-	    
-	    main.getChildren().add(wrtieButton);
 	}
 
 }
