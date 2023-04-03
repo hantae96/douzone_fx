@@ -109,41 +109,41 @@
                   </Label>
                   <Label fx:id="titleLabel" minHeight="36.0" text="title">
                      <HBox.margin>
-                        <Insets left="8.0" />
+                        <Insets left="5.0" />
                      </HBox.margin></Label>
                </children>
             </HBox>
             <HBox minHeight="20.0" prefWidth="200.0">
                <children>
-                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="14.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
                      <HBox.margin>
-                        <Insets right="8.0" />
+                        <Insets right="8.0" top="4.0" />
                      </HBox.margin>
                      <image>
-                        <Image url="@../source/image/board/pserson.png" />
+                        <Image url="@../source/image/person.png" />
                      </image>
                   </ImageView>
                   <Label fx:id="ageLabel" minHeight="20.0" text="age" />
                   <Label fx:id="genderLabel" minHeight="20.0" text="gender">
                      <HBox.margin>
-                        <Insets left="8.0" />
+                        <Insets left="5.0" />
                      </HBox.margin>
                   </Label>
                </children>
             </HBox>
             <HBox minHeight="20.0" prefWidth="200.0">
                <children>
-                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="15.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true">
                      <HBox.margin>
-                        <Insets right="8.0" />
+                        <Insets left="1.0" right="8.0" top="4.0" />
                      </HBox.margin>
                      <image>
-                        <Image url="@../source/image/board/date.png" />
+                        <Image url="@../source/image/calendar.png" />
                      </image>
                   </ImageView>
                   <Label fx:id="meetingDateLabel" minHeight="20.0" text="meetingDate">
                      <HBox.margin>
-                        <Insets right="8.0" />
+                        <Insets right="5.0" />
                      </HBox.margin>
                   </Label>
                   <Label fx:id="meetingTimeLabel" minHeight="20.0" text="meetingTime" />
@@ -151,12 +151,12 @@
             </HBox>
             <HBox minHeight="20.0" prefWidth="200.0">
                <children>
-                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="13.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true">
                      <HBox.margin>
-                        <Insets right="8.0" />
+                        <Insets right="8.0" top="5.0" />
                      </HBox.margin>
                      <image>
-                        <Image url="@../source/image/board/map.png" />
+                        <Image url="@../source/image/map.png" />
                      </image>
                   </ImageView>
                   <Label fx:id="placeLabel" minHeight="20.0" text="place" />
@@ -170,6 +170,9 @@
                     </items>
                   </ContextMenu>
                </contextMenu>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
             </Label>
             
             
