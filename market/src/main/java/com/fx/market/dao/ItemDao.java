@@ -87,16 +87,17 @@ public class ItemDao {
 	}
 
 	
-	public void updateSaled(String accountId, String itemId) {
+	public void updateSaled(String accountId, String itemId, int grade) {
 		PreparedStatement ps = null;
 
 	    // 필요한 정보 : 상품 제목, 위치, 가격, 올린시간, 좋아요
-	    String sql = "update goods set saled_id = ?, sale = ? where goods_id = ?";
+	    String sql = "update goods set saled_id = ?, sale = ?, grade= ? where goods_id = ?";
 	    try {
 	        ps = con.prepareStatement(sql);
 	        ps.setString(1, accountId);
 	        ps.setString(2, "TRUE");
-	        ps.setString(3, itemId);
+	        ps.setInt(3, grade);
+	        ps.setString(4, itemId);
 	        ps.executeQuery();
 	        con.close();
 
