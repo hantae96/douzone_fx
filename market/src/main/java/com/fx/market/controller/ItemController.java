@@ -10,6 +10,7 @@ import com.fx.market.common.Viewer;
 import com.fx.market.dto.ItemDto;
 import com.fx.market.dto.ItemUserDto;
 import com.fx.market.service.ItemService;
+import com.fx.market.service.SignUpService;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -173,6 +174,9 @@ public class ItemController implements Initializable {
 		if (result.isPresent()) {
 		    double rating = result.get();
 		    int grade = (int)Math.round(rating);
+		    
+		    SignUpService upService = new SignUpService();
+		    upService.accountRating(itemId, grade);
 		    
 		    itemService.buy(accountId,itemId,grade);
 		    Alert alert = new Alert(AlertType.INFORMATION);

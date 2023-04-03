@@ -130,7 +130,23 @@ public class ItemDao {
 	    return photoPath;
 	}
 	
-		
-
+		/*goods 작성자 select (혜성 추가)*/
+	public String goodsSeller(String id) {
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String sql = "select accounts_id from goods where goods_id=?";
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString(1, id);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				return rs.getString("accounts_id");
+			}
+			con.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 
 }
