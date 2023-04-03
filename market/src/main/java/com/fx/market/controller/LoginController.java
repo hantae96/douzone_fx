@@ -11,17 +11,24 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 public class LoginController implements Initializable{
 	@FXML TextField id;
 	@FXML PasswordField pw;
+	@FXML ImageView photo;
 	private LoginService service;
 
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		service = new LoginService();
+		
+		String imagePath = "file:" + System.getProperty("user.dir") + "/src/main/java/com/fx/market/source/image/mandarine.png";
+      	Image image = new Image(imagePath);
+    	photo.setImage(image); 
 
 	}
 		
