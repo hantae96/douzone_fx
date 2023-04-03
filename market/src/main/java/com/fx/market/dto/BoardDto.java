@@ -3,6 +3,7 @@ package com.fx.market.dto;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class BoardDto {
 
@@ -209,6 +210,13 @@ public class BoardDto {
 		
 		return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(meetingDate).substring(0, 10);
 	}
+	
+	public LocalDate getMeetingDateToLocalDate() {
+        
+        return LocalDate.parse(getMeetingDateFormat(), DateTimeFormatter.ISO_DATE);
+	}
+	
+	
 
 }
 

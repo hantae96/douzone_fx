@@ -7,6 +7,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.FlowPane?>
@@ -118,6 +119,9 @@
                      <HBox.margin>
                         <Insets right="8.0" />
                      </HBox.margin>
+                     <image>
+                        <Image url="@../source/image/board/pserson.png" />
+                     </image>
                   </ImageView>
                   <Label fx:id="ageLabel" minHeight="20.0" text="age" />
                   <Label fx:id="genderLabel" minHeight="20.0" text="gender">
@@ -133,6 +137,9 @@
                      <HBox.margin>
                         <Insets right="8.0" />
                      </HBox.margin>
+                     <image>
+                        <Image url="@../source/image/board/date.png" />
+                     </image>
                   </ImageView>
                   <Label fx:id="meetingDateLabel" minHeight="20.0" text="meetingDate">
                      <HBox.margin>
@@ -148,6 +155,9 @@
                      <HBox.margin>
                         <Insets right="8.0" />
                      </HBox.margin>
+                     <image>
+                        <Image url="@../source/image/board/map.png" />
+                     </image>
                   </ImageView>
                   <Label fx:id="placeLabel" minHeight="20.0" text="place" />
                </children>

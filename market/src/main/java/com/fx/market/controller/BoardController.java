@@ -14,12 +14,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 public class BoardController implements Initializable{
 	
+	@FXML private Label mainCategory;
 	@FXML private TextField title;
 	@FXML private ComboBox<String> middleCategory;
 	@FXML private TextArea content;
@@ -38,12 +40,13 @@ public class BoardController implements Initializable{
 
 	
 	public void initialize(URL location, ResourceBundle resources) {
+		System.out.println(Session.getInstance().getAccountId());
 		
 		boardService = new BoardService();
 		
 		middleCategory.setItems(FXCollections.observableArrayList("밥/카페", "산책", "러닝", "운동", "독서", "스터디", "취미", "반려동물", "육아", "기타"));
 		ampm.setItems(FXCollections.observableArrayList("오전","오후"));
-		hour.setItems(FXCollections.observableArrayList("1시", "2시", "3시", "4시", "5시", "6시", "7시", "8시", "9시", "10시", "11", "12"));
+		hour.setItems(FXCollections.observableArrayList("1시", "2시", "3시", "4시", "5시", "6시", "7시", "8시", "9시", "10시", "11시", "12시"));
 		minute.setItems(FXCollections.observableArrayList("5분", "10분", "15분", "20분", "25분", "30분", "35분", "40분", "45분", "50분", "55분"));
 		
 	}
@@ -59,21 +62,22 @@ public class BoardController implements Initializable{
 		else if(womanRadio.isSelected())
 			gender = "여자만";
 		
+
 		boardService.meetingBoardWrite(new BoardDto(
-				Session.getInstance().getAccountId(), 
-				"함께해요", 
-				middleCategory.getValue(), 
-				title.getText(), 
-				content.getText(),
-				Session.getInstance().getAddress(),
-				person.getText(), 
-				meetingDate.getValue(),
-				ampm.getValue(),
-				hour.getValue(),
-				minute.getValue(),
-				place.getText(),
-				gender,
-				age.getText()
+				Session.getInstance().getAccountId(), 	//계정 ID
+				mainCategory.getText(), 				//게시판 메인 카테고리
+				middleCategory.getValue(), 				//게시판 서브 카테고리
+				title.getText(), 						//게시판 제목
+				content.getText(),						//게시판 내용
+				Session.getInstance().getAddress(),		//계정 주소
+				person.getText(), 						//모임 인원수
+				meetingDate.getValue(),					//모임 일정
+				ampm.getValue(),						//모임 시간 AM/PM
+				hour.getValue(),						//모임 시간 시
+				minute.getValue(),						//모임 시간 분
+				place.getText(),						//모임 장소
+				gender,									//모임 성별
+				age.getText()							//모임 나이
 				));
 		
 		
