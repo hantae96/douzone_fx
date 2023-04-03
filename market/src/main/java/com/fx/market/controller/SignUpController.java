@@ -44,6 +44,12 @@ public class SignUpController implements Initializable{
     @FXML private TextField emailInput;
     @FXML private Button signUpButton;
     @FXML private ImageView photo;
+    @FXML private Label idText;
+    @FXML private Label nameText;
+    @FXML private Label pwText;
+    @FXML private Label pwcText;
+    @FXML private Label addressText;
+    @FXML private Label emailText;
     
     private SignUpService service = new SignUpService();
     private boolean[] signCheck;
@@ -78,12 +84,12 @@ public class SignUpController implements Initializable{
     protected void idCheck() {
     	String accounts_id = idInput.getText();
     	if(accounts_id.length()<5) {idAlert.setText("5글자 이상의 아이디를 입력해주세요.");idAlert.setTextFill(Color.RED);
-    	signCheck[0]=false;signUpButton.setDisable(decisionDisable());
+    	signCheck[0]=false;signUpButton.setDisable(decisionDisable());idText.setTextFill(Color.RED);
     	}else {
 	    	String result = service.idCheck(accounts_id);
 	    	idAlert.setText(result);
-	    	if(result.length()>15) {idAlert.setTextFill(Color.BLUE);signCheck[0]=true;signUpButton.setDisable(decisionDisable());
-	    	}else {idAlert.setTextFill(Color.RED);signCheck[0]=false;signUpButton.setDisable(decisionDisable());}
+	    	if(result.length()>15) {idAlert.setTextFill(Color.BLUE);signCheck[0]=true;signUpButton.setDisable(decisionDisable());idText.setTextFill(Color.BLACK);
+	    	}else {idAlert.setTextFill(Color.RED);signCheck[0]=false;signUpButton.setDisable(decisionDisable());idText.setTextFill(Color.RED);}
     	}
     }
     
@@ -139,15 +145,13 @@ public class SignUpController implements Initializable{
     			null						//입력 날짜
     			));
     	
-    	Viewer viewer = new Viewer();
-    	viewer.setView("login");
+    	Viewer.setView("login");
     }
     
     //취소 버튼
     @FXML
     protected void cancelSignUp() {
-    	Viewer viewer = new Viewer();
-    	viewer.setView("login");
+    	Viewer.setView("login");
     }
    
     
@@ -163,6 +167,7 @@ public class SignUpController implements Initializable{
     			idAlert.setText("*필수 입력 항목");
     			signCheck[0]=false;
     			signUpButton.setDisable(decisionDisable());
+    			idText.setTextFill(Color.RED);
     		}
     	});
     }
@@ -176,9 +181,11 @@ public class SignUpController implements Initializable{
     		if(newValue.length()> 0) {
     			signCheck[1]=true;
     			signUpButton.setDisable(decisionDisable());
+    			nameText.setTextFill(Color.BLACK);
     		}else {
     			signCheck[1]=false;    			
     			signUpButton.setDisable(decisionDisable());
+    			nameText.setTextFill(Color.RED);
     		}
     	});
     }
@@ -192,12 +199,16 @@ public class SignUpController implements Initializable{
     		if(newValue.length()<1) {
     			signCheck[2] = false;    			
     			signUpButton.setDisable(decisionDisable());
+    			pwText.setTextFill(Color.RED);
     		}else if(newValue.equals(pwcInput.getText())) {
     			signCheck[2] = true;
     			signUpButton.setDisable(decisionDisable());
+    			pwText.setTextFill(Color.BLACK);
+    			pwcText.setTextFill(Color.BLACK);
     		}else {
     			signCheck[2] = false;    			    			
     			signUpButton.setDisable(decisionDisable());
+    			pwText.setTextFill(Color.RED);
     		}
     	});
     }
@@ -211,12 +222,16 @@ public class SignUpController implements Initializable{
     		if(newValue.length()<1) {
     			signCheck[2] = false;    			
     			signUpButton.setDisable(decisionDisable());
+    			pwcText.setTextFill(Color.RED);
     		}else if(newValue.equals(pwInput.getText())) {
     			signCheck[2] = true;
     			signUpButton.setDisable(decisionDisable());
+    			pwText.setTextFill(Color.BLACK);
+    			pwcText.setTextFill(Color.BLACK);
     		}else {
     			signCheck[2] = false;    			    			
     			signUpButton.setDisable(decisionDisable());
+    			pwcText.setTextFill(Color.RED);
     		}
     	});
     }
@@ -229,10 +244,12 @@ public class SignUpController implements Initializable{
     		if (newValue.length() > maxLength) {addressInput.setText(oldValue);}
     		if(checkAddress(newValue)) {
     			signCheck[3] = true;
-    			signUpButton.setDisable(decisionDisable());    			
+    			signUpButton.setDisable(decisionDisable());   
+    			addressText.setTextFill(Color.BLACK);
     		}else {
-    		signCheck[3] = false;
-    		signUpButton.setDisable(decisionDisable());
+	    		signCheck[3] = false;
+	    		signUpButton.setDisable(decisionDisable());
+	    		addressText.setTextFill(Color.RED);
     		}
     	});
     }
@@ -245,10 +262,12 @@ public class SignUpController implements Initializable{
     		if (newValue.length() > maxLength) {emailInput.setText(oldValue);}
     		if(checkEmail(newValue)) {
     			signCheck[4] = true;
-    			signUpButton.setDisable(decisionDisable());    			
+    			signUpButton.setDisable(decisionDisable());    	
+    			emailText.setTextFill(Color.BLACK);
     		}else {
     			signCheck[4] = false;
-    			signUpButton.setDisable(decisionDisable());    			
+    			signUpButton.setDisable(decisionDisable());
+    			emailText.setTextFill(Color.RED);
     		}
     	});
     }
@@ -266,7 +285,7 @@ public class SignUpController implements Initializable{
     protected boolean checkAddress(String a) {
 		String[] b = a.split(" ");
 		if(b.length==2) {
-			if(b[0].contains("시")&&b[1].contains("구")) {
+			if((b[0].contains("시")&&b[1].contains("구"))||(b[0].contains("도")&&b[1].contains("시"))) {
 				return true;
 			}
 		}
