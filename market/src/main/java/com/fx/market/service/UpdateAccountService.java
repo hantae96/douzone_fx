@@ -17,7 +17,7 @@ public class UpdateAccountService {
 	private UpdateAccountDao updateaccountdao = new UpdateAccountDao();
 	private CommonService cs = new CommonService();
 	
-	private int check = 0;
+
 	//정보 수정 비밀번호 확인 
 	public int confirmAccount(String id, String pw) {
 		LoginDto dbUser = logindao.idCheck(id, pw); 
@@ -99,10 +99,10 @@ public class UpdateAccountService {
 		return updateaccountdao.photoInfo(id);
 	}
 	
-//	// 정보변경 photos update
-//		public void photosUpdate(PhotoDto dto) {
-//			updateaccountdao.photosUpdate(dto);
-//		}
+	// 정보변경 photos update
+		public void photosUpdate(PhotoDto dto) {
+			updateaccountdao.photosUpdate(dto);
+		}
 	
 	
 

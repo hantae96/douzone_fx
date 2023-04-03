@@ -2,6 +2,7 @@ package com.fx.market.controller;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -68,6 +69,7 @@ public class UpdateAccountController implements Initializable{
 		beforeName = updatedto.getName();
 		beforeAddress = updatedto.getAddress();
 		beforeEmail = updatedto.getEmail();
+		beforePhoto = imagePath;
 		//세션에서 id 가져와서 서비스 -> dao통해서 그 계정에 해당하는 비밀번호 이름 주소 이메일 가져오기(select로 가져오기)
 		//pw.setText(가져온 것들 담아주기);
 	}
@@ -94,10 +96,35 @@ public class UpdateAccountController implements Initializable{
 	
 	//정보 수정 완료 버튼
 	@FXML
-	private void updateAccount() {
+	private void updateAccount() throws Exception {
 		Session session = Session.getInstance(); 
 		int change = updateservice.buttonUpdateMethod(session.getAccountId(),pw.getText(),name.getText(),address.getText(),email.getText());
 		
+		
+		//파일 실질적인 저장
+    	InputStream inputStream = new FileInputStream(filePathSession);								//경로를 inputStream에 저장
+    	String outputName = session.getAccountId()+fileNameSession;										//중복 안되도록 이름 수정
+    	String outputPass = "src/main/java/com/fx/market/source/image/"+outputName;					//파일 저장 경로
+    	File outputFile = new File(outputPass);														//output할 파일의 경로를 지정해 File객체 생성
+    	OutputStream outputStream = new FileOutputStream(outputFile);								//outputFile을 outputStream에 저장
+    	
+    	byte[] buffer = new byte[1024];
+    	int length;
+    	while ((length = inputStream.read(buffer)) > 0) {
+    	    outputStream.write(buffer, 0, length);
+    	}
+
+    	inputStream.close();
+    	outputStream.close();
+    	
+    	//Photos Insert
+    	updateservice.photosUpdate(new PhotoDto(
+    			session.getAccountId(),		//photos_id = accounts_id
+    			outputName,					//사진 파일 이름
+    			outputPass,					//사진 파일 경로
+    			null						//입력 날짜
+    			));
+    	
 
 		if(change == 1) {
 		Viewer viewer = new Viewer();
@@ -146,10 +173,12 @@ public class UpdateAccountController implements Initializable{
 		name.setText(beforeName);
 		address.setText(beforeAddress);
 		email.setText(beforeEmail);
-
+		
+		Image image = new Image(beforePhoto);
+		photo.setImage(image);
 		pw.requestFocus();
 	}
 	
 
 
-} //여기서 그 취소누르면 다시 이미지 돌아갈수 있게 되나??
+} 

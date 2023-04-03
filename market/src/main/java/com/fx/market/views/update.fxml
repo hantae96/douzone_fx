@@ -64,7 +64,7 @@
                   <Insets right="20.0" />
                </GridPane.margin>
             </Label>
-            <Button mnemonicParsing="false" onAction="#updateCancel" prefHeight="25.0" prefWidth="95.0" text="취소" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="5">
+            <Button mnemonicParsing="false" onAction="#updateCancel" prefHeight="25.0" prefWidth="95.0" text="초기화" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="5">
                <GridPane.margin>
                   <Insets left="80.0" />
                </GridPane.margin>

@@ -82,19 +82,19 @@ import com.fx.market.dto.UpdateDto;
 			return null;
 		}
 		
-//		public void photosUpdate(PhotoDto dto) {
-//			String sql = "UPDATE photos SET name=?, path=? where photos_id=?";
-//
-//			try {
-//					ps = con.prepareStatement(sql);
-//					ps.setString(1, dto.getName());
-//					ps.setString(2, dto.getPath());
-//					ps.setString(3, dto.getPhotos_id());
-//					ps.executeUpdate();
-//					
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			
-//		}
+		public void photosUpdate(PhotoDto dto) {
+			String sql = "UPDATE photos SET name=?, path=? where photos_id=?";
+
+			try {
+					ps = con.prepareStatement(sql);
+					ps.setString(1, dto.getName());
+					ps.setString(2, dto.getPath());
+					ps.setString(3, dto.getPhotos_id());
+					ps.executeUpdate();
+					
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			
+		}
 	}
