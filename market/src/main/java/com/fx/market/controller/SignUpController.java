@@ -121,8 +121,7 @@ public class SignUpController implements Initializable{
     			emailInput.getText()		//이메일
     			));
     	
-    	int photosCheck = service.photosCheck(fileNameSession); 
-    	if(photosCheck<1) {
+    	if(!fileNameSession.equals("default.jpg")) {
 	    	//파일 실질적인 저장
 	    	InputStream inputStream = new FileInputStream(filePathSession);								//경로를 inputStream에 저장
 	    	String outputName = idInput.getText()+fileNameSession;										//중복 안되도록 이름 수정

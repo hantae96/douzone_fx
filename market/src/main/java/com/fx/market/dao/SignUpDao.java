@@ -58,6 +58,35 @@ public class SignUpDao {
 		}
 	}
 	
+	//온도 검색해오기 (구매시 사용)
+	public float selectTemp(String id) {
+		String sql = "select temperature from accounts where accounts_id=?";
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString(1, id);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				return rs.getFloat("temperature");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+	
+	//온도 업데이트 (구매시 사용)
+	public void updateTemp(String id, float temp) {
+		String sql = "update accounts set temperature=? where accounts_id=?";
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setFloat(1, temp);
+			ps.setString(2, id);
+			ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	//회원가입 Photos Insert 실시
 	public void photosInsert(PhotoDto dto) {
 		String sql = "insert into photos values(?, ?, ?, SYSDATE)";
@@ -72,20 +101,5 @@ public class SignUpDao {
 		}
 	}
 	
-	//회원가입 Photos Name 유무
-	public int photosCheck(String name) {
-		String sql = "select count(name) as count from photos where name=?";
-		try {
-			ps = con.prepareStatement(sql);
-			ps.setString(1, name);
-			rs = ps.executeQuery();
-			if(rs.next()) {
-				return rs.getInt("count");
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return 0;
-	}
 	
 }
