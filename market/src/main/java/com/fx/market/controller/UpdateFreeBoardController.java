@@ -58,6 +58,5 @@ public class UpdateFreeBoardController implements Initializable{
 		System.out.println("imagebutton test");
 	}
 	
-//	Session session = Session.getInstance();
 	
 }
