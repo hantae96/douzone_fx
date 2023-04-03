@@ -57,7 +57,7 @@ public class Viewer {
 	        ScrollPane sroot = (ScrollPane) root.getCenter();
 	        sroot.lookup(".scroll-bar:vertical").setStyle("-fx-opacity: 0;");
 	        sroot.lookup(".scroll-bar:horizontal").setStyle("-fx-opacity: 0;");
-	        sroot.setContent(null);
+//	        sroot.setContent(null);
 	        sroot.setContent(boarderPane);
 	}
 

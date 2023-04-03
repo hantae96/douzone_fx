@@ -42,7 +42,7 @@ public class BoardDao {
 			
 			boardPs = con.prepareStatement(insertBoardSql);
 			
-			boardPs.setString(1, "a0001");
+			boardPs.setString(1, boardDto.getAccountId());
 			boardPs.setString(2, boardDto.getMainCategory());
 			boardPs.setString(3, boardDto.getSubCategory());
 			boardPs.setString(4, boardDto.getTitle());
@@ -146,8 +146,6 @@ public class BoardDao {
 				board.setPlace(rs.getString("place"));
 				board.setGender(rs.getString("gender"));
 				board.setAge(rs.getString("age"));
-
-				System.out.println("dao : "+board.getBoardId());
 		
 				return board;
 			}
@@ -157,5 +155,57 @@ public class BoardDao {
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	public int deleteBoard(String boardId, String accountId) {
+		
+		String sql = "delete from boards where boards_id = ? and accounts_id = ?";
+
+	    PreparedStatement ps = null;
+	    int result = 0;
+		
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString(1, boardId);
+			ps.setString(2, accountId);
+			
+			result = ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+
+	public int updateBoard(String boardId, String accountId) {
+
+		String sql = "UPDATE ("
+				+ "  SELECT b.*, m.*"
+				+ "  FROM boards b, meetings m"
+				+ "  WHERE b.boards_id = m.boards_id"
+				+ "  AND b.boards_id = ? and b.accounts_id = ?"
+				+ ") bm"
+				+ "SET bm.title = ?, bm.content = ?, bm.sub_category = ?, bm.person = ?, bm.meeting_date = ?, "
+				+ "bm.meeting_time_ampm = ?, bm.meeting_time_hour = ?, bm.meeting_time_minute = ?, bm.place = ? "
+				+ "bm.gender = ? bm.age = ?";
+
+	    PreparedStatement ps = null;
+	    int result = 0;
+		
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString(1, boardId);
+			ps.setString(2, accountId);
+			
+			result = ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		
+		return result;
 	}
 }
