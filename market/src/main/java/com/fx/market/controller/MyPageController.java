@@ -100,9 +100,9 @@ public class MyPageController implements Initializable {
 		
 		//수정 전 비밀번호 확인 페이지 이동
 		@FXML
-		private void confirmAccount(Event event) {//수정버튼 누르면 확인창으로 이동!
+		private void confirmAccount(Event event) {
 			Viewer viewer = new Viewer();
-			viewer.setViewCenter("confirm");//수정 버튼 누르면 -> 확인창 그리고 다시 이동해서 -> 계정변경창으로	
+			viewer.setViewCenter("confirm");
 		}
 		
 				
