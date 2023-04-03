@@ -112,7 +112,7 @@
                   <Font name="System Bold" size="15.0" />
                </font>
             </Button>
-            <Label alignment="CENTER" prefHeight="46.0" prefWidth="258.0" style="-fx-background-color: white;" text="동네생활 함께해요">
+            <Label fx:id="mainCategory" alignment="CENTER" prefHeight="46.0" prefWidth="258.0" style="-fx-background-color: white;" text="같이해요">
                <font>
                   <Font name="System Bold Italic" size="20.0" />
                </font>

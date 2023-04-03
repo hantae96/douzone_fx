@@ -3,8 +3,10 @@ package com.fx.market.controller;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
+import com.fx.market.common.CommonService;
 import com.fx.market.common.Session;
 import com.fx.market.common.Viewer;
 import com.fx.market.dto.BoardDto;
@@ -12,7 +14,10 @@ import com.fx.market.service.BoardService;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
@@ -41,6 +46,8 @@ public class MeetingBoardDetailController implements Initializable{
 
 	private BoardService boardService;
 	
+	private BoardDto board;
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
@@ -55,7 +62,7 @@ public class MeetingBoardDetailController implements Initializable{
 
 		boardService = new BoardService();
 		
-		BoardDto board = boardService.boardDetail(Session.getInstance().getTempId());
+		board = boardService.boardDetail(Session.getInstance().getTempId());
 		
 		mainCategoryLabel.setText(board.getMainCategory());
 		subCategoryLabel.setText(board.getSubCategory());
@@ -67,7 +74,6 @@ public class MeetingBoardDetailController implements Initializable{
 		meetingTimeLabel.setText(board.getMeetingTime());
 		placeLabel.setText(board.getPlace());
 		contentLabel.setText(board.getContent());
-		
 		
 	}
 
@@ -84,10 +90,19 @@ public class MeetingBoardDetailController implements Initializable{
 	}
 	
 	public void meetingModifyMenuItemClick() {
+		Session.getInstance().setTempId(board.getBoardId());
 		Viewer.setView("meetingBoardModifyForm");
 	}
 	
 	public void meetingDeleteMenuItemClick() {
-		System.out.println("삭제");
+		
+	    Optional<ButtonType> result = CommonService.msgShowAndWait(AlertType.CONFIRMATION, "게시글 삭제", "이 게시글를 삭제하시겠습니까?", "삭제한 게시글은 복구할 수 없습니다.");
+	    if (result.isPresent() && result.get() == ButtonType.OK){
+	    	System.out.println("삭제");
+			boardService = new BoardService();
+	    	boardService.deleteBoard(board.getBoardId());
+	    	
+	    }
+	    
 	}
 }

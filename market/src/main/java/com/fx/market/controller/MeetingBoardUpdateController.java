@@ -19,11 +19,11 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
-public class BoardController implements Initializable{
+public class MeetingBoardUpdateController implements Initializable{
 	
 	@FXML private Label mainCategory;
 	@FXML private TextField title;
-	@FXML private ComboBox<String> middleCategory;
+	@FXML private ComboBox<String> subCategory;
 	@FXML private TextArea content;
 	@FXML private TextField person;
 	@FXML private DatePicker meetingDate;
@@ -35,23 +35,51 @@ public class BoardController implements Initializable{
 	@FXML private RadioButton womanRadio;
 	@FXML private RadioButton manRadio;
 	@FXML private TextField age;
-	
-	private BoardService boardService;
 
+	private BoardService boardService;
+	private BoardDto board;
 	
+	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		System.out.println(Session.getInstance().getAccountId());
 		
-		boardService = new BoardService();
-		
-		middleCategory.setItems(FXCollections.observableArrayList("밥/카페", "산책", "러닝", "운동", "독서", "스터디", "취미", "반려동물", "육아", "기타"));
+		subCategory.setItems(FXCollections.observableArrayList("밥/카페", "산책", "러닝", "운동", "독서", "스터디", "취미", "반려동물", "육아", "기타"));
 		ampm.setItems(FXCollections.observableArrayList("오전","오후"));
 		hour.setItems(FXCollections.observableArrayList("1시", "2시", "3시", "4시", "5시", "6시", "7시", "8시", "9시", "10시", "11시", "12시"));
 		minute.setItems(FXCollections.observableArrayList("5분", "10분", "15분", "20분", "25분", "30분", "35분", "40분", "45분", "50분", "55분"));
 		
+		boardService = new BoardService();
+		board = boardService.boardDetail(Session.getInstance().getTempId());
+		
+		mainCategory.setText(board.getMainCategory());
+		title.setText(board.getTitle());
+		subCategory.setValue(board.getSubCategory());
+		content.setText(board.getContent());
+		person.setText(board.getPerson());
+		meetingDate.setValue(board.getMeetingDateToLocalDate());
+		ampm.setValue(board.getMeetingTimeAmpm());
+		hour.setValue(board.getMeetingTimeHour());
+		minute.setValue(board.getMeetingTimeMinute());
+		place.setText(board.getPlace());
+		
+		if(board.getGender() == "누구나")
+			freeRadio.setSelected(true);
+		else if(board.getGender() == "여자만")
+			womanRadio.setSelected(true);
+		else
+			manRadio.setSelected(true);
+		
+		age.setText(board.getAge());
+		
+		
+		
+	}
+
+	
+	public void cancelBtnClick() {
+		Viewer.setView("meetingBoardListForm");
 	}
 	
-	public void meetingBoardWriteBtnClick() {
+	public void updateBtnClick() {
 		
 		String gender = null;
 		
@@ -62,11 +90,12 @@ public class BoardController implements Initializable{
 		else if(womanRadio.isSelected())
 			gender = "여자만";
 		
-
-		boardService.meetingBoardWrite(new BoardDto(
+		System.out.println("Controller");
+		boardService.updateMeetingBoard(new BoardDto(
+				Session.getInstance().getTempId(),		//게시글 ID
 				Session.getInstance().getAccountId(), 	//계정 ID
 				mainCategory.getText(), 				//게시판 메인 카테고리
-				middleCategory.getValue(), 				//게시판 서브 카테고리
+				subCategory.getValue(), 				//게시판 서브 카테고리
 				title.getText(), 						//게시판 제목
 				content.getText(),						//게시판 내용
 				Session.getInstance().getAddress(),		//계정 주소
@@ -80,12 +109,7 @@ public class BoardController implements Initializable{
 				age.getText()							//모임 나이
 				));
 		
-		
 	}
 	
-	public void cancelBtnClick() {
-		Viewer.setView("meetingBoardListForm");
-	}
 	
-
 }
