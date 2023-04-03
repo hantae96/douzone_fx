@@ -9,6 +9,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
@@ -19,11 +20,15 @@
          <content>
             <VBox prefHeight="524.0" prefWidth="360.0">
                <children>
-                  <ImageView fx:id="photo" fitHeight="212.0" fitWidth="357.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../source/image/placeHolder.png" />
-                     </image>
-                  </ImageView>
+                  <StackPane prefHeight="150.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fx:id="photo" fitHeight="212.0" fitWidth="357.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../source/image/placeHolder.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </StackPane>
                   <BorderPane prefHeight="60.0" prefWidth="360.0" style="-fx-border-color: lightgrey; -fx-background-color: white;">
                      <left>
                         <Circle fx:id="profilePhoto" fill="LIGHTGRAY" radius="25.0" stroke="BLACK" strokeType="INSIDE" BorderPane.alignment="CENTER">

@@ -104,6 +104,30 @@ public class ItemDao {
 	        e.printStackTrace();
 	    }
 	}
+
+	public String getPhoto(String itemId) {
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String photoPath = null;
+	    		
+	    String sql = "select path from photos where photos_id = ?";
+	    try {
+	        ps = con.prepareStatement(sql);
+	        ps.setString(1, itemId);
+	        rs = ps.executeQuery();
+	        
+	        
+	        while (rs.next()) {
+	        	photoPath=rs.getString("path");
+	        }
+	        con.close();
+
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	    
+	    return photoPath;
+	}
 	
 		
 

@@ -59,8 +59,8 @@ public class ItemService {
 		dao.updateSaled(accountId,itemId);
 	}
 	
-//	public String getPhotoPath(String itemId) {
-//		ItemDao dao = new ItemDao();
-//		dao.getPhoto(itemId);
-//	}
+	public String getPhotoPath(String itemId) {
+		ItemDao dao = new ItemDao();
+		return dao.getPhoto(itemId);
+	}
 }

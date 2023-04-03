@@ -79,8 +79,9 @@ public class ItemController implements Initializable {
 		viewAndLike.setText("조회수 "
 				.concat(String.valueOf(item.getView()).concat(" · 추천수 ").concat(String.valueOf(item.getRecommend()))));
 		//사진
-		String imagePath = "file:" + System.getProperty("user.dir") + "/source/image/"+item.getItemId()+".jpg";
-		System.out.println(imagePath);
+		
+		String photoPath = itemService.getPhotoPath(item.getItemId());		
+		String imagePath = "file:" + System.getProperty("user.dir") +"/".concat(photoPath);
 		Image image = new Image(imagePath);
 		photo.setImage(image);
 	}
