@@ -15,7 +15,7 @@ public class UpdateAccountService {
 
 	private LoginDao logindao = new LoginDao();
 	private UpdateAccountDao updateaccountdao = new UpdateAccountDao();
-	private CommonService cs = new CommonService();
+
 	
 
 	//정보 수정 비밀번호 확인 
@@ -23,11 +23,11 @@ public class UpdateAccountService {
 		LoginDto dbUser = logindao.idCheck(id, pw); 
 		
 		if(pw.isEmpty()) {
-			cs.msg(AlertType.WARNING, "알림", "비밀번호를 입력하세요.");
+			CommonService.msg(AlertType.WARNING, "알림", "비밀번호를 입력하세요.");
 			
 			return 0;
 			}else if(dbUser == null) {
-				cs.msg(AlertType.ERROR, "알림", "비밀번호를 확인하세요.");
+				CommonService.msg(AlertType.ERROR, "알림", "비밀번호를 확인하세요.");
 				
 			}else{ 
 				return 1;
@@ -49,23 +49,23 @@ public class UpdateAccountService {
 		user.setEmail(email);
 		
 		if(pw.isBlank() || name.isBlank() || address.isBlank() || email.isBlank()) { 
-			cs.msg(AlertType.ERROR, "알림", "빈 칸 모두 입력해주세요");
+			CommonService.msg(AlertType.ERROR, "알림", "빈 칸 모두 입력해주세요");
 			return 0;
 		}else if(checkAddress(address) == false) {
-			cs.msg(AlertType.WARNING, "알림", "주소의 형식이 올바르지 않습니다.\n(ex ~시 ~구 형식으로 입력해주세요)");
+			CommonService.msg(AlertType.WARNING, "알림", "주소의 형식이 올바르지 않습니다.\n(ex ~시 ~구 형식으로 입력해주세요)");
 			return 0;
 		}else if(checkEmail(email) == false) {
-			cs.msg(AlertType.WARNING, "알림", "이메일 형식이 올바르지 않습니다.");
+			CommonService.msg(AlertType.WARNING, "알림", "이메일 형식이 올바르지 않습니다.\n(ex abc@def.com 형식으로 입력해주세요)");
 			return 0;
 		}
 		
 		int change = updateaccountdao.buttonUpdateMethod(user);
 		
 		if(change != 0 ) {		
-			cs.msg(AlertType.INFORMATION, "알림", "변경 완료");
+			CommonService.msg(AlertType.INFORMATION, "알림", "변경 완료");
 			
 		}else {
-			cs.msg(AlertType.ERROR, "알림", "변경 실패");	
+			CommonService.msg(AlertType.ERROR, "알림", "변경 실패");	
 		}
 		return change;
 	}
@@ -74,7 +74,7 @@ public class UpdateAccountService {
     public boolean checkAddress(String a) {
 		String[] b = a.split(" ");
 		if(b.length==2) {
-			if(b[0].contains("시")&&b[1].contains("구")) {
+			if((b[0].contains("시")&&b[1].contains("구"))||(b[0].contains("도")&&b[1].contains("시"))) {
 				return true;
 			}
 		}

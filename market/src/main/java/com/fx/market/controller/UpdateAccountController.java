@@ -60,10 +60,11 @@ public class UpdateAccountController implements Initializable{
 		address.setText(updatedto.getAddress());
 		email.setText(updatedto.getEmail());
 		
-		//저장된 이미지 파일 불러오기(이 부분 photodto 써도 되는지 물어보기)
+		//저장된 이미지 파일 불러오기
 		String imagePath = "file:" + System.getProperty("user.dir") + "/"+photodto;
 		Image image = new Image(imagePath);
 		photo.setImage(image);
+		
 		
 		beforePw = updatedto.getPw();
 		beforeName = updatedto.getName();
@@ -74,7 +75,7 @@ public class UpdateAccountController implements Initializable{
 		//pw.setText(가져온 것들 담아주기);
 	}
 	
-	//사진 선택 버튼 -> 여기서 다음을 모르겠음 실질적인 파일저장??
+	//사진 선택 버튼 
 	@FXML  
 	private void updatePhoto() {
 		// 파일 선택
@@ -83,6 +84,7 @@ public class UpdateAccountController implements Initializable{
     	File selectedFile = fileChooser.showOpenDialog(stage);				//stage에 fileChooser로 고른걸 selectedFile에 저장
     	String selectedFilePath = selectedFile.getAbsolutePath();			//selectedFile의 절대경로를 selectedFilePath에 저장
     	filePathSession = selectedFilePath;									//controller에 경로 임시 저장
+    	System.out.println(filePathSession);
     	fileNameSession = selectedFile.getName();							//controller에 이름 임시 저장
     	String imagePath = "file:"+selectedFilePath;						//image객체를 위한 경로 편집
     	Image image = new Image(imagePath);									//이미지 객체 생성
@@ -99,11 +101,11 @@ public class UpdateAccountController implements Initializable{
 	private void updateAccount() throws Exception {
 		Session session = Session.getInstance(); 
 		int change = updateservice.buttonUpdateMethod(session.getAccountId(),pw.getText(),name.getText(),address.getText(),email.getText());
-		
-		
+		if(change == 1) {
+			if(filePathSession != null) {
 		//파일 실질적인 저장
     	InputStream inputStream = new FileInputStream(filePathSession);								//경로를 inputStream에 저장
-    	String outputName = session.getAccountId()+fileNameSession;										//중복 안되도록 이름 수정
+    	String outputName = session.getAccountId()+fileNameSession;									//중복 안되도록 이름 수정
     	String outputPass = "src/main/java/com/fx/market/source/image/"+outputName;					//파일 저장 경로
     	File outputFile = new File(outputPass);														//output할 파일의 경로를 지정해 File객체 생성
     	OutputStream outputStream = new FileOutputStream(outputFile);								//outputFile을 outputStream에 저장
@@ -117,18 +119,16 @@ public class UpdateAccountController implements Initializable{
     	inputStream.close();
     	outputStream.close();
     	
-    	//Photos Insert
+    	//Photos update
     	updateservice.photosUpdate(new PhotoDto(
     			session.getAccountId(),		//photos_id = accounts_id
     			outputName,					//사진 파일 이름
     			outputPass,					//사진 파일 경로
     			null						//입력 날짜
     			));
-    	
-
-		if(change == 1) {
-		Viewer viewer = new Viewer();
-		viewer.setViewCenter("myDouzone");//이동해서 -> 확인
+    	}
+		
+		Viewer.setViewCenter("myDouzone");
 		}
 	}
 
