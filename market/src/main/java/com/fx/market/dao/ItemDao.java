@@ -24,7 +24,6 @@ public class ItemDao {
 			con = DriverManager.getConnection(url, user, password);
 		} catch (Exception e) {
 			e.printStackTrace();
-
 		}
 	}
 
@@ -87,6 +86,7 @@ public class ItemDao {
 	    return user;
 	}
 
+	
 	public void updateSaled(String accountId, String itemId) {
 		PreparedStatement ps = null;
 
@@ -104,6 +104,7 @@ public class ItemDao {
 	        e.printStackTrace();
 	    }
 	}
+	
 		
 
 

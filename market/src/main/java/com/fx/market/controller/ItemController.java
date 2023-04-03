@@ -1,5 +1,6 @@
 package com.fx.market.controller;
 
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -16,8 +17,11 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.Circle;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 public class ItemController implements Initializable {
 
@@ -54,10 +58,9 @@ public class ItemController implements Initializable {
 	ItemService itemService;
 	ItemUserDto user;
 	Session session;
-
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// itemDao부르고, 해당 데이터를 item Dto에 넣는다.
 		this.session = Session.getInstance();
 		this.item = (ItemDto) session.getModel();
 		this.itemService = new ItemService();
@@ -75,6 +78,11 @@ public class ItemController implements Initializable {
 		price.setText(Util.priceAddComma(item.getItemPrice()).concat(" 원"));
 		viewAndLike.setText("조회수 "
 				.concat(String.valueOf(item.getView()).concat(" · 추천수 ").concat(String.valueOf(item.getRecommend()))));
+		//사진
+		String imagePath = "file:" + System.getProperty("user.dir") + "/source/image/"+item.getItemId()+".jpg";
+		System.out.println(imagePath);
+		Image image = new Image(imagePath);
+		photo.setImage(image);
 	}
 
 	private void setUserData() {
@@ -117,7 +125,8 @@ public class ItemController implements Initializable {
         alert.setContentText("구매가 완료 되었습니다.");
         alert.showAndWait();
         Viewer viewer = new Viewer();
-        viewer.setView("home");
-		
+        viewer.setView("home");	
 	}
+	
+	
 }
