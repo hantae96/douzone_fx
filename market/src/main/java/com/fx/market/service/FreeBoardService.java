@@ -15,12 +15,13 @@ public class FreeBoardService {
 
 
 	
-	public void boardClick(String main_category,String middle_category,String title, String content){
+	public void boardClick(String main_category,String sub,String title, String content){
+		System.out.println("service");
 		townDao = new FreeBoardDao();
 		townDto = new FreeBoardDto();
 		Alert alert = new Alert(AlertType.INFORMATION);
 		
-		if(middle_category == null) {
+		if(sub == null) {
 			alert.setHeaderText("주제를 입력해주세요.");
 			alert.show();
 		}else if(title.isBlank()) {
@@ -32,27 +33,29 @@ public class FreeBoardService {
 		}
 		else {
 			 Session session = Session.getInstance();
+			 session.getInstance().getaddress();
 			 session.getAccountId();
 			
+			townDto.setAddress(session.getAddress());
 			townDto.setMain_category(main_category);
 			townDto.setAcount_Id(session.getAccountId());
-			townDto.setMiddle_category(middle_category);
+			townDto.setSub(sub);
 			townDto.setTitle(title);
 			townDto.setContent(content);
-//			townDao.insertFreeBoard(townDto);
+			townDao.insertFreeBoard(townDto);
 			alert.setHeaderText("게시물이 등록되었습니다");
 			alert.show();
 		}
 
 	}
 
-	public void updateboardClick(String middle_category,String title,String content, String board_id) {
+	public void updateboardClick(String sub,String title,String content, String board_id) {
 		townDao = new FreeBoardDao();
 		townDto = new FreeBoardDto();
 		
 		Alert alert = new Alert(AlertType.INFORMATION);
 		
-		if(middle_category == null) {
+		if(sub == null) {
 			alert.setHeaderText("주제를 입력해주세요.");
 			alert.show();
 		}else if(title.isBlank()) {
@@ -63,7 +66,7 @@ public class FreeBoardService {
 			alert.show();
 		}
 		else {
-			townDto.setMiddle_category(middle_category);
+			townDto.setSub(sub);
 			townDto.setTitle(title);
 			townDto.setContent(content);
 			townDto.setBoard_Id(board_id);

@@ -17,7 +17,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 public class UpdateFreeBoardController implements Initializable{
-	@FXML ComboBox<String> middle_category;
+	@FXML ComboBox<String> sub;
 	@FXML TextField main_category;
 	@FXML TextField title;
 	@FXML TextArea content;
@@ -30,12 +30,12 @@ public class UpdateFreeBoardController implements Initializable{
     private ObservableList<String> list = FXCollections.observableArrayList("동네질문","동네사건사고","동네맛집","동네소식","생활정보","취미생활");
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		middle_category.setItems(list);
+		sub.setItems(list);
 		freeboardService = new FreeBoardService(); 
 		
 		FreeBoardDto freeboardDto = freeboardService.selectBoard("b43");
 		boardId = "b43";
-		middle_category.setValue(freeboardDto.getMiddle_category());
+		sub.setValue(freeboardDto.getSub());
 		title.setText(freeboardDto.getTitle());
 		content.setText(freeboardDto.getContent());
 	}
@@ -45,7 +45,7 @@ public class UpdateFreeBoardController implements Initializable{
 
 		
 		
-		freeboardService.updateboardClick(middle_category.getValue(), content.getText(), title.getText(), boardId);
+		freeboardService.updateboardClick(sub.getValue(), content.getText(), title.getText(), boardId);
 		
 	}
 	public void closebtn() {

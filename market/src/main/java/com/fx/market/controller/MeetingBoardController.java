@@ -202,7 +202,7 @@ public class MeetingBoardController implements Initializable{
 	}
 	
 	public void townWriteBtnClick() {
-		
+		Viewer.setView("main_Bulletin");
 	}
 	
 	public void meetingWriteMenuClick() {

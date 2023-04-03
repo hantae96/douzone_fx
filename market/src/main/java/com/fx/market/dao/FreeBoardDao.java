@@ -27,18 +27,20 @@ public class FreeBoardDao{
 		}
 	}
 	public int insertFreeBoard(FreeBoardDto townDto) {
+		System.out.println("dao");
 //		TownDto town = new TownDto();
 		PreparedStatement ps = null;
 		int result = 0;
-		String sql = "INSERT INTO boards(boards_id, accounts_id, main_category, middle_category, title, content) values (concat('b', boards_seq.nextval),? , ?, ?, ?, ?)";
+		String sql = "INSERT INTO boards(boards_id, accounts_id, main_category, sub_category, title, content, address) values (concat('b', boards_seq.nextval),? , ?, ?, ?, ?, ?)";
 	
 		try {
 			ps = con.prepareStatement(sql);
 			ps.setString(1, townDto.getAcount_Id());
 			ps.setString(2, townDto.getMain_category());
-			ps.setString(3,townDto.getMiddle_category());
+			ps.setString(3,townDto.getSub());
 			ps.setString(4, townDto.getTitle());
 			ps.setString(5, townDto.getContent());
+			ps.setString(6, townDto.getAddress());
 			
 			result = ps.executeUpdate();
 		}catch(Exception e) {
@@ -58,7 +60,7 @@ public class FreeBoardDao{
 			if(rs.next()) {
 				FreeBoardDto freeboard = new FreeBoardDto();
 				freeboard.setBoard_Id(rs.getString("boards_id"));
-				freeboard.setMiddle_category(rs.getString("middle_category"));
+				freeboard.setSub(rs.getString("sub"));
 				freeboard.setTitle(rs.getString("title"));
 				freeboard.setContent(rs.getString("content"));
 				ps.executeUpdate();
@@ -73,13 +75,13 @@ public class FreeBoardDao{
 	public int updateFreeBoard(FreeBoardDto townDto) {
 		PreparedStatement ps = null;
 		int result = 0;
-		String sql = "UPDATE boards SET middle_category=?, title=?, content=? WHERE boards_id=?";
+		String sql = "UPDATE boards SET sub=?, title=?, content=? WHERE boards_id=?";
 		try {
 			
 			ps = con.prepareStatement(sql);
 			
 			ps.setString(4, townDto.getBoard_Id());
-			ps.setString(1, townDto.getMiddle_category());
+			ps.setString(1, townDto.getSub());
 			ps.setString(2, townDto.getTitle());
 			ps.setString(3, townDto.getContent());
 			
