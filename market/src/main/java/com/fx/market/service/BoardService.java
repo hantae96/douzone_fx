@@ -58,12 +58,14 @@ public class BoardService {
 	}
 
 
-
-	public void updateBoard(String boardId) {
-		int result = boardDao.updateBoard(boardId, Session.getInstance().getAccountId());
+	public void updateMeetingBoard(BoardDto boardDto) {
+		
+		System.out.println("Service");
+		int result = boardDao.updateMeetingBoard(boardDto);
 		if(result != 0) {
-			CommonService.msg(AlertType.INFORMATION, "게시글 수정", "게시글이 수정되었습니다.","");
+			CommonService.msg(AlertType.INFORMATION, "게시글 수정", "게시글이 수정되었습니다.", "");
 			Viewer.setView("meetingBoardListForm");
+			
 		}
 	}
 
