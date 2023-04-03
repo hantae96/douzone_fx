@@ -1,4 +1,3 @@
-
 -- 어카운트 테이블 더미--
 insert into accounts(accounts_id,pw,name,address) 
 values ('a100','1234','애플 사과농장 주인','서울시 종로구');
@@ -25,9 +24,10 @@ values ('g103','a104','(새상품급) 입문용 우쿠렐레 코나 판매','안
 insert into goods(goods_id,accounts_id,title,content,address,price,saled_id,recommends) 
 values ('g104','a105','아이패드 에어5','새상품입니다.','서울시 강북구',7800000,'a105',1);
 
-
 -- 좋아요 테이블 더미-
 insert into favorites (favorites_id,accounts_id,goods_id) values (concat('f',favorites_seq.nextval),'a100','g100');
+insert into favorites (favorites_id,accounts_id,goods_id) values (concat('f',favorites_seq.nextval),'a101','g101');
+
 
 commit;
 
