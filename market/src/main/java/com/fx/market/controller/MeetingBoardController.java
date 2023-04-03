@@ -51,10 +51,7 @@ public class MeetingBoardController implements Initializable{
 	
 	private boolean writeMenuVisible = false;
 	
-	public void anchorPaneClick() {
-		 
-	}
-	
+	public void anchorPaneClick() {	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -221,7 +218,7 @@ public class MeetingBoardController implements Initializable{
 	}
 	
 	public void myPageNavClick() {
-		Viewer.setView("myDouzone");
+		Viewer.setViewCenter("myDouzone");
 	}
 	
 }
