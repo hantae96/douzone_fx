@@ -62,7 +62,7 @@ public class Viewer {
 	}
 
 	//스크롤판 전환 스크롤 안숨김
-	public void setViewCenterScroll(String viewName) {
+	public static void setViewCenterScroll(String viewName) {
 		FXMLLoader loader = new FXMLLoader(Viewer.class.getResource("/com/fx/market/views/"+viewName+".fxml"));
 		Parent menuForm = null;
 		
@@ -72,7 +72,7 @@ public class Viewer {
 			e.printStackTrace();
 		}
 		
-		this.primaryStage = Session.getInstance().getStage();
+		primaryStage = Session.getInstance().getStage();
 		
 		
 		
