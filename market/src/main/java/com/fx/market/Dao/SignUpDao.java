@@ -72,4 +72,20 @@ public class SignUpDao {
 		}
 	}
 	
+	//회원가입 Photos Name 유무
+	public int photosCheck(String name) {
+		String sql = "select count(name) as count from photos where name=?";
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString(1, name);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				return rs.getInt("count");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+	
 }

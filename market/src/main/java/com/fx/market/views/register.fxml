@@ -41,7 +41,7 @@
                <children>
                   <Pane prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <ImageView fx:id="photo" fitHeight="200.0" fitWidth="350.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="photo" fitHeight="200.0" fitWidth="350.0" onMouseClicked="#selectPhoto" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../source/image/placeHolder.png" />
                            </image>
