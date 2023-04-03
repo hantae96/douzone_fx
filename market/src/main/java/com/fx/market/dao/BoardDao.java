@@ -94,12 +94,16 @@ public class BoardDao {
 				board.setSubCategory(rs.getString("sub_category"));
 				board.setTitle(rs.getString("title"));
 				board.setContent(rs.getString("content"));
+				board.setAddress(rs.getString("address"));
+				board.setRecommends(rs.getInt("recommends"));
+				board.setViews(rs.getInt("views"));
 				board.setGender(rs.getString("gender"));
 				board.setAge(rs.getString("age"));
 				board.setMeetingDate(rs.getDate("meeting_date"));
 				board.setMeetingTimeAmpm(rs.getString("meeting_time_ampm"));
 				board.setMeetingTimeHour(rs.getString("meeting_time_hour"));
 				board.setMeetingTimeMinute(rs.getString("meeting_time_minute"));
+				board.setCreatedAt(rs.getDate("created_at"));
 				System.out.println(board.getBoardId());
 				boards.add(board);
 			}

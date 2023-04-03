@@ -223,7 +223,7 @@ public class BoardDto {
 	}
 	
 	public String getMeetingTime() {
-		return meetingTimeAmpm+" "+meetingTimeHour+":"+meetingTimeMinute;
+		return meetingTimeAmpm+" "+meetingTimeHour+" "+meetingTimeMinute;
 	}
 	
 	public String getMeetingDateFormat() {
@@ -235,7 +235,6 @@ public class BoardDto {
         
         return LocalDate.parse(getMeetingDateFormat(), DateTimeFormatter.ISO_DATE);
 	}
-	
 	
 
 }
