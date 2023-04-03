@@ -108,14 +108,12 @@ public class UpdateAccountController implements Initializable{
 		//파일 실질적인 저장
     	InputStream inputStream = new FileInputStream(filePathSession);								//경로를 inputStream에 저장
     	
-//    	//경로 검색해와서 파일삭제
-//    	String path = pageservice.getMyPhoto(Session.getInstance().getAccountId());
-//    	System.out.println(path);
-//    	String[] tmp = path.split("/", 4);
-//    	String filePath = tmp[3];
-//    	File file = new File(filePath);
-//    	System.out.println(filePath);
-//    	file.delete();
+    	//경로 검색해와서 파일삭제
+    	String path = pageservice.getMyPhoto(Session.getInstance().getAccountId());
+    	//String[] tmp = path.split("/", 4);
+    	//String filePath = tmp[3];
+    	File file = new File(path);
+    	file.delete();
     	
     	String outputName = session.getAccountId()+fileNameSession;									//중복 안되도록 이름 수정
     	String outputPass = "src/main/java/com/fx/market/source/image/"+outputName;					//파일 저장 경로

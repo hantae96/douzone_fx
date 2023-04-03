@@ -110,11 +110,11 @@ public class MyPageController implements Initializable {
 			ButtonType result = alert.showAndWait().orElse(ButtonType.CANCEL);
 				if (result == ButtonType.OK) {
 					//경로 검색해와서 파일삭제
-					String path = service.getMyPhoto(Session.getInstance().getAccountId());
-					String[] tmp = path.split("/", 4);
-					String filePath = tmp[3];
-					File file = new File(filePath);
-					file.delete();
+//					String path = service.getMyPhoto(Session.getInstance().getAccountId());
+//					String[] tmp = path.split("/", 4);
+//					String filePath = tmp[3];
+//					File file = new File(filePath);
+//					file.delete();
 					//Accounts, Photos Delete
 					service.deleteAccount(Session.getInstance().getAccountId());
 					
