@@ -14,6 +14,7 @@ import com.fx.market.common.Session;
 import com.fx.market.common.Viewer;
 import com.fx.market.dto.PhotoDto;
 import com.fx.market.dto.UpdateDto;
+import com.fx.market.service.MyPageService;
 import com.fx.market.service.UpdateAccountService;
 
 import javafx.event.Event;
@@ -37,6 +38,7 @@ public class UpdateAccountController implements Initializable{
 	@FXML private ImageView photo;
 	
 	private UpdateAccountService updateservice;
+	private MyPageService pageservice;
 	private String beforePw;
 	private String beforeName;
 	private String beforeAddress;
@@ -46,11 +48,12 @@ public class UpdateAccountController implements Initializable{
 	private String filePathSession;
     private String fileNameSession;
     
-	private CommonService cs = new CommonService();
+
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		updateservice = new UpdateAccountService();
+		pageservice = new MyPageService();
 		
 		UpdateDto updatedto = updateservice.accountInfo(Session.getInstance().getAccountId());
 		String photodto = updateservice.photoInfo(Session.getInstance().getAccountId());
@@ -84,7 +87,6 @@ public class UpdateAccountController implements Initializable{
     	File selectedFile = fileChooser.showOpenDialog(stage);				//stage에 fileChooser로 고른걸 selectedFile에 저장
     	String selectedFilePath = selectedFile.getAbsolutePath();			//selectedFile의 절대경로를 selectedFilePath에 저장
     	filePathSession = selectedFilePath;									//controller에 경로 임시 저장
-    	System.out.println(filePathSession);
     	fileNameSession = selectedFile.getName();							//controller에 이름 임시 저장
     	String imagePath = "file:"+selectedFilePath;						//image객체를 위한 경로 편집
     	Image image = new Image(imagePath);									//이미지 객체 생성
@@ -105,6 +107,16 @@ public class UpdateAccountController implements Initializable{
 			if(filePathSession != null) {
 		//파일 실질적인 저장
     	InputStream inputStream = new FileInputStream(filePathSession);								//경로를 inputStream에 저장
+    	
+//    	//경로 검색해와서 파일삭제
+//    	String path = pageservice.getMyPhoto(Session.getInstance().getAccountId());
+//    	System.out.println(path);
+//    	String[] tmp = path.split("/", 4);
+//    	String filePath = tmp[3];
+//    	File file = new File(filePath);
+//    	System.out.println(filePath);
+//    	file.delete();
+    	
     	String outputName = session.getAccountId()+fileNameSession;									//중복 안되도록 이름 수정
     	String outputPass = "src/main/java/com/fx/market/source/image/"+outputName;					//파일 저장 경로
     	File outputFile = new File(outputPass);														//output할 파일의 경로를 지정해 File객체 생성
@@ -115,6 +127,7 @@ public class UpdateAccountController implements Initializable{
     	while ((length = inputStream.read(buffer)) > 0) {
     	    outputStream.write(buffer, 0, length);
     	}
+ 
 
     	inputStream.close();
     	outputStream.close();

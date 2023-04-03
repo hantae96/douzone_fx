@@ -23,11 +23,11 @@ public class UpdateAccountService {
 		LoginDto dbUser = logindao.idCheck(id, pw); 
 		
 		if(pw.isEmpty()) {
-			CommonService.msg(AlertType.WARNING, "알림", "비밀번호를 입력하세요.");
+			CommonService.msg(AlertType.WARNING, "알림","",  "비밀번호를 입력하세요.");
 			
 			return 0;
 			}else if(dbUser == null) {
-				CommonService.msg(AlertType.ERROR, "알림", "비밀번호를 확인하세요.");
+				CommonService.msg(AlertType.ERROR, "알림","",  "비밀번호를 확인하세요.");
 				
 			}else{ 
 				return 1;
@@ -49,23 +49,23 @@ public class UpdateAccountService {
 		user.setEmail(email);
 		
 		if(pw.isBlank() || name.isBlank() || address.isBlank() || email.isBlank()) { 
-			CommonService.msg(AlertType.ERROR, "알림", "빈 칸 모두 입력해주세요");
+			CommonService.msg(AlertType.ERROR, "알림","",  "빈 칸 모두 입력해주세요");
 			return 0;
 		}else if(checkAddress(address) == false) {
-			CommonService.msg(AlertType.WARNING, "알림", "주소의 형식이 올바르지 않습니다.\n(ex ~시 ~구 형식으로 입력해주세요)");
+			CommonService.msg(AlertType.WARNING, "알림","",  "주소의 형식이 올바르지 않습니다.\n(ex ~시 ~구 형식으로 입력해주세요)");
 			return 0;
 		}else if(checkEmail(email) == false) {
-			CommonService.msg(AlertType.WARNING, "알림", "이메일 형식이 올바르지 않습니다.\n(ex abc@def.com 형식으로 입력해주세요)");
+			CommonService.msg(AlertType.WARNING, "알림","",  "이메일 형식이 올바르지 않습니다.\n(ex abc@def.com 형식으로 입력해주세요)");
 			return 0;
 		}
 		
 		int change = updateaccountdao.buttonUpdateMethod(user);
 		
 		if(change != 0 ) {		
-			CommonService.msg(AlertType.INFORMATION, "알림", "변경 완료");
+			CommonService.msg(AlertType.INFORMATION, "알림","",  "변경 완료");
 			
 		}else {
-			CommonService.msg(AlertType.ERROR, "알림", "변경 실패");	
+			CommonService.msg(AlertType.ERROR, "알림","",  "변경 실패");	
 		}
 		return change;
 	}

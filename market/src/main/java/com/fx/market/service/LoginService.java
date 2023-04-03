@@ -26,13 +26,13 @@ public class LoginService {
 		
 		if(deleted_at == null) {
 			if(id.isEmpty() || pw.isEmpty()) {
-				CommonService.msg(AlertType.WARNING, "알림", "아이디 또는 비밀번호를 입력하세요.");
+				CommonService.msg(AlertType.WARNING, "알림","", "아이디 또는 비밀번호를 입력하세요.");
 				
 				return 0;
 			}
 			else if(dbUser == null ) {
 		
-				CommonService.msg(AlertType.ERROR, "알림", "아이디 또는 비밀번호를 확인하세요");
+				CommonService.msg(AlertType.ERROR, "알림","",  "아이디 또는 비밀번호를 확인하세요");
 		
 			return 0;
 			}else{  //로그인 성공 시
@@ -45,7 +45,7 @@ public class LoginService {
 			return 1;
 			}	
 		}else{
-			CommonService.msg(AlertType.ERROR, "알림", "탈퇴한 회원입니다.");
+			CommonService.msg(AlertType.ERROR, "알림","",  "탈퇴한 회원입니다.");
 			return 0;
 		}
 	}
