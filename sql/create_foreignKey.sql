@@ -5,7 +5,7 @@ ADD CONSTRAINT boards_id foreign KEY(boards_id) references meetings (boards_id);
 --제약 조건을 걸때, 주키가 있는 테이블이 삭제되면 외래키가 있는 테이블도 삭제되게 하기 위해 외래키 제약을 건다
 
 ALTER TABLE comments
-ADD CONSTRAINT boards_id foreign KEY(boards_id) references boards (boards_id);
+ADD CONSTRAINT boards_id2 foreign KEY(boards_id) references boards (boards_id);
 
 ALTER TABLE comments
 ADD CONSTRAINT accounts_id2 foreign KEY(accounts_id) references accounts(accounts_id); 
