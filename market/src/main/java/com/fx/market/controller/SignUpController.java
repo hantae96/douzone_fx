@@ -121,30 +121,41 @@ public class SignUpController implements Initializable{
     			emailInput.getText()		//이메일
     			));
     	
-    	//파일 실질적인 저장
-    	InputStream inputStream = new FileInputStream(filePathSession);								//경로를 inputStream에 저장
-    	String outputName = idInput.getText()+fileNameSession;										//중복 안되도록 이름 수정
-    	String outputPass = "src/main/java/com/fx/market/source/image/"+outputName;					//파일 저장 경로
-    	File outputFile = new File(outputPass);														//output할 파일의 경로를 지정해 File객체 생성
-    	OutputStream outputStream = new FileOutputStream(outputFile);								//outputFile을 outputStream에 저장
-    	
-    	byte[] buffer = new byte[1024];
-    	int length;
-    	while ((length = inputStream.read(buffer)) > 0) {
-    	    outputStream.write(buffer, 0, length);
+    	int photosCheck = service.photosCheck(fileNameSession); 
+    	if(photosCheck<1) {
+	    	//파일 실질적인 저장
+	    	InputStream inputStream = new FileInputStream(filePathSession);								//경로를 inputStream에 저장
+	    	String outputName = idInput.getText()+fileNameSession;										//중복 안되도록 이름 수정
+	    	String outputPass = "src/main/java/com/fx/market/source/image/"+outputName;					//파일 저장 경로
+	    	File outputFile = new File(outputPass);														//output할 파일의 경로를 지정해 File객체 생성
+	    	OutputStream outputStream = new FileOutputStream(outputFile);								//outputFile을 outputStream에 저장
+	    	
+	    	byte[] buffer = new byte[1024];
+	    	int length;
+	    	while ((length = inputStream.read(buffer)) > 0) {
+	    	    outputStream.write(buffer, 0, length);
+	    	}
+	
+	    	inputStream.close();
+	    	outputStream.close();
+	    	
+	    	//Photos Insert
+	    	service.photosInsert(new PhotoDto(
+	    			idInput.getText(),			//photos_id = accounts_id
+	    			outputName,					//사진 파일 이름
+	    			outputPass,					//사진 파일 경로
+	    			null						//입력 날짜
+	    			));
+    	}else {
+    		//Photos Insert
+    		service.photosInsert(new PhotoDto(
+    				idInput.getText(),			//photos_id = accounts_id
+    				fileNameSession,					//사진 파일 이름
+    				"src/main/java/com/fx/market/source/image/"+fileNameSession,					//사진 파일 경로
+    				null						//입력 날짜
+    				));
+    		
     	}
-
-    	inputStream.close();
-    	outputStream.close();
-    	
-    	//Photos Insert
-    	service.photosInsert(new PhotoDto(
-    			idInput.getText(),			//photos_id = accounts_id
-    			outputName,					//사진 파일 이름
-    			outputPass,					//사진 파일 경로
-    			null						//입력 날짜
-    			));
-    	
     	Viewer.setView("login");
     }
     
