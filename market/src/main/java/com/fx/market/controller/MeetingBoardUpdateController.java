@@ -70,34 +70,7 @@ public class MeetingBoardUpdateController implements Initializable{
 		
 		age.setText(board.getAge());
 		
-String gender = null;
 		
-		if(freeRadio.isSelected())
-			gender = "누구나";
-		else if(manRadio.isSelected())
-			gender = "남자만";
-		else if(womanRadio.isSelected())
-			gender = "여자만";
-		
-
-//		boardService.meetingBoardWrite(new BoardDto(
-//				Session.getInstance().getAccountId(), 	//계정 ID
-//				mainCategory.getText(), 				//게시판 메인 카테고리
-//				subCategory.getValue(), 				//게시판 서브 카테고리
-//				title.getText(), 						//게시판 제목
-//				content.getText(),						//게시판 내용
-//				Session.getInstance().getAddress(),		//계정 주소
-//				person.getText(), 						//모임 인원수
-//				meetingDate.getValue(),					//모임 일정
-//				ampm.getValue(),						//모임 시간 AM/PM
-//				hour.getValue(),						//모임 시간 시
-//				minute.getValue(),						//모임 시간 분
-//				place.getText(),						//모임 장소
-//				gender,									//모임 성별
-//				age.getText()							//모임 나이
-//				));
-		
-//		boardService.updateBoard(board.getBoardId());
 		
 	}
 
@@ -107,6 +80,34 @@ String gender = null;
 	}
 	
 	public void updateBtnClick() {
+		
+		String gender = null;
+		
+		if(freeRadio.isSelected())
+			gender = "누구나";
+		else if(manRadio.isSelected())
+			gender = "남자만";
+		else if(womanRadio.isSelected())
+			gender = "여자만";
+		
+		System.out.println("Controller");
+		boardService.updateMeetingBoard(new BoardDto(
+				Session.getInstance().getTempId(),		//게시글 ID
+				Session.getInstance().getAccountId(), 	//계정 ID
+				mainCategory.getText(), 				//게시판 메인 카테고리
+				subCategory.getValue(), 				//게시판 서브 카테고리
+				title.getText(), 						//게시판 제목
+				content.getText(),						//게시판 내용
+				Session.getInstance().getAddress(),		//계정 주소
+				person.getText(), 						//모임 인원수
+				meetingDate.getValue(),					//모임 일정
+				ampm.getValue(),						//모임 시간 AM/PM
+				hour.getValue(),						//모임 시간 시
+				minute.getValue(),						//모임 시간 분
+				place.getText(),						//모임 장소
+				gender,									//모임 성별
+				age.getText()							//모임 나이
+				));
 		
 	}
 	

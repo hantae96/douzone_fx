@@ -179,28 +179,51 @@ public class BoardDao {
 		return result;
 	}
 
-	public int updateBoard(String boardId, String accountId) {
 
-		String sql = "UPDATE ("
-				+ "  SELECT b.*, m.*"
-				+ "  FROM boards b, meetings m"
-				+ "  WHERE b.boards_id = m.boards_id"
-				+ "  AND b.boards_id = ? and b.accounts_id = ?"
-				+ ") bm"
-				+ "SET bm.title = ?, bm.content = ?, bm.sub_category = ?, bm.person = ?, bm.meeting_date = ?, "
-				+ "bm.meeting_time_ampm = ?, bm.meeting_time_hour = ?, bm.meeting_time_minute = ?, bm.place = ? "
-				+ "bm.gender = ? bm.age = ?";
+	public int updateMeetingBoard(BoardDto boardDto) {
+		
+		System.out.println(boardDto.getBoardId() +"/" +boardDto.getAccountId());
+		String updateBoardSql = "update boards "
+				+ "set sub_category = ?, title = ?, content = ?, address = ? "
+				+ "where boards_id = ? and accounts_id = ?";
 
-	    PreparedStatement ps = null;
+	    String updateMeetingSql = "update meetings "
+	    		+ "set person = ?, meeting_date = ?, meeting_time_ampm = ?, meeting_time_hour = ?, "
+	    		+ "meeting_time_minute = ?, place = ?, gender = ?, age = ?"
+	    		+ "where boards_id = ?";
+	    
+	    PreparedStatement boardPs = null;
+	    PreparedStatement meetingPs = null;
 	    int result = 0;
 		
 		try {
-			ps = con.prepareStatement(sql);
-			ps.setString(1, boardId);
-			ps.setString(2, accountId);
+//			con.setAutoCommit(false);
 			
-			result = ps.executeUpdate();
+			boardPs = con.prepareStatement(updateBoardSql);
+			boardPs.setString(1, boardDto.getSubCategory());
+			boardPs.setString(2, boardDto.getTitle());
+			boardPs.setString(3, boardDto.getContent());
+			boardPs.setString(4, boardDto.getAddress());
+			boardPs.setString(5, boardDto.getBoardId());
+			boardPs.setString(6, boardDto.getAccountId());
+	
+			result = boardPs.executeUpdate();
+			System.out.println(result);
 			
+	        meetingPs = con.prepareStatement(updateMeetingSql);
+	        meetingPs.setString(1, boardDto.getPerson());
+	        meetingPs.setDate(2, boardDto.getMeetingDate());
+	        meetingPs.setString(3, boardDto.getMeetingTimeAmpm());
+	        meetingPs.setString(4, boardDto.getMeetingTimeHour());
+	        meetingPs.setString(5, boardDto.getMeetingTimeMinute());
+	        meetingPs.setString(6, boardDto.getPlace());
+	        meetingPs.setString(7, boardDto.getGender());
+	        meetingPs.setString(8, boardDto.getAge());
+	        meetingPs.setString(9, boardDto.getBoardId());
+	        
+	        meetingPs.executeUpdate();
+
+	        con.commit(); // 트랜잭션 성공
 		} catch (SQLException e) {
 			
 			e.printStackTrace();
