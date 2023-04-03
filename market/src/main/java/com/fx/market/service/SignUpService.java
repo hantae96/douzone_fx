@@ -28,4 +28,9 @@ public class SignUpService {
 		dao.photosInsert(dto);
 	}
 	
+	//회원가입 photos check
+	public int photosCheck(String name) {
+		return dao.photosCheck(name);
+	}
+	
 }
