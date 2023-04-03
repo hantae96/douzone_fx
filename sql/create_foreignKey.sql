@@ -19,7 +19,7 @@ ALTER TABLE favorites
 ADD CONSTRAINT accounts_id3 foreign key(accounts_id) references accounts(accounts_id);
 
 ALTER TABLE favorites
-ADD CONSTRAINT accounts_id4 foreign key(accounts_id) references goods(goods_id);
+ADD CONSTRAINT accounts_id4 foreign key(goods_id) references goods(goods_id);
 
 --alter table favorites drop CONSTRAINT acooints_id4;
 
