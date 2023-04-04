@@ -251,7 +251,9 @@ public class MeetingBoardController implements Initializable{
 	    		
 	    		
 	    		Viewer.setView("meetingBoardDetailForm");
+	    		}
         	});
+	        
 	        
 	        
 	        VBox rightVbox = new VBox();
