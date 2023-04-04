@@ -93,6 +93,13 @@ public class MyPageController implements Initializable {
 			Viewer.setViewCenterScroll("mySellList");						
 		}
 		
+		// 받은 평가 내역 페이지 이동
+		@FXML
+		private void myGradeList(Event event) {
+			Session.getInstance().setWhereToGo("MyGradeList");
+			Viewer.setViewCenterScroll("mySellList");						
+		}
+		
 		//수정 전 비밀번호 확인 페이지 이동
 		@FXML
 		private void confirmAccount(Event event) {//수정버튼 누르면 확인창으로 이동!
@@ -108,12 +115,6 @@ public class MyPageController implements Initializable {
 			alert.setContentText("정말로 탈퇴하시겠습니까?");
 			ButtonType result = alert.showAndWait().orElse(ButtonType.CANCEL);
 				if (result == ButtonType.OK) {
-					//경로 검색해와서 파일삭제
-//					String path = service.getMyPhoto(Session.getInstance().getAccountId());
-//					String[] tmp = path.split("/", 4);
-//					String filePath = tmp[3];
-//					File file = new File(filePath);
-//					file.delete();
 					//Accounts, Photos Delete
 					service.deleteAccount(Session.getInstance().getAccountId());
 					

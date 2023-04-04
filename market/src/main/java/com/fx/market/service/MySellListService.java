@@ -34,4 +34,9 @@ public class MySellListService {
 		return dao.getMyFavorList(id);
 	}
 	
+	//받은 평가 출력
+	public int[] getGradeNum(String id) {
+		return dao.getGradeNum(id);
+	}
+	
 }
