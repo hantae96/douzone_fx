@@ -20,7 +20,6 @@ public class BoardDao {
 		try {
 			Class.forName("oracle.jdbc.OracleDriver");
 			con = DriverManager.getConnection(url, user, password);
-			System.out.println("연결성공");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -42,7 +41,7 @@ public class BoardDao {
 			
 			boardPs = con.prepareStatement(insertBoardSql);
 			
-			boardPs.setString(1, "a0001");
+			boardPs.setString(1, boardDto.getAccountId());
 			boardPs.setString(2, boardDto.getMainCategory());
 			boardPs.setString(3, boardDto.getSubCategory());
 			boardPs.setString(4, boardDto.getTitle());
@@ -94,12 +93,16 @@ public class BoardDao {
 				board.setSubCategory(rs.getString("sub_category"));
 				board.setTitle(rs.getString("title"));
 				board.setContent(rs.getString("content"));
+				board.setAddress(rs.getString("address"));
+				board.setRecommends(rs.getInt("recommends"));
+				board.setViews(rs.getInt("views"));
 				board.setGender(rs.getString("gender"));
 				board.setAge(rs.getString("age"));
 				board.setMeetingDate(rs.getDate("meeting_date"));
 				board.setMeetingTimeAmpm(rs.getString("meeting_time_ampm"));
 				board.setMeetingTimeHour(rs.getString("meeting_time_hour"));
 				board.setMeetingTimeMinute(rs.getString("meeting_time_minute"));
+				board.setCreatedAt(rs.getDate("created_at"));
 				System.out.println(board.getBoardId());
 				boards.add(board);
 			}
@@ -146,8 +149,6 @@ public class BoardDao {
 				board.setPlace(rs.getString("place"));
 				board.setGender(rs.getString("gender"));
 				board.setAge(rs.getString("age"));
-
-				System.out.println("dao : "+board.getBoardId());
 		
 				return board;
 			}
@@ -157,5 +158,104 @@ public class BoardDao {
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	public int deleteBoard(String boardId, String accountId) {
+		
+		String sql = "delete from boards where boards_id = ? and accounts_id = ?";
+
+	    PreparedStatement ps = null;
+	    int result = 0;
+		
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString(1, boardId);
+			ps.setString(2, accountId);
+			
+			result = ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+
+
+	public int updateMeetingBoard(BoardDto boardDto) {
+		
+		System.out.println(boardDto.getBoardId() +"/" +boardDto.getAccountId());
+		String updateBoardSql = "update boards "
+				+ "set sub_category = ?, title = ?, content = ?, address = ? "
+				+ "where boards_id = ? and accounts_id = ?";
+
+	    String updateMeetingSql = "update meetings "
+	    		+ "set person = ?, meeting_date = ?, meeting_time_ampm = ?, meeting_time_hour = ?, "
+	    		+ "meeting_time_minute = ?, place = ?, gender = ?, age = ?"
+	    		+ "where boards_id = ?";
+	    
+	    PreparedStatement boardPs = null;
+	    PreparedStatement meetingPs = null;
+	    int result = 0;
+		
+		try {
+//			con.setAutoCommit(false);
+			
+			boardPs = con.prepareStatement(updateBoardSql);
+			boardPs.setString(1, boardDto.getSubCategory());
+			boardPs.setString(2, boardDto.getTitle());
+			boardPs.setString(3, boardDto.getContent());
+			boardPs.setString(4, boardDto.getAddress());
+			boardPs.setString(5, boardDto.getBoardId());
+			boardPs.setString(6, boardDto.getAccountId());
+	
+			result = boardPs.executeUpdate();
+			System.out.println(result);
+			
+	        meetingPs = con.prepareStatement(updateMeetingSql);
+	        meetingPs.setString(1, boardDto.getPerson());
+	        meetingPs.setDate(2, boardDto.getMeetingDate());
+	        meetingPs.setString(3, boardDto.getMeetingTimeAmpm());
+	        meetingPs.setString(4, boardDto.getMeetingTimeHour());
+	        meetingPs.setString(5, boardDto.getMeetingTimeMinute());
+	        meetingPs.setString(6, boardDto.getPlace());
+	        meetingPs.setString(7, boardDto.getGender());
+	        meetingPs.setString(8, boardDto.getAge());
+	        meetingPs.setString(9, boardDto.getBoardId());
+	        
+	        meetingPs.executeUpdate();
+
+	        con.commit(); // 트랜잭션 성공
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+
+	public int updateMeetingState(String boardId) {
+
+	    String sql = "update meetings "
+	    		+ "set state = '모집종료' "
+	    		+ "where boards_id = ?";
+
+	    PreparedStatement ps = null;
+	    int result = 0;
+		
+		try {
+			
+	        ps = con.prepareStatement(sql);
+	        ps.setString(1, boardId);
+	        
+	        result = ps.executeUpdate();
+
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		
+		return result;
 	}
 }

@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 
 import com.fx.market.dto.LoginDto;  //이거 dto바꿀까?> 일단 가져다 쓸까
 import com.fx.market.dto.MyPageDto;
+import com.fx.market.dto.PhotoDto;
 import com.fx.market.dto.UpdateDto;
 
 	public class UpdateAccountDao {
@@ -14,7 +15,7 @@ import com.fx.market.dto.UpdateDto;
 	private PreparedStatement ps;
 	private ResultSet rs;
 		
-	public UpdateAccountDao() {
+	public UpdateAccountDao() {  //생성자
 		String user = "douzone";
 		String password = "1234";
 		String url = "jdbc:oracle:thin:@localhost:1521:xe";
@@ -25,7 +26,7 @@ import com.fx.market.dto.UpdateDto;
 			e.printStackTrace();
 		}
 	}
-	
+		//정보변경
 		public int buttonUpdateMethod(LoginDto user) {
 			String sql = "UPDATE accounts SET pw =?, name=?, address=?, email=? where accounts_id=?";
 			int result =0;
@@ -58,10 +59,6 @@ import com.fx.market.dto.UpdateDto;
 						updatedto.setName(rs.getString("name"));
 						updatedto.setAddress(rs.getString("address"));
 						updatedto.setEmail(rs.getString("email"));
-						System.out.println(updatedto.getPw());
-						System.out.println(updatedto.getName());
-						System.out.println(updatedto.getAddress());
-						System.out.println(updatedto.getEmail());
 						return updatedto;
 					}
 				} catch (Exception e) {
@@ -69,6 +66,35 @@ import com.fx.market.dto.UpdateDto;
 				}
 				return updatedto;
 			}
+		//정보 변경 시, 사진 불러오기
+		public String photoInfo(String id) {
+			String sql = "select path from photos where photos_id=?";
+			try {
+				ps = con.prepareStatement(sql);
+				ps.setString(1, id);
+				rs = ps.executeQuery();
+				if(rs.next()) {
+					return rs.getString("path");
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return null;
 		}
+		
+		public void photosUpdate(PhotoDto dto) {
+			String sql = "UPDATE photos SET name=?, path=? where photos_id=?";
 
-
+			try {
+					ps = con.prepareStatement(sql);
+					ps.setString(1, dto.getName());
+					ps.setString(2, dto.getPath());
+					ps.setString(3, dto.getPhotos_id());
+					ps.executeUpdate();
+					
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			
+		}
+	}

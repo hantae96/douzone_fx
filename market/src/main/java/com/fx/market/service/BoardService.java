@@ -1,8 +1,9 @@
-package com.fx.market.service;
+ package com.fx.market.service;
 
 import java.util.List;
 
 import com.fx.market.common.CommonService;
+import com.fx.market.common.Session;
 import com.fx.market.common.Viewer;
 import com.fx.market.dao.BoardDao;
 import com.fx.market.dto.BoardDto;
@@ -26,11 +27,10 @@ public class BoardService {
 		int result = boardDao.insertMeetingBoard(boardDto);
 		
 		if(result != 0) {
-			CommonService.msg(AlertType.CONFIRMATION, "정보", "등록 성공");
+			CommonService.msg(AlertType.INFORMATION, "게시글 등록", "게시글이 등록되었습니다.", "");
 		}
 		
-		Viewer viewer = new Viewer();
-		viewer.setView("home");
+		Viewer.setView("meetingBoardListForm");
 	}
 
 
@@ -43,8 +43,41 @@ public class BoardService {
 
 
 	public BoardDto boardDetail(String boardId) {
-		System.out.println("service : "+boardId);
 		return boardDao.findByMeetingBoardDetail(boardId);
 	}
 
+
+
+	public void deleteBoard(String boardId) {
+		int result = boardDao.deleteBoard(boardId, Session.getInstance().getAccountId());
+		if(result != 0) {
+			CommonService.msg(AlertType.INFORMATION, "게시글 삭제", "게시글이 삭제되었습니다.","");
+			Viewer.setView("meetingBoardListForm");
+		}
+		
+	}
+
+
+	public void updateMeetingBoard(BoardDto boardDto) {
+		
+		System.out.println("Service");
+		int result = boardDao.updateMeetingBoard(boardDto);
+		if(result != 0) {
+			CommonService.msg(AlertType.INFORMATION, "게시글 수정", "게시글이 수정되었습니다.", "");
+			Viewer.setView("meetingBoardListForm");
+			
+		}
+	}
+
+
+
+	public void updateMeetingState(String boardId) {
+		int result = boardDao.updateMeetingState(boardId);
+		if(result != 0) {
+			CommonService.msg(AlertType.INFORMATION, "모집 종료", "모집이 종료되었습니다.", "");
+			Viewer.setView("meetingBoardListForm");
+			
+		}
+		
+	}
 }

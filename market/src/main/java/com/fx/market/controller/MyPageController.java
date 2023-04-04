@@ -1,6 +1,5 @@
 package com.fx.market.controller;
 
-import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -70,39 +69,34 @@ public class MyPageController implements Initializable {
 		@FXML
 		private void mySellList(Event event) {
 			Session.getInstance().setWhereToGo("MySellList");
-			Viewer viewer = new Viewer();
-			viewer.setViewCenterScroll("mySellList");			
+			Viewer.setViewCenterScroll("mySellList");			
 		}
 		
 		// 구매내역 페이지 이동
 		@FXML
 		private void myBuyList(Event event) {
 			Session.getInstance().setWhereToGo("MyBuyList");
-			Viewer viewer = new Viewer();
-			viewer.setViewCenterScroll("mySellList");						
+			Viewer.setViewCenterScroll("mySellList");						
 		}
 		
 		// 작성글내역 페이지 이동
 		@FXML
 		private void myBoardList(Event event) {
 			Session.getInstance().setWhereToGo("MyBoardList");
-			Viewer viewer = new Viewer();
-			viewer.setViewCenterScroll("mySellList");						
+			Viewer.setViewCenterScroll("mySellList");						
 		}
 		
 		// 관심내역 페이지 이동
 		@FXML
 		private void myFavorList(Event event) {
 			Session.getInstance().setWhereToGo("MyFavorList");
-			Viewer viewer = new Viewer();
-			viewer.setViewCenterScroll("mySellList");						
+			Viewer.setViewCenterScroll("mySellList");						
 		}
 		
 		//수정 전 비밀번호 확인 페이지 이동
 		@FXML
 		private void confirmAccount(Event event) {//수정버튼 누르면 확인창으로 이동!
-			Viewer viewer = new Viewer();
-			viewer.setViewCenter("confirm");//수정 버튼 누르면 -> 확인창 그리고 다시 이동해서 -> 계정변경창으로	
+			Viewer.setViewCenter("confirm");//수정 버튼 누르면 -> 확인창 그리고 다시 이동해서 -> 계정변경창으로	
 		}
 		
 				
@@ -128,8 +122,7 @@ public class MyPageController implements Initializable {
 					session.setLoginChk(0);
 					session.setAccountId(null);
 					session.setAddress(null);
-					Viewer viewer = new Viewer();
-					viewer.setView("login");
+					Viewer.setView("login");
 				}
 			}
 		
@@ -141,8 +134,7 @@ public class MyPageController implements Initializable {
 			session.setLoginChk(0);
 			session.setAccountId(null);
 			session.setAddress(null);
-			Viewer viewer = new Viewer();
-			viewer.setView("login");
+			Viewer.setView("login");
 		}
 		
 		

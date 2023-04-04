@@ -3,6 +3,7 @@ package com.fx.market.dto;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class BoardDto {
 
@@ -33,6 +34,26 @@ public class BoardDto {
 	
 	public BoardDto(String accountId, String mainCategory, String subCategory, String title,
 			String content, String address,String person, LocalDate meetingDate, String meetingTimeAmpm, String meetingTimeHour, String meetingTimeMinute, String place, String gender, String age) {	
+		this.accountId = accountId;
+		this.mainCategory = mainCategory;
+		this.subCategory = subCategory;
+		this.title = title;
+		this.content = content;
+		this.address = address;
+		this.person = person;
+		this.meetingDate = Date.valueOf(meetingDate);
+		this.meetingTimeAmpm = meetingTimeAmpm;
+		this.meetingTimeHour = meetingTimeHour;
+		this.meetingTimeMinute = meetingTimeMinute;
+		this.place = place;
+		this.gender = gender;
+		this.age = age;
+	}
+
+	public BoardDto(String boardId, String accountId, String mainCategory, String subCategory, String title,
+			String content, String address,String person, LocalDate meetingDate, String meetingTimeAmpm, String meetingTimeHour, String meetingTimeMinute, String place, String gender, String age) {	
+	
+		this.boardId = boardId;
 		this.accountId = accountId;
 		this.mainCategory = mainCategory;
 		this.subCategory = subCategory;
@@ -202,13 +223,19 @@ public class BoardDto {
 	}
 	
 	public String getMeetingTime() {
-		return meetingTimeAmpm+" "+meetingTimeHour+":"+meetingTimeMinute;
+		return meetingTimeAmpm+" "+meetingTimeHour+" "+meetingTimeMinute;
 	}
 	
 	public String getMeetingDateFormat() {
 		
 		return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(meetingDate).substring(0, 10);
 	}
+	
+	public LocalDate getMeetingDateToLocalDate() {
+        
+        return LocalDate.parse(getMeetingDateFormat(), DateTimeFormatter.ISO_DATE);
+	}
+	
 
 }
 
