@@ -71,6 +71,30 @@ public class SignUpController implements Initializable{
     	});
     	// TextFormatter 적용
     	idInput.setTextFormatter(textFormatter);
+    	
+    	// 한글 입력은 받지 않도록 해주는 TextFormatter 생성
+    	TextFormatter<String> passFormatter =  new TextFormatter<String>((UnaryOperator<TextFormatter.Change>) change -> {
+    	    String newPass = change.getControlNewText();
+    	    if (newPass.matches(".*[ㄱ-ㅎㅏ-ㅣ가-힣].*")) {
+    	        return null;
+    	    } else {
+    	        return change;
+    	    }
+    	});
+    	//TextFormatter 적용
+    	pwInput.setTextFormatter(passFormatter);
+    	
+    	// 한글 입력은 받지 않도록 해주는 TextFormatter 생성
+    	TextFormatter<String> passcFormatter =  new TextFormatter<String>((UnaryOperator<TextFormatter.Change>) change -> {
+    		String newPass = change.getControlNewText();
+    		if (newPass.matches(".*[ㄱ-ㅎㅏ-ㅣ가-힣].*")) {
+    			return null;
+    		} else {
+    			return change;
+    		}
+    	});
+    	pwcInput.setTextFormatter(passcFormatter);
+    	
     	// Photos default
     	filePathSession = System.getProperty("user.dir") + "/src/main/java/com/fx/market/source/image/default.jpg";
     	fileNameSession = "default.jpg";
@@ -220,7 +244,11 @@ public class SignUpController implements Initializable{
     			signUpButton.setDisable(decisionDisable());
     			pwText.setTextFill(Color.RED);
     		}
+    		
+    		
     	});
+    	
+    	
     }
     
     //비밀번호 확인 입력칸 리스너
@@ -310,4 +338,6 @@ public class SignUpController implements Initializable{
     	}
     	return false;
     }
+    
+    
 }

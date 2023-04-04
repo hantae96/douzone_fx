@@ -146,4 +146,28 @@ public class MySellListDao {
 		return null;
 	}
 	
+	//받은 평가 갯수 select
+	public int[] getGradeNum(String id) {
+		String sql = "SELECT "
+				+ "  SUM(CASE WHEN grade = 5 THEN 1 ELSE 0 END) AS grade_5,"
+				+ "  SUM(CASE WHEN grade = 4 THEN 1 ELSE 0 END) AS grade_4,"
+				+ "  SUM(CASE WHEN grade = 3 THEN 1 ELSE 0 END) AS grade_3,"
+				+ "  SUM(CASE WHEN grade = 2 THEN 1 ELSE 0 END) AS grade_2,"
+				+ "  SUM(CASE WHEN grade = 1 THEN 1 ELSE 0 END) AS grade_1 "
+				+ "FROM goods "
+				+ "WHERE accounts_id =?";
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString(1, id);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				int[] gradeNum = {rs.getInt("grade_5"), rs.getInt("grade_2"), rs.getInt("grade_3"), rs.getInt("grade_4"), rs.getInt("grade_1")};
+				return gradeNum;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 }

@@ -7,7 +7,6 @@ import java.util.ResourceBundle;
 
 import com.fx.market.common.Session;
 import com.fx.market.common.Viewer;
-import com.fx.market.dto.HomeDto;
 import com.fx.market.dto.ItemDto;
 import com.fx.market.dto.MySellListDto;
 import com.fx.market.service.HomeService;
@@ -24,6 +23,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 
 public class MySellListController implements Initializable{
 
@@ -41,7 +41,11 @@ public class MySellListController implements Initializable{
 		service = new MySellListService();
 		homeService = new HomeService();
 		itemService = new ItemService();
+		if(Session.getInstance().getWhereToGo().equals("MyGradeList")) {
+			getMyGrade();
+		}else {
 			getMyList();
+		}
 	}
 	
 	@FXML
@@ -99,7 +103,7 @@ public class MySellListController implements Initializable{
 		
 		if(items.size()<1) {
 			Label announce = new Label();
-			announce.setText("글이 존재하지 않습니다.");
+			announce.setText("\n\n           글이 존재하지 않습니다.");
 			main.getChildren().add(announce);
 		}
 		
@@ -156,6 +160,53 @@ public class MySellListController implements Initializable{
 		Session.getInstance().setModel(clickedItem);
 		if(Session.getInstance().getWhereToGo().equals("MySellList")) {
 			Viewer.setView("item");
+		}
+	}
+	
+	//받은 평가 이동
+	protected void getMyGrade() {
+		where.setText("받은 평가");
+		
+		// 프로필 사진
+		String myId = Session.getInstance().getAccountId();
+		String PhotoPath = service.getMyPhoto(myId);
+		if (!PhotoPath.isEmpty()) {
+			String imagePath = "file:" + System.getProperty("user.dir") + "/" + PhotoPath;
+			Image image = new Image(imagePath);
+			photo.setImage(image);
+		}
+		writeButton.setDisable(true);
+		writeButton.setVisible(false);
+		int[] things = service.getGradeNum(myId);
+		int index = 5;
+		
+		for(int thing : things) {
+		BorderPane bord = new BorderPane();
+		bord.setPadding(new Insets(30, 0, 30, 80));
+		bord.setMaxHeight(50);
+		
+		String constellation = "";
+		for(int i=0; i<index; i++) {
+			constellation += "★";
+		}
+		for(int i=0; i<5-index; i++) {
+			constellation += "☆";			
+		}
+		index -=1;
+		Label starGrade = new Label();
+		starGrade.setFont(new Font(20));
+		starGrade.setText(constellation);
+		bord.setLeft(starGrade);
+		
+		Label people = new Label();
+		people.setFont(new Font(20));
+		String person = " 명";
+		person = thing + person;
+		people.setText(person);
+		
+		bord.setCenter(people);
+		
+		main.getChildren().add(bord);
 		}
 	}
 	

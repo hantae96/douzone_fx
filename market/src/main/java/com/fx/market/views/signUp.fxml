@@ -75,7 +75,7 @@
             <VBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                <children>
                   <PasswordField fx:id="pwInput" onKeyPressed="#checkPwLength" promptText="15글자 이내" />
-                  <PasswordField fx:id="pwcInput" onKeyPressed="#checkPwcLength" promptText="15글자 이내" />
+                  <PasswordField fx:id="pwcInput" onKeyPressed="#checkPwcLength" promptText="한글 입력 불가" />
                   <Label fx:id="pwAlert" maxWidth="200.0" textFill="#ee0000" wrapText="true">
                      <font>
                         <Font size="10.0" />
