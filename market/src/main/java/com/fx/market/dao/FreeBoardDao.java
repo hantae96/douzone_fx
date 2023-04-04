@@ -27,24 +27,24 @@ public class FreeBoardDao{
 		}
 	}
 	
+
 	public void photosInsert(PhotoDto photo) {
 		System.out.println(photo.getPhotos_id());
 		System.out.println(photo.getName());
 		System.out.println(photo.getPath());
 		PreparedStatement ps = null;
-		String sql = "INSERT INTO photos values(?,?,?,SYSDATE)";
+		String sql = "INSERT INTO photos values(concat('b',boards_seq.currval),?,?,SYSDATE)";
 		try {
 			ps = con.prepareStatement(sql);
-			ps.setString(1,photo.getPhotos_id());
-			ps.setString(2, photo.getName());
-			ps.setString(3, photo.getPath());
+			ps.setString(1, photo.getName());
+			ps.setString(2, photo.getPath());;
 			ps.executeUpdate();
-			System.out.println("끝");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
+
 	
 	public int insertFreeBoard(FreeBoardDto townDto) {
 		

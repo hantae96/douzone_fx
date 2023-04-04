@@ -82,7 +82,7 @@ public class MeetingBoardController implements Initializable{
 				}
 		    	
 		    }
-			
+		
 		});
 		
 		//anchorPane 스크롤 이벤트 scrollPane에게 전달
