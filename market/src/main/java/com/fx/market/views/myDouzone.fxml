@@ -166,7 +166,7 @@
             </BorderPane>
             <BorderPane onMouseClicked="#myBoardList" prefHeight="58.0" prefWidth="333.0" style="-fx-border-color: lightgray;">
                <left>
-                  <Label text="동네생활 글/댓글" BorderPane.alignment="CENTER">
+                  <Label text="동네 생활" BorderPane.alignment="CENTER">
                      <font>
                         <Font size="20.0" />
                      </font></Label>
