@@ -33,4 +33,9 @@ public class IdCheckController implements Initializable{
 		viewer.setView("login");
 		}
 }
+	
+	public void userPwCancel() {
+		Viewer viewer = new Viewer();
+		viewer.setView("login");
+	}
 }
