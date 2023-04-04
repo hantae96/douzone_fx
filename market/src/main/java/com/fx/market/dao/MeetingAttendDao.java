@@ -69,6 +69,7 @@ public class MeetingAttendDao {
 					List<MeetingAttendDto> meetingAttendDtos = new ArrayList();
 					while(rs.next()) {
 						MeetingAttendDto meetingAttendDto = new MeetingAttendDto(); 
+						meetingAttendDto.setAccountId(rs.getString("account_id"));
 						meetingAttendDto.setName(rs.getString("name"));
 						meetingAttendDto.setAddress(rs.getString("address"));
 						meetingAttendDto.setPath(rs.getString("path"));
@@ -84,5 +85,4 @@ public class MeetingAttendDao {
 				
 				return null;
 			}
-
 }

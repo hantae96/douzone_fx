@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="360.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fx.market.controller.HomeController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="360.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fx.market.controller.HomeController">
    <top>
       <HBox prefHeight="60.0" prefWidth="360.0" style="-fx-border-color: grey;" BorderPane.alignment="CENTER">
          <children>
@@ -40,7 +40,7 @@
          </children></HBox>
    </top>
    <bottom>
-      <HBox prefHeight="45.0" prefWidth="358.0" style="-fx-background-color: #FF9436;" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER" prefHeight="45.0" prefWidth="358.0" style="-fx-background-color: orange;" BorderPane.alignment="CENTER">
          <children>
             <VBox alignment="TOP_CENTER" prefHeight="60.0" prefWidth="72.0" translateX="-50.0">
                <children>
@@ -57,6 +57,9 @@
                <padding>
                   <Insets top="10.0" />
                </padding>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </VBox>
             <VBox alignment="TOP_CENTER" onMouseClicked="#boardNavClick" prefHeight="60.0" prefWidth="72.0" translateX="10.0">
                <children>
@@ -92,14 +95,14 @@
                <padding>
                   <Insets top="10.0" />
                </padding>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </VBox>
          </children>
          <BorderPane.margin>
             <Insets />
          </BorderPane.margin>
-         <padding>
-            <Insets left="60.0" />
-         </padding>
       </HBox>
    </bottom>
    <center>

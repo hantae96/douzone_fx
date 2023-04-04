@@ -15,15 +15,19 @@ import com.fx.market.service.MeetingAttendService;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Border;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.BorderStroke;
 import javafx.scene.layout.BorderStrokeStyle;
 import javafx.scene.layout.BorderWidths;
@@ -48,7 +52,7 @@ public class MeetingBoardDetailController implements Initializable{
 	@FXML private Label leaderIdLabel;
 	@FXML private Label leaderAddressLabel;
 	@FXML private Button attendBtn;
-	@FXML private VBox attendAccounts;
+	@FXML private VBox attendAccountsVBox;
 	
 	@FXML private Button menuBtn;
 	@FXML private ContextMenu menuContextMenu;
@@ -97,25 +101,50 @@ public class MeetingBoardDetailController implements Initializable{
 		leaderIdLabel.setText(board.getAccountId());
 		leaderAddressLabel.setText(board.getAddress());
 		
-//		System.out.println("true : "+board.getAccountId().equals(Session.getInstance().getAccountId()));
-//		System.out.println(board.getAccountId());
+		System.out.println("true : "+board.getAccountId().equals(Session.getInstance().getAccountId()));
+		System.out.println(board.getAccountId());
+		System.out.println(Session.getInstance().getAccountId());
 //		
-//		if(board.getAccountId() == Session.getInstance().getAccountId()) {
-//			menuBtn.setVisible(true);
-//		}
+		if(board.getAccountId().equals(Session.getInstance().getAccountId())) {
+			menuBtn.setVisible(true);
+		}
 		
-//		if(board.getAccountId().equals(Session.getInstance().getAccountId()) || board.getState().equals("모집종료") ) {
-//			attendBtn.setVisible(false);
-//		}
+		if(board.getState().equals("모집종료") || board.getAccountId().equals(Session.getInstance().getAccountId())) {
+			attendBtn.setDisable(true);
+		}
 		
 		meetingAttendService = new MeetingAttendService();
-		System.out.println("controller");
 		meetingAttendDtos = meetingAttendService.getMeetingAttendList(board.getBoardId());
 		
 		for(MeetingAttendDto meeting : meetingAttendDtos) {
-			System.out.println("Name : "+meeting.getName());
-			System.out.println("path : "+meeting.getPath());
-			System.out.println("address : "+meeting.getAddress());
+			BorderPane attendPane = new BorderPane();
+			attendPane.setBorder(new Border(new BorderStroke(Color.GRAY, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(1, 1, 1, 1))));
+			attendPane.setPadding(new Insets(2, 2, 2, 4));
+			
+			Image attendImage = new Image("file:"+meeting.getPath());
+			ImageView attendImageView = new ImageView(attendImage);
+			attendImageView.setFitWidth(40);
+			attendImageView.setFitHeight(40);
+			
+			
+			VBox attendCenter = new VBox();
+			
+			Label attendName = new Label(meeting.getName());
+			attendName.setPrefHeight(20);
+			attendName.setPadding(new Insets(0, 0, 0, 5));
+			Label attendAddress = new Label(meeting.getAddress());
+			attendAddress.setPrefHeight(20);
+			attendAddress.setPadding(new Insets(0, 0, 0, 5));
+			attendCenter.getChildren().addAll(attendName, attendAddress);
+			
+			attendPane.setLeft(attendImageView);
+			attendPane.setCenter(attendCenter);
+			attendAccountsVBox.getChildren().add(attendPane);
+			
+			if(meeting.getAccountId().equals(Session.getInstance().getAccountId())) {
+				attendBtn.setDisable(true);
+				attendBtn.setText("참여완료");
+			}
 		}
 	}
 	
@@ -146,11 +175,10 @@ public class MeetingBoardDetailController implements Initializable{
 	
 	public void attendBtnClick() {
 		meetingAttendService = new MeetingAttendService();
-		meetingAttendService.attendMeeting(
-				new MeetingAttendDto(
-						board.getBoardId(),
-						Session.getInstance().getAccountId()
-						)
-				);
+		Session.getInstance().setTempId(board.getBoardId());
+		meetingAttendService.attendMeeting(new MeetingAttendDto(
+				board.getBoardId(),						// 게시글 ID
+				Session.getInstance().getAccountId()	// 계정 ID
+		));
 	}
 }
