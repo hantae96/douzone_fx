@@ -73,10 +73,11 @@ public class FreeBoardService {
 	}
 
 
-//	public void photoInsert(PhotoDto photoDto) {
-//		townDao.photosInsert(photoDto);
-//		
-//	}
+	public void photoInsert(PhotoDto photoDto) {
+		
+		townDao.photosInsert(photoDto);
+		
+	}
 
 
 	public FreeBoardDto selectAll(String board_Id) {
@@ -95,5 +96,5 @@ public class FreeBoardService {
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setHeaderText("게시물이 삭제되었습니다");
 		alert.show();
-	}	
+	}
 }

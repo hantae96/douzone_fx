@@ -12,8 +12,7 @@ import com.fx.market.dto.PhotoDto;
 
 public class FreeBoardDao{
 	private Connection con;
-	private PreparedStatement ps;
-	private ResultSet rs;
+
 	
 	public FreeBoardDao() {
 		String url = "jdbc:oracle:thin:@localhost:1521:xe";
@@ -28,20 +27,23 @@ public class FreeBoardDao{
 		}
 	}
 	
-//	public void photosInsert(PhotoDto photo) {
-//		
-//		PreparedStatement ps = null;
-//		String sql = "INSERT INTO photos values(?,?,?,SYSDATE)";
-//		try {
-//			ps = con.prepareStatement(sql);
-//			ps.setString(1,photo.getPhotos_id());
-//			ps.setString(2, photo.getName());
-//			ps.setString(3, photo.getPath());
-//			ps.executeUpdate();
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//	}
+	public void photosInsert(PhotoDto photo) {
+		System.out.println(photo.getPhotos_id());
+		System.out.println(photo.getName());
+		System.out.println(photo.getPath());
+		PreparedStatement ps = null;
+		String sql = "INSERT INTO photos values(?,?,?,SYSDATE)";
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString(1,photo.getPhotos_id());
+			ps.setString(2, photo.getName());
+			ps.setString(3, photo.getPath());
+			ps.executeUpdate();
+			System.out.println("끝");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 	
 	
 	public int insertFreeBoard(FreeBoardDto townDto) {
