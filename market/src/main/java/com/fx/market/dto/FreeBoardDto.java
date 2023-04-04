@@ -6,13 +6,13 @@ public class FreeBoardDto {
 	private String title; 					// 제목
 	private String content;					// 내용
 	private String main_category; 			// 대분류
-	private String middle_category; 		// 중분류
+	private String sub; 		// 중분류
 	private String board_Id; 				// 게시글 Id
 	private String acount_Id;				// 작성자 Id
 	private int views; 						// 조회수
 	private int recomends;					// 추천수
 	private String address; 				// 작성자 주소
-	private Date createdAt;					// 작성날짜
+	private String createdAt;					// 작성날짜
 	
 	
 	
@@ -35,11 +35,13 @@ public class FreeBoardDto {
 	public void setMain_category(String main_category) {
 		this.main_category = main_category;
 	}
-	public String getMiddle_category() {
-		return middle_category;
+	
+	
+	public String getSub() {
+		return sub;
 	}
-	public void setMiddle_category(String middle_category) {
-		this.middle_category = middle_category;
+	public void setSub(String sub) {
+		this.sub = sub;
 	}
 	public String getBoard_Id() {
 		return board_Id;
@@ -71,10 +73,10 @@ public class FreeBoardDto {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public Date getCreatedAt() {
+	public String getCreatedAt() {
 		return createdAt;
 	}
-	public void setCreatedAt(Date createdAt) {
+	public void setCreatedAt(String createdAt) {
 		this.createdAt = createdAt;
 	}
 	

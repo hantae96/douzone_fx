@@ -58,3 +58,23 @@ insert into meetings (boards_id, person, meeting_date, meeting_time_ampm, meetin
 values('b4', 4, '2021-11-12','오후', '12시', '30분', '유치원', '누구나', '20대');
 insert into meetings (boards_id, person, meeting_date, meeting_time_ampm, meeting_time_hour, meeting_time_minute, place, gender, age)
 values('b5', 4, '2021-11-12','오후', '12시', '30분', '스터디카페', '누구나', '20대');
+
+-- photos 테이블 더미 --
+insert into photos values('a100', 'default.jpg', 'src/main/java/com/fx/market/source/image/default.jpg', SYSDATE);
+insert into photos values('a101', 'default.jpg', 'src/main/java/com/fx/market/source/image/default.jpg', SYSDATE);
+insert into photos values('a102', 'default.jpg', 'src/main/java/com/fx/market/source/image/default.jpg', SYSDATE);
+insert into photos values('a103', 'default.jpg', 'src/main/java/com/fx/market/source/image/default.jpg', SYSDATE);
+insert into photos values('a104', 'default.jpg', 'src/main/java/com/fx/market/source/image/default.jpg', SYSDATE);
+insert into photos values('a105', 'default.jpg', 'src/main/java/com/fx/market/source/image/default.jpg', SYSDATE);
+insert into photos values('g100', 'default.jpg', 'src/main/java/com/fx/market/source/image/default.jpg', SYSDATE);
+insert into photos values('g101', 'default.jpg', 'src/main/java/com/fx/market/source/image/default.jpg', SYSDATE);
+insert into photos values('g102', 'default.jpg', 'src/main/java/com/fx/market/source/image/default.jpg', SYSDATE);
+insert into photos values('g103', 'default.jpg', 'src/main/java/com/fx/market/source/image/default.jpg', SYSDATE);
+insert into photos values('g104', 'default.jpg', 'src/main/java/com/fx/market/source/image/default.jpg', SYSDATE);
+insert into photos values('b1', 'default.jpg', 'src/main/java/com/fx/market/source/image/default.jpg', SYSDATE);
+insert into photos values('b2', 'default.jpg', 'src/main/java/com/fx/market/source/image/default.jpg', SYSDATE);
+insert into photos values('b3', 'default.jpg', 'src/main/java/com/fx/market/source/image/default.jpg', SYSDATE);
+insert into photos values('b4', 'default.jpg', 'src/main/java/com/fx/market/source/image/default.jpg', SYSDATE);
+insert into photos values('b5', 'default.jpg', 'src/main/java/com/fx/market/source/image/default.jpg', SYSDATE);
+insert into photos values('b6', 'default.jpg', 'src/main/java/com/fx/market/source/image/default.jpg', SYSDATE);
+insert into photos values('b7', 'default.jpg', 'src/main/java/com/fx/market/source/image/default.jpg', SYSDATE);

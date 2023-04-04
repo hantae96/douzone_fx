@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="700.0" minWidth="360.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fx.market.controller.MeetingBoardController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="700.0" minWidth="360.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fx.market.controller.MeetingBoardController">
    <center>
       <StackPane prefWidth="344.0" BorderPane.alignment="CENTER">
          <children>
@@ -47,7 +47,7 @@
                   </Button>
                   <VBox fx:id="writeMenu" layoutX="76.0" layoutY="231.0" prefHeight="72.0" prefWidth="220.0" style="-fx-background-color: white;" visible="false">
                      <children>
-                        <Button minHeight="36.0" mnemonicParsing="false" onAction="#meetingWriteBtnClick" prefWidth="356.0" style="-fx-background-color: orange; -fx-border-color: white;" text="함꼐해요" textFill="WHITE">
+                        <Button minHeight="36.0" mnemonicParsing="false" onAction="#meetingWriteBtnClick" prefWidth="356.0" style="-fx-background-color: orange; -fx-border-color: white;" text="같이해요" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>
@@ -55,7 +55,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button minHeight="36.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="327.0" style="-fx-background-color: orange; -fx-border-color: white;" text="동네생활" textFill="WHITE">
+                        <Button minHeight="36.0" mnemonicParsing="false" onAction="#townWriteBtnClick" prefHeight="36.0" prefWidth="327.0" style="-fx-background-color: orange; -fx-border-color: white;" text="동네생활" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>
@@ -133,7 +133,7 @@
          <children>
             <BorderPane prefHeight="58.0" prefWidth="358.0" style="-fx-background-color: white;">
                <left>
-                  <Label alignment="BASELINE_LEFT" prefHeight="58.0" prefWidth="176.0" text="Label" textAlignment="CENTER" BorderPane.alignment="CENTER">
+                  <Label fx:id="addressLabel" alignment="BASELINE_LEFT" prefHeight="58.0" prefWidth="176.0" text="Label" textAlignment="CENTER" BorderPane.alignment="CENTER">
                      <font>
                         <Font name="System Bold" size="21.0" />
                      </font>

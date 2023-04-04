@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.fx.market.dto.FreeBoardDto;
+import com.fx.market.dto.PhotoDto;
 
 
 public class FreeBoardDao{
@@ -26,19 +27,37 @@ public class FreeBoardDao{
 			e.printStackTrace();
 		}
 	}
+	
+//	public void photosInsert(PhotoDto photo) {
+//		
+//		PreparedStatement ps = null;
+//		String sql = "INSERT INTO photos values(?,?,?,SYSDATE)";
+//		try {
+//			ps = con.prepareStatement(sql);
+//			ps.setString(1,photo.getPhotos_id());
+//			ps.setString(2, photo.getName());
+//			ps.setString(3, photo.getPath());
+//			ps.executeUpdate();
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//	}
+	
+	
 	public int insertFreeBoard(FreeBoardDto townDto) {
-//		TownDto town = new TownDto();
+		
 		PreparedStatement ps = null;
 		int result = 0;
-		String sql = "INSERT INTO boards(boards_id, accounts_id, main_category, middle_category, title, content) values (concat('b', boards_seq.nextval),? , ?, ?, ?, ?)";
+		String sql = "INSERT INTO boards(boards_id, accounts_id, main_category, sub_category, title, content, address) values (concat('b', boards_seq.nextval),? , ?, ?, ?, ?, ?)";
 	
 		try {
 			ps = con.prepareStatement(sql);
 			ps.setString(1, townDto.getAcount_Id());
 			ps.setString(2, townDto.getMain_category());
-			ps.setString(3,townDto.getMiddle_category());
+			ps.setString(3,townDto.getSub());
 			ps.setString(4, townDto.getTitle());
 			ps.setString(5, townDto.getContent());
+			ps.setString(6, townDto.getAddress());
 			
 			result = ps.executeUpdate();
 		}catch(Exception e) {
@@ -46,21 +65,26 @@ public class FreeBoardDao{
 		}
 		return result;
 	}
-	public FreeBoardDto selectBoard(String boardsId) {
+	
+	public FreeBoardDto selectAll(String board_Id) {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		
-		String sql = "SELECT * FROM boards WHERE boards_id=?";
+		String sql = "SELECT * FROM boards WHERE boards_Id=?";
 		try {
 			ps = con.prepareStatement(sql);
-			ps.setString(1, boardsId);
+			ps.setString(1, board_Id);
 			rs = ps.executeQuery();
 			if(rs.next()) {
+				System.out.println("if");
 				FreeBoardDto freeboard = new FreeBoardDto();
-				freeboard.setBoard_Id(rs.getString("boards_id"));
-				freeboard.setMiddle_category(rs.getString("middle_category"));
+				freeboard.setBoard_Id(board_Id);
+				freeboard.setSub(rs.getString("sub_category"));
 				freeboard.setTitle(rs.getString("title"));
 				freeboard.setContent(rs.getString("content"));
+				freeboard.setAddress(rs.getString("address"));
+				freeboard.setAcount_Id(rs.getString("accounts_id"));
+				freeboard.setCreatedAt(String.valueOf(rs.getString("created_at")));
 				ps.executeUpdate();
 				
 				return freeboard;
@@ -70,29 +94,42 @@ public class FreeBoardDao{
 		}	
 		return null;
 	}
-	public int updateFreeBoard(FreeBoardDto townDto) {
+
+	public void updateFreeBoard(FreeBoardDto freeboard) {
 		PreparedStatement ps = null;
-		int result = 0;
-		String sql = "UPDATE boards SET middle_category=?, title=?, content=? WHERE boards_id=?";
+		ResultSet rs = null;
+		String sql = "UPDATE boards set sub_category = ?, title = ?, content =? where boards_id =?";
 		try {
-			
 			ps = con.prepareStatement(sql);
+			ps.setString(1, freeboard.getSub());
+			ps.setString(2, freeboard.getTitle());
+			ps.setString(3, freeboard.getContent());
+			ps.setString(4,freeboard.getBoard_Id());
 			
-			ps.setString(4, townDto.getBoard_Id());
-			ps.setString(1, townDto.getMiddle_category());
-			ps.setString(2, townDto.getTitle());
-			ps.setString(3, townDto.getContent());
-			
-			result = ps.executeUpdate();
-		}catch(SQLException e) {
+			ps.executeUpdate();
+		}catch(SQLException e){
 			e.printStackTrace();
 		}
-		return result;
-		
+			
 	}
+
+	public void deleteClick(String board_Id) {
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		System.out.println("dao");
+		String sql = "DELETE FROM boards WHERE boards_Id=?";
+		try {
+			System.out.println("try");
+			ps = con.prepareStatement(sql);
+			ps.setString(1, board_Id);
+			
+			rs = ps.executeQuery();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}	
+	}
+
 	
-//	public int updateBoard() {
-//		
-//	}
-	
+
 }

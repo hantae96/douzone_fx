@@ -1,6 +1,7 @@
 package com.fx.market.dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -43,4 +44,40 @@ public class LoginDao {
 			}
 			return logindto;
 		}
+	
+	public Date deleteCheck(String id, String pw) {
+		String sql = "select deleted_at from accounts where accounts_id = ? and pw =?";
+		Date deleted_at; 
+		try {
+				ps = con.prepareStatement(sql);
+				ps.setString(1, id);
+				ps.setString(2, pw);
+				rs = ps.executeQuery();
+				if(rs.next()) {
+					deleted_at = rs.getDate("deleted_at");
+					
+					return deleted_at;
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		return null;
+	}
+	
+	public String pwCheck(String id) {
+		String sql = "select pw from accounts where accounts_id = ?";
+		String pwCheck = null;
+		try {
+				ps = con.prepareStatement(sql);
+				ps.setString(1, id);
+				rs = ps.executeQuery();
+				if(rs.next()) {
+					pwCheck = rs.getString("pw");
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return pwCheck;
+		}
+	
 }
