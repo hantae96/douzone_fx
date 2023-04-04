@@ -25,7 +25,6 @@ public class Viewer {
 	       System.out.println("/com/fx/market/views/"+viewName+".fxml");
 	        try {
 	            menuForm = loader.load();
-	            System.out.println(menuForm);
 
 	        } catch (IOException e) {
 	            e.printStackTrace();
