@@ -98,8 +98,7 @@ public class RegisterController implements Initializable {
 
 	@FXML
 	private void onCancelButtonClick() {
-		Viewer viewer = new Viewer();
-		viewer.setView("home");
+		Viewer.setView("home");
 	}
 
 	private void checkPrice(TextField price) {

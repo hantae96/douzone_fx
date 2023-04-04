@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="700.0" minWidth="360.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fx.market.controller.MeetingBoardController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="700.0" minWidth="360.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fx.market.controller.MeetingBoardController">
    <center>
       <StackPane prefWidth="344.0" BorderPane.alignment="CENTER">
          <children>
@@ -55,7 +55,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button minHeight="36.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="327.0" style="-fx-background-color: orange; -fx-border-color: white;" text="동네생활" textFill="WHITE">
+                        <Button minHeight="36.0" mnemonicParsing="false" onAction="#townWriteBtnClick" prefHeight="36.0" prefWidth="327.0" style="-fx-background-color: orange; -fx-border-color: white;" text="동네생활" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>

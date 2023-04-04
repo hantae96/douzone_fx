@@ -26,7 +26,7 @@ public class LoginController implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 		service = new LoginService();
 		
-		String imagePath = "file:" + System.getProperty("user.dir") + "/src/main/java/com/fx/market/source/image/mandarine.png";
+		String imagePath = "file:" + System.getProperty("user.dir") + "/src/main/java/com/fx/market/source/image/market2.png";
       	Image image = new Image(imagePath);
     	photo.setImage(image); 
 
@@ -48,4 +48,12 @@ public class LoginController implements Initializable{
 		Viewer viewer = new Viewer();
 		viewer.setView("signUp");
 	}
+	
+	public void pwClickedMethod() {
+		Viewer viewer = new Viewer();
+		viewer.setView("idConfirm"); //바꿔야함 
+	}
+	
+	
+	
 }

@@ -110,8 +110,6 @@ public class UpdateAccountController implements Initializable{
     	
     	//경로 검색해와서 파일삭제
     	String path = pageservice.getMyPhoto(Session.getInstance().getAccountId());
-    	//String[] tmp = path.split("/", 4);
-    	//String filePath = tmp[3];
     	File file = new File(path);
     	file.delete();
     	

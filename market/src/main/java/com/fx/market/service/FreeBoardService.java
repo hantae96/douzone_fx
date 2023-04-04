@@ -5,22 +5,21 @@ package com.fx.market.service;
 import com.fx.market.common.Session;
 import com.fx.market.dao.FreeBoardDao;
 import com.fx.market.dto.FreeBoardDto;
+import com.fx.market.dto.PhotoDto;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 
 public class FreeBoardService {
-	private FreeBoardDao townDao;
-	private FreeBoardDto townDto;
+	private FreeBoardDao townDao = new FreeBoardDao();
+	private FreeBoardDto townDto = new FreeBoardDto();
 
 
 	
-	public void boardClick(String main_category,String middle_category,String title, String content){
-		townDao = new FreeBoardDao();
-		townDto = new FreeBoardDto();
+	public void boardClick(String main_category,String sub_category,String title, String content){
 		Alert alert = new Alert(AlertType.INFORMATION);
 		
-		if(middle_category == null) {
+		if(sub_category == null) {
 			alert.setHeaderText("주제를 입력해주세요.");
 			alert.show();
 		}else if(title.isBlank()) {
@@ -32,27 +31,27 @@ public class FreeBoardService {
 		}
 		else {
 			 Session session = Session.getInstance();
+			 session.getInstance().getaddress();
 			 session.getAccountId();
-			
 			townDto.setMain_category(main_category);
 			townDto.setAcount_Id(session.getAccountId());
-			townDto.setMiddle_category(middle_category);
+			townDto.setSub(sub_category);
 			townDto.setTitle(title);
 			townDto.setContent(content);
-//			townDao.insertFreeBoard(townDto);
+			townDao.insertFreeBoard(townDto);
+			
 			alert.setHeaderText("게시물이 등록되었습니다");
 			alert.show();
 		}
 
 	}
+	
 
-	public void updateboardClick(String middle_category,String title,String content, String board_id) {
-		townDao = new FreeBoardDao();
-		townDto = new FreeBoardDto();
-		
+	public void updateboardClick(String sub_category,String title,String content, String board_id) {
+
 		Alert alert = new Alert(AlertType.INFORMATION);
 		
-		if(middle_category == null) {
+		if(sub_category == null) {
 			alert.setHeaderText("주제를 입력해주세요.");
 			alert.show();
 		}else if(title.isBlank()) {
@@ -63,7 +62,7 @@ public class FreeBoardService {
 			alert.show();
 		}
 		else {
-			townDto.setMiddle_category(middle_category);
+			townDto.setSub(sub_category);
 			townDto.setTitle(title);
 			townDto.setContent(content);
 			townDto.setBoard_Id(board_id);
@@ -73,9 +72,28 @@ public class FreeBoardService {
 		}
 	}
 
-	public FreeBoardDto selectBoard(String boardsId) {
-		townDao = new FreeBoardDao();
+
+//	public void photoInsert(PhotoDto photoDto) {
+//		townDao.photosInsert(photoDto);
+//		
+//	}
+
+
+	public FreeBoardDto selectAll(String board_Id) {
+		System.out.println("service");
+		return townDao.selectAll(board_Id);
+	}
+
+
+
+
+	public void deleteClick(String board_Id) {
+		System.out.println("deleteClick");
+		townDao.deleteClick(board_Id);
 		
-		return townDao.selectBoard(boardsId);
+
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setHeaderText("게시물이 삭제되었습니다");
+		alert.show();
 	}	
 }

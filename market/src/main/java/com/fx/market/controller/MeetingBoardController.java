@@ -233,8 +233,22 @@ public class MeetingBoardController implements Initializable{
 
 	        section.setPadding(new Insets(10));
 	        section.setOnMouseClicked(event -> {
+          
+	        	// 상세 페이지 구현중
+	    		// item 정보를 받아서 뷰에서 뿌리면 됨.
+	    		// viewer 에서 상세 페이지를 작성하자
+	    		if(board.getMainCategory().equals("동네생활")) {
+	    			Session session =Session.getInstance();
+		    		session.setTempId(board.getBoardId());
+		    		
+		    		Viewer.setView("detailBulletin");
+		    		
+	    		}else {
+
 	    		Session session =Session.getInstance();
 	    		session.setTempId(board.getBoardId());
+	    		
+	    		
 	    		
 	    		Viewer.setView("meetingBoardDetailForm");
         	});
@@ -263,7 +277,7 @@ public class MeetingBoardController implements Initializable{
 	}
 	
 	public void townWriteBtnClick() {
-		
+		Viewer.setView("main_Bulletin");
 	}
 	
 	public void meetingWriteMenuClick() {
@@ -278,7 +292,7 @@ public class MeetingBoardController implements Initializable{
 	}
 	
 	public void arroundNavClick() {
-		System.out.println("내 근처");
+//		Viewer.setView("detailBulletin");
 	}
 	
 	public void myPageNavClick() {
