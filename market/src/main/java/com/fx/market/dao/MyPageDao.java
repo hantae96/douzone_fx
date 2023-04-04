@@ -28,7 +28,7 @@ public class MyPageDao {
 	
 	//내 정보 불러오기
 	public MyPageDto getMyInfo(String id) {
-		String sql = "select name, temperature, TO_CHAR(created_at, 'YYYYMMDD') from accounts where accounts_id=?";
+		String sql = "select name, temperature, TO_CHAR(created_at, 'YYYY-MM-DD') from accounts where accounts_id=?";
 		MyPageDto dto = new MyPageDto();
 		try {
 			ps = con.prepareStatement(sql);

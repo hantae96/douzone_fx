@@ -12,7 +12,6 @@ import java.util.concurrent.TimeUnit;
 import com.fx.market.common.Session;
 import com.fx.market.common.Util;
 import com.fx.market.common.Viewer;
-import com.fx.market.dao.HomeDao;
 import com.fx.market.dao.ItemDao;
 import com.fx.market.dto.HomeDto;
 import com.fx.market.dto.ItemDto;
@@ -26,7 +25,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.SplitMenuButton;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
@@ -66,13 +65,13 @@ public class HomeController implements Initializable {
 	@FXML
 	private void purchaseNavClick(Event event) {
 		viewer = new Viewer();
-		viewer.setView("home");
+		Viewer.setView("home");
 	}
 
 	@FXML
 	private void boardNavClick(Event event) {
 		viewer = new Viewer();
-		viewer.setView("meetingBoardListForm");
+		Viewer.setView("meetingBoardListForm");
 	}
 	
 	@FXML
@@ -91,12 +90,12 @@ public class HomeController implements Initializable {
 	
 	@FXML
 	private void onSeachButtonClicked() {
-		// 찾기버튼 기능 구현중
+		System.out.println("찾기버튼클릭");
+		Viewer.setView("search");
 	}
-
+	
 	@FXML
 	private void aroundNavClick(Event event) {
-		
 	}
 
 	@FXML
@@ -108,8 +107,7 @@ public class HomeController implements Initializable {
 		ItemDto clickedItem = itemService.getItemById(item.getItemId());
 		Session session =Session.getInstance();
 		session.setModel(clickedItem);
-		Viewer viwer= new Viewer();
-		viwer.setView("item");
+		Viewer.setView("item");
 	}
 	
 	public void printAllItem() {
@@ -117,7 +115,7 @@ public class HomeController implements Initializable {
 
 	    for (HomeDto item : items) {
 	        Label name = new Label(item.getItemName());
-	        name.setPadding(new Insets(10,0,10,55));
+	        name.setPadding(new Insets(5,0,10,10));
 	        // 폰트 크기 변경
 	        name.setFont(new Font(16));
 	        // 굵기 변경
@@ -136,40 +134,43 @@ public class HomeController implements Initializable {
 	        section.setBorder(new Border(
 	                new BorderStroke(Color.LIGHTGREY, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(1))));
 
+	        
 	        // 상품이름
-	        section.setTop(name);
-	        section.setLeft(new Label("photo"));
+	        // 사진
+	        String photoPath = itemService.getPhotoPath(item.getItemId());		
+			String imagePath = "file:" + System.getProperty("user.dir") +"/".concat(photoPath);
+	        ImageView imageView = new ImageView(imagePath);
+	        imageView.setFitWidth(80);
+	        imageView.setFitHeight(80);
+	        imageView.setPreserveRatio(true); // 이미지 비율 유지
+	        section.setLeft(imageView);
 	        section.getLeft().setStyle("-fx-border-color: grey;");
 
 	        // 주소 + 날짜를 같이 넣기 위해 HBox 넣기
-
 	        // 주소
 	        Label address = new Label(item.getAddress());
-	        address.setPadding(new Insets(10,0,0,20));
+	        address.setPadding(new Insets(10,0,0,10));
 	        
 	        //가격
 	        Label price = new Label(Util.priceAddComma(item.getPrice()).concat(" 원"));
 
 
 	        // 날짜
-	        
-	        
 	        Label date = new Label("•".concat(String.valueOf(calculateDate(item))).concat("일 전"));
 	        date.setPadding(new Insets(10,0,0,10));
-
+	        
 	        section.setCenter(address);
 
 			HBox centerBox = new HBox(10); // 간격 조정을 위해 10의 간격으로 생성
 			centerBox.getChildren().addAll(address, date);
-			section.setCenter(centerBox);
+			VBox vBox = new VBox();
+			vBox.getChildren().addAll(name,centerBox,price);
+			section.setCenter(vBox);
 	        
 	        // 가격
-	        section.setBottom(price);
-	        price.setPadding(new Insets(10,0,0,55)); // 모든 방향에 대해 10px의 패딩 적용
+	        price.setPadding(new Insets(10,0,0,10)); // 모든 방향에 대해 10px의 패딩 적용
 	        price.setFont(Font.font("System", FontWeight.BOLD, 16));
 
-	        
-	        
 	        // 추천
 	        section.setRight(recommand);
 	        
@@ -180,7 +181,6 @@ public class HomeController implements Initializable {
 	        	}); // 클릭 이벤트 핸들러 등록
 
 	        main.getChildren().add(section);
-	  
 	    }
 	    
 	    Button wrtieButton = new Button("글쓰기");
@@ -190,9 +190,7 @@ public class HomeController implements Initializable {
 	    
 	    
 	    wrtieButton.setOnAction(event -> {			
-			Viewer viewer = new Viewer();
-			viewer.setView("register");
-			
+			Viewer.setView("register");
 	    });
 	    
 	    main.getChildren().add(wrtieButton);

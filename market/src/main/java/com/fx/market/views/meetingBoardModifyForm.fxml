@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="643.0" prefWidth="360.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fx.market.controller.BoardController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="643.0" prefWidth="360.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fx.market.controller.MeetingBoardUpdateController">
    <bottom>
       <FlowPane prefHeight="60.0" prefWidth="360.0" BorderPane.alignment="CENTER">
          <children>
@@ -93,7 +93,7 @@
                <VBox.margin>
                   <Insets top="1.0" />
                </VBox.margin></TextField>
-            <ComboBox fx:id="middleCategory" prefHeight="36.0" prefWidth="360.0" promptText="카테고리를 선택해주세요." style="-fx-border-color: grey; -fx-background-color: white;">
+            <ComboBox fx:id="subCategory" prefHeight="36.0" prefWidth="360.0" promptText="카테고리를 선택해주세요." style="-fx-border-color: grey; -fx-background-color: white;">
                 <items>
                 
                 </items>
@@ -112,12 +112,12 @@
                   <Font name="System Bold" size="15.0" />
                </font>
             </Button>
-            <Label alignment="CENTER" prefHeight="46.0" prefWidth="258.0" style="-fx-background-color: white;" text="동네생활 함께해요">
+            <Label fx:id="mainCategory" alignment="CENTER" prefHeight="46.0" prefWidth="258.0" style="-fx-background-color: white;" text="동네생활 함께해요">
                <font>
                   <Font name="System Bold Italic" size="20.0" />
                </font>
             </Label>
-            <Button mnemonicParsing="false" onMouseClicked="#meetingBoardWriteBtnClick" prefHeight="46.0" prefWidth="51.0" style="-fx-background-color: white;" text="완료" textFill="#ff7f00">
+            <Button mnemonicParsing="false" onAction="#updateBtnClick" prefHeight="46.0" prefWidth="51.0" style="-fx-background-color: white;" text="수정" textFill="#ff7f00">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>

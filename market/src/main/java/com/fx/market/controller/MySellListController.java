@@ -7,7 +7,11 @@ import java.util.ResourceBundle;
 
 import com.fx.market.common.Session;
 import com.fx.market.common.Viewer;
+import com.fx.market.dto.HomeDto;
+import com.fx.market.dto.ItemDto;
 import com.fx.market.dto.MySellListDto;
+import com.fx.market.service.HomeService;
+import com.fx.market.service.ItemService;
 import com.fx.market.service.MySellListService;
 
 import javafx.fxml.FXML;
@@ -29,10 +33,14 @@ public class MySellListController implements Initializable{
 	@FXML private Button writeButton;
 	
 	private MySellListService service;
+	private HomeService homeService;
+	private ItemService itemService;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		service = new MySellListService();
+		homeService = new HomeService();
+		itemService = new ItemService();
 			getMyList();
 	}
 	
@@ -40,12 +48,10 @@ public class MySellListController implements Initializable{
 	protected void writeButtonClick() {
 		String whereToGo = Session.getInstance().getWhereToGo();
 		if(whereToGo.equals("MySellList")) {
-		Viewer viewer = new Viewer();
-		viewer.setView("register");
+			Viewer.setView("register");
 		}
 		if(whereToGo.equals("MyBoardList")) {
-			Viewer viewer = new Viewer();
-			viewer.setView("meetingBoardWriteForm");			
+			Viewer.setView("meetingBoardListForm");			
 		}
 	}
 	
@@ -70,6 +76,7 @@ public class MySellListController implements Initializable{
 			where.setText("나의 판매 목록");
 			writeButton.setDisable(false);
 			writeButton.setVisible(true);
+			writeButton.setText("글쓰기");
 			items = service.getMySellList(myId);
 		}else if(whereToGo.equals("MyBuyList")) {
 			where.setText("나의 구매 목록");			
@@ -80,6 +87,7 @@ public class MySellListController implements Initializable{
 			where.setText("나의 작성글 목록");			
 			writeButton.setDisable(false);
 			writeButton.setVisible(true);
+			writeButton.setText("글쓰러가기");
 			items = service.getMyBoardList(myId);
 		}else if(whereToGo.equals("MyFavorList")) {
 			where.setText("나의 관심글 목록");			
@@ -117,6 +125,11 @@ public class MySellListController implements Initializable{
 			
 			bord.setLeft(sellImage);
 			
+			bord.setOnMouseClicked(event -> {
+				openItemDetails(item);
+				homeService.addView(item.getGoods_id());
+			}); // 클릭 이벤트 핸들러 등록
+			
 			//제목,장소,가격,날짜
 			VBox box = new VBox();
 			box.setAlignment(Pos.CENTER_LEFT);
@@ -135,8 +148,15 @@ public class MySellListController implements Initializable{
 			
 			main.getChildren().add(bord);
 		}
-		
 	}
 	
+	// 상세보기 이동
+	private void openItemDetails(MySellListDto item) {
+		ItemDto clickedItem = itemService.getItemById(item.getGoods_id());
+		Session.getInstance().setModel(clickedItem);
+		if(Session.getInstance().getWhereToGo().equals("MySellList")) {
+			Viewer.setView("item");
+		}
+	}
 	
 }

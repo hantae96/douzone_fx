@@ -22,6 +22,7 @@ public class Viewer {
 			FXMLLoader loader = new FXMLLoader(Viewer.class.getResource("/com/fx/market/views/"+viewName+".fxml"));
 	        Parent menuForm = null;
 	
+	       System.out.println("/com/fx/market/views/"+viewName+".fxml");
 	        try {
 	            menuForm = loader.load();
 
@@ -30,9 +31,8 @@ public class Viewer {
 	        }
 	
 	        primaryStage = Session.getInstance().getStage();
-	
 	        Scene scene = new Scene(menuForm);
-	        primaryStage.setTitle("등록 화면");
+	        primaryStage.setTitle("감귤 마켓");
 	        primaryStage.setScene(scene);
 	        primaryStage.show();
 	}
@@ -57,12 +57,12 @@ public class Viewer {
 	        ScrollPane sroot = (ScrollPane) root.getCenter();
 	        sroot.lookup(".scroll-bar:vertical").setStyle("-fx-opacity: 0;");
 	        sroot.lookup(".scroll-bar:horizontal").setStyle("-fx-opacity: 0;");
-	        sroot.setContent(null);
+//	        sroot.setContent(null);
 	        sroot.setContent(boarderPane);
 	}
 
 	//스크롤판 전환 스크롤 안숨김
-	public void setViewCenterScroll(String viewName) {
+	public static void setViewCenterScroll(String viewName) {
 		FXMLLoader loader = new FXMLLoader(Viewer.class.getResource("/com/fx/market/views/"+viewName+".fxml"));
 		Parent menuForm = null;
 		
@@ -72,7 +72,7 @@ public class Viewer {
 			e.printStackTrace();
 		}
 		
-		this.primaryStage = Session.getInstance().getStage();
+		primaryStage = Session.getInstance().getStage();
 		
 		
 		

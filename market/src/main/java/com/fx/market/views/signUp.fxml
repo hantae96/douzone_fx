@@ -24,13 +24,13 @@
          <children>
             <VBox alignment="TOP_RIGHT" prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Label text="아이디" />
+                  <Label fx:id="idText" text="아이디" />
                </children>
             </VBox>
             <VBox prefHeight="100.0" prefWidth="200.0">
                <children>
                   <TextField fx:id="idInput" onKeyPressed="#checkIdLength" promptText="영문, 숫자 5~15글자" />
-                  <Label fx:id="idAlert" maxWidth="200.0" text="*필수 입력 항목" textFill="#ee0000" wrapText="true">
+                  <Label fx:id="idAlert" maxWidth="200.0" text="*ex) HelloJava123" textFill="#ee0000" wrapText="true">
                      <font>
                         <Font size="10.0" />
                      </font>
@@ -48,13 +48,13 @@
          <children>
             <VBox alignment="TOP_RIGHT" prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Label text="이름" />
+                  <Label fx:id="nameText" text="이름" />
                </children>
             </VBox>
             <VBox prefHeight="100.0" prefWidth="200.0">
                <children>
                   <TextField fx:id="nameInput" onKeyPressed="#checkNameLength" promptText="5글자 이내" />
-                  <Label fx:id="nameAlert" maxWidth="200.0" text="*필수 입력 항목" textFill="#ee0000" wrapText="true">
+                  <Label fx:id="nameAlert" maxWidth="200.0" text="*ex) 홍길동" textFill="#ee0000" wrapText="true">
                      <font>
                         <Font size="10.0" />
                      </font>
@@ -68,15 +68,15 @@
          <children>
             <VBox alignment="TOP_RIGHT" prefHeight="200.0" prefWidth="100.0" spacing="18.0">
                <children>
-                  <Label text="비밀번호" />
-                  <Label maxWidth="60.0" text="비밀번호      확인" wrapText="true" />
+                  <Label fx:id="pwText" text="비밀번호" />
+                  <Label fx:id="pwcText" maxWidth="60.0" text="비밀번호      확인" wrapText="true" />
                </children>
             </VBox>
             <VBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                <children>
                   <PasswordField fx:id="pwInput" onKeyPressed="#checkPwLength" promptText="15글자 이내" />
                   <PasswordField fx:id="pwcInput" onKeyPressed="#checkPwcLength" promptText="15글자 이내" />
-                  <Label fx:id="pwAlert" maxWidth="200.0" text="*필수 입력 항목" textFill="#ee0000" wrapText="true">
+                  <Label fx:id="pwAlert" maxWidth="200.0" textFill="#ee0000" wrapText="true">
                      <font>
                         <Font size="10.0" />
                      </font>
@@ -90,13 +90,13 @@
          <children>
             <VBox alignment="TOP_RIGHT" prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Label text="주소" />
+                  <Label fx:id="addressText" text="주소" />
                </children>
             </VBox>
             <VBox prefHeight="100.0" prefWidth="200.0">
                <children>
                   <TextField fx:id="addressInput" onKeyPressed="#checkAddressLength" promptText="~시 ~구" />
-                  <Label fx:id="addressAlert" maxWidth="200.0" text="*필수 입력 항목" textFill="#ee0000" wrapText="true">
+                  <Label fx:id="addressAlert" maxWidth="200.0" text="*ex) 서울시 종로구" textFill="#ee0000" wrapText="true">
                      <font>
                         <Font size="10.0" />
                      </font>
@@ -110,13 +110,13 @@
          <children>
             <VBox alignment="TOP_RIGHT" prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Label text="이메일" />
+                  <Label fx:id="emailText" text="이메일" />
                </children>
             </VBox>
             <VBox prefHeight="100.0" prefWidth="200.0">
                <children>
                   <TextField fx:id="emailInput" onKeyPressed="#checkEmailLength" promptText="Email 형식" />
-                  <Label fx:id="emailAlert" maxWidth="200.0" text="*필수 입력 항목" textFill="#ee0000" wrapText="true">
+                  <Label fx:id="emailAlert" maxWidth="200.0" text="*ex) hong@market.com" textFill="#ee0000" wrapText="true">
                      <font>
                         <Font size="10.0" />
                      </font>

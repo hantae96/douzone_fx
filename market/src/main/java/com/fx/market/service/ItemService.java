@@ -54,8 +54,13 @@ public class ItemService {
 		dao.deleteFavorites(accountId,itemId);
 	}
 
-	public void buy(String accountId, String itemId) {
+	public void buy(String accountId, String itemId, int grade) {
 		ItemDao dao = new ItemDao();
-		dao.updateSaled(accountId,itemId);
+		dao.updateSaled(accountId,itemId,grade);
+	}
+	
+	public String getPhotoPath(String itemId) {
+		ItemDao dao = new ItemDao();
+		return dao.getPhoto(itemId);
 	}
 }

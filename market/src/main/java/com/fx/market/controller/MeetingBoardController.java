@@ -1,13 +1,19 @@
 package com.fx.market.controller;
 
 import java.net.URL;
+import java.time.Duration;
+import java.time.Instant;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 
 import com.fx.market.common.Session;
 import com.fx.market.common.Viewer;
 import com.fx.market.dto.BoardDto;
+import com.fx.market.dto.PhotoDto;
 import com.fx.market.service.BoardService;
+import com.fx.market.service.PhotoService;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -19,6 +25,8 @@ import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.ScrollEvent;
@@ -48,13 +56,11 @@ public class MeetingBoardController implements Initializable{
 	@FXML MenuItem townWriteBtn;
 	
 	BoardService boardService;
+	PhotoService photoService;
 	
 	private boolean writeMenuVisible = false;
 	
-	public void anchorPaneClick() {
-		 
-	}
-	
+	public void anchorPaneClick() {	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -122,65 +128,111 @@ public class MeetingBoardController implements Initializable{
 		List<BoardDto> boards = boardService.selectMeetingBoardList();
 		
 		for (BoardDto board : boards) {
-			Label name = new Label(board.getTitle());
-	        name.setPadding(new Insets(10,0,10,55));
-	        // 폰트 크기 변경
-	        name.setFont(new Font(16));
-	        // 굵기 변경
-	        name.setFont(Font.font("System", FontWeight.BOLD, 16));
-	        
-	       
-	        // 추천 
-	        Label recommand;
-	        if (board.getRecommends() != 0) {
-	            recommand = new Label("♡ ".concat(String.valueOf(board.getRecommends())));
-	        } else {
-	            recommand = new Label("");
-	        }
+			photoService = new PhotoService();
+			PhotoDto photo = photoService.getPhoto(board.getBoardId());
+			
+			if(photo == null)
+				photo = new PhotoDto();
+			
+			Label mainCategoryLabel = new Label(board.getMainCategory());
+			
+			mainCategoryLabel.setPadding(new Insets(3,3,3,3));
+	        mainCategoryLabel.setFont(Font.font("System", FontWeight.BOLD, 9));
+	        mainCategoryLabel.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
 
 	        BorderPane section = new BorderPane();
 	        section.setBorder(new Border(
 	                new BorderStroke(Color.LIGHTGREY, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(1))));
 
-	        // 상품이름
-	        section.setTop(name);
-	        section.setLeft(new Label("photo"));
-	        section.getLeft().setStyle("-fx-border-color: grey;");
-
-	        // 주소 + 날짜를 같이 넣기 위해 HBox 넣기
-
-	        // 주소
-	        Label address = new Label(board.getAddress());
-	        address.setPadding(new Insets(10,0,0,20));
+	        Label titleLabel = new Label(board.getTitle());
+	        titleLabel.setPadding(new Insets(5,0,0,0));
+	        titleLabel.setFont(Font.font("System", FontWeight.NORMAL, 15));
 	        
-	        //가격
-//	        Label price = new Label(board.getPrice().concat(" 원"));
+		     // 현재 시간과 비교할 시간을 밀리초로 구합니다.
+	        long currentTimeMillis = Instant.now().toEpochMilli();
+	        long pastTimeMillis = board.getCreatedAt().getTime();
 
+	        // Duration 객체를 사용하여 밀리초를 분, 시, 일 등으로 변환합니다.
+	        Duration duration = Duration.ofMillis(currentTimeMillis - pastTimeMillis);
+	        long days = duration.toDays();
 
-	        // 날짜
+	        System.out.println(days);
+	        
+	        String createdAt = null;
+	        if(days == 0) {
+	        	createdAt = "오늘";
+	        }else
+	        	createdAt = days+"일전";
+	        
+	        VBox centerBox = new VBox(10); 
+	        centerBox.setSpacing(5);
+	        System.out.println(board.getMainCategory());
+	        
+	        HBox etcHbox = new HBox();
+	        Label addressLabel = new Label(board.getAddress());
+	        addressLabel.setPadding(new Insets(0,4,0,0));
+	        Label createdAtLabel = new Label(createdAt);
 	        
 	        
-//	        Label date = new Label("•".concat(String.valueOf(calculateDate(item))).concat("일 전"));
-//	        date.setPadding(new Insets(10,0,0,10));
-//
-//	        section.setCenter(address);
+	        if(board.getMainCategory().equals("같이해요")) {
+		        HBox personHbox = new HBox();
+		        Image personImage = new Image("file:src/main/java/com/fx/market/source/image/person.png");
+		        ImageView personImageView = new ImageView(personImage);
+		        personImageView.setFitWidth(14);
+		        personImageView.setFitHeight(14);
+		        Label ageLabel = new Label(board.getAge());
+		        ageLabel.setPadding(new Insets(0,4,0,4));
+		        Label genderLabel = new Label(board.getGender());
+		        personHbox.getChildren().addAll(personImageView, ageLabel, genderLabel);
+		        
+		        HBox calendarHbox = new HBox();
+		        Image calendarImage = new Image("file:src/main/java/com/fx/market/source/image/calendar.png");
+		        ImageView calendarImageView = new ImageView(calendarImage);
+		        calendarImageView.setFitWidth(12);
+		        calendarImageView.setFitHeight(12);
+		        Label meetingDateLabel = new Label(board.getMeetingDateFormat());
+		        meetingDateLabel.setPadding(new Insets(0,4,0,4));
+		        Label meetingTimeLabel = new Label(board.getMeetingTime());
+		        calendarHbox.getChildren().addAll(calendarImageView, meetingDateLabel, meetingTimeLabel);
+		        
+		        etcHbox.getChildren().addAll(addressLabel, createdAtLabel);
+		       
+		        section.setBottom(etcHbox);
+		        centerBox.getChildren().addAll(titleLabel, personHbox, calendarHbox);
+	        }else {
+	        	Label contentLabel = new Label(board.getContent());
+	        	centerBox.getChildren().addAll(titleLabel, contentLabel);
+	        	
+	        	BorderPane bottomPane = new BorderPane();
+	        	
+	        	Label viewLabel = new Label("조회수"+String.valueOf(board.getViews()));
+	        	etcHbox.getChildren().addAll(addressLabel, createdAtLabel, viewLabel);
+	        	
+	        	bottomPane.setLeft(createdAtLabel);
+	        	
+	        	if(board.getRecommends() > 0) {
+			        HBox recommendHbox = new HBox();
+			        Image recommendImage = new Image("file:src/main/java/com/fx/market/source/image/like.png");
+			        ImageView recommendImageView = new ImageView(recommendImage);
+			        Label recommendLabel = new Label(String.valueOf(board.getRecommends()));
+			        recommendHbox.getChildren().addAll(recommendImageView, recommendLabel);
+	        		bottomPane.setRight(recommendHbox);
+	        	}
+	        	
+	        	section.setBottom(bottomPane);
+	        	
+	        }
+	        
 
-			HBox centerBox = new HBox(10); // 간격 조정을 위해 10의 간격으로 생성
-//			centerBox.getChildren().addAll(address, date);
+
+	        
+			section.resize(357, 500);
+			section.setTop(mainCategoryLabel);
 			section.setCenter(centerBox);
-	        
-	        // 가격
-//	        section.setBottom(price);
-//	        price.setPadding(new Insets(10,0,0,55)); // 모든 방향에 대해 10px의 패딩 적용
-//	        price.setFont(Font.font("System", FontWeight.BOLD, 16));
 
-	        
-	        
-	        // 추천
-	        section.setRight(recommand);
-	        section.resize(357, 500);
-	        section.setPadding(new Insets(10)); // 모든 방향에 대해 10px의 패딩 적용
+	        section.setPadding(new Insets(10));
 	        section.setOnMouseClicked(event -> {
+          
 	        	// 상세 페이지 구현중
 	    		// item 정보를 받아서 뷰에서 뿌리면 됨.
 	    		// viewer 에서 상세 페이지를 작성하자
@@ -191,15 +243,28 @@ public class MeetingBoardController implements Initializable{
 		    		Viewer.setView("detailBulletin");
 		    		
 	    		}else {
+
 	    		Session session =Session.getInstance();
 	    		session.setTempId(board.getBoardId());
 	    		
 	    		
 	    		
 	    		Viewer.setView("meetingBoardDetailForm");
-	    		}
-	        	}); // 클릭 이벤트 핸들러 등록
+        	});
+	        
+	        
+	        VBox rightVbox = new VBox();
+	        
+	        Image photoImage = new Image("file:" + photo.getPath());
+	        ImageView photoImageView = new ImageView();
+    	    photoImageView.setFitWidth(60);
+    	    photoImageView.setFitHeight(60);
+    	    photoImageView.setImage(photoImage);
 
+	        rightVbox.getChildren().add(photoImageView);
+	        
+	        section.setRight(rightVbox);
+	        
 	        main.getChildren().add(section);
 	  
 	    }
@@ -230,7 +295,7 @@ public class MeetingBoardController implements Initializable{
 	}
 	
 	public void myPageNavClick() {
-		Viewer.setView("myDouzone");
+		Viewer.setViewCenter("myDouzone");
 	}
 	
 }
