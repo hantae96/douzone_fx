@@ -68,7 +68,7 @@ public class MyPageDao {
 			if(rs.next()) {
 				dto.setBuy_num(rs.getInt("buy_num"));
 			}
-			sql = "select count(*) as document_num from boards where ?=?";
+			sql = "select count(*) as document_num from boards where accounts_id=?";
 			ps = con.prepareStatement(sql);
 			ps.setString(1, id);;
 			rs = ps.executeQuery();
