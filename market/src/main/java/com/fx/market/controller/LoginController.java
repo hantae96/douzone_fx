@@ -40,7 +40,7 @@ public class LoginController implements Initializable{
     	//TextFormatter 적용
     	pw.setTextFormatter(passFormatter);
 		
-		String imagePath = "file:" + System.getProperty("user.dir") + "/src/main/java/com/fx/market/source/image/market2.png";
+		String imagePath = "file:" + System.getProperty("user.dir") + "/src/main/java/com/fx/market/source/image/giphy.gif";
       	Image image = new Image(imagePath);
     	photo.setImage(image); 
 
