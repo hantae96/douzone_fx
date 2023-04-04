@@ -35,10 +35,9 @@ public class UpdateFreeBoardController implements Initializable{
 	@FXML Button closebutton;
 	@FXML Button imagebutton;
 	@FXML private ComboBox combo_box;
-	
-	private FreeBoardService freeboardService;
 	@FXML private ImageView photo;
-
+	private FreeBoardService freeboardService;
+	
 	private String filePathSession;
 	private String fileNameSession;
     private ObservableList<String> list = FXCollections.observableArrayList("동네질문","동네사건사고","동네맛집","동네소식","생활정보","취미생활");
@@ -59,18 +58,38 @@ public class UpdateFreeBoardController implements Initializable{
 	}
 	
 	
-	public void boardClick() {
+	public void boardClick() throws Exception{
+		
 		Session session = Session.getInstance();
 		String board_Id = session.getTempId();
+		
+		// photo insert
+				InputStream inputStream = new FileInputStream(filePathSession);								//경로를 inputStream에 저장
+				String outputName = fileNameSession;														//중복 안되도록 이름 수정
+				String outputPass = "src/main/java/com/fx/market/source/image/"+outputName;					//파일 저장 경로
+				File outputFile = new File(outputPass);														//output할 파일의 경로를 지정해 File객체 생성
+				OutputStream outputStream = new FileOutputStream(outputFile);								//outputFile을 outputStream에 저장
+				    	
+				byte[] buffer = new byte[1024];
+				int length;
+				while ((length = inputStream.read(buffer)) > 0) {
+				    outputStream.write(buffer, 0, length);
+				}
+
+				 inputStream.close();
+				 outputStream.close();
+				 freeboardService.photoUpdate(new PhotoDto(board_Id,outputName,outputPass,null));
+			
 		freeboardService.updateboardClick(sub_category.getValue(), title.getText(), content.getText(), board_Id);
 	}
+		
 	public void closebtn() {
 		Viewer viewer = new Viewer();
 		viewer.setView("home");
 		
 	}
 	
-	public void imagebtn() throws Exception{
+	public void imagebtn() {
 		System.out.println("imagebutton test");
 		FileChooser fileChooser = new FileChooser();                //FileChooser 객체 생성
         Stage stage = new Stage();                            //Stage 객체 생성
@@ -81,24 +100,6 @@ public class UpdateFreeBoardController implements Initializable{
         String imagePath = "file:"+selectedFilePath;                //image객체를 위한 경로 편집
         Image image = new Image(imagePath);                        //이미지 객체 생성
         photo.setImage(image);
-        
-        InputStream inputStream = new FileInputStream(filePathSession);								//경로를 inputStream에 저장
-    	String outputName = fileNameSession;														//중복 안되도록 이름 수정
-    	String outputPass = "src/main/java/com/fx/market/source/image/"+outputName;					//파일 저장 경로
-    	File outputFile = new File(outputPass);														//output할 파일의 경로를 지정해 File객체 생성
-    	OutputStream outputStream = new FileOutputStream(outputFile);								//outputFile을 outputStream에 저장
-    	
-    	byte[] buffer = new byte[1024];
-    	int length;
-    	while ((length = inputStream.read(buffer)) > 0) {
-    	    outputStream.write(buffer, 0, length);
-    	}
-
-    	inputStream.close();
-    	outputStream.close();
-
-    	freeboardService.photoInsert(new PhotoDto(null,outputName,outputPass,null));
-	
 	}
 	
 	

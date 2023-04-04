@@ -72,7 +72,7 @@ public class FreeBoardController implements Initializable{
 
     	inputStream.close();
     	outputStream.close();
-
+    	
   
     	freeboardService.photoInsert(new PhotoDto(null,outputName,outputPass,null));
 	
