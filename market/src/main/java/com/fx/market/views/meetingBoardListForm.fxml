@@ -7,6 +7,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -71,7 +72,7 @@
       </StackPane>
    </center>
    <bottom>
-      <HBox minHeight="60.0" minWidth="360.0" style="-fx-background-color: orange;" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER" minHeight="60.0" minWidth="360.0" style="-fx-background-color: orange;" BorderPane.alignment="CENTER">
          <children>
             <VBox alignment="TOP_CENTER" onMouseClicked="#homeNavClick" prefHeight="60.0" prefWidth="72.0">
                <children>
@@ -79,6 +80,9 @@
                      <VBox.margin>
                         <Insets bottom="3.0" top="5.0" />
                      </VBox.margin>
+                     <image>
+                        <Image url="@../source/image/homeIcon.png" />
+                     </image>
                   </ImageView>
                   <Label text="홈" />
                </children>
@@ -92,21 +96,11 @@
                      <VBox.margin>
                         <Insets bottom="3.0" top="5.0" />
                      </VBox.margin>
+                     <image>
+                        <Image url="@../source/image/borad.png" />
+                     </image>
                   </ImageView>
                   <Label text="동네생활" />
-               </children>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </VBox>
-            <VBox alignment="TOP_CENTER" onMouseClicked="#arroundNavClick" prefHeight="60.0" prefWidth="72.0">
-               <children>
-                  <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
-                     <VBox.margin>
-                        <Insets bottom="3.0" top="5.0" />
-                     </VBox.margin>
-                  </ImageView>
-                  <Label text="내 근처" />
                </children>
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -118,6 +112,9 @@
                      <VBox.margin>
                         <Insets bottom="3.0" top="5.0" />
                      </VBox.margin>
+                     <image>
+                        <Image url="@../source/image/profile.png" />
+                     </image>
                   </ImageView>
                   <Label text="나의 마켓" />
                </children>
@@ -133,7 +130,7 @@
          <children>
             <BorderPane prefHeight="58.0" prefWidth="358.0" style="-fx-background-color: white; -fx-border-color: orange;">
                <left>
-                  <Label fx:id="addressLabel" alignment="BASELINE_LEFT" prefHeight="58.0" prefWidth="176.0" text="Label" textAlignment="CENTER" BorderPane.alignment="CENTER">
+                  <Label fx:id="addressLabel" alignment="BASELINE_LEFT" maxWidth="180.0" minWidth="180.0" prefHeight="58.0" text="Label" textAlignment="CENTER" BorderPane.alignment="CENTER">
                      <font>
                         <Font name="System Bold" size="21.0" />
                      </font>
@@ -146,12 +143,15 @@
                   </Label>
                </left>
                <right>
-                  <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" style="-fx-image: white;" BorderPane.alignment="CENTER">
+                  <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#searchBtnClick" pickOnBounds="true" preserveRatio="true" style="-fx-image: white;" BorderPane.alignment="CENTER">
                      <image>
                         <Image url="@../source/image/search.png" />
                      </image>
                   </ImageView>
                </right>
+               <center>
+                  <TextField fx:id="searchTextField" minHeight="40.0" BorderPane.alignment="CENTER" />
+               </center>
             </BorderPane>
          </children>
       </HBox>

@@ -80,4 +80,11 @@ public class BoardService {
 		}
 		
 	}
+
+
+
+	public List<BoardDto> searchBoardList(String searchStr) {
+		
+		return boardDao.findByBoardList(searchStr);
+	}
 }
