@@ -1,12 +1,17 @@
 package com.fx.market.controller;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import com.fx.market.common.Session;
 import com.fx.market.common.Viewer;
 import com.fx.market.dto.FreeBoardDto;
+import com.fx.market.dto.PhotoDto;
 import com.fx.market.service.FreeBoardService;
 
 import javafx.collections.FXCollections;
@@ -65,7 +70,7 @@ public class UpdateFreeBoardController implements Initializable{
 		
 	}
 	
-	public void imagebtn() {
+	public void imagebtn() throws Exception{
 		System.out.println("imagebutton test");
 		FileChooser fileChooser = new FileChooser();                //FileChooser 객체 생성
         Stage stage = new Stage();                            //Stage 객체 생성
@@ -76,6 +81,24 @@ public class UpdateFreeBoardController implements Initializable{
         String imagePath = "file:"+selectedFilePath;                //image객체를 위한 경로 편집
         Image image = new Image(imagePath);                        //이미지 객체 생성
         photo.setImage(image);
+        
+        InputStream inputStream = new FileInputStream(filePathSession);								//경로를 inputStream에 저장
+    	String outputName = fileNameSession;														//중복 안되도록 이름 수정
+    	String outputPass = "src/main/java/com/fx/market/source/image/"+outputName;					//파일 저장 경로
+    	File outputFile = new File(outputPass);														//output할 파일의 경로를 지정해 File객체 생성
+    	OutputStream outputStream = new FileOutputStream(outputFile);								//outputFile을 outputStream에 저장
+    	
+    	byte[] buffer = new byte[1024];
+    	int length;
+    	while ((length = inputStream.read(buffer)) > 0) {
+    	    outputStream.write(buffer, 0, length);
+    	}
+
+    	inputStream.close();
+    	outputStream.close();
+
+    	freeboardService.photoInsert(new PhotoDto(null,outputName,outputPass,null));
+	
 	}
 	
 	

@@ -43,8 +43,8 @@ public class FreeBoardService {
 			
 			alert.setHeaderText("게시물이 등록되었습니다");
 			alert.show();
-			Viewer viewer = new Viewer();
-			viewer.setView("meetingBoardListForm");
+//			Viewer viewer = new Viewer();
+//			viewer.setView("meetingBoardListForm");
 			
 		}
 
