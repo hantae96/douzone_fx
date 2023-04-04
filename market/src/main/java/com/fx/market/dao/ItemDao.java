@@ -58,32 +58,30 @@ public class ItemDao {
 	}
 
 	public ItemUserDto getUserById(String goodsId) {
-	    PreparedStatement ps = null;
-	    ResultSet rs = null;
-	    ItemUserDto user = new ItemUserDto();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		ItemUserDto user = new ItemUserDto();
 
-	    // 필요한 정보 : 상품 제목, 위치, 가격, 올린시간, 좋아요
-	    String sql = "SELECT a.name, a.temperature, a.address "
-	               + "FROM accounts a "
-	               + "INNER JOIN goods g ON a.accounts_id = g.accounts_id "
-	               + "WHERE g.goods_id = ?";
-	    try {
-	        ps = con.prepareStatement(sql);
-	        ps.setString(1, goodsId);
-	        rs = ps.executeQuery();
+		// 필요한 정보 : 상품 제목, 위치, 가격, 올린시간, 좋아요
+		String sql = "SELECT a.name, a.temperature, a.address " + "FROM accounts a "
+				+ "INNER JOIN goods g ON a.accounts_id = g.accounts_id " + "WHERE g.goods_id = ?";
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString(1, goodsId);
+			rs = ps.executeQuery();
 
-	        while (rs.next()) {
-	            // 나중에 포토 테이블이랑 연결하면 추가
-	            user.setUserName(rs.getString("name"));
-	            user.setTemperature(String.valueOf(rs.getDouble("temperature")));
-	            user.setAddress(rs.getString("address"));
-	        }
-	        con.close();
+			while (rs.next()) {
+				// 나중에 포토 테이블이랑 연결하면 추가
+				user.setUserName(rs.getString("name"));
+				user.setTemperature(String.valueOf(rs.getDouble("temperature")));
+				user.setAddress(rs.getString("address"));
+			}
+			con.close();
 
-	    } catch (Exception e) {
-	        e.printStackTrace();
-	    }
-	    return user;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return user;
 	}
 
 	
@@ -110,24 +108,23 @@ public class ItemDao {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		String photoPath = null;
-	    		
-	    String sql = "select path from photos where photos_id = ?";
-	    try {
-	        ps = con.prepareStatement(sql);
-	        ps.setString(1, itemId);
-	        rs = ps.executeQuery();
-	        
-	        
-	        while (rs.next()) {
-	        	photoPath=rs.getString("path");
-	        }
-	        con.close();
 
-	    } catch (Exception e) {
-	        e.printStackTrace();
-	    }
-	    
-	    return photoPath;
+		String sql = "select path from photos where photos_id = ?";
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString(1, itemId);
+			rs = ps.executeQuery();
+
+			while (rs.next()) {
+				photoPath = rs.getString("path");
+			}
+			con.close();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return photoPath;
 	}
 	
 		/*goods 작성자 select (혜성 추가)*/
@@ -148,5 +145,4 @@ public class ItemDao {
 		}
 		return null;
 	}
-
 }
