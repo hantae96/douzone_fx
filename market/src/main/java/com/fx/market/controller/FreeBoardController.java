@@ -72,8 +72,7 @@ public class FreeBoardController implements Initializable{
 
     	inputStream.close();
     	outputStream.close();
-    	Session session = Session.getInstance();
-    	String name = session.getAccountId();
+
   
     	freeboardService.photoInsert(new PhotoDto(null,outputName,outputPass,null));
 	

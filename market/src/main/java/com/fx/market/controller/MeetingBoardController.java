@@ -84,7 +84,7 @@ public class MeetingBoardController implements Initializable{
 		    	System.out.println(event.getTarget());
 		    	
 		    }
-			
+		
 		});
 		
 		//anchorPane 스크롤 이벤트 scrollPane에게 전달

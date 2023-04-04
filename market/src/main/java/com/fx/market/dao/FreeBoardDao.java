@@ -27,6 +27,7 @@ public class FreeBoardDao{
 		}
 	}
 	
+
 	public void photosInsert(PhotoDto photo) {
 		System.out.println(photo.getPhotos_id());
 		System.out.println(photo.getName());
@@ -43,6 +44,7 @@ public class FreeBoardDao{
 		}
 	}
 	
+
 	
 	public int insertFreeBoard(FreeBoardDto townDto) {
 		
