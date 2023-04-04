@@ -6,9 +6,9 @@ import java.util.ResourceBundle;
 import com.fx.market.common.Session;
 import com.fx.market.common.Viewer;
 import com.fx.market.dto.BoardDto;
-import com.fx.market.dto.MeetingAttendDto;
+import com.fx.market.dto.MeetingAttendeesDto;
 import com.fx.market.service.BoardService;
-import com.fx.market.service.MeetingAttendService;
+import com.fx.market.service.MeetingAttendeesService;
 
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;

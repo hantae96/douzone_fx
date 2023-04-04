@@ -9,9 +9,9 @@ import com.fx.market.common.CommonService;
 import com.fx.market.common.Session;
 import com.fx.market.common.Viewer;
 import com.fx.market.dto.BoardDto;
-import com.fx.market.dto.MeetingAttendDto;
+import com.fx.market.dto.MeetingAttendeesDto;
 import com.fx.market.service.BoardService;
-import com.fx.market.service.MeetingAttendService;
+import com.fx.market.service.MeetingAttendeesService;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -61,8 +61,8 @@ public class MeetingBoardDetailController implements Initializable{
 	@FXML private MenuItem meetingDeleteMenuItem;
 
 	private BoardService boardService;
-	private MeetingAttendService meetingAttendService;
-	private List<MeetingAttendDto> meetingAttendDtos;
+	private MeetingAttendeesService meetingAttendService;
+	private List<MeetingAttendeesDto> meetingAttendDtos;
 	
 	private BoardDto board;
 	
@@ -113,10 +113,10 @@ public class MeetingBoardDetailController implements Initializable{
 			attendBtn.setDisable(true);
 		}
 		
-		meetingAttendService = new MeetingAttendService();
+		meetingAttendService = new MeetingAttendeesService();
 		meetingAttendDtos = meetingAttendService.getMeetingAttendList(board.getBoardId());
 		
-		for(MeetingAttendDto meeting : meetingAttendDtos) {
+		for(MeetingAttendeesDto meeting : meetingAttendDtos) {
 			BorderPane attendPane = new BorderPane();
 			attendPane.setBorder(new Border(new BorderStroke(Color.GRAY, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(1, 1, 1, 1))));
 			attendPane.setPadding(new Insets(2, 2, 2, 4));
@@ -174,9 +174,9 @@ public class MeetingBoardDetailController implements Initializable{
 	
 	
 	public void attendBtnClick() {
-		meetingAttendService = new MeetingAttendService();
+		meetingAttendService = new MeetingAttendeesService();
 		Session.getInstance().setTempId(board.getBoardId());
-		meetingAttendService.attendMeeting(new MeetingAttendDto(
+		meetingAttendService.attendMeeting(new MeetingAttendeesDto(
 				board.getBoardId(),						// 게시글 ID
 				Session.getInstance().getAccountId()	// 계정 ID
 		));

@@ -8,13 +8,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.fx.market.dto.MeetingAttendDto;
+import com.fx.market.dto.MeetingAttendeesDto;
 
-public class MeetingAttendDao {
+public class MeetingAttendeesDao {
 	
 	private Connection con;
 	
-	public MeetingAttendDao() {
+	public MeetingAttendeesDao() {
 		String url = "jdbc:oracle:thin:@localhost:1521:xe";
 		String user = "douzone";
 		String password = "1234";
@@ -26,7 +26,7 @@ public class MeetingAttendDao {
 		}
 	}
 
-	public int insertAttendMeeting(MeetingAttendDto meetingAttendDto) {
+	public int insertAttendMeeting(MeetingAttendeesDto meetingAttendDto) {
 		String sql = "insert into meeting_attendees values(?, ?)";
 		
 		PreparedStatement ps = null;
@@ -48,12 +48,12 @@ public class MeetingAttendDao {
 		
 	}
 
-	public List<MeetingAttendDto> selectMeetingAttendList(String boardId) {
+	public List<MeetingAttendeesDto> selectMeetingAttendList(String boardId) {
 		String sql = "SELECT ma.*, a.*, p.*"
 				+ "FROM meeting_attendees ma "
-				+ "JOIN accounts a ON ma.account_id = a.accounts_id "
+				+ "JOIN accounts a ON ma.accounts_id = a.accounts_id "
 				+ "LEFT JOIN photos p ON a.accounts_id = p.photos_id "
-				+ "WHERE ma.meeting_id = ?";
+				+ "WHERE ma.meetings_id = ?";
 				
 				PreparedStatement ps = null;
 				ResultSet rs = null;
@@ -66,10 +66,10 @@ public class MeetingAttendDao {
 					
 					rs = ps.executeQuery();
 					
-					List<MeetingAttendDto> meetingAttendDtos = new ArrayList();
+					List<MeetingAttendeesDto> meetingAttendDtos = new ArrayList();
 					while(rs.next()) {
-						MeetingAttendDto meetingAttendDto = new MeetingAttendDto(); 
-						meetingAttendDto.setAccountId(rs.getString("account_id"));
+						MeetingAttendeesDto meetingAttendDto = new MeetingAttendeesDto(); 
+						meetingAttendDto.setAccountId(rs.getString("accounts_id"));
 						meetingAttendDto.setName(rs.getString("name"));
 						meetingAttendDto.setAddress(rs.getString("address"));
 						meetingAttendDto.setPath(rs.getString("path"));
