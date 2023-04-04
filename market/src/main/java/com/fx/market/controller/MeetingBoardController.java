@@ -3,8 +3,6 @@ package com.fx.market.controller;
 import java.net.URL;
 import java.time.Duration;
 import java.time.Instant;
-import java.time.ZoneId;
-import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -45,6 +43,7 @@ import javafx.scene.text.FontWeight;
 
 public class MeetingBoardController implements Initializable{
 
+	@FXML Label addressLabel;
 	@FXML VBox main;
 	@FXML VBox writeMenu;
 	@FXML ScrollPane scrollPane; 
@@ -66,6 +65,8 @@ public class MeetingBoardController implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 		
 		boardService = new BoardService();
+		
+		addressLabel.setText(Session.getInstance().getAddress());
 		
 		printAllItem();
 		

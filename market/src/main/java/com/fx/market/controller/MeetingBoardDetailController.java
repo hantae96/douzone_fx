@@ -1,8 +1,7 @@
 package com.fx.market.controller;
 
 import java.net.URL;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -10,11 +9,12 @@ import com.fx.market.common.CommonService;
 import com.fx.market.common.Session;
 import com.fx.market.common.Viewer;
 import com.fx.market.dto.BoardDto;
+import com.fx.market.dto.MeetingAttendDto;
 import com.fx.market.service.BoardService;
+import com.fx.market.service.MeetingAttendService;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -23,7 +23,13 @@ import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.text.TextFlow;
+import javafx.scene.layout.Border;
+import javafx.scene.layout.BorderStroke;
+import javafx.scene.layout.BorderStrokeStyle;
+import javafx.scene.layout.BorderWidths;
+import javafx.scene.layout.CornerRadii;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 
 public class MeetingBoardDetailController implements Initializable{
 	
@@ -38,6 +44,12 @@ public class MeetingBoardDetailController implements Initializable{
 	@FXML private Label placeLabel;
 	@FXML private Label contentLabel;
 	
+	@FXML private Label attendLabel;
+	@FXML private Label leaderIdLabel;
+	@FXML private Label leaderAddressLabel;
+	@FXML private Button attendBtn;
+	@FXML private VBox attendAccounts;
+	
 	@FXML private Button menuBtn;
 	@FXML private ContextMenu menuContextMenu;
 	@FXML private MenuItem meetingEndMenuItem;
@@ -45,6 +57,8 @@ public class MeetingBoardDetailController implements Initializable{
 	@FXML private MenuItem meetingDeleteMenuItem;
 
 	private BoardService boardService;
+	private MeetingAttendService meetingAttendService;
+	private List<MeetingAttendDto> meetingAttendDtos;
 	
 	private BoardDto board;
 	
@@ -75,18 +89,31 @@ public class MeetingBoardDetailController implements Initializable{
 		placeLabel.setText(board.getPlace());
 		contentLabel.setText(board.getContent());
 		
-	}
-
-	public void btnCLick() {
-
-	}
-	
-	public void backBtnClick() {
-		Viewer.setView("meetingBoardListForm");
+		
+		BorderWidths borderWitdths = new BorderWidths(0, 0, 1, 0); // bottom border width = 1
+		BorderStroke borderStroke = new BorderStroke(Color.GRAY, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, borderWitdths);
+		Border border = new Border(borderStroke);
+		attendLabel.setBorder(border);
+		leaderIdLabel.setText(board.getAccountId());
+		leaderAddressLabel.setText(board.getAddress());
+		
+//		System.out.println("true : "+board.getAccountId().equals(Session.getInstance().getAccountId()));
+//		System.out.println(board.getAccountId());
+//		
+//		if(board.getAccountId() == Session.getInstance().getAccountId()) {
+//			menuBtn.setVisible(true);
+//		}
+		
+//		if(board.getAccountId().equals(Session.getInstance().getAccountId()) || board.getState().equals("모집종료") ) {
+//			attendBtn.setVisible(false);
+//		}
+		
+//		meetingAttendDtos = meetingAttendService.getMeetingAttendList(board.getBoardId());
 	}
 	
 	public void meetingEndMenuItemClick() {
 		System.out.println("종료");
+		boardService.updateMeetingState(board.getBoardId());
 	}
 	
 	public void meetingModifyMenuItemClick() {
@@ -104,5 +131,21 @@ public class MeetingBoardDetailController implements Initializable{
 	    	
 	    }
 	    
+	}
+	
+	public void backBtnClick() {
+		Viewer.setView("meetingBoardListForm");
+	}
+	
+	
+	public void attendBtnClick() {
+		meetingAttendService = new MeetingAttendService();
+		meetingAttendService.attendMeeting(
+				new MeetingAttendDto(
+						board.getBoardId(),
+						Session.getInstance().getAccountId()
+						)
+				);
+		System.out.println("참여하기");
 	}
 }

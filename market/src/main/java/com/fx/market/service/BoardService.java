@@ -1,4 +1,4 @@
-package com.fx.market.service;
+ package com.fx.market.service;
 
 import java.util.List;
 
@@ -69,4 +69,15 @@ public class BoardService {
 		}
 	}
 
+
+
+	public void updateMeetingState(String boardId) {
+		int result = boardDao.updateMeetingState(boardId);
+		if(result != 0) {
+			CommonService.msg(AlertType.INFORMATION, "모집 종료", "모집이 종료되었습니다.", "");
+			Viewer.setView("meetingBoardListForm");
+			
+		}
+		
+	}
 }

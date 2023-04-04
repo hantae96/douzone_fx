@@ -20,7 +20,6 @@ public class BoardDao {
 		try {
 			Class.forName("oracle.jdbc.OracleDriver");
 			con = DriverManager.getConnection(url, user, password);
-			System.out.println("연결성공");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -228,6 +227,30 @@ public class BoardDao {
 	        meetingPs.executeUpdate();
 
 	        con.commit(); // 트랜잭션 성공
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+
+	public int updateMeetingState(String boardId) {
+
+	    String sql = "update meetings "
+	    		+ "set state = '모집종료' "
+	    		+ "where boards_id = ?";
+
+	    PreparedStatement ps = null;
+	    int result = 0;
+		
+		try {
+			
+	        ps = con.prepareStatement(sql);
+	        ps.setString(1, boardId);
+	        
+	        result = ps.executeUpdate();
+
 		} catch (SQLException e) {
 			
 			e.printStackTrace();
