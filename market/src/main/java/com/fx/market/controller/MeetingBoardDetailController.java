@@ -1,6 +1,7 @@
 package com.fx.market.controller;
 
 import java.net.URL;
+import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -8,7 +9,9 @@ import com.fx.market.common.CommonService;
 import com.fx.market.common.Session;
 import com.fx.market.common.Viewer;
 import com.fx.market.dto.BoardDto;
+import com.fx.market.dto.MeetingAttendDto;
 import com.fx.market.service.BoardService;
+import com.fx.market.service.MeetingAttendService;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -25,6 +28,7 @@ import javafx.scene.layout.BorderStroke;
 import javafx.scene.layout.BorderStrokeStyle;
 import javafx.scene.layout.BorderWidths;
 import javafx.scene.layout.CornerRadii;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
 public class MeetingBoardDetailController implements Initializable{
@@ -44,6 +48,7 @@ public class MeetingBoardDetailController implements Initializable{
 	@FXML private Label leaderIdLabel;
 	@FXML private Label leaderAddressLabel;
 	@FXML private Button attendBtn;
+	@FXML private VBox attendAccounts;
 	
 	@FXML private Button menuBtn;
 	@FXML private ContextMenu menuContextMenu;
@@ -52,6 +57,8 @@ public class MeetingBoardDetailController implements Initializable{
 	@FXML private MenuItem meetingDeleteMenuItem;
 
 	private BoardService boardService;
+	private MeetingAttendService meetingAttendService;
+	private List<MeetingAttendDto> meetingAttendDtos;
 	
 	private BoardDto board;
 	
@@ -100,10 +107,8 @@ public class MeetingBoardDetailController implements Initializable{
 //		if(board.getAccountId().equals(Session.getInstance().getAccountId()) || board.getState().equals("모집종료") ) {
 //			attendBtn.setVisible(false);
 //		}
-	}
-
-	public void btnCLick() {
-
+		
+//		meetingAttendDtos = meetingAttendService.getMeetingAttendList(board.getBoardId());
 	}
 	
 	public void meetingEndMenuItemClick() {
@@ -128,7 +133,19 @@ public class MeetingBoardDetailController implements Initializable{
 	    
 	}
 	
+	public void backBtnClick() {
+		Viewer.setView("meetingBoardListForm");
+	}
+	
+	
 	public void attendBtnClick() {
+		meetingAttendService = new MeetingAttendService();
+		meetingAttendService.attendMeeting(
+				new MeetingAttendDto(
+						board.getBoardId(),
+						Session.getInstance().getAccountId()
+						)
+				);
 		System.out.println("참여하기");
 	}
 }

@@ -20,7 +20,6 @@ public class BoardDao {
 		try {
 			Class.forName("oracle.jdbc.OracleDriver");
 			con = DriverManager.getConnection(url, user, password);
-			System.out.println("연결성공");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
