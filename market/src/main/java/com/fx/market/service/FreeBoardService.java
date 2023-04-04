@@ -3,6 +3,7 @@ package com.fx.market.service;
 
 
 import com.fx.market.common.Session;
+import com.fx.market.common.Viewer;
 import com.fx.market.dao.FreeBoardDao;
 import com.fx.market.dto.FreeBoardDto;
 import com.fx.market.dto.PhotoDto;
@@ -42,6 +43,9 @@ public class FreeBoardService {
 			
 			alert.setHeaderText("게시물이 등록되었습니다");
 			alert.show();
+			Viewer viewer = new Viewer();
+			viewer.setView("meetingBoardListForm");
+			
 		}
 
 	}
@@ -69,6 +73,7 @@ public class FreeBoardService {
 			townDao.updateFreeBoard(townDto);
 			alert.setHeaderText("게시물이 등록되었습니다");
 			alert.show();
+			
 		}
 	}
 
