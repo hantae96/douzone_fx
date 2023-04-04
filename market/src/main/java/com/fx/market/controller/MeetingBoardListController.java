@@ -36,12 +36,13 @@ import javafx.scene.layout.BorderStrokeStyle;
 import javafx.scene.layout.BorderWidths;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
-public class MeetingBoardController implements Initializable{
+public class MeetingBoardListController implements Initializable{
 
 	@FXML Label addressLabel;
 	@FXML VBox main;
@@ -201,10 +202,11 @@ public class MeetingBoardController implements Initializable{
 	        	
 	        	BorderPane bottomPane = new BorderPane();
 	        	
-	        	Label viewLabel = new Label("조회수"+String.valueOf(board.getViews()));
+	        	Label viewLabel = new Label("조회수 "+String.valueOf(board.getViews()));
 	        	etcHbox.getChildren().addAll(addressLabel, createdAtLabel, viewLabel);
 	        	
-	        	bottomPane.setLeft(createdAtLabel);
+	        	bottomPane.setBottom(etcHbox);
+	        	((Region)bottomPane.getBottom()).setPrefWidth(360);
 	        	
 	        	if(board.getRecommends() > 0) {
 			        HBox recommendHbox = new HBox();

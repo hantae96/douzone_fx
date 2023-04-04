@@ -6,7 +6,9 @@ import java.util.ResourceBundle;
 import com.fx.market.common.Session;
 import com.fx.market.common.Viewer;
 import com.fx.market.dto.BoardDto;
+import com.fx.market.dto.MeetingAttendDto;
 import com.fx.market.service.BoardService;
+import com.fx.market.service.MeetingAttendService;
 
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -18,8 +20,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseButton;
 
-public class BoardController implements Initializable{
+public class MeetingBoardWriteController implements Initializable{
 	
 	@FXML private Label mainCategory;
 	@FXML private TextField title;
@@ -37,13 +40,18 @@ public class BoardController implements Initializable{
 	@FXML private TextField age;
 	
 	private BoardService boardService;
-
 	
 	public void initialize(URL location, ResourceBundle resources) {
 		
 		boardService = new BoardService();
 		
 		middleCategory.setItems(FXCollections.observableArrayList("밥/카페", "산책", "러닝", "운동", "독서", "스터디", "취미", "반려동물", "육아", "기타"));
+		meetingDate.getEditor().setOnMouseClicked(event -> {
+		    if (event.getButton() == MouseButton.PRIMARY) {
+		    	meetingDate.show();
+		    }
+		});
+		meetingDate.setEditable(false);
 		ampm.setItems(FXCollections.observableArrayList("오전","오후"));
 		hour.setItems(FXCollections.observableArrayList("1시", "2시", "3시", "4시", "5시", "6시", "7시", "8시", "9시", "10시", "11시", "12시"));
 		minute.setItems(FXCollections.observableArrayList("5분", "10분", "15분", "20분", "25분", "30분", "35분", "40분", "45분", "50분", "55분"));
@@ -78,8 +86,7 @@ public class BoardController implements Initializable{
 				gender,									//모임 성별
 				age.getText()							//모임 나이
 				));
-		
-		
+
 	}
 	
 	public void cancelBtnClick() {

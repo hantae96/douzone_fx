@@ -26,7 +26,7 @@ public class MeetingAttendService {
 			CommonService.msg(AlertType.INFORMATION, "모임 참여", "모임에 참여했습니다.", "");
 		}
 		
-		Viewer.setView("meetingBoardListForm");
+		Viewer.setView("meetingBoardDetailForm");
 		
 	}
 
@@ -34,5 +34,7 @@ public class MeetingAttendService {
 		
 		return meetingAttendDao.selectMeetingAttendList(boardId);
 	}
+
+
 
 }

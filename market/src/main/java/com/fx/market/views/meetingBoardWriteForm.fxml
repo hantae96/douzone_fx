@@ -17,43 +17,43 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="643.0" prefWidth="360.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fx.market.controller.BoardController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="643.0" prefWidth="360.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fx.market.controller.MeetingBoardWriteController">
    <bottom>
       <FlowPane prefHeight="60.0" prefWidth="360.0" BorderPane.alignment="CENTER">
          <children>
-            <ScrollPane prefHeight="394.0" prefWidth="360.0">
+            <ScrollPane minHeight="394.0" prefWidth="360.0">
                <content>
-                  <VBox prefHeight="249.0" prefWidth="359.0">
+                  <VBox prefHeight="249.0" prefWidth="358.0">
                      <children>
-                        <TextField fx:id="person" prefHeight="36.0" prefWidth="342.0" promptText="모임 인원 수를 입력해주세요" style="-fx-border-color: grey;" />
-                        <DatePicker fx:id="meetingDate" prefHeight="36.0" prefWidth="358.0" promptText="모임 날짜를 입력해주세요" style="-fx-border-color: grey;" />
-                        <HBox alignment="CENTER_LEFT" prefHeight="36.0" prefWidth="200.0" style="-fx-border-color: grey;">
+                        <TextField fx:id="person" prefHeight="36.0" prefWidth="342.0" promptText="모임 인원 수를 입력해주세요" style="-fx-border-color: orange;" />
+                        <DatePicker fx:id="meetingDate" prefHeight="36.0" prefWidth="358.0" promptText="모임 날짜를 입력해주세요" style="-fx-border-color: orange;" />
+                        <HBox alignment="CENTER_LEFT" prefHeight="36.0" prefWidth="200.0" style="-fx-border-color: orange; -fx-background-color: white;">
                            <children>
                               <Label text="모임시간">
                                  <HBox.margin>
                                     <Insets left="8.0" right="20.0" />
                                  </HBox.margin>
                               </Label>
-                              <ChoiceBox fx:id="ampm" prefHeight="22.0" prefWidth="57.0" style="-fx-background-color: white; -fx-border-color: gray;">
+                              <ChoiceBox fx:id="ampm" prefHeight="22.0" prefWidth="57.0" style="-fx-background-color: white; -fx-border-color: orange;">
                                  <HBox.margin>
                                     <Insets right="20.0" />
                                  </HBox.margin>
                               </ChoiceBox>
-                              <ChoiceBox fx:id="hour" prefHeight="22.0" prefWidth="57.0" style="-fx-background-color: white; -fx-border-color: gray;">
+                              <ChoiceBox fx:id="hour" prefHeight="22.0" prefWidth="57.0" style="-fx-background-color: white; -fx-border-color: orange;">
                                  <HBox.margin>
                                     <Insets right="20.0" />
                                  </HBox.margin>
                               </ChoiceBox>
-                              <ChoiceBox fx:id="minute" prefHeight="22.0" prefWidth="57.0" style="-fx-background-color: white; -fx-border-color: gray;">
+                              <ChoiceBox fx:id="minute" prefHeight="22.0" prefWidth="57.0" style="-fx-background-color: white; -fx-border-color: orange;">
                                  <HBox.margin>
                                     <Insets right="20.0" />
                                  </HBox.margin>
                               </ChoiceBox>
                            </children>
                         </HBox>
-                        <TextField fx:id="place" prefHeight="36.0" promptText="모임 장소를 입력해주세요" style="-fx-border-color: grey;" />
-                        <TextField fx:id="age" prefHeight="36.0" prefWidth="76.0" promptText="모임 나이를 입력해주세요" style="-fx-border-color: grey;" />
-                        <HBox alignment="CENTER_LEFT" prefHeight="36.0" prefWidth="359.0" style="-fx-border-color: grey;">
+                        <TextField fx:id="place" prefHeight="36.0" promptText="모임 장소를 입력해주세요" style="-fx-border-color: orange;" />
+                        <TextField fx:id="age" prefHeight="36.0" prefWidth="76.0" promptText="모임 나이를 입력해주세요" style="-fx-border-color: orange;" />
+                        <HBox alignment="CENTER_LEFT" prefHeight="36.0" prefWidth="359.0" style="-fx-border-color: orange; -fx-background-color: white;">
                            <children>
                               <Label text="모임 성별">
                                  <HBox.margin>
@@ -89,16 +89,16 @@
    <center>
       <VBox prefHeight="186.0" prefWidth="360.0" BorderPane.alignment="CENTER">
          <children>
-            <TextField fx:id="title" prefHeight="36.0" prefWidth="360.0" promptText="이웃과 어떤 활동을 할까요?" style="-fx-border-color: grey;">
+            <TextField fx:id="title" prefHeight="36.0" prefWidth="360.0" promptText="이웃과 어떤 활동을 할까요?" style="-fx-border-color: orange;">
                <VBox.margin>
                   <Insets top="1.0" />
                </VBox.margin></TextField>
-            <ComboBox fx:id="middleCategory" prefHeight="36.0" prefWidth="360.0" promptText="카테고리를 선택해주세요." style="-fx-border-color: grey; -fx-background-color: white;">
+            <ComboBox fx:id="middleCategory" prefHeight="36.0" prefWidth="360.0" promptText="카테고리를 선택해주세요." style="-fx-border-color: orange; -fx-background-color: white;">
                 <items>
                 
                 </items>
             </ComboBox>
-            <TextArea fx:id="content" prefHeight="130.0" prefWidth="360.0" promptText="게시글 내용을 입력해주세요" style="-fx-border-color: grey;" />
+            <TextArea fx:id="content" prefHeight="130.0" prefWidth="360.0" promptText="게시글 내용을 입력해주세요" style="-fx-border-color: orange;" />
             
             
          </children>

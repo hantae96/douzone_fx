@@ -19,7 +19,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
-public class MeetingBoardUpdateController implements Initializable{
+public class MeetingBoardModifyController implements Initializable{
 	
 	@FXML private Label mainCategory;
 	@FXML private TextField title;
@@ -76,7 +76,8 @@ public class MeetingBoardUpdateController implements Initializable{
 
 	
 	public void cancelBtnClick() {
-		Viewer.setView("meetingBoardListForm");
+		Session.getInstance().setTempId(board.getBoardId());
+		Viewer.setView("meetingBoardDetailForm");
 	}
 	
 	public void updateBtnClick() {
