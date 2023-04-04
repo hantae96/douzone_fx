@@ -12,28 +12,28 @@ import java.util.concurrent.TimeUnit;
 import com.fx.market.common.Session;
 import com.fx.market.common.Util;
 import com.fx.market.common.Viewer;
-import com.fx.market.dao.ItemDao;
 import com.fx.market.dto.HomeDto;
 import com.fx.market.dto.ItemDto;
 import com.fx.market.service.HomeService;
 import com.fx.market.service.ItemService;
+import com.fx.market.service.SearchService;
 
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.BorderStroke;
 import javafx.scene.layout.BorderStrokeStyle;
 import javafx.scene.layout.BorderWidths;
 import javafx.scene.layout.CornerRadii;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -43,66 +43,32 @@ import javafx.scene.text.FontWeight;
 // 컨트롤러 단에 놓지 않으면 ex) 컨트롤러로 선언되지 않은 다른 클래스에 놓으면 실행순서가 보장되지 않기때문에
 // fx : id 로 지정된 변수들이 메모리에 로드 되지 않아서 npe 가 발생한다.
 
-public class HomeController implements Initializable {
+public class SearchController implements Initializable {
 
-	@FXML VBox main;
-	@FXML Label userAddress;
-	HomeService homeService;
-	ItemService itemService;
-	Viewer viewer;
+	@FXML Pane main;
+	@FXML Button close;
+	@FXML TextField searchField;
+	@FXML FlowPane recentFlied;
 	
+	ItemService itemService;
+	SearchService searchService;
+	HomeService homeService;
+	Viewer viewer;
+	String keyword;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		homeService = new HomeService();
+		searchService = new SearchService();
 		itemService = new ItemService();
 		Session session = Session.getInstance();
-		userAddress.setText(session.getaddress());
-		printAllItem();
+		inputSearchField(searchField);
 	}
 	
-	
-	@FXML
-	private void purchaseNavClick(Event event) {
-		viewer = new Viewer();
-		Viewer.setView("home");
-	}
-
-	@FXML
-	private void boardNavClick(Event event) {
-		viewer = new Viewer();
-		Viewer.setView("meetingBoardListForm");
-	}
-	
-	@FXML
-	private void myPageNavClick(Event event) {
-		viewer = new Viewer();
-		viewer.setViewCenterScroll("myDouzone");
-	}
-	
-	
-	////////
-	
-	@FXML
-	private void writeButtonClicked(MouseEvent event) {
-		
-	}
-	
-	@FXML
-	private void onSeachButtonClicked() {
-		System.out.println("찾기버튼클릭");
-		Viewer.setView("search");
-	}
-	
-	@FXML
-	private void aroundNavClick(Event event) {
-		viewer = new Viewer();
-		Viewer.setViewCenter("updateBulletin");
-	}
-
-	@FXML
-	private void accountNavClick(Event event) {
-		
+	public void inputSearchField(TextField searchField) {
+		searchField.textProperty().addListener((observable, oldValue, newValue) -> {
+			printSearchItem(newValue);
+		});
+			
 	}
 
 	private void openItemDetails(HomeDto item) {
@@ -112,8 +78,8 @@ public class HomeController implements Initializable {
 		Viewer.setView("item");
 	}
 	
-	public void printAllItem() {
-	    List<HomeDto> items = homeService.makeViewItem();
+	public void printSearchItem(String keyword) {
+	    List<HomeDto> items = searchService.searchKeyword(keyword);
 
 	    for (HomeDto item : items) {
 	        Label name = new Label(item.getItemName());
@@ -133,10 +99,10 @@ public class HomeController implements Initializable {
 	        }
 
 	        BorderPane section = new BorderPane();
+	        section.setStyle("-fx-background-color: white;");
 	        section.setBorder(new Border(
 	                new BorderStroke(Color.LIGHTGREY, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(1))));
 
-	        
 	        // 상품이름
 	        // 사진
 	        String photoPath = itemService.getPhotoPath(item.getItemId());		
@@ -179,23 +145,9 @@ public class HomeController implements Initializable {
 	        section.setPadding(new Insets(10)); // 모든 방향에 대해 10px의 패딩 적용
 	        section.setOnMouseClicked(event -> {
 	        									openItemDetails(item);
-	        									homeService.addView(item.getItemId());
 	        	}); // 클릭 이벤트 핸들러 등록
-
 	        main.getChildren().add(section);
 	    }
-	    
-	    Button wrtieButton = new Button("글쓰기");
-	    wrtieButton.setPrefSize(370, 100);
-	    wrtieButton.setStyle("-fx-background-color: orange; -fx-text-fill: white; -fx-font-weight: bold;");
-	    wrtieButton.setAlignment(Pos.CENTER);
-	    
-	    
-	    wrtieButton.setOnAction(event -> {			
-			Viewer.setView("register");
-	    });
-	    
-	    main.getChildren().add(wrtieButton);
 	}
 	
 	private long calculateDate(HomeDto item){        
@@ -212,6 +164,10 @@ public class HomeController implements Initializable {
             e.printStackTrace();
         }
         return diff;
+	}
+	
+	public void onCancelButtonClick() {
+		Viewer.setView("home");
 	}
 }
 
