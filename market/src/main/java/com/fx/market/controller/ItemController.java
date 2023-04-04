@@ -28,8 +28,6 @@ public class ItemController implements Initializable {
 	@FXML
 	ImageView photo;
 	@FXML
-	Circle profilePhoto;
-	@FXML
 	Label username;
 	@FXML
 	Label address;
