@@ -90,7 +90,6 @@ public class MeetingBoardUpdateController implements Initializable{
 		else if(womanRadio.isSelected())
 			gender = "여자만";
 		
-		System.out.println("Controller");
 		boardService.updateMeetingBoard(new BoardDto(
 				Session.getInstance().getTempId(),		//게시글 ID
 				Session.getInstance().getAccountId(), 	//계정 ID

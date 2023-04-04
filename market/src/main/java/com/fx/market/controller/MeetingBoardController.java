@@ -81,8 +81,6 @@ public class MeetingBoardController implements Initializable{
 					writeMenuVisible = true;
 				}
 		    	
-		    	System.out.println(event.getTarget());
-		    	
 		    }
 			
 		});
@@ -157,8 +155,6 @@ public class MeetingBoardController implements Initializable{
 	        Duration duration = Duration.ofMillis(currentTimeMillis - pastTimeMillis);
 	        long days = duration.toDays();
 
-	        System.out.println(days);
-	        
 	        String createdAt = null;
 	        if(days == 0) {
 	        	createdAt = "오늘";
@@ -167,7 +163,6 @@ public class MeetingBoardController implements Initializable{
 	        
 	        VBox centerBox = new VBox(10); 
 	        centerBox.setSpacing(5);
-	        System.out.println(board.getMainCategory());
 	        
 	        HBox etcHbox = new HBox();
 	        Label addressLabel = new Label(board.getAddress());

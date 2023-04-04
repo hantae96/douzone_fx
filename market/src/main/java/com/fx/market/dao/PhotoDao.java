@@ -20,14 +20,12 @@ public class PhotoDao {
 		try {
 			Class.forName("oracle.jdbc.OracleDriver");
 			con = DriverManager.getConnection(url, user, password);
-			System.out.println("연결성공");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
 	public PhotoDto findByPhoto(String boardId) {
-		System.out.println(boardId);
 		String sql = "SELECT * "
 				+ "FROM photos "
 				+ "where photos_id = ?";
