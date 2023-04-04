@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="360.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fx.market.controller.IdCheckController">
+<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="360.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fx.market.controller.e_nameCheckController">
    <bottom>
       <GridPane prefHeight="534.0" prefWidth="380.0" BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -24,7 +24,7 @@
         </rowConstraints>
          <children>
             <ImageView fitHeight="150.0" fitWidth="377.0" pickOnBounds="true" preserveRatio="true" GridPane.columnSpan="2" />
-            <Label text="아이디" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+            <Label text="이름" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="TOP">
                <padding>
                   <Insets right="20.0" />
                </padding>
@@ -32,12 +32,18 @@
                   <Insets top="4.0" />
                </GridPane.margin>
             </Label>
-            <Button fx:id="button" alignment="TOP_CENTER" mnemonicParsing="false" onMouseClicked="#userPwMethod" prefHeight="25.0" prefWidth="89.0" style="-fx-background-color: orange;" text="확인" translateX="55.0" GridPane.rowIndex="2" GridPane.valignment="TOP">
+            <Button fx:id="button" alignment="TOP_CENTER" mnemonicParsing="false" onMouseClicked="#e_nameMethod" prefHeight="25.0" prefWidth="89.0" style="-fx-background-color: orange;" text="확인" translateX="55.0" GridPane.rowIndex="2" GridPane.valignment="TOP">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin></Button>
-            <TextField fx:id="id" maxWidth="150.0" prefHeight="25.0" prefWidth="180.0" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="TOP" />
-            <Button fx:id="button1" alignment="TOP_CENTER" mnemonicParsing="false" onMouseClicked="#userPwCancel" prefHeight="25.0" prefWidth="89.0" style="-fx-background-color: orange;" text="취소" translateX="10.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP" />
+            <TextField fx:id="name" maxWidth="150.0" prefHeight="25.0" prefWidth="180.0" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+            <TextField fx:id="email" maxWidth="150.0" prefHeight="25.0" prefWidth="180.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label text="이메일" translateX="80.0" GridPane.rowIndex="1">
+               <padding>
+                  <Insets right="20.0" />
+               </padding>
+            </Label>
+            <Button fx:id="button1" alignment="TOP_CENTER" mnemonicParsing="false" onMouseClicked="#e_nameCancel" prefHeight="25.0" prefWidth="89.0" style="-fx-background-color: orange;" text="취소" translateX="10.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP" />
          </children>
       </GridPane>
    </bottom>

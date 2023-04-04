@@ -36,8 +36,7 @@ public class LoginController implements Initializable{
 		int result = service.buttonLoginMethod(id.getText(),pw.getText());
 		if(result == 1) {  //로그인 성공 시
 		
-		Viewer viewer = new Viewer();
-		viewer.setView("home");
+		Viewer.setView("home");
 		}
 	}
 
@@ -51,7 +50,12 @@ public class LoginController implements Initializable{
 	
 	public void pwClickedMethod() {
 		Viewer viewer = new Viewer();
-		viewer.setView("idConfirm"); //바꿔야함 
+		viewer.setView("idConfirm");  
+	}
+	
+	public void e_nameClickedMethod() {
+		Viewer viewer = new Viewer();
+		viewer.setView("e_nameCheck"); 
 	}
 	
 	

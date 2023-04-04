@@ -40,7 +40,6 @@ public class BoardController implements Initializable{
 
 	
 	public void initialize(URL location, ResourceBundle resources) {
-		System.out.println(Session.getInstance().getAccountId());
 		
 		boardService = new BoardService();
 		

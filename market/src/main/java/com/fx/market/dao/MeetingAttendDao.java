@@ -3,7 +3,9 @@ package com.fx.market.dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.fx.market.dto.MeetingAttendDto;
@@ -54,21 +56,33 @@ public class MeetingAttendDao {
 				+ "WHERE ma.meeting_id = ?";
 				
 				PreparedStatement ps = null;
+				ResultSet rs = null;
 				
 				int result = 0;
 				
 				try {
-//					ps = con.prepareStatement(sql);
-//					ps.setString(1, meetingAttendDto.getMeetingId());
-//					ps.setString(2, meetingAttendDto.getAccountId());
-//					
-//					result = ps.executeUpdate();
+					ps = con.prepareStatement(sql);
+					ps.setString(1, boardId);
+					
+					rs = ps.executeQuery();
+					
+					List<MeetingAttendDto> meetingAttendDtos = new ArrayList();
+					while(rs.next()) {
+						MeetingAttendDto meetingAttendDto = new MeetingAttendDto(); 
+						meetingAttendDto.setName(rs.getString("name"));
+						meetingAttendDto.setAddress(rs.getString("address"));
+						meetingAttendDto.setPath(rs.getString("path"));
+						
+						meetingAttendDtos.add(meetingAttendDto);
+					}
+					
+					return meetingAttendDtos;
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				
-				return result;
+				return null;
 			}
 
 }

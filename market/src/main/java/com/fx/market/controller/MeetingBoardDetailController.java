@@ -108,11 +108,18 @@ public class MeetingBoardDetailController implements Initializable{
 //			attendBtn.setVisible(false);
 //		}
 		
-//		meetingAttendDtos = meetingAttendService.getMeetingAttendList(board.getBoardId());
+		meetingAttendService = new MeetingAttendService();
+		System.out.println("controller");
+		meetingAttendDtos = meetingAttendService.getMeetingAttendList(board.getBoardId());
+		
+		for(MeetingAttendDto meeting : meetingAttendDtos) {
+			System.out.println("Name : "+meeting.getName());
+			System.out.println("path : "+meeting.getPath());
+			System.out.println("address : "+meeting.getAddress());
+		}
 	}
 	
 	public void meetingEndMenuItemClick() {
-		System.out.println("종료");
 		boardService.updateMeetingState(board.getBoardId());
 	}
 	
@@ -125,7 +132,6 @@ public class MeetingBoardDetailController implements Initializable{
 		
 	    Optional<ButtonType> result = CommonService.msgShowAndWait(AlertType.CONFIRMATION, "게시글 삭제", "이 게시글를 삭제하시겠습니까?", "삭제한 게시글은 복구할 수 없습니다.");
 	    if (result.isPresent() && result.get() == ButtonType.OK){
-	    	System.out.println("삭제");
 			boardService = new BoardService();
 	    	boardService.deleteBoard(board.getBoardId());
 	    	
@@ -146,6 +152,5 @@ public class MeetingBoardDetailController implements Initializable{
 						Session.getInstance().getAccountId()
 						)
 				);
-		System.out.println("참여하기");
 	}
 }
