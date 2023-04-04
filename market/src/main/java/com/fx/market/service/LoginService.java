@@ -49,4 +49,15 @@ public class LoginService {
 			return 0;
 		}
 	}
+	
+	public int userPwMethod(String id) {
+		String pwCheck = dao.pwCheck(id);
+		if(pwCheck == null) {
+			CommonService.msg(AlertType.ERROR, "알림","",  "등록되지 않은 회원입니다.");
+		}else {
+			CommonService.msg(AlertType.INFORMATION, "알림","",  " 비밀번호:  " +pwCheck);
+			return 1;
+		}
+		return 0;
+	}
 }

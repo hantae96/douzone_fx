@@ -23,7 +23,7 @@
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
             <Button fx:id="button" mnemonicParsing="false" onAction="#buttonLoginMethod" prefHeight="72.0" prefWidth="55.0" style="-fx-background-color: #FF9436;" text="로그인" GridPane.columnIndex="2" GridPane.rowSpan="2">
@@ -51,15 +51,20 @@
                   <Insets bottom="10.0" left="60.0" />
                </GridPane.margin>
             </Label>
-            <Label alignment="CENTER" onMouseClicked="#regClickedMethod" text="회원가입" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
+            <Label alignment="CENTER" onMouseClicked="#regClickedMethod" text="회원가입" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
                <font>
                   <Font name="System Bold Italic" size="12.0" />
                </font>
+            </Label>
+            <Label lineSpacing="20.0" onMouseClicked="#pwClickedMethod" text="비밀번호 찾기" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
             </Label>
          </children>
       </GridPane>
    </bottom>
    <top>
-      <ImageView fx:id="photo" fitHeight="439.0" fitWidth="294.0" pickOnBounds="true" preserveRatio="true" translateY="150.0" BorderPane.alignment="TOP_CENTER" />
+      <ImageView fx:id="photo" fitHeight="393.0" fitWidth="294.0" pickOnBounds="true" preserveRatio="true" translateY="150.0" BorderPane.alignment="TOP_CENTER" />
    </top>
 </BorderPane>
