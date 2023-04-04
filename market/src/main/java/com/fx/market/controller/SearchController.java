@@ -48,7 +48,6 @@ public class SearchController implements Initializable {
 	@FXML Pane main;
 	@FXML Button close;
 	@FXML TextField searchField;
-	@FXML FlowPane recentFlied;
 	
 	ItemService itemService;
 	SearchService searchService;

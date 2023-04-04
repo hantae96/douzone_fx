@@ -6,7 +6,6 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
@@ -36,12 +35,11 @@
          <children>
             <AnchorPane prefHeight="127.0" prefWidth="360.0">
                <children>
-                  <Label layoutX="14.0" layoutY="14.0" text="최근 검색어">
+                  <Label layoutX="14.0" layoutY="14.0" text="검색 결과">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
-                  <FlowPane fx:id="recentField" layoutY="40.0" prefHeight="115.0" prefWidth="360.0" />
                </children>
             </AnchorPane>
             <StackPane fx:id="main" prefHeight="150.0" prefWidth="200.0" />
