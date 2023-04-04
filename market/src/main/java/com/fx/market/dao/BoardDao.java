@@ -103,7 +103,6 @@ public class BoardDao {
 				board.setMeetingTimeHour(rs.getString("meeting_time_hour"));
 				board.setMeetingTimeMinute(rs.getString("meeting_time_minute"));
 				board.setCreatedAt(rs.getDate("created_at"));
-				System.out.println(board.getBoardId());
 				boards.add(board);
 			}
 			
@@ -185,7 +184,6 @@ public class BoardDao {
 
 	public int updateMeetingBoard(BoardDto boardDto) {
 		
-		System.out.println(boardDto.getBoardId() +"/" +boardDto.getAccountId());
 		String updateBoardSql = "update boards "
 				+ "set sub_category = ?, title = ?, content = ?, address = ? "
 				+ "where boards_id = ? and accounts_id = ?";
@@ -211,7 +209,6 @@ public class BoardDao {
 			boardPs.setString(6, boardDto.getAccountId());
 	
 			result = boardPs.executeUpdate();
-			System.out.println(result);
 			
 	        meetingPs = con.prepareStatement(updateMeetingSql);
 	        meetingPs.setString(1, boardDto.getPerson());
