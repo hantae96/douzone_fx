@@ -16,66 +16,12 @@
 <?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="643.0" prefWidth="360.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fx.market.controller.MeetingBoardDetailController">
-   <bottom>
-      <FlowPane prefHeight="60.0" prefWidth="360.0" BorderPane.alignment="CENTER">
-         <children>
-            <ScrollPane prefHeight="162.0" prefWidth="360.0">
-               <content>
-                  <VBox prefHeight="146.0" prefWidth="357.0">
-                     <children>
-                        <Label minHeight="30.0" text="참여중인 이웃">
-                           <padding>
-                              <Insets left="8.0" />
-                           </padding>
-                        </Label>
-                        <BorderPane minHeight="50.0" prefWidth="358.0">
-                           <left>
-                              <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
-                                 <BorderPane.margin>
-                                    <Insets left="5.0" right="5.0" />
-                                 </BorderPane.margin>
-                              </ImageView>
-                           </left>
-                           <center>
-                              <VBox minHeight="50.0" prefHeight="50.0" prefWidth="300.0" BorderPane.alignment="CENTER">
-                                 <children>
-                                    <Label fx:id="accountIdLabel" minHeight="25.0" text="accountId" />
-                                    <HBox minHeight="25.0" prefWidth="200.0">
-                                       <children>
-                                          <Label fx:id="addressLabel" minHeight="25.0" text="address">
-                                             <HBox.margin>
-                                                <Insets right="5.0" />
-                                             </HBox.margin>
-                                          </Label>
-                                       </children>
-                                    </HBox>
-                                 </children>
-                              </VBox>
-                           </center>
-                        </BorderPane>
-                     </children>
-                  </VBox>
-               </content>
-            </ScrollPane>
-         </children></FlowPane>
-   </bottom>
    <top>
       <HBox prefHeight="45.0" prefWidth="360.0" BorderPane.alignment="CENTER">
-         <children>
-            <Button mnemonicParsing="false" onAction="#backBtnClick" prefHeight="46.0" prefWidth="53.0" style="-fx-background-color: WHITE;" text="Back">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-            <Label fx:id="mainCategoryLabel" alignment="CENTER" prefHeight="46.0" prefWidth="257.0" style="-fx-background-color: white;" text="동네생활">
-               <font>
                   <Font name="System Bold Italic" size="20.0" />
                </font>
             </Label>
-            <Button fx:id="menuBtn" mnemonicParsing="false" prefHeight="46.0" prefWidth="51.0" style="-fx-background-color: white;" text="메뉴" textFill="#ff7f00">
+            <Button fx:id="menuBtn" mnemonicParsing="false" prefHeight="46.0" prefWidth="51.0" style="-fx-background-color: white;" text="메뉴" textFill="#ff7f00" visible="false">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
@@ -139,26 +85,7 @@
                      </HBox.margin>
                      <image>
                         <Image url="@../source/image/calendar.png" />
-                     </image>
-                  </ImageView>
-                  <Label fx:id="meetingDateLabel" minHeight="20.0" text="meetingDate">
-                     <HBox.margin>
-                        <Insets right="5.0" />
-                     </HBox.margin>
-                  </Label>
-                  <Label fx:id="meetingTimeLabel" minHeight="20.0" text="meetingTime" />
-               </children>
-            </HBox>
-            <HBox minHeight="20.0" prefWidth="200.0">
-               <children>
-                  <ImageView fitHeight="13.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true">
-                     <HBox.margin>
-                        <Insets right="8.0" top="5.0" />
-                     </HBox.margin>
-                     <image>
-                        <Image url="@../source/image/map.png" />
-                     </image>
-                  </ImageView>
+@ -162,24 +119,103 @@
                   <Label fx:id="placeLabel" minHeight="20.0" text="place" />
                </children>
             </HBox>
@@ -182,4 +109,83 @@
          </BorderPane.margin>
       </VBox>
    </left>
+   <bottom>
+      <BorderPane prefHeight="285.0" prefWidth="360.0" BorderPane.alignment="CENTER">
+         <center>
+            <FlowPane prefHeight="282.0" prefWidth="360.0" BorderPane.alignment="CENTER">
+               <children>
+                  <ScrollPane prefHeight="162.0" prefWidth="360.0">
+                     <content>
+                        <VBox prefHeight="146.0" prefWidth="357.0">
+                           <children>
+                              <Label fx:id="attendLabel" minHeight="30.0" minWidth="356.0" style="-fx-border: gray;" text="참여중인 이웃">
+                                 <padding>
+                                    <Insets left="8.0" />
+                                 </padding>
+                              </Label>
+                              <VBox prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <BorderPane minHeight="40.0" prefWidth="358.0">
+                                       <left>
+                                          <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                                             <BorderPane.margin>
+                                                <Insets left="5.0" right="5.0" />
+                                             </BorderPane.margin>
+                                             <image>
+                                                <Image url="@../source/image/default.jpg" />
+                                             </image>
+                                          </ImageView>
+                                       </left>
+                                       <center>
+                                          <VBox minHeight="40.0" prefHeight="40.0" prefWidth="300.0" BorderPane.alignment="CENTER">
+                                             <children>
+                                                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                                   <children>
+                                                      <Label fx:id="leaderIdLabel" minHeight="20.0" text="attendIdLabel">
+                                                         <HBox.margin>
+                                                            <Insets />
+                                                         </HBox.margin>
+                                                      </Label>
+                                                      <ImageView fitHeight="12.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../source/image/crown.png" />
+                                                         </image>
+                                                         <HBox.margin>
+                                                            <Insets left="5.0" right="2.0" />
+                                                         </HBox.margin>
+                                                      </ImageView>
+                                                      <Label text="모임장" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox minHeight="25.0" prefWidth="200.0">
+                                                   <children>
+                                                      <Label fx:id="leaderAddressLabel" minHeight="20.0" text="attendAddressLabel">
+                                                         <HBox.margin>
+                                                            <Insets right="5.0" />
+                                                         </HBox.margin>
+                                                      </Label>
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                          </VBox>
+                                       </center>
+                                    </BorderPane>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </VBox>
+                     </content>
+                  </ScrollPane>
+               </children>
+            </FlowPane>
+         </center>
+         <bottom>
+            <Button fx:id="attendBtn" minHeight="36.0" minWidth="360.0" mnemonicParsing="false" onAction="#attendBtnClick" style="-fx-background-color: orange;" text="참여하기" BorderPane.alignment="CENTER">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+         </bottom>
+      </BorderPane>
+   </bottom>
 </BorderPane>

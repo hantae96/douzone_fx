@@ -235,4 +235,28 @@ public class BoardDao {
 		
 		return result;
 	}
+
+	public int updateMeetingState(String boardId) {
+
+	    String sql = "update meetings "
+	    		+ "set state = '모집종료' "
+	    		+ "where boards_id = ?";
+
+	    PreparedStatement ps = null;
+	    int result = 0;
+		
+		try {
+			
+	        ps = con.prepareStatement(sql);
+	        ps.setString(1, boardId);
+	        
+	        result = ps.executeUpdate();
+
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
 }
