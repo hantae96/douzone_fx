@@ -22,17 +22,18 @@ public class Viewer {
 			FXMLLoader loader = new FXMLLoader(Viewer.class.getResource("/com/fx/market/views/"+viewName+".fxml"));
 	        Parent menuForm = null;
 	
+	       System.out.println("/com/fx/market/views/"+viewName+".fxml");
 	        try {
 	            menuForm = loader.load();
+	            System.out.println(menuForm);
 
 	        } catch (IOException e) {
 	            e.printStackTrace();
 	        }
 	
 	        primaryStage = Session.getInstance().getStage();
-	
 	        Scene scene = new Scene(menuForm);
-	        primaryStage.setTitle("등록 화면");
+	        primaryStage.setTitle("감귤 마켓");
 	        primaryStage.setScene(scene);
 	        primaryStage.show();
 	}
