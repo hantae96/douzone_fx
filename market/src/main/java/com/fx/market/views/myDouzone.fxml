@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="360.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fx.market.controller.MyPageController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="360.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fx.market.controller.MyPageController">
    <center>
       <VBox minWidth="333.0" prefHeight="500.0" prefWidth="333.0" BorderPane.alignment="CENTER">
          <children>
@@ -27,7 +27,7 @@
                               <Font size="10.0" />
                            </font>
                         </Label>
-                        <Button mnemonicParsing="false" onAction="#confirmAccount" style="-fx-background-color: orange;" text="정보 수정">
+                        <Button mnemonicParsing="false" onAction="#confirmAccount" style="-fx-background-color: #FF9436;" text="정보 수정">
                            <font>
                               <Font size="11.0" />
                            </font>

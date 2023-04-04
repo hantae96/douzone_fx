@@ -150,7 +150,7 @@ public class FreeBoardDao{
 
 	public String selectboard_Id(String board_Id) {
 		String sql = "select path from photos where photos_id=?";
-		PreparedStatement ps = null;
+		PreparedStatement ps;
 		ResultSet rs = null;
 		try {
 			ps = con.prepareStatement(sql);
