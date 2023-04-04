@@ -4,21 +4,21 @@ import java.util.List;
 
 import com.fx.market.common.CommonService;
 import com.fx.market.common.Viewer;
-import com.fx.market.dao.MeetingAttendDao;
-import com.fx.market.dto.MeetingAttendDto;
+import com.fx.market.dao.MeetingAttendeesDao;
+import com.fx.market.dto.MeetingAttendeesDto;
 
 import javafx.scene.control.Alert.AlertType;
 
-public class MeetingAttendService {
+public class MeetingAttendeesService {
 	
-	private MeetingAttendDao meetingAttendDao; 
+	private MeetingAttendeesDao meetingAttendDao; 
 	
 
-	public MeetingAttendService() {
-		meetingAttendDao = new MeetingAttendDao();
+	public MeetingAttendeesService() {
+		meetingAttendDao = new MeetingAttendeesDao();
 	}
 
-	public void attendMeeting(MeetingAttendDto meetingAttendDto) {
+	public void attendMeeting(MeetingAttendeesDto meetingAttendDto) {
 		
 		int result = meetingAttendDao.insertAttendMeeting(meetingAttendDto);
 		
@@ -30,7 +30,7 @@ public class MeetingAttendService {
 		
 	}
 
-	public List<MeetingAttendDto> getMeetingAttendList(String boardId) {
+	public List<MeetingAttendeesDto> getMeetingAttendList(String boardId) {
 		
 		return meetingAttendDao.selectMeetingAttendList(boardId);
 	}

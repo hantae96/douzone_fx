@@ -14,7 +14,20 @@ CREATE TABLE accounts (
     PRIMARY KEY (accounts_id)
 );
 
-/* boards 테이블 2023-03-31 변경 */
+CREATE TABLE photos (
+  photos_id VARCHAR2(25), 
+  name VARCHAR2(50),
+  path VARCHAR2(500),
+  created_at DATE,
+  PRIMARY KEY (photos_id)
+);
+
+
+
+-- 동네생활 시퀀스
+CREATE SEQUENCE boards_seq START WITH 8;
+
+-- 동네생활 
 CREATE TABLE boards (
   boards_id VARCHAR2(25),
   accounts_id VARCHAR2(20),
@@ -29,20 +42,10 @@ CREATE TABLE boards (
   PRIMARY KEY (boards_id)
 );
 
-/* boards 시퀀시 */
-CREATE SEQUENCE boards_seq START WITH 8;
-
-CREATE TABLE photos (
-  photos_id VARCHAR2(25),
-  name VARCHAR2(50),
-  path VARCHAR2(500),
-  created_at DATE,
-  PRIMARY KEY (photos_id)
-);
-
-/* 2023-03-31 변경 */
+-- 동네생활 같이해요
 CREATE TABLE meetings (
   boards_id VARCHAR2(25),
+  state VARCHAR2(20) default '모집중',
   person VARCHAR2(10),
   meeting_date Date,
   meeting_time_ampm VARCHAR2(6),
@@ -52,6 +55,13 @@ CREATE TABLE meetings (
   gender VARCHAR2(10),
   age VARCHAR2(10),
   PRIMARY KEY (boards_id)
+);
+
+-- 동네생활 같이해요 참석자
+CREATE TABLE meeting_attendees (
+    meetings_id VARCHAR2(100),
+    accounts_id VARCHAR2(100),
+    PRIMARY KEY (meetings_id, accounts_id)
 );
 
 CREATE TABLE comments (
