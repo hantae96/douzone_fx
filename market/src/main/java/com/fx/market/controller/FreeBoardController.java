@@ -1,10 +1,16 @@
 package com.fx.market.controller;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import com.fx.market.common.Session;
 import com.fx.market.common.Viewer;
+import com.fx.market.dto.PhotoDto;
 import com.fx.market.service.FreeBoardService;
 
 import javafx.collections.FXCollections;
@@ -20,6 +26,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+
 public class FreeBoardController implements Initializable{
 	@FXML ComboBox<String> sub;
 	@FXML TextField main_category;
@@ -30,7 +37,8 @@ public class FreeBoardController implements Initializable{
 	@FXML private ComboBox combo_box;
 	@FXML private ImageView photo;
 	private FreeBoardService freeboardService;  
- 
+	private String filePathSession;
+	private String fileNameSession;
     private ObservableList<String> list = FXCollections.observableArrayList("동네질문","동네사건사고","동네맛집","동네소식","생활정보","취미생활");
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -40,13 +48,33 @@ public class FreeBoardController implements Initializable{
 	}
 	
 	
-	public void boardClick() {
+	public void boardClick() throws Exception{
 	
-	String Nsub = sub.getValue();
-	String Ncontent = content.getText(); 
-	String Ntitle = title.getText();
-	String Nmain_category = main_category.getText();
+		String Nsub = sub.getValue();
+		String Ncontent = content.getText(); 
+		String Ntitle = title.getText();
+		String Nmain_category = main_category.getText();
+
 		freeboardService.boardClick(Nmain_category,Nsub, Ntitle, Ncontent);
+		
+//		InputStream inputStream = new FileInputStream(filePathSession);								//경로를 inputStream에 저장
+//    	String outputName = fileNameSession;										//중복 안되도록 이름 수정
+//    	String outputPass = "src/main/java/com/fx/market/source/image/"+outputName;					//파일 저장 경로
+//    	File outputFile = new File(outputPass);														//output할 파일의 경로를 지정해 File객체 생성
+//    	OutputStream outputStream = new FileOutputStream(outputFile);								//outputFile을 outputStream에 저장
+//    	
+//    	byte[] buffer = new byte[1024];
+//    	int length;
+//    	while ((length = inputStream.read(buffer)) > 0) {
+//    	    outputStream.write(buffer, 0, length);
+//    	}
+//
+//    	inputStream.close();
+//    	outputStream.close();
+//    	Session session = Session.getInstance();
+//    	String name = session.getName();
+//    	freeboardService.photoInsert(new PhotoDto(name,outputName,outputPass,null));
+	
 	}
 	public void closebtn() {
 		Viewer viewer = new Viewer();
@@ -58,13 +86,16 @@ public class FreeBoardController implements Initializable{
 	 @FXML
 	 protected void imagebtn() throws Exception {
         // 파일 선택
-       FileChooser fileChooser = new FileChooser();                //FileChooser 객체 생성
-	   Stage stage = new Stage();                            //Stage 객체 생성
-	   File selectedFile = fileChooser.showOpenDialog(stage);        //stage에 fileChooser로 고른걸 selectedFile에 저장
-	   String selectedFilePath = selectedFile.getAbsolutePath();        //selectedFile의 절대경로를 selectedFilePath에 저장
-	   String imagePath = "file:"+selectedFilePath;                //image객체를 위한 경로 편집
-	   Image image = new Image(imagePath);                        //이미지 객체 생성
-	   photo.setImage(image);                                     //이미지 출력
+		 FileChooser fileChooser = new FileChooser();                //FileChooser 객체 생성
+	        Stage stage = new Stage();                            //Stage 객체 생성
+	        File selectedFile = fileChooser.showOpenDialog(stage);        //stage에 fileChooser로 고른걸 selectedFile에 저장
+	        String selectedFilePath = selectedFile.getAbsolutePath();        //selectedFile의 절대경로를 selectedFilePath에 저장
+	        filePathSession = selectedFilePath;                        //controller에 경로 임시 저장
+	        fileNameSession = selectedFile.getName();                    //controller에 이름 임시 저장
+	        String imagePath = "file:"+selectedFilePath;                //image객체를 위한 경로 편집
+	        Image image = new Image(imagePath);                        //이미지 객체 생성
+	        photo.setImage(image);
+	        
 	}	
 	
 //	Session session = Session.getInstance();

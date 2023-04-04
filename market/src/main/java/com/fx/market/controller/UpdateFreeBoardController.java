@@ -3,6 +3,7 @@ package com.fx.market.controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import com.fx.market.common.Session;
 import com.fx.market.common.Viewer;
 import com.fx.market.dto.FreeBoardDto;
 import com.fx.market.service.FreeBoardService;
@@ -17,7 +18,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 public class UpdateFreeBoardController implements Initializable{
-	@FXML ComboBox<String> sub;
+	@FXML ComboBox<String> sub_category;
 	@FXML TextField main_category;
 	@FXML TextField title;
 	@FXML TextArea content;
@@ -26,27 +27,29 @@ public class UpdateFreeBoardController implements Initializable{
 	@FXML private ComboBox combo_box;
 	
 	private FreeBoardService freeboardService;  
-	private String boardId;
+	
     private ObservableList<String> list = FXCollections.observableArrayList("동네질문","동네사건사고","동네맛집","동네소식","생활정보","취미생활");
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		sub.setItems(list);
-		freeboardService = new FreeBoardService(); 
+		sub_category.setItems(list);
+		freeboardService = new FreeBoardService();
+		Session session = Session.getInstance();
+		String board_Id = session.getTempId();
 		
-		FreeBoardDto freeboardDto = freeboardService.selectBoard("b43");
-		boardId = "b43";
-		sub.setValue(freeboardDto.getSub());
-		title.setText(freeboardDto.getTitle());
-		content.setText(freeboardDto.getContent());
+		System.out.println(board_Id);
+		
+
+		FreeBoardDto freeboard = freeboardService.selectAll(board_Id);
+		sub_category.setValue(freeboard.getSub());
+		title.setText(freeboard.getTitle());
+		content.setText(freeboard.getContent());
 	}
 	
 	
 	public void boardClick() {
-
-		
-		
-		freeboardService.updateboardClick(sub.getValue(), content.getText(), title.getText(), boardId);
-		
+		Session session = Session.getInstance();
+		String board_Id = session.getTempId();
+		freeboardService.updateboardClick(sub_category.getValue(), title.getText(), content.getText(), board_Id);
 	}
 	public void closebtn() {
 		Viewer viewer = new Viewer();

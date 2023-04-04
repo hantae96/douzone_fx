@@ -12,7 +12,7 @@ public class FreeBoardDto {
 	private int views; 						// 조회수
 	private int recomends;					// 추천수
 	private String address; 				// 작성자 주소
-	private Date createdAt;					// 작성날짜
+	private String createdAt;					// 작성날짜
 	
 	
 	
@@ -73,10 +73,10 @@ public class FreeBoardDto {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public Date getCreatedAt() {
+	public String getCreatedAt() {
 		return createdAt;
 	}
-	public void setCreatedAt(Date createdAt) {
+	public void setCreatedAt(String createdAt) {
 		this.createdAt = createdAt;
 	}
 	
