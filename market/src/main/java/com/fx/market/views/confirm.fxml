@@ -30,7 +30,7 @@
                </padding>
             </Label>
             <PasswordField fx:id="pw" maxWidth="150.0" prefHeight="25.0" prefWidth="180.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Button fx:id="button" alignment="TOP_CENTER" mnemonicParsing="false" onAction="#checkAccount" prefHeight="25.0" prefWidth="89.0" style="-fx-background-color: orange;" text="확인" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="TOP">
+            <Button fx:id="button" alignment="TOP_CENTER" mnemonicParsing="false" onAction="#checkAccount" prefHeight="25.0" prefWidth="89.0" style="-fx-background-color: #FF9436;" text="확인" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="TOP">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin></Button>
