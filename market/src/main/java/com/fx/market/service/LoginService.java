@@ -2,6 +2,7 @@ package com.fx.market.service;
 
 import com.fx.market.common.CommonService;
 import com.fx.market.common.Session;
+import com.fx.market.common.Viewer;
 
 import java.sql.Date;
 
@@ -50,12 +51,29 @@ public class LoginService {
 		}
 	}
 	
-	public int userPwMethod(String id) {
-		String pwCheck = dao.pwCheck(id);
-		if(pwCheck == null) {
+	public void userPwMethod(String id,String email,String pw,String pwC){
+		int pwCheck = dao.userCheck(id, email);
+		if(pwCheck == 0) {
 			CommonService.msg(AlertType.ERROR, "알림","",  "등록되지 않은 회원입니다.");
 		}else {
-			CommonService.msg(AlertType.INFORMATION, "알림","",  " 비밀번호:  " +pwCheck);
+			if(pw.equals(pwC)) {
+			dao.pwCheck(id,email,pw);
+			CommonService.msg(AlertType.INFORMATION, "알림","",  " 비밀번호가 변경되었습니다.");
+			Viewer.setView("login");
+			}else {
+				CommonService.msg(AlertType.ERROR, "알림","",  "비밀번호가 서로 맞지 않습니다.");
+			}
+		
+		}
+	
+	}
+	
+	public int e_nameMethod(String name, String email) {
+		String e_nameCheck = dao.e_nameCheck(name,email);
+		if(e_nameCheck == null) {
+			CommonService.msg(AlertType.ERROR, "알림","",  "등록되지 않은 회원입니다.");
+		}else {
+			CommonService.msg(AlertType.INFORMATION, "알림","",  " 아이디:  " +e_nameCheck);
 			return 1;
 		}
 		return 0;

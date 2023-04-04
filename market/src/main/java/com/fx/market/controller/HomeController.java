@@ -121,6 +121,7 @@ public class HomeController implements Initializable {
 	        // 굵기 변경
 	        name.setFont(Font.font("System", FontWeight.BOLD, 16));
 	        
+	        
 	       
 	        // 추천 
 	        Label recommand;
@@ -131,6 +132,7 @@ public class HomeController implements Initializable {
 	        }
 
 	        BorderPane section = new BorderPane();
+	        section.setStyle("-fx-background-color: white");
 	        section.setBorder(new Border(
 	                new BorderStroke(Color.LIGHTGREY, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(1))));
 

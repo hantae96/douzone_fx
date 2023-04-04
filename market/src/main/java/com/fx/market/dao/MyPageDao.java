@@ -40,7 +40,7 @@ public class MyPageDao {
 				dto.setTemp(Float.toString(rs.getFloat("temperature")));
 				dto.setCreated_at(rs.getString(3));
 			}
-			sql = "select count(*) as rating_num from comments where accounts_id=?";
+			sql = "select count(*) as rating_num from goods where accounts_id=? and grade is not null";
 			ps = con.prepareStatement(sql);
 			ps.setString(1, id);;
 			rs = ps.executeQuery();

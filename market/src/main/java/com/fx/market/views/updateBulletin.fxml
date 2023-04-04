@@ -4,6 +4,7 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -41,7 +42,6 @@
         </rowConstraints>
          <children>
             <Button mnemonicParsing="false" onMouseClicked="#imagebtn" prefHeight="29.0" prefWidth="59.0" style="-fx-background-color: white;" text="사진" />
-            <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="65.0" style="-fx-background-color: white;" text="장소" GridPane.columnIndex="1" />
          </children>
       </GridPane>
    </bottom>
@@ -51,6 +51,7 @@
             <ComboBox fx:id="sub_category" prefHeight="29.0" prefWidth="323.0" promptText="수정할 주제를 선택하세요." style="-fx-background-color: white;" />
             <TextField fx:id="title" promptText="제목" />
             <TextArea fx:id="content" prefHeight="418.0" prefWidth="321.0" promptText="질문이나 이야기를 해보세요." />
+            <ImageView fx:id="photo" fitHeight="150.0" fitWidth="362.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </VBox>
    </center>

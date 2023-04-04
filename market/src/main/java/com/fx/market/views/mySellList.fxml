@@ -12,11 +12,11 @@
    <top>
       <BorderPane prefHeight="150.0" prefWidth="333.0" BorderPane.alignment="CENTER">
          <left>
-            <VBox alignment="CENTER" prefHeight="150.0" prefWidth="130.0" spacing="20.0" BorderPane.alignment="CENTER">
+            <VBox alignment="CENTER" prefHeight="150.0" prefWidth="170.0" spacing="20.0" BorderPane.alignment="CENTER">
                <children>
                   <Label fx:id="where" text="나의 판매 내역">
                      <font>
-                        <Font name="System Bold" size="15.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
                   <Button fx:id="writeButton" mnemonicParsing="false" onMouseClicked="#writeButtonClick" style="-fx-background-color: orange;" text="글쓰기" />

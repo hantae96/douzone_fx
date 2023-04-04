@@ -3,6 +3,7 @@ package com.fx.market.service;
 
 
 import com.fx.market.common.Session;
+import com.fx.market.common.Viewer;
 import com.fx.market.dao.FreeBoardDao;
 import com.fx.market.dto.FreeBoardDto;
 import com.fx.market.dto.PhotoDto;
@@ -14,7 +15,11 @@ public class FreeBoardService {
 	private FreeBoardDao townDao = new FreeBoardDao();
 	private FreeBoardDto townDto = new FreeBoardDto();
 
-
+	public void photoInsert(PhotoDto photoDto) {
+		
+		townDao.photosInsert(photoDto);
+		
+	}
 	
 	public void boardClick(String main_category,String sub_category,String title, String content){
 		Alert alert = new Alert(AlertType.INFORMATION);
@@ -42,6 +47,7 @@ public class FreeBoardService {
 			
 			alert.setHeaderText("게시물이 등록되었습니다");
 			alert.show();
+			
 		}
 
 	}
@@ -67,17 +73,14 @@ public class FreeBoardService {
 			townDto.setContent(content);
 			townDto.setBoard_Id(board_id);
 			townDao.updateFreeBoard(townDto);
-			alert.setHeaderText("게시물이 등록되었습니다");
+		
+			alert.setHeaderText("게시물이 수정되었습니다");
 			alert.show();
+			
 		}
 	}
 
 
-	public void photoInsert(PhotoDto photoDto) {
-		
-		townDao.photosInsert(photoDto);
-		
-	}
 
 
 	public FreeBoardDto selectAll(String board_Id) {
@@ -96,5 +99,15 @@ public class FreeBoardService {
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setHeaderText("게시물이 삭제되었습니다");
 		alert.show();
+	}
+
+	public String photoInfo(String board_Id) {
+		System.out.println("photoInfo");
+		
+		return townDao.selectboard_Id(board_Id);
+	}
+
+	public void photoUpdate(PhotoDto photoDto) {
+		townDao.photosUpdate(photoDto);
 	}
 }

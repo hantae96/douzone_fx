@@ -27,7 +27,7 @@
                               <Font size="10.0" />
                            </font>
                         </Label>
-                        <Button mnemonicParsing="false" onAction="#confirmAccount" style="-fx-background-color: orange;" text="정보 수정">
+                        <Button mnemonicParsing="false" onAction="#confirmAccount" style="-fx-background-color: #FF9436;" text="정보 수정">
                            <font>
                               <Font size="11.0" />
                            </font>
@@ -96,7 +96,7 @@
                   </BorderPane>
                </children>
             </StackPane>
-            <BorderPane prefHeight="58.0" prefWidth="333.0" style="-fx-border-color: lightgray;">
+            <BorderPane onMouseClicked="#myGradeList" prefHeight="58.0" prefWidth="333.0" style="-fx-border-color: lightgray;">
                <left>
                   <Label text="받은 평가" BorderPane.alignment="CENTER">
                      <font>
@@ -166,7 +166,7 @@
             </BorderPane>
             <BorderPane onMouseClicked="#myBoardList" prefHeight="58.0" prefWidth="333.0" style="-fx-border-color: lightgray;">
                <left>
-                  <Label text="동네생활 글/댓글" BorderPane.alignment="CENTER">
+                  <Label text="동네 생활" BorderPane.alignment="CENTER">
                      <font>
                         <Font size="20.0" />
                      </font></Label>

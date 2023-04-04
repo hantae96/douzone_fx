@@ -26,25 +26,40 @@ public class FreeBoardDao{
 			e.printStackTrace();
 		}
 	}
-	
+	public void photosUpdate(PhotoDto photoDto) {
+		String sql = "UPDATE photos SET name=?, path=? where photos_id=?";
+		System.out.println(photoDto.getPhotos_id());
+		PreparedStatement ps = null;
+		try {
+				ps = con.prepareStatement(sql);
+				ps.setString(1, photoDto.getName());
+				ps.setString(2, photoDto.getPath());
+				ps.setString(3, photoDto.getPhotos_id());
+				ps.executeUpdate();
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		
+	}
+
 	public void photosInsert(PhotoDto photo) {
 		System.out.println(photo.getPhotos_id());
 		System.out.println(photo.getName());
 		System.out.println(photo.getPath());
 		PreparedStatement ps = null;
-		String sql = "INSERT INTO photos values(?,?,?,SYSDATE)";
+		String sql = "INSERT INTO photos values(concat('b',boards_seq.currval),?,?,SYSDATE)";
 		try {
 			ps = con.prepareStatement(sql);
-			ps.setString(1,photo.getPhotos_id());
-			ps.setString(2, photo.getName());
-			ps.setString(3, photo.getPath());
+			ps.setString(1, photo.getName());
+			ps.setString(2, photo.getPath());;
 			ps.executeUpdate();
-			System.out.println("끝");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
+
 	
 	public int insertFreeBoard(FreeBoardDto townDto) {
 		
@@ -132,6 +147,22 @@ public class FreeBoardDao{
 		}	
 	}
 
-	
+
+	public String selectboard_Id(String board_Id) {
+		String sql = "select path from photos where photos_id=?";
+		PreparedStatement ps;
+		ResultSet rs = null;
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString(1, board_Id);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				return rs.getString("path");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 
 }

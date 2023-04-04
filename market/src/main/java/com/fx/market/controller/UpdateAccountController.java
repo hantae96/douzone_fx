@@ -8,6 +8,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.function.UnaryOperator;
 
 import com.fx.market.common.CommonService;
 import com.fx.market.common.Session;
@@ -22,6 +23,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -62,6 +64,18 @@ public class UpdateAccountController implements Initializable{
 		name.setText(updatedto.getName());
 		address.setText(updatedto.getAddress());
 		email.setText(updatedto.getEmail());
+		
+    	// 한글 입력은 받지 않도록 해주는 TextFormatter 생성
+    	TextFormatter<String> passFormatter =  new TextFormatter<String>((UnaryOperator<TextFormatter.Change>) change -> {
+    	    String newPass = change.getControlNewText();
+    	    if (newPass.matches(".*[ㄱ-ㅎㅏ-ㅣ가-힣].*")) {
+    	        return null;
+    	    } else {
+    	        return change;
+    	    }
+    	});
+    	//TextFormatter 적용
+    	pw.setTextFormatter(passFormatter);
 		
 		//저장된 이미지 파일 불러오기
 		String imagePath = "file:" + System.getProperty("user.dir") + "/"+photodto;
