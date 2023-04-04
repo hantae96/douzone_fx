@@ -15,23 +15,20 @@ import javafx.scene.control.TextField;
 
 public class IdCheckController implements Initializable{
 	@FXML TextField id;
+	@FXML TextField email;
+	@FXML PasswordField pw;
+	@FXML PasswordField pwC;
 	
 	private LoginService service;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		service = new LoginService();
-		
 	}
 
 	public void userPwMethod() {
-		int pwCheck = service.userPwMethod(id.getText());
+		service.userPwMethod(id.getText(),email.getText(),pw.getText(), pwC.getText());
 		
-		if(pwCheck == 1) {
-			
-		Viewer viewer = new Viewer();
-		viewer.setView("login");
-		}
 }
 	
 	public void userPwCancel() {
