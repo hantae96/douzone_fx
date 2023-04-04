@@ -51,7 +51,12 @@ public class LoginController implements Initializable{
 	
 	public void pwClickedMethod() {
 		Viewer viewer = new Viewer();
-		viewer.setView("idConfirm"); //바꿔야함 
+		viewer.setView("idConfirm");  
+	}
+	
+	public void e_nameClickedMethod() {
+		Viewer viewer = new Viewer();
+		viewer.setView("e_nameCheck"); 
 	}
 	
 	

@@ -60,4 +60,15 @@ public class LoginService {
 		}
 		return 0;
 	}
+	
+	public int e_nameMethod(String name, String email) {
+		String e_nameCheck = dao.e_nameCheck(name,email);
+		if(e_nameCheck == null) {
+			CommonService.msg(AlertType.ERROR, "알림","",  "등록되지 않은 회원입니다.");
+		}else {
+			CommonService.msg(AlertType.INFORMATION, "알림","",  " 아이디:  " +e_nameCheck);
+			return 1;
+		}
+		return 0;
+	}
 }

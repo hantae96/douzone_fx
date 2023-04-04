@@ -29,7 +29,7 @@
         </rowConstraints>
          <children>
             <ImageView fitHeight="123.0" fitWidth="381.0" pickOnBounds="true" preserveRatio="true" GridPane.columnSpan="2" />
-            <Label text="닉네임" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+            <Label text="이름" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets right="20.0" />
                </GridPane.margin>

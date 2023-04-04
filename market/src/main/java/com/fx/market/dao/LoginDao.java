@@ -80,4 +80,22 @@ public class LoginDao {
 			return pwCheck;
 		}
 	
+	
+	public String e_nameCheck(String name,String email) {
+		String sql = "select accounts_id from accounts where name = ? and email=? ";
+		String e_nameCheck = null;
+		try {
+				ps = con.prepareStatement(sql);
+				ps.setString(1, name);
+				ps.setString(2, email);
+				rs = ps.executeQuery();
+				if(rs.next()) {
+					e_nameCheck = rs.getString("accounts_id");
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return e_nameCheck;
+		}
+	
 }
