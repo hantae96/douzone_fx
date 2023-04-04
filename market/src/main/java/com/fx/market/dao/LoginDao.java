@@ -63,4 +63,21 @@ public class LoginDao {
 			}
 		return null;
 	}
+	
+	public String pwCheck(String id) {
+		String sql = "select pw from accounts where accounts_id = ?";
+		String pwCheck = null;
+		try {
+				ps = con.prepareStatement(sql);
+				ps.setString(1, id);
+				rs = ps.executeQuery();
+				if(rs.next()) {
+					pwCheck = rs.getString("pw");
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return pwCheck;
+		}
+	
 }

@@ -48,4 +48,12 @@ public class LoginController implements Initializable{
 		Viewer viewer = new Viewer();
 		viewer.setView("signUp");
 	}
+	
+	public void pwClickedMethod() {
+		Viewer viewer = new Viewer();
+		viewer.setView("idConfirm"); //바꿔야함 
+	}
+	
+	
+	
 }
