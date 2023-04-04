@@ -7,15 +7,13 @@ import com.fx.market.common.Session;
 import com.fx.market.common.Viewer;
 import com.fx.market.dto.FreeBoardDto;
 import com.fx.market.service.FreeBoardService;
-import com.fx.market.service.HomeService;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.shape.Circle;
 
 public class FreeBoardDetailController implements Initializable{
@@ -30,6 +28,7 @@ public class FreeBoardDetailController implements Initializable{
 	@FXML Button update;
 	@FXML Button delete;
 	@FXML Button close;
+	@FXML private ImageView photo;
 	
 	private FreeBoardService freeboardService;
 	@Override
@@ -38,16 +37,21 @@ public class FreeBoardDetailController implements Initializable{
 		freeboardService = new FreeBoardService();
 		Session session = Session.getInstance();
 		
-		
 		String board_Id = session.getTempId();
 		
+		String photodto = freeboardService.photoInfo(board_Id);
 		FreeBoardDto freeboard = freeboardService.selectAll(board_Id);
+		
 		sub_category.setText(freeboard.getSub());
 		title.setText(freeboard.getTitle());
 		content.setText(freeboard.getContent());
 		username.setText(freeboard.getAcount_Id());
 		address.setText(freeboard.getAddress());
 		date.setText(freeboard.getCreatedAt());
+		
+		String imagePath = "file:" + System.getProperty("user.dir") + "/"+photodto;
+		Image image = new Image(imagePath);
+		photo.setImage(image);
 	}
 	public void updateClick() {
 		Viewer viewer = new Viewer();
