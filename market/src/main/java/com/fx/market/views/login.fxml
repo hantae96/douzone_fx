@@ -60,6 +60,6 @@
       </GridPane>
    </bottom>
    <top>
-      <ImageView fx:id="photo" fitHeight="231.0" fitWidth="266.0" pickOnBounds="true" preserveRatio="true" translateY="150.0" BorderPane.alignment="BOTTOM_CENTER" />
+      <ImageView fx:id="photo" fitHeight="439.0" fitWidth="294.0" pickOnBounds="true" preserveRatio="true" translateY="150.0" BorderPane.alignment="TOP_CENTER" />
    </top>
 </BorderPane>
