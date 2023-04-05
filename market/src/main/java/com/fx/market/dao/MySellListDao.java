@@ -96,13 +96,14 @@ public class MySellListDao {
 	//작성글 출력
 	public List<MySellListDto> getMyBoardList(String id) {
 		List<MySellListDto> items = new ArrayList<>();
-		String sql = "SELECT boards.title, boards.address, boards.main_category, TO_CHAR(boards.created_at, 'YYYYMMDD') as created_at, photos.path FROM boards LEFT JOIN photos ON boards.boards_id = photos.photos_id WHERE boards.accounts_id=?";
+		String sql = "SELECT boards.boards_id, boards.title, boards.address, boards.main_category, TO_CHAR(boards.created_at, 'YYYYMMDD') as created_at, photos.path FROM boards LEFT JOIN photos ON boards.boards_id = photos.photos_id WHERE boards.accounts_id=?";
 		try {
 			ps = con.prepareStatement(sql);
 			ps.setString(1, id);
 			rs = ps.executeQuery();
 			while(rs.next()) {
 				MySellListDto dto = new MySellListDto();
+				dto.setGoods_id(rs.getString("boards_id"));
 				dto.setGoodsPhoto(rs.getString("path"));
 				dto.setGoodsTitle(rs.getString("title"));
 				dto.setGoodsAddress(rs.getString("address"));
