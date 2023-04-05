@@ -8,7 +8,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -27,7 +27,7 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Button fx:id="submit" alignment="CENTER" mnemonicParsing="false" onAction="#onRegsistButtonClick" prefHeight="60.0" prefWidth="60.0" style="-fx-background-color: white;" text="완료" textFill="#ff7f00">
+            <Button fx:id="submit" alignment="CENTER" disable="true" mnemonicParsing="false" onAction="#onRegsistButtonClick" prefHeight="60.0" prefWidth="60.0" style="-fx-background-color: white;" text="완료" textFill="#ff7f00">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
@@ -39,15 +39,14 @@
          <content>
             <VBox prefHeight="531.0" prefWidth="360.0">
                <children>
-                  <StackPane prefHeight="150.0" prefWidth="200.0">
+                  <Pane prefHeight="200.0" prefWidth="200.0">
                      <children>
                         <ImageView fx:id="photo" fitHeight="200.0" fitWidth="350.0" onMouseClicked="#selectPhoto" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../source/image/placeHolder.png" />
                            </image>
                         </ImageView>
-                     </children>
-                  </StackPane>
+                     </children></Pane>
                   <TextField fx:id="name" promptText="글 제목" style="-fx-border: grey;">
                      <font>
                         <Font size="19.0" />
