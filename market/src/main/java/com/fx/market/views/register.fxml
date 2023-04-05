@@ -8,11 +8,11 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="643.0" prefWidth="360.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fx.market.controller.RegisterController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="643.0" prefWidth="360.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fx.market.controller.RegisterController">
 
    <top>
       <HBox prefHeight="45.0" prefWidth="360.0" BorderPane.alignment="CENTER">
@@ -39,14 +39,15 @@
          <content>
             <VBox prefHeight="531.0" prefWidth="360.0">
                <children>
-                  <Pane prefHeight="200.0" prefWidth="200.0">
+                  <StackPane prefHeight="150.0" prefWidth="200.0">
                      <children>
                         <ImageView fx:id="photo" fitHeight="200.0" fitWidth="350.0" onMouseClicked="#selectPhoto" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../source/image/placeHolder.png" />
                            </image>
                         </ImageView>
-                     </children></Pane>
+                     </children>
+                  </StackPane>
                   <TextField fx:id="name" promptText="글 제목" style="-fx-border: grey;">
                      <font>
                         <Font size="19.0" />
