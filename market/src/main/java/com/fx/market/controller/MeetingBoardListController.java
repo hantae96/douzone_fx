@@ -196,8 +196,8 @@ public class MeetingBoardListController implements Initializable{
 		        
 		        etcHbox.getChildren().addAll(addressLabel, createdAtLabel);
 		       
-		        section.setBottom(etcHbox);
-		        centerBox.getChildren().addAll(titleLabel, personHbox, calendarHbox);
+//		        section.setBottom(etcHbox);
+		        centerBox.getChildren().addAll(titleLabel, personHbox, calendarHbox, etcHbox);
 	        }else {
 	        	Label contentLabel = new Label(board.getContent());
 	        	centerBox.getChildren().addAll(titleLabel, contentLabel);
@@ -226,7 +226,7 @@ public class MeetingBoardListController implements Initializable{
 
 
 	        
-			section.resize(357, 500);
+			section.resize(257, 500);
 			section.setTop(mainCategoryLabel);
 			section.setCenter(centerBox);
 
@@ -295,7 +295,7 @@ public class MeetingBoardListController implements Initializable{
 	
 	
 	public void myPageNavClick() {
-		Viewer.setViewCenter("myDouzone");
+		Viewer.setViewCenter2("myDouzone");
 	}
 
 	public void searchBtnClick() {
