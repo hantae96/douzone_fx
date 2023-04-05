@@ -15,11 +15,13 @@ import javafx.stage.Stage;
 public class Session {
 
 	private static Session instance;
-	private String accountId;
-	private String name;
-	private String address;
-	private String tempId;
-	private String whereToGo;
+	private String accountId;			//계정 ID
+	private String name;				//계정 이름(닉네임)
+	private String address;				//계정 주소
+	private String tempId;				//임시 ID
+	private String whereToGo;			//
+	
+	private String boardId; 			//게시글 ID
 	
 	public String getWhereToGo() {
 		return whereToGo;
@@ -106,6 +108,14 @@ public class Session {
 
 	public void setStage(Stage stage) {
 		this.stage = stage;
+	}
+	
+	public String getBoardId() {
+		return boardId;
+	}
+
+	public void setBoardId(String boardId) {
+		this.boardId = boardId;
 	}
 
 }
