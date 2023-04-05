@@ -34,7 +34,7 @@ public class RegisterDao {
 		String saled_id = null;
 		String itemId = null;
 		
-		String sql = "insert into goods(goods_id,accounts_id,title,content,address,price,saled_id) values (concat('g', goods_seq.nextval),?,?,?,?,?,?)";
+		String sql = "insert into goods(goods_id,accounts_id,title,content,address,price,saled_id,recommends) values (concat('g', goods_seq.nextval),?,?,?,?,?,?,?)";
 		String getIdSql = "SELECT goods_seq.CURRVAL FROM dual";
 	
 		try {
@@ -47,6 +47,7 @@ public class RegisterDao {
 			ps.setString(4,item.getItemLocal());
 			ps.setString(5,String.valueOf(item.getItemPrice()));
 			ps.setString(6,saled_id);
+			ps.setLong(7, 0);
 			ps.executeUpdate();
 			
 			stmt2.execute(getIdSql);

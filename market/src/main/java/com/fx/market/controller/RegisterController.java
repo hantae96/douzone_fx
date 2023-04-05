@@ -68,6 +68,9 @@ public class RegisterController implements Initializable {
 		try {
 			inputStream = new FileInputStream(filePathSession);
 	        String outputPass = "src/main/java/com/fx/market/source/image/"+itemId+".jpg";    //파일 저장 경로 <- 저장 ID로 생성
+	        
+	        System.out.println(outputPass);
+	        
 	        File outputFile = new File(outputPass);                        //output할 파일의 경로를 지정해 File객체 생성
 	        OutputStream outputStream = new FileOutputStream(outputFile);            //outputFile을 outputStream에 저장
 
@@ -91,9 +94,7 @@ public class RegisterController implements Initializable {
 			e.printStackTrace();
 		}            //경로를 inputStream에 저장
 		
-		
-		Viewer viewer = new Viewer();
-		viewer.setView("home");
+		Viewer.setView("home");
 	}
 
 	@FXML

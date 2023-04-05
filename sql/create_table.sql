@@ -96,7 +96,7 @@ CREATE TABLE Goods (
   grade NUMBER(2),
   recommends NUMBER(5),
   views NUMBER(5),
-  created_at DATE,
+  created_at DATE default sysdate,
   PRIMARY KEY (goods_id)
 );
 
