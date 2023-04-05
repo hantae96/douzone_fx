@@ -114,7 +114,7 @@ public class BoardDao {
 		return null;
 	}
 
-	public BoardDto findByMeetingBoardDetail(String boardId) {
+	public BoardDto findBoardById(String boardId) {
 		String sql = "SELECT b.*, m.* "
 				+ "FROM boards b "
 				+ "INNER JOIN meetings m ON b.boards_id = m.boards_id where b.boards_id = ?";
@@ -302,4 +302,13 @@ public class BoardDao {
 		}
 		return null;
 	}
+
+	public void closeConnection() {
+		try {
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
 }
