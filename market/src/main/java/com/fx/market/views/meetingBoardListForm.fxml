@@ -25,7 +25,7 @@
                <content>
          </content>
                <content>
-                  <VBox fx:id="main" minWidth="356.0" prefHeight="0.0" />
+                  <VBox fx:id="main" maxWidth="357.0" minWidth="357.0" prefHeight="0.0" />
                </content>
             </ScrollPane>
             <AnchorPane fx:id="anchorPane" minHeight="500.0" onMouseClicked="#anchorPaneClick" prefHeight="500.0" prefWidth="344.0" style="-fx-border-color: orange;">
