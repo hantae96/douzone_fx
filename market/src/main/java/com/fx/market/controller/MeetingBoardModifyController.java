@@ -48,7 +48,7 @@ public class MeetingBoardModifyController implements Initializable{
 		minute.setItems(FXCollections.observableArrayList("5분", "10분", "15분", "20분", "25분", "30분", "35분", "40분", "45분", "50분", "55분"));
 		
 		boardService = new BoardService();
-		board = boardService.boardDetail(Session.getInstance().getTempId());
+		board = boardService.findBoardById(Session.getInstance().getTempId());
 		
 		mainCategory.setText(board.getMainCategory());
 		title.setText(board.getTitle());

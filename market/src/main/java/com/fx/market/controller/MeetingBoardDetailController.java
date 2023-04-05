@@ -80,7 +80,7 @@ public class MeetingBoardDetailController implements Initializable{
 
 		boardService = new BoardService();
 		
-		board = boardService.boardDetail(Session.getInstance().getTempId());
+		board = boardService.findBoardById(Session.getInstance().getTempId());
 		
 		mainCategoryLabel.setText(board.getMainCategory());
 		subCategoryLabel.setText(board.getSubCategory());
