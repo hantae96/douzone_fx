@@ -112,6 +112,8 @@ public class MySellListController implements Initializable{
 			BorderPane bord = new BorderPane();
 			bord.setStyle("-fx-border-color: lightgray;");
 			bord.setMaxHeight(100);
+			bord.setMinWidth(360);
+			bord.setPadding(new Insets(0, 30, 0, 0));
 			
 			//이미지
 			String getPath = ""; 
@@ -127,12 +129,30 @@ public class MySellListController implements Initializable{
 				e.printStackTrace();
 			}
 			
-			bord.setLeft(sellImage);
+			if(whereToGo.equals("MyBoardList")) {
+				bord.setRight(sellImage);				
+			}else {
+				bord.setLeft(sellImage);
+			}
 			
-			bord.setOnMouseClicked(event -> {
-				openItemDetails(item);
-				homeService.addView(item.getGoods_id());
-			}); // 클릭 이벤트 핸들러 등록
+			if(whereToGo.equals("MyBoardList")) {
+				bord.setOnMouseClicked(event -> {
+					if(item.getGoodsPrice().equals("동네생활")) {
+						Session session =Session.getInstance();
+						session.setTempId(item.getGoods_id());	
+						Viewer.setView("detailBulletin"); 		
+					}else {
+						Session session =Session.getInstance();
+						session.setTempId(item.getGoods_id());
+						Viewer.setView("meetingBoardDetailForm");
+					}
+				});
+			}else {
+				bord.setOnMouseClicked(event -> {
+					openItemDetails(item);
+					homeService.addView(item.getGoods_id());
+				}); // 클릭 이벤트 핸들러 등록
+			}
 			
 			//제목,장소,가격,날짜
 			VBox box = new VBox();
