@@ -42,8 +42,8 @@ public class BoardService {
 
 
 
-	public BoardDto boardDetail(String boardId) {
-		return boardDao.findByMeetingBoardDetail(boardId);
+	public BoardDto findBoardById(String boardId) {
+		return boardDao.findBoardById(boardId);
 	}
 
 
@@ -86,5 +86,10 @@ public class BoardService {
 	public List<BoardDto> searchBoardList(String searchStr) {
 		
 		return boardDao.findByBoardList(searchStr);
+	}
+	
+	
+	public void closeConnection() {
+		boardDao.closeConnection();
 	}
 }

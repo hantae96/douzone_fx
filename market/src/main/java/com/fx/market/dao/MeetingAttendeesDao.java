@@ -35,12 +35,11 @@ public class MeetingAttendeesDao {
 		
 		try {
 			ps = con.prepareStatement(sql);
-			ps.setString(1, meetingAttendDto.getMeetingId());
+			ps.setString(1, meetingAttendDto.getBoardId());
 			ps.setString(2, meetingAttendDto.getAccountId());
 			
 			result = ps.executeUpdate();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -49,16 +48,14 @@ public class MeetingAttendeesDao {
 	}
 
 	public List<MeetingAttendeesDto> selectMeetingAttendList(String boardId) {
-		String sql = "SELECT ma.*, a.*, p.*"
+		String sql = "SELECT ma.accounts_id, a.name, a.address, p.path "
 				+ "FROM meeting_attendees ma "
 				+ "JOIN accounts a ON ma.accounts_id = a.accounts_id "
 				+ "LEFT JOIN photos p ON a.accounts_id = p.photos_id "
-				+ "WHERE ma.meetings_id = ?";
+				+ "WHERE ma.boards_id = ?";
 				
 				PreparedStatement ps = null;
 				ResultSet rs = null;
-				
-				int result = 0;
 				
 				try {
 					ps = con.prepareStatement(sql);
@@ -66,7 +63,8 @@ public class MeetingAttendeesDao {
 					
 					rs = ps.executeQuery();
 					
-					List<MeetingAttendeesDto> meetingAttendDtos = new ArrayList();
+					List<MeetingAttendeesDto> meetingAttendDtos = new ArrayList<MeetingAttendeesDto>();
+					
 					while(rs.next()) {
 						MeetingAttendeesDto meetingAttendDto = new MeetingAttendeesDto(); 
 						meetingAttendDto.setAccountId(rs.getString("accounts_id"));
@@ -79,7 +77,6 @@ public class MeetingAttendeesDao {
 					
 					return meetingAttendDtos;
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				
