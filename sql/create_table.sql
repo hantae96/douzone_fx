@@ -92,7 +92,7 @@ CREATE TABLE Goods (                      -- 판매 게시글
   grade NUMBER(2),                        -- 판매 평점
   recommends NUMBER(5),                   -- 판매 추천
   views NUMBER(5),                        -- 판매 게시글 조회수
-  created_at DATE,                        -- 판매 게시글 작성 일자
+  created_at DATE default sysdate,                        -- 판매 게시글 작성 일자
   PRIMARY KEY (goods_id)
 );
 

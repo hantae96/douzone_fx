@@ -95,8 +95,7 @@ public class ItemController implements Initializable {
 	}
 
 	public void onCancelButtonClick() {
-		Viewer viewer = new Viewer();
-		viewer.setView("home");
+		Viewer.setView("home");
 	}
 
 	public void checkLikeButton() {

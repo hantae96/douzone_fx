@@ -57,19 +57,24 @@ public class FavoritesDao {
 	public Boolean checkFavorites(String accountId, String itemId) {
 			PreparedStatement ps = null;
 			ResultSet rs = null;
-			int check = 0;
-			String sql = "select * from favorites where accounts_id = ? AND goods_id = ?";
+			String checkId = null;
+			String sql = "select FAVORITES_ID from favorites where accounts_id = ? AND goods_id = ?";
 			try {
 				ps = con.prepareStatement(sql);
 				ps.setString(1, accountId);
 				ps.setString(2,itemId);
-				check = ps.executeUpdate();
+				rs = ps.executeQuery();
+				
+				while(rs.next()) {
+					checkId = rs.getString("FAVORITES_ID");
+				}
 				
 				con.close();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			if(check != 0) return true;
+			System.out.println(checkId);
+			if(checkId != null) return true;
 			else return false;
 	}
 
