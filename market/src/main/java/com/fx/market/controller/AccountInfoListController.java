@@ -25,7 +25,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 
-public class MySellListController implements Initializable{
+public class AccountInfoListController implements Initializable{
 
 	@FXML private VBox main;
 	@FXML private ImageView photo;

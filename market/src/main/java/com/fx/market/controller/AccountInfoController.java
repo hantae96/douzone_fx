@@ -19,7 +19,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-public class MyPageController implements Initializable {
+public class AccountInfoController implements Initializable {
 
 	// initalize 는 fxml 로더가 fx 변수를 모두 파싱한다음에 호출됨
 	// 컨트롤러 단에 놓지 않으면 ex) 컨트롤러로 선언되지 않은 다른 클래스에 놓으면 실행순서가 보장되지 않기때문에
