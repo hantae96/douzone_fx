@@ -75,6 +75,8 @@ public class FreeBoardController implements Initializable{
 			    	Session session = Session.getInstance();
 					System.out.println(session.getTempId());
 			    	freeboardService.photoInsert(new PhotoDto(session.getTempId(),outputName,outputPass,null));
+			    	Viewer viewer = new Viewer();
+					viewer.setView("meetingBoardListForm");
 	}
 	public void closebtn() {
 		Viewer viewer = new Viewer();

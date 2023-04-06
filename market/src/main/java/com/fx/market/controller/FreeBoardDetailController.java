@@ -65,6 +65,8 @@ public class FreeBoardDetailController implements Initializable{
 		String board_Id = session.getTempId();
 		freeboardService = new FreeBoardService();
 		freeboardService.deleteClick(board_Id);
+		Viewer viewer = new Viewer();
+		viewer.setView("meetingBoardListForm");
 	}
 	public void closeClicked() {
 		Viewer viewer = new Viewer();

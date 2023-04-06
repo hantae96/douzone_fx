@@ -18,6 +18,10 @@ public class FreeBoardService {
 	public void photoInsert(PhotoDto photoDto) {
 		
 		townDao.photosInsert(photoDto);
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setHeaderText("게시물이 등록되었습니다.");
+		alert.show();
+		
 		
 	}
 	
@@ -38,8 +42,10 @@ public class FreeBoardService {
 			 Session session = Session.getInstance();
 			 session.getInstance().getaddress();
 			 session.getAccountId();
+			 String address = session.getaddress();
 			townDto.setMain_category(main_category);
 			townDto.setAcount_Id(session.getAccountId());
+			townDto.setAddress(address);
 			townDto.setSub(sub_category);
 			townDto.setTitle(title);
 			townDto.setContent(content);
@@ -48,8 +54,6 @@ public class FreeBoardService {
 			String id = townDao.findBoardId(title);
 			session.setTempId(id);
 			
-			alert.setHeaderText("게시물이 등록되었습니다");
-			alert.show();
 			
 		}
 
@@ -79,6 +83,8 @@ public class FreeBoardService {
 		
 			alert.setHeaderText("게시물이 수정되었습니다");
 			alert.show();
+
+			
 			
 		}
 	}
