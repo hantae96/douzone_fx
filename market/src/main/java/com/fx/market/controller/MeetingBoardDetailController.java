@@ -98,7 +98,7 @@ public class MeetingBoardDetailController implements Initializable{
 		BorderStroke borderStroke = new BorderStroke(Color.GRAY, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, borderWitdths);
 		Border border = new Border(borderStroke);
 		attendLabel.setBorder(border);
-		leaderIdLabel.setText(board.getAccountId());
+		leaderIdLabel.setText(board.getName());
 		leaderAddressLabel.setText(board.getAddress());
 		
 		System.out.println("true : "+board.getAccountId().equals(Session.getInstance().getAccountId()));

@@ -30,6 +30,16 @@ public class BoardDto {
 	private String gender;				//만남 성별
 	private String age;					//만남 나이연령
 	
+	private String name;
+	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	public BoardDto() {	}
 	
 	public BoardDto(String accountId, String mainCategory, String subCategory, String title,
