@@ -42,7 +42,9 @@ public class FreeBoardDetailController implements Initializable{
 		
 		String photodto = freeboardService.photoInfo(board_Id);
 		FreeBoardDto freeboard = freeboardService.selectAll(board_Id);
+
 		FreeBoardDto freeboard2 = freeboardService.view(board_Id);
+
 		String myphoto_Id = freeboardService.photoInfo(freeboard.getAcount_Id());
 		sub_category.setText(freeboard.getSub());
 		title.setText(freeboard.getTitle());
@@ -62,7 +64,7 @@ public class FreeBoardDetailController implements Initializable{
 		Image myimage = new Image(myimagePath);
 		myphoto.setImage(myimage);
 		
-		
+
 	}
 	public void updateClick() {
 		Viewer viewer = new Viewer();
