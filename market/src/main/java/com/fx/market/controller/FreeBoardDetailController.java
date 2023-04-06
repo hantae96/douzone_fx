@@ -29,6 +29,7 @@ public class FreeBoardDetailController implements Initializable{
 	@FXML Button delete;
 	@FXML Button close;
 	@FXML private ImageView photo;
+	@FXML private ImageView myphoto;
 	
 	private FreeBoardService freeboardService;
 	@Override
@@ -41,7 +42,7 @@ public class FreeBoardDetailController implements Initializable{
 		
 		String photodto = freeboardService.photoInfo(board_Id);
 		FreeBoardDto freeboard = freeboardService.selectAll(board_Id);
-		
+		String myphoto_Id = freeboardService.photoInfo(freeboard.getAcount_Id());
 		sub_category.setText(freeboard.getSub());
 		title.setText(freeboard.getTitle());
 		content.setText(freeboard.getContent());
@@ -53,6 +54,12 @@ public class FreeBoardDetailController implements Initializable{
 		System.out.println(imagePath);
 		Image image = new Image(imagePath);
 		photo.setImage(image);
+		
+		String myimagePath = "file:" + System.getProperty("user.dir") + "/"+myphoto_Id;
+		System.out.println(imagePath);
+		Image myimage = new Image(myimagePath);
+		myphoto.setImage(myimage);
+		
 	}
 	public void updateClick() {
 		Viewer viewer = new Viewer();
@@ -70,12 +77,14 @@ public class FreeBoardDetailController implements Initializable{
 	}
 	public void closeClicked() {
 		//나의 마켓에서 들어왔을 경우 나의 마켓으로 뒤로가기
-			if(Session.getInstance().getWhereToGo().equals("MyBoardList")) {
-				Session.getInstance().setWhereToGo("");
-				Viewer.setView("home");			
-				Viewer.setViewCenterScroll("myDouzone");			
-			}else {
-		Viewer.setView("home");
-			}
+//			if(Session.getInstance().getWhereToGo().equals("MyBoardList")) {
+//				Session.getInstance().setWhereToGo("");
+//				Viewer.setView("home");			
+//				Viewer.setViewCenterScroll("myDouzone");			
+//			}else {
+//		Viewer.setView("home");
+//			}
+		Viewer viewer = new Viewer();
+		viewer.setView("meetingBoardListForm");
 	}
 }

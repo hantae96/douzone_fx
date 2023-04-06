@@ -49,12 +49,17 @@ public class UpdateFreeBoardController implements Initializable{
 		String board_Id = session.getTempId();
 		
 		System.out.println(board_Id);
-		
-
+			
+		String photodto = freeboardService.photoInfo(board_Id);
 		FreeBoardDto freeboard = freeboardService.selectAll(board_Id);
 		sub_category.setValue(freeboard.getSub());
 		title.setText(freeboard.getTitle());
 		content.setText(freeboard.getContent());
+		
+		String imagePath = "file:" + System.getProperty("user.dir") + "/"+photodto;
+		System.out.println(imagePath);
+		Image image = new Image(imagePath);
+		photo.setImage(image);
 	}
 	
 	
