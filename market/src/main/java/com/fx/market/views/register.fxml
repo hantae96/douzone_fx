@@ -8,7 +8,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -39,14 +39,15 @@
          <content>
             <VBox prefHeight="531.0" prefWidth="360.0">
                <children>
-                  <Pane prefHeight="200.0" prefWidth="200.0">
+                  <StackPane prefHeight="150.0" prefWidth="200.0">
                      <children>
                         <ImageView fx:id="photo" fitHeight="200.0" fitWidth="350.0" onMouseClicked="#selectPhoto" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../source/image/placeHolder.png" />
                            </image>
                         </ImageView>
-                     </children></Pane>
+                     </children>
+                  </StackPane>
                   <TextField fx:id="name" promptText="글 제목" style="-fx-border: grey;">
                      <font>
                         <Font size="19.0" />
