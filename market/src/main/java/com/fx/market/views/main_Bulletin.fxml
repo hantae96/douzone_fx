@@ -10,6 +10,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="560.0" prefWidth="360.0" style="-fx-background-color: WHITE;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fx.market.controller.FreeBoardController">
    <top>
@@ -42,7 +43,6 @@
         </rowConstraints>
          <children>
             <Button mnemonicParsing="false" onMouseClicked="#imagebtn" prefHeight="29.0" prefWidth="59.0" style="-fx-background-color: white;" text="사진" />
-            <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="65.0" style="-fx-background-color: white;" text="장소" GridPane.columnIndex="1" />
          </children>
       </GridPane>
    </bottom>
@@ -50,7 +50,10 @@
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
             <ComboBox fx:id="sub" prefHeight="29.0" prefWidth="323.0" promptText="주제를 선택하세요." style="-fx-background-color: white;" />
-            <TextField fx:id="title" promptText="제목" />
+            <TextField fx:id="title" promptText="제목">
+               <font>
+                  <Font size="20.0" />
+               </font></TextField>
             <TextArea fx:id="content" prefHeight="418.0" prefWidth="321.0" promptText="질문이나 이야기를 해보세요." />
             <ImageView fx:id="photo" fitHeight="126.0" fitWidth="359.0" pickOnBounds="true" preserveRatio="true" />
          </children>
