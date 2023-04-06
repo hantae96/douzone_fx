@@ -43,6 +43,7 @@ public class LoginService {
 			session.setLoginChk(1);
 			session.setAccountId(dbUser.getAccounts_id());
 			session.setAddress(dbUser.getAddress());
+			session.setWhereToGo("");
 			return 1;
 			}	
 		}else{
