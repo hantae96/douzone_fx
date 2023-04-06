@@ -12,7 +12,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="643.0" prefWidth="360.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fx.market.controller.FreeBoardDetailController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="643.0" prefWidth="360.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fx.market.controller.FreeBoardDetailController">
    <center>
       <ScrollPane hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" vbarPolicy="NEVER" BorderPane.alignment="CENTER">
          <content>
@@ -49,9 +49,9 @@
                         </VBox>
                      </center>
                      <bottom>
-                        <Pane prefHeight="253.0" prefWidth="358.0" BorderPane.alignment="CENTER">
+                        <Pane prefHeight="443.0" prefWidth="358.0" BorderPane.alignment="CENTER">
                            <children>
-                              <VBox prefHeight="252.0" prefWidth="360.0">
+                              <VBox layoutY="23.0" prefHeight="421.0" prefWidth="360.0">
                                  <children>
                                     <Label fx:id="title" alignment="BOTTOM_LEFT" prefHeight="39.0" prefWidth="360.0" text="title">
                                        <font>
@@ -72,7 +72,8 @@
                                           <Insets left="10.0" />
                                        </padding>
                                     </Label>
-                                    <Label fx:id="content" alignment="TOP_LEFT" prefHeight="156.0" prefWidth="360.0" text="content" wrapText="true">
+                                    <ImageView fx:id="photo" fitHeight="171.0" fitWidth="357.0" pickOnBounds="true" preserveRatio="true" />
+                                    <Label fx:id="content" alignment="TOP_LEFT" prefHeight="233.0" prefWidth="360.0" text="content" wrapText="true">
                                        <font>
                                           <Font size="20.0" />
                                        </font>
@@ -89,7 +90,6 @@
                         <Label fx:id="sub_category" prefHeight="44.0" prefWidth="210.0" text="sub_category" BorderPane.alignment="CENTER" />
                      </top>
                   </BorderPane>
-                  <ImageView fx:id="photo" fitHeight="161.0" fitWidth="342.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </VBox>
          </content>
@@ -115,19 +115,8 @@
 				        </HBox>
    </top>
    <bottom>
-      <HBox prefHeight="54.0" prefWidth="360.0" BorderPane.alignment="CENTER">
+      <HBox prefHeight="43.0" prefWidth="360.0" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="price" prefHeight="60.0" prefWidth="202.0" style="-fx-border-color: transparent transparent transparent lightgrey; -fx-border-width: 0 0 0 2;" text="Label">
-               <padding>
-                  <Insets left="10.0" />
-               </padding>
-               <font>
-                  <Font size="25.0" />
-               </font>
-               <HBox.margin>
-                  <Insets bottom="10.0" top="10.0" />
-               </HBox.margin>
-            </Label>
             <Button fx:id="update" mnemonicParsing="false" onMouseClicked="#updateClick" text="수정" />
             <Button fx:id="delete" mnemonicParsing="false" onMouseClicked="#deleteClick" text="삭제" />
          </children>
