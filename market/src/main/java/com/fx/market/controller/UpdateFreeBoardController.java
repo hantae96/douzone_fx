@@ -70,21 +70,26 @@ public class UpdateFreeBoardController implements Initializable{
 		
 		// photo insert
 			String photodto = freeboardService.photoInfo(board_Id);
-				InputStream inputStream = new FileInputStream(filePathSession);								//경로를 inputStream에 저장
-				String outputName = Session.getInstance().getTempId() + fileNameSession;														//중복 안되도록 이름 수정
-				String outputPass = "src/main/java/com/fx/market/source/image/"+outputName;					//파일 저장 경로
-				File outputFile = new File(outputPass);														//output할 파일의 경로를 지정해 File객체 생성
-				OutputStream outputStream = new FileOutputStream(outputFile);								//outputFile을 outputStream에 저장
-				    	
-				byte[] buffer = new byte[1024];
-				int length;
-				while ((length = inputStream.read(buffer)) > 0) {
-				    outputStream.write(buffer, 0, length);
+			
+				if(filePathSession != null) {
+					InputStream inputStream = new FileInputStream(filePathSession);								//경로를 inputStream에 저장
+					String outputName = Session.getInstance().getTempId() + fileNameSession;														//중복 안되도록 이름 수정
+					String outputPass = "src/main/java/com/fx/market/source/image/"+outputName;					//파일 저장 경로
+					File outputFile = new File(outputPass);														//output할 파일의 경로를 지정해 File객체 생성
+					OutputStream outputStream = new FileOutputStream(outputFile);								//outputFile을 outputStream에 저장
+					    	
+					byte[] buffer = new byte[1024];
+					int length;
+					while ((length = inputStream.read(buffer)) > 0) {
+					    outputStream.write(buffer, 0, length);
+					}
+	
+					 inputStream.close();
+					 outputStream.close();
+					 
+					 freeboardService.photoUpdate(new PhotoDto(board_Id,outputName,outputPass,null));
 				}
-
-				 inputStream.close();
-				 outputStream.close();
-				 freeboardService.photoUpdate(new PhotoDto(board_Id,outputName,outputPass,null));
+				
 			
 		freeboardService.updateboardClick(sub_category.getValue(), title.getText(), content.getText(), board_Id);
 		Viewer viewer = new Viewer();
