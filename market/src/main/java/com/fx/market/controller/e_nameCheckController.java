@@ -28,7 +28,7 @@ public class e_nameCheckController implements Initializable{
 		
 		if(Check == 1) {
 		Viewer viewer = new Viewer();
-		viewer.setView("idConfirm");
+		viewer.setView("login");
 		}
 }
 	public void e_nameCancel() {
