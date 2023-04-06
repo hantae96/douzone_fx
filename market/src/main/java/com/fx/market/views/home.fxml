@@ -42,7 +42,7 @@
    <bottom>
       <HBox alignment="CENTER" prefHeight="45.0" prefWidth="358.0" style="-fx-background-color: orange;" BorderPane.alignment="CENTER">
          <children>
-            <VBox alignment="TOP_CENTER" prefHeight="60.0" prefWidth="72.0" translateX="-50.0">
+            <VBox alignment="TOP_CENTER" prefHeight="60.0" prefWidth="72.0">
                <children>
                   <ImageView fitHeight="35.0" fitWidth="35.0" onMouseClicked="#purchaseNavClick" pickOnBounds="true" preserveRatio="true">
                      <VBox.margin>
@@ -61,7 +61,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </VBox>
-            <VBox alignment="TOP_CENTER" onMouseClicked="#boardNavClick" prefHeight="60.0" prefWidth="72.0" translateX="10.0">
+            <VBox alignment="TOP_CENTER" onMouseClicked="#boardNavClick" prefHeight="60.0" prefWidth="72.0">
                <children>
                   <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                      <VBox.margin>
@@ -80,7 +80,7 @@
                   <Insets top="10.0" />
                </padding>
             </VBox>
-            <VBox alignment="TOP_CENTER" prefHeight="60.0" prefWidth="75.0" translateX="70.0">
+            <VBox alignment="TOP_CENTER" prefHeight="60.0" prefWidth="75.0">
                <children>
                   <ImageView fitHeight="35.0" fitWidth="35.0" onMouseClicked="#myPageNavClick" pickOnBounds="true" preserveRatio="true">
                      <VBox.margin>

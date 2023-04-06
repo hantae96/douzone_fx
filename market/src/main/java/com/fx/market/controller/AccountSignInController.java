@@ -8,19 +8,26 @@ import com.fx.market.common.Session;
 import com.fx.market.common.Viewer;
 import com.fx.market.service.LoginService;
 
+import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class AccountSignInController implements Initializable{
 	@FXML TextField id;
 	@FXML PasswordField pw;
 	@FXML ImageView photo;
+	@FXML Label idLine;
+	@FXML Label pwLine;
 	private LoginService service;
 
 
@@ -28,6 +35,7 @@ public class AccountSignInController implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 		service = new LoginService();
 		
+	
 		// 한글 입력은 받지 않도록 해주는 TextFormatter 생성
     	TextFormatter<String> passFormatter =  new TextFormatter<String>((UnaryOperator<TextFormatter.Change>) change -> {
     	    String newPass = change.getControlNewText();
@@ -71,7 +79,28 @@ public class AccountSignInController implements Initializable{
 		Viewer viewer = new Viewer();
 		viewer.setView("e_nameCheck"); 
 	}
+
 	
+	public void idUnderCheck() {
+		idLine.setUnderline(true);
+	}
 	
+	public void idUnderDel() {
+		idLine.setUnderline(false);
+	}
+	
+	public void pwUnderCheck() {
+		pwLine.setUnderline(true);
+	}
+	
+	public void pwUnderDel() {
+		pwLine.setUnderline(false);
+	}
 	
 }
+
+
+
+
+
+

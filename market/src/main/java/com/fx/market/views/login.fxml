@@ -56,12 +56,12 @@
                   <Font name="System Bold Italic" size="12.0" />
                </font>
             </Label>
-            <Label lineSpacing="20.0" onMouseClicked="#pwClickedMethod" text="비밀번호 찾기" translateX="20.0" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
+            <Label fx:id="pwLine" lineSpacing="20.0" onMouseClicked="#pwClickedMethod" onMouseEntered="#pwUnderCheck" onMouseExited="#pwUnderDel" text="비밀번호 찾기" translateX="20.0" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
             </Label>
-            <Label onMouseClicked="#e_nameClickedMethod" text="아이디 &amp;" translateX="50.0" GridPane.rowIndex="2" GridPane.valignment="TOP" />
+            <Label fx:id="idLine" onMouseClicked="#e_nameClickedMethod" onMouseEntered="#idUnderCheck" onMouseExited="#idUnderDel" text="아이디 &amp;" translateX="50.0" GridPane.rowIndex="2" GridPane.valignment="TOP" />
          </children>
       </GridPane>
    </bottom>
