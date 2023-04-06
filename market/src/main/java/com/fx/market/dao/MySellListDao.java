@@ -72,7 +72,7 @@ public class MySellListDao {
 	//구매글 출력
 	public List<MySellListDto> getMyBuyList(String id) {
 		List<MySellListDto> items = new ArrayList<>();
-		String sql = "SELECT goods.title, goods.address, goods.price, TO_CHAR(goods.created_at, 'YYYYMMDD') as created_at, photos.path FROM goods LEFT JOIN photos ON goods.goods_id = photos.photos_id WHERE goods.saled_id=?";
+		String sql = "SELECT goods.title, goods.address, goods.price, TO_CHAR(goods.created_at, 'YYYYMMDD') as created_at, goods.goods_id, photos.path FROM goods LEFT JOIN photos ON goods.goods_id = photos.photos_id WHERE goods.saled_id=?";
 		try {
 			ps = con.prepareStatement(sql);
 			ps.setString(1, id);
@@ -84,6 +84,7 @@ public class MySellListDao {
 				dto.setGoodsAddress(rs.getString("address"));
 				dto.setGoodsPrice(rs.getString("price"));
 				dto.setGoodsCreated_at(rs.getString("created_at"));
+				dto.setGoods_id(rs.getString("goods_id"));
 				items.add(dto);
 			}
 			return items;

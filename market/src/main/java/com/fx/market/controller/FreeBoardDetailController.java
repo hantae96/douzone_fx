@@ -66,7 +66,13 @@ public class FreeBoardDetailController implements Initializable{
 		freeboardService.deleteClick(board_Id);
 	}
 	public void closeClicked() {
-		Viewer viewer = new Viewer();
-		viewer.setView("home");
+		//나의 마켓에서 들어왔을 경우 나의 마켓으로 뒤로가기
+			if(Session.getInstance().getWhereToGo().equals("MyBoardList")) {
+				Session.getInstance().setWhereToGo("");
+				Viewer.setView("home");			
+				Viewer.setViewCenterScroll("myDouzone");			
+			}else {
+		Viewer.setView("home");
+			}
 	}
 }
