@@ -35,7 +35,7 @@ public class HomeDao {
 		// 필요한 정보 : 상품 제목, 위치, 가격, 올린시간, 좋아요
 		String sql = "select goods_id,title,address,price,recommends,created_at from goods "
 				+ "where sale is null "
-				+ "order by goods_id  desc";
+				+ "order by created_at desc";
 		try {
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
