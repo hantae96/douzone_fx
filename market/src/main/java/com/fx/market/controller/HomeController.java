@@ -178,6 +178,7 @@ public class HomeController implements Initializable {
 	        
 	        section.setPadding(new Insets(10)); // 모든 방향에 대해 10px의 패딩 적용
 	        section.setOnMouseClicked(event -> {
+	    										Session.getInstance().setWhereToGo("");
 	        									openItemDetails(item);
 	        									homeService.addView(item.getItemId());
 	        	}); // 클릭 이벤트 핸들러 등록
