@@ -59,6 +59,11 @@ public class MySellListController implements Initializable{
 		}
 	}
 	
+	@FXML
+	protected void moveToMy() {
+		Viewer.setViewCenterScroll("myDouzone");
+	}
+	
 	//클릭한 메뉴의 세션에 따라 다르게 출력
 	protected void getMyList() {
 		//세션에 저장한 메뉴
@@ -178,7 +183,7 @@ public class MySellListController implements Initializable{
 	private void openItemDetails(MySellListDto item) {
 		ItemDto clickedItem = itemService.getItemById(item.getGoods_id());
 		Session.getInstance().setModel(clickedItem);
-		if(Session.getInstance().getWhereToGo().equals("MySellList")) {
+		if(Session.getInstance().getWhereToGo().equals("MySellList")||Session.getInstance().getWhereToGo().equals("MyBuyList")) {
 			Viewer.setView("item");
 		}
 	}

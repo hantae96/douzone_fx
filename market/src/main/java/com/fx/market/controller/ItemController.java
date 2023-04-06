@@ -95,7 +95,14 @@ public class ItemController implements Initializable {
 	}
 
 	public void onCancelButtonClick() {
-		Viewer.setView("home");
+		//나의 마켓에서 들어왔을 경우 나의 마켓으로 뒤로가기
+		if(Session.getInstance().getWhereToGo().equals("MySellList")||Session.getInstance().getWhereToGo().equals("MyBuyList")) {
+			Session.getInstance().setWhereToGo("");
+			Viewer.setView("home");			
+			Viewer.setViewCenterScroll("myDouzone");			
+		}else {
+			Viewer.setView("home");
+		}
 	}
 
 	public void checkLikeButton() {
@@ -122,7 +129,9 @@ public class ItemController implements Initializable {
 	public void submitButtonClicked() {
 		String accountId = session.getAccountId();
 		String itemId = item.getItemId();
-		
+		Alert alert = new Alert(AlertType.INFORMATION);
+	    alert.setContentText("구매가 완료 되었습니다.");
+	    alert.showAndWait();
 		/*=============혜성 별점 추가==============*/
 		// Slider를 생성하고 초기값 설정
 		Slider slider = new Slider(1, 5, 1); // 최소값: 1, 최대값: 5, 초기값: 1
@@ -176,9 +185,7 @@ public class ItemController implements Initializable {
 		    upService.accountRating(itemId, grade);
 		    
 		    itemService.buy(accountId,itemId,grade);
-		    Alert alert = new Alert(AlertType.INFORMATION);
-		    alert.setContentText("구매가 완료 되었습니다.");
-		    alert.showAndWait();
+		    
 		    Viewer viewer = new Viewer();
 		    viewer.setView("home");	
 		
