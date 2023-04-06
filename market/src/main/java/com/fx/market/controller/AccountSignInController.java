@@ -17,7 +17,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
-public class LoginController implements Initializable{
+public class AccountSignInController implements Initializable{
 	@FXML TextField id;
 	@FXML PasswordField pw;
 	@FXML ImageView photo;
