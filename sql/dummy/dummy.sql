@@ -1,3 +1,12 @@
+-- sequence update -- 
+DROP sequence "BOARDS_SEQ";
+DROP sequence "FAVORITES_SEQ";
+DROP sequence "GOODS_SEQ";
+
+CREATE SEQUENCE goods_seq START WITH 10;
+CREATE SEQUENCE boards_seq START WITH 10;
+CREATE SEQUENCE favorites_seq START WITH 10;
+
 -- Accounts --
 Insert into ACCOUNTS (ACCOUNTS_ID,PW,NAME,ADDRESS,EMAIL,TEMPERATURE,CREATED_AT,DELETED_AT) values ('rlagptjd','1111','김혜성','서울시 은평구','rlagptjd2002@naver.com',36.5,to_date('23/04/06','RR/MM/DD'),null);
 Insert into ACCOUNTS (ACCOUNTS_ID,PW,NAME,ADDRESS,EMAIL,TEMPERATURE,CREATED_AT,DELETED_AT) values ('wkdwodnd','1111','장재웅','서울시 강남구','wkdwodnd@naver.com',36.5,to_date('23/04/06','RR/MM/DD'),null);
