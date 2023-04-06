@@ -55,7 +55,11 @@
                   <Font size="20.0" />
                </font></TextField>
             <TextArea fx:id="content" prefHeight="418.0" prefWidth="321.0" promptText="질문이나 이야기를 해보세요." />
-            <ImageView fx:id="photo" fitHeight="126.0" fitWidth="359.0" pickOnBounds="true" preserveRatio="true" />
+            <BorderPane prefHeight="200.0" prefWidth="200.0">
+               <top>
+                  <ImageView fx:id="photo" fitHeight="126.0" fitWidth="359.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+               </top>
+            </BorderPane>
          </children>
       </VBox>
    </center>

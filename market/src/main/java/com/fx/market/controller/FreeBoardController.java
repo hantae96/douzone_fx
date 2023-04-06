@@ -17,10 +17,12 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
@@ -75,6 +77,10 @@ public class FreeBoardController implements Initializable{
 			    	Session session = Session.getInstance();
 					System.out.println(session.getTempId());
 			    	freeboardService.photoInsert(new PhotoDto(session.getTempId(),outputName,outputPass,null));
+			    	Alert alert = new Alert(AlertType.INFORMATION);
+					alert.setHeaderText("게시물이 등록되었습니다.");
+					alert.show();
+					
 			    	Viewer viewer = new Viewer();
 					viewer.setView("meetingBoardListForm");
 	}

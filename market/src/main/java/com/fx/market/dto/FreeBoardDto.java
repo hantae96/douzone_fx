@@ -12,11 +12,18 @@ public class FreeBoardDto {
 	private int views; 						// 조회수
 	private int recomends;					// 추천수
 	private String address; 				// 작성자 주소
-	private String createdAt;					// 작성날짜
+	private String createdAt;	
+	private String name;// 작성날짜
 	
 	
 	
 	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 	public String getTitle() {
 		return title;
 	}
