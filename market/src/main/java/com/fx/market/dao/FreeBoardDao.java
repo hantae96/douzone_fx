@@ -164,5 +164,22 @@ public class FreeBoardDao{
 		}
 		return null;
 	}
+	public String findBoardId(String title) {
+		String sql = "select boards_id from boards where title = ?";
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString(1, title);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				return rs.getString("boards_id");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	
+		return null;
+	}
 
 }

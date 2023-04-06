@@ -437,6 +437,7 @@ public class MeetingBoardListController implements Initializable{
 	        VBox rightVbox = new VBox();
 	        
 	        Image photoImage = new Image("file:" + photo.getPath());
+	        System.out.println(photo.getPath());
 	        ImageView photoImageView = new ImageView();
     	    photoImageView.setFitWidth(60);
     	    photoImageView.setFitHeight(60);
