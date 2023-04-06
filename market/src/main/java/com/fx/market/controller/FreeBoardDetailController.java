@@ -37,19 +37,19 @@ public class FreeBoardDetailController implements Initializable{
 		
 		freeboardService = new FreeBoardService();
 		Session session = Session.getInstance();
-		
 		String board_Id = session.getTempId();
-		
+		String user_name = session.getName();
+		System.out.println("user_name" + user_name);
 		String photodto = freeboardService.photoInfo(board_Id);
 		FreeBoardDto freeboard = freeboardService.selectAll(board_Id);
 
-		FreeBoardDto freeboard2 = freeboardService.view(board_Id);
+		freeboardService.view(board_Id);
 
 		String myphoto_Id = freeboardService.photoInfo(freeboard.getAcount_Id());
 		sub_category.setText(freeboard.getSub());
 		title.setText(freeboard.getTitle());
 		content.setText(freeboard.getContent());
-		username.setText(freeboard.getAcount_Id());
+		username.setText(freeboard.getName());
 		address.setText(freeboard.getAddress());
 		date.setText(freeboard.getCreatedAt());
 		

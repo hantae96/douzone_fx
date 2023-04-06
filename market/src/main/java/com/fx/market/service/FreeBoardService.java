@@ -18,11 +18,6 @@ public class FreeBoardService {
 	public void photoInsert(PhotoDto photoDto) {
 		
 		townDao.photosInsert(photoDto);
-		Alert alert = new Alert(AlertType.INFORMATION);
-		alert.setHeaderText("게시물이 등록되었습니다.");
-		alert.show();
-		
-		
 	}
 	
 	public void boardClick(String main_category,String sub_category,String title, String content){
@@ -43,6 +38,8 @@ public class FreeBoardService {
 			 session.getInstance().getaddress();
 			 session.getAccountId();
 			 String address = session.getaddress();
+			 String name = session.getName();
+			 System.out.println(name);
 			townDto.setMain_category(main_category);
 			townDto.setAcount_Id(session.getAccountId());
 			townDto.setAddress(address);

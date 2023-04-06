@@ -87,15 +87,16 @@ public class FreeBoardDao{
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		
-		String sql = "SELECT * FROM boards WHERE boards_Id=?";
+		String sql = "SELECT * FROM boards b inner join accounts a on b.accounts_id = a.accounts_id WHERE boards_Id= ?";
 		try {
 			ps = con.prepareStatement(sql);
 			ps.setString(1, board_Id);
 			rs = ps.executeQuery();
 			if(rs.next()) {
-				System.out.println("if");
+				
 				FreeBoardDto freeboard = new FreeBoardDto();
 				freeboard.setBoard_Id(board_Id);
+				freeboard.setName(rs.getString("name"));
 				freeboard.setSub(rs.getString("sub_category"));
 				freeboard.setTitle(rs.getString("title"));
 				freeboard.setContent(rs.getString("content"));
