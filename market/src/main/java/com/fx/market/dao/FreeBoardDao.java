@@ -191,9 +191,8 @@ public class FreeBoardDao{
 			FreeBoardDto freeboard = new FreeBoardDto();
 			ps = con.prepareStatement(sql);
 			ps.setString(1, board_Id);
-			rs = ps.executeQuery();
-			freeboard.setViews(rs.getInt("views")); 
-			con.close();
+			rs = ps.executeQuery(); 
+			
 			return freeboard;
 		}catch(Exception e) {
 			e.printStackTrace();
