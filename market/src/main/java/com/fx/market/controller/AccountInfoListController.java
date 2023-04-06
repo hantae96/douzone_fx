@@ -61,6 +61,7 @@ public class AccountInfoListController implements Initializable{
 	
 	@FXML
 	protected void moveToMy() {
+		Session.getInstance().setWhereToGo("");
 		Viewer.setViewCenterScroll("myDouzone");
 	}
 	
@@ -143,12 +144,12 @@ public class AccountInfoListController implements Initializable{
 			if(whereToGo.equals("MyBoardList")) {
 				bord.setOnMouseClicked(event -> {
 					if(item.getGoodsPrice().equals("동네생활")) {
-						Session session =Session.getInstance();
-						session.setTempId(item.getGoods_id());	
+						Session.getInstance().setTempId(item.getGoods_id());
+						Session.getInstance().setWhereToGo("MyBoardList");
 						Viewer.setView("detailBulletin"); 		
 					}else {
-						Session session =Session.getInstance();
-						session.setTempId(item.getGoods_id());
+						Session.getInstance().setTempId(item.getGoods_id());
+						Session.getInstance().setWhereToGo("MyBoardList");
 						Viewer.setView("meetingBoardDetailForm");
 					}
 				});

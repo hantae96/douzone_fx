@@ -170,10 +170,11 @@ public class MeetingBoardDetailController implements Initializable{
 	
 	public void backBtnClick() {
 		//나의 마켓에서 들어왔을 경우 나의 마켓으로 뒤로가기
+		System.out.println(Session.getInstance().getWhereToGo());
 		if(Session.getInstance().getWhereToGo().equals("MyBoardList")) {
-			Session.getInstance().setWhereToGo("");
 			Viewer.setView("home");			
-			Viewer.setViewCenterScroll("myDouzone");			
+			Viewer.setViewCenterScroll("myDouzone");
+			Viewer.setViewCenterScroll("mySellList");
 		}else {
 			Viewer.setView("meetingBoardListForm");
 		}

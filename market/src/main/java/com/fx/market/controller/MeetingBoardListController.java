@@ -205,7 +205,7 @@ public class MeetingBoardListController implements Initializable{
 	        	
 	        	BorderPane bottomPane = new BorderPane();
 	        	
-	        	Label viewLabel = new Label("조회수 "+String.valueOf(board.getViews()));
+	        	Label viewLabel = new Label(" 조회수 "+String.valueOf(board.getViews()));
 	        	etcHbox.getChildren().addAll(addressLabel, createdAtLabel, viewLabel);
 	        	
 	        	bottomPane.setBottom(etcHbox);
@@ -241,7 +241,7 @@ public class MeetingBoardListController implements Initializable{
 	    
 	    			Session session =Session.getInstance();
 		    		session.setTempId(board.getBoardId());
-		    		
+		    		Session.getInstance().setWhereToGo("");
 		    		Viewer.setView("detailBulletin");
 		    		
 	    		}else {
@@ -249,7 +249,7 @@ public class MeetingBoardListController implements Initializable{
 	    		Session session =Session.getInstance();
 	    		session.setTempId(board.getBoardId());
 	    		
-	    		
+	    		Session.getInstance().setWhereToGo("");
 	    		
 	    		Viewer.setView("meetingBoardDetailForm");
 	    		}
