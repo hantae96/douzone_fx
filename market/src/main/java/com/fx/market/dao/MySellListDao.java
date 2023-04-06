@@ -122,7 +122,7 @@ public class MySellListDao {
 	//관심글 출력
 	public List<MySellListDto> getMyFavorList(String id) {
 		List<MySellListDto> items = new ArrayList<>();
-		String sql = "SELECT goods.title, goods.address, goods.price, TO_CHAR(goods.created_at, 'YYYYMMDD') as created_at, photos.path "
+		String sql = "SELECT goods.title, goods.address, goods.price, TO_CHAR(goods.created_at, 'YYYYMMDD') as created_at, goods.goods_id, photos.path "
 				+ "FROM favorites "
 				+ "JOIN accounts ON favorites.accounts_id = accounts.accounts_id "
 				+ "JOIN goods ON favorites.goods_id = goods.goods_id "
@@ -134,6 +134,7 @@ public class MySellListDao {
 			rs = ps.executeQuery();
 			while(rs.next()) {
 				MySellListDto dto = new MySellListDto();
+				dto.setGoods_id(rs.getString("goods_id"));
 				dto.setGoodsPhoto(rs.getString("path"));
 				dto.setGoodsTitle(rs.getString("title"));
 				dto.setGoodsAddress(rs.getString("address"));

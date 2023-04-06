@@ -184,7 +184,7 @@ public class AccountInfoListController implements Initializable{
 	private void openItemDetails(MySellListDto item) {
 		ItemDto clickedItem = itemService.getItemById(item.getGoods_id());
 		Session.getInstance().setModel(clickedItem);
-		if(Session.getInstance().getWhereToGo().equals("MySellList")||Session.getInstance().getWhereToGo().equals("MyBuyList")) {
+		if(Session.getInstance().getWhereToGo().equals("MySellList")||Session.getInstance().getWhereToGo().equals("MyBuyList")||Session.getInstance().getWhereToGo().equals("MyFavorList")) {
 			Viewer.setView("item");
 		}
 	}

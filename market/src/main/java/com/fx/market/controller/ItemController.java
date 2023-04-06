@@ -96,7 +96,7 @@ public class ItemController implements Initializable {
 
 	public void onCancelButtonClick() {
 		//나의 마켓에서 들어왔을 경우 나의 마켓으로 뒤로가기
-		if(Session.getInstance().getWhereToGo().equals("MySellList")||Session.getInstance().getWhereToGo().equals("MyBuyList")) {
+		if(Session.getInstance().getWhereToGo().equals("MySellList")||Session.getInstance().getWhereToGo().equals("MyBuyList")||Session.getInstance().getWhereToGo().equals("MyFavorList")) {
 			Viewer.setView("home");			
 			Viewer.setViewCenterScroll("myDouzone");		
 			Viewer.setViewCenterScroll("mySellList");
