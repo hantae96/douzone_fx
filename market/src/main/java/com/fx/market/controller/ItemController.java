@@ -129,7 +129,9 @@ public class ItemController implements Initializable {
 	public void submitButtonClicked() {
 		String accountId = session.getAccountId();
 		String itemId = item.getItemId();
-		
+		Alert alert = new Alert(AlertType.INFORMATION);
+	    alert.setContentText("구매가 완료 되었습니다.");
+	    alert.showAndWait();
 		/*=============혜성 별점 추가==============*/
 		// Slider를 생성하고 초기값 설정
 		Slider slider = new Slider(1, 5, 1); // 최소값: 1, 최대값: 5, 초기값: 1
@@ -183,9 +185,7 @@ public class ItemController implements Initializable {
 		    upService.accountRating(itemId, grade);
 		    
 		    itemService.buy(accountId,itemId,grade);
-		    Alert alert = new Alert(AlertType.INFORMATION);
-		    alert.setContentText("구매가 완료 되었습니다.");
-		    alert.showAndWait();
+		    
 		    Viewer viewer = new Viewer();
 		    viewer.setView("home");	
 		
