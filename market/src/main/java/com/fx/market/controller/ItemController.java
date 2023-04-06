@@ -186,11 +186,16 @@ public class ItemController implements Initializable {
 		    
 		    itemService.buy(accountId,itemId,grade);
 		    
-		    Viewer viewer = new Viewer();
-		    viewer.setView("home");	
+		    Viewer.setView("home");	
 		
 		} else {
+			int grade = 3;
+			SignUpService upService = new SignUpService();
+		    upService.accountRating(itemId, grade);
 		    
+		    itemService.buy(accountId,itemId,grade);
+		    
+		    Viewer.setView("home");	
 		}
 
 		/*=========================================*/
