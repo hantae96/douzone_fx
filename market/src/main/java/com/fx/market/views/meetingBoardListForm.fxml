@@ -28,7 +28,7 @@
                   <VBox fx:id="main" maxWidth="357.0" minWidth="357.0" prefHeight="0.0" />
                </content>
             </ScrollPane>
-            <AnchorPane fx:id="anchorPane" minHeight="500.0" onMouseClicked="#anchorPaneClick" prefHeight="500.0" prefWidth="344.0" style="-fx-border-color: orange;">
+            <AnchorPane fx:id="anchorPane" minHeight="500.0" onMouseClicked="#anchorPaneClick" prefHeight="500.0" prefWidth="344.0">
                <children>
                   <Button fx:id="writeBtn" alignment="CENTER" layoutX="302.0" layoutY="521.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: orange; -fx-border-radius: 30; -fx-background-radius: 30; -fx-text-fill: white;" text="+" textAlignment="CENTER">
                      <contextMenu>
@@ -126,9 +126,9 @@
       </HBox>
    </bottom>
    <top>
-      <HBox minHeight="60.0" minWidth="360.0" style="-fx-border-color: grey;" BorderPane.alignment="CENTER">
+      <HBox minHeight="60.0" minWidth="360.0" BorderPane.alignment="CENTER">
          <children>
-            <BorderPane prefHeight="58.0" prefWidth="358.0" style="-fx-background-color: white; -fx-border-color: orange;">
+            <BorderPane prefHeight="58.0" prefWidth="358.0" style="-fx-background-color: white;">
                <left>
                   <Label fx:id="addressLabel" alignment="BASELINE_LEFT" maxWidth="180.0" minWidth="180.0" prefHeight="58.0" text="Label" textAlignment="CENTER" BorderPane.alignment="CENTER">
                      <font>

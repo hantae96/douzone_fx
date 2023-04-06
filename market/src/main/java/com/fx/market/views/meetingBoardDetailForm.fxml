@@ -16,9 +16,9 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="643.0" prefWidth="360.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fx.market.controller.MeetingBoardDetailController">
    <top>
-      <HBox prefHeight="45.0" prefWidth="360.0" BorderPane.alignment="CENTER">
+      <HBox prefHeight="45.0" prefWidth="360.0" style="-fx-border-color: gray;" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" onAction="#backBtnClick" prefHeight="46.0" prefWidth="53.0" style="-fx-background-color: WHITE;" text="Back">
+            <Button mnemonicParsing="false" onAction="#backBtnClick" prefHeight="43.0" prefWidth="53.0" style="-fx-background-color: WHITE;" text="Back">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
@@ -26,12 +26,12 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Label fx:id="mainCategoryLabel" alignment="CENTER" prefHeight="46.0" prefWidth="257.0" style="-fx-background-color: white;" text="동네생활">
+            <Label fx:id="mainCategoryLabel" alignment="CENTER" prefHeight="43.0" prefWidth="257.0" style="-fx-background-color: white;" text="동네생활">
                <font>
                   <Font name="System Bold Italic" size="20.0" />
                </font>
             </Label>
-            <Button fx:id="menuBtn" mnemonicParsing="false" prefHeight="46.0" prefWidth="51.0" style="-fx-background-color: white;" text="메뉴" textFill="#ff7f00" visible="false">
+            <Button fx:id="menuBtn" mnemonicParsing="false" prefHeight="43.0" prefWidth="51.0" style="-fx-background-color: white;" text="메뉴" textFill="#ff7f00" visible="false">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
@@ -46,6 +46,9 @@
                </contextMenu>
             </Button>
          </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
       </HBox>
    </top>
    <left>
