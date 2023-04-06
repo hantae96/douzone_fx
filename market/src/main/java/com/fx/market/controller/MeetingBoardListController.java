@@ -295,7 +295,8 @@ public class MeetingBoardListController implements Initializable{
 	
 	
 	public void myPageNavClick() {
-		Viewer.setViewCenter2("myDouzone");
+		Viewer.setView("home");
+		Viewer.setViewCenter("myDouzone");
 	}
 
 	public void searchBtnClick() {
