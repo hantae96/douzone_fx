@@ -92,6 +92,7 @@ public class FreeBoardController implements Initializable{
 	        Stage stage = new Stage();                            //Stage 객체 생성
 	        File selectedFile = fileChooser.showOpenDialog(stage);        //stage에 fileChooser로 고른걸 selectedFile에 저장
 	        String selectedFilePath = selectedFile.getAbsolutePath();        //selectedFile의 절대경로를 selectedFilePath에 저장
+	        System.out.println("test " + selectedFilePath);
 	        filePathSession = selectedFilePath;                        //controller에 경로 임시 저장
 	        fileNameSession = selectedFile.getName();                    //controller에 이름 임시 저장
 	        String imagePath = "file:"+selectedFilePath;                //image객체를 위한 경로 편집
