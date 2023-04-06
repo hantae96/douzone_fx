@@ -9,6 +9,7 @@ import java.util.ResourceBundle;
 import com.fx.market.common.Session;
 import com.fx.market.common.Viewer;
 import com.fx.market.dto.BoardDto;
+import com.fx.market.dto.FreeBoardDto;
 import com.fx.market.dto.PhotoDto;
 import com.fx.market.service.BoardService;
 import com.fx.market.service.PhotoService;
@@ -237,6 +238,7 @@ public class MeetingBoardListController implements Initializable{
 	    		// item 정보를 받아서 뷰에서 뿌리면 됨.
 	    		// viewer 에서 상세 페이지를 작성하자
 	    		if(board.getMainCategory().equals("동네생활")) {
+	    
 	    			Session session =Session.getInstance();
 		    		session.setTempId(board.getBoardId());
 		    		

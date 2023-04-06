@@ -119,4 +119,8 @@ public class FreeBoardService {
 	public void photoUpdate(PhotoDto photoDto) {
 		townDao.photosUpdate(photoDto);
 	}
+
+	public FreeBoardDto view(String board_Id) {
+		return townDao.view(board_Id);
+	}
 }

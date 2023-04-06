@@ -69,6 +69,7 @@ public class UpdateFreeBoardController implements Initializable{
 		String board_Id = session.getTempId();
 		
 		// photo insert
+			String photodto = freeboardService.photoInfo(board_Id);
 				InputStream inputStream = new FileInputStream(filePathSession);								//경로를 inputStream에 저장
 				String outputName = Session.getInstance().getTempId() + fileNameSession;														//중복 안되도록 이름 수정
 				String outputPass = "src/main/java/com/fx/market/source/image/"+outputName;					//파일 저장 경로
@@ -97,12 +98,11 @@ public class UpdateFreeBoardController implements Initializable{
 	}
 	
 	public void imagebtn() {
-		System.out.println("imagebutton test");
 		FileChooser fileChooser = new FileChooser();                //FileChooser 객체 생성
         Stage stage = new Stage();                            //Stage 객체 생성
         File selectedFile = fileChooser.showOpenDialog(stage);        //stage에 fileChooser로 고른걸 selectedFile에 저장
         String selectedFilePath = selectedFile.getAbsolutePath();        //selectedFile의 절대경로를 selectedFilePath에 저장
-        filePathSession = selectedFilePath;                        //controller에 경로 임시 저장
+        filePathSession = selectedFilePath;
         fileNameSession = selectedFile.getName();                    //controller에 이름 임시 저장
         String imagePath = "file:"+selectedFilePath;                //image객체를 위한 경로 편집
         Image image = new Image(imagePath);                        //이미지 객체 생성

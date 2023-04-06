@@ -181,5 +181,23 @@ public class FreeBoardDao{
 	
 		return null;
 	}
+	public FreeBoardDto view(String board_Id) {
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		String sql = "update boards set views = NVL(views,0)+1 where boards_id=?";
+		try {
+			FreeBoardDto freeboard = new FreeBoardDto();
+			ps = con.prepareStatement(sql);
+			ps.setString(1, board_Id);
+			rs = ps.executeQuery();
+			freeboard.setViews(rs.getInt("views")); 
+			con.close();
+			return freeboard;
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 
 }
