@@ -114,7 +114,7 @@ public class BoardDao {
 		return null;
 	}
 
-	public BoardDto findByMeetingBoardDetail(String boardId) {
+	public BoardDto findBoardById(String boardId) {
 		String sql = "SELECT b.*, m.* "
 				+ "FROM boards b "
 				+ "INNER JOIN meetings m ON b.boards_id = m.boards_id where b.boards_id = ?";
@@ -255,4 +255,60 @@ public class BoardDao {
 		
 		return result;
 	}
+
+	public List<BoardDto> findByBoardList(String searchStr) {
+		String sql = "SELECT DISTINCT b.*, m.* "
+				+ "FROM boards b "
+				+ "LEFT JOIN meetings m "
+				+ "ON b.boards_id = m.boards_id "
+				+ "where b.title like ? or content like ? "
+				+ "order by b.created_at desc ";
+		
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString(1, "%"+searchStr+"%");
+			ps.setString(2, "%"+searchStr+"%");
+			rs = ps.executeQuery();
+			
+			List<BoardDto> boards = new ArrayList<>();
+			while(rs.next()) {
+				BoardDto board = new BoardDto();
+				board.setBoardId(rs.getString("boards_id"));
+				board.setAccountId(rs.getString("accounts_id"));
+				board.setMainCategory(rs.getString("main_category"));
+				board.setSubCategory(rs.getString("sub_category"));
+				board.setTitle(rs.getString("title"));
+				board.setContent(rs.getString("content"));
+				board.setAddress(rs.getString("address"));
+				board.setRecommends(rs.getInt("recommends"));
+				board.setViews(rs.getInt("views"));
+				board.setGender(rs.getString("gender"));
+				board.setAge(rs.getString("age"));
+				board.setMeetingDate(rs.getDate("meeting_date"));
+				board.setMeetingTimeAmpm(rs.getString("meeting_time_ampm"));
+				board.setMeetingTimeHour(rs.getString("meeting_time_hour"));
+				board.setMeetingTimeMinute(rs.getString("meeting_time_minute"));
+				board.setCreatedAt(rs.getDate("created_at"));
+				boards.add(board);
+			}
+			
+			return boards;
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	public void closeConnection() {
+		try {
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
 }

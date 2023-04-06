@@ -42,8 +42,8 @@ public class BoardService {
 
 
 
-	public BoardDto boardDetail(String boardId) {
-		return boardDao.findByMeetingBoardDetail(boardId);
+	public BoardDto findBoardById(String boardId) {
+		return boardDao.findBoardById(boardId);
 	}
 
 
@@ -75,9 +75,21 @@ public class BoardService {
 		int result = boardDao.updateMeetingState(boardId);
 		if(result != 0) {
 			CommonService.msg(AlertType.INFORMATION, "모집 종료", "모집이 종료되었습니다.", "");
-			Viewer.setView("meetingBoardListForm");
-			
+			Session.getInstance().setTempId(boardId);
+			Viewer.setView("meetingBoardDetailForm");
 		}
 		
+	}
+
+
+
+	public List<BoardDto> searchBoardList(String searchStr) {
+		
+		return boardDao.findByBoardList(searchStr);
+	}
+	
+	
+	public void closeConnection() {
+		boardDao.closeConnection();
 	}
 }

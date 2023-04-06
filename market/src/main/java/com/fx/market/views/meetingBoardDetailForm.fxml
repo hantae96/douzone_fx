@@ -31,7 +31,7 @@
                   <Font name="System Bold Italic" size="20.0" />
                </font>
             </Label>
-            <Button fx:id="menuBtn" mnemonicParsing="false" prefHeight="46.0" prefWidth="51.0" style="-fx-background-color: white;" text="메뉴" textFill="#ff7f00">
+            <Button fx:id="menuBtn" mnemonicParsing="false" prefHeight="46.0" prefWidth="51.0" style="-fx-background-color: white;" text="메뉴" textFill="#ff7f00" visible="false">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
@@ -119,13 +119,6 @@
                </children>
             </HBox>
             <Label fx:id="contentLabel" alignment="TOP_LEFT" prefHeight="169.0" prefWidth="360.0" text="content">
-               <contextMenu>
-                  <ContextMenu>
-                    <items>
-                      <MenuItem mnemonicParsing="false" text="ok" />
-                    </items>
-                  </ContextMenu>
-               </contextMenu>
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
@@ -143,7 +136,7 @@
          <top>
             <ScrollPane prefHeight="249.0" prefWidth="360.0" BorderPane.alignment="CENTER">
                <content>
-                  <VBox prefWidth="357.0">
+                  <VBox fx:id="attendAccountsVBox" prefWidth="357.0">
                      <children>
                         <Label fx:id="attendLabel" minHeight="30.0" minWidth="357.0" text="참여중인 이웃">
                            <padding>

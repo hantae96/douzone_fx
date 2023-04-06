@@ -8,13 +8,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.fx.market.dto.MeetingAttendDto;
+import com.fx.market.dto.MeetingAttendeesDto;
 
-public class MeetingAttendDao {
+public class MeetingAttendeesDao {
 	
 	private Connection con;
 	
-	public MeetingAttendDao() {
+	public MeetingAttendeesDao() {
 		String url = "jdbc:oracle:thin:@localhost:1521:xe";
 		String user = "douzone";
 		String password = "1234";
@@ -26,7 +26,7 @@ public class MeetingAttendDao {
 		}
 	}
 
-	public int insertAttendMeeting(MeetingAttendDto meetingAttendDto) {
+	public int insertAttendMeeting(MeetingAttendeesDto meetingAttendDto) {
 		String sql = "insert into meeting_attendees values(?, ?)";
 		
 		PreparedStatement ps = null;
@@ -35,12 +35,11 @@ public class MeetingAttendDao {
 		
 		try {
 			ps = con.prepareStatement(sql);
-			ps.setString(1, meetingAttendDto.getMeetingId());
+			ps.setString(1, meetingAttendDto.getBoardId());
 			ps.setString(2, meetingAttendDto.getAccountId());
 			
 			result = ps.executeUpdate();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -48,17 +47,15 @@ public class MeetingAttendDao {
 		
 	}
 
-	public List<MeetingAttendDto> selectMeetingAttendList(String boardId) {
-		String sql = "SELECT ma.*, a.*, p.*"
+	public List<MeetingAttendeesDto> selectMeetingAttendList(String boardId) {
+		String sql = "SELECT ma.accounts_id, a.name, a.address, p.path "
 				+ "FROM meeting_attendees ma "
-				+ "JOIN accounts a ON ma.account_id = a.accounts_id "
+				+ "JOIN accounts a ON ma.accounts_id = a.accounts_id "
 				+ "LEFT JOIN photos p ON a.accounts_id = p.photos_id "
-				+ "WHERE ma.meeting_id = ?";
+				+ "WHERE ma.boards_id = ?";
 				
 				PreparedStatement ps = null;
 				ResultSet rs = null;
-				
-				int result = 0;
 				
 				try {
 					ps = con.prepareStatement(sql);
@@ -66,9 +63,11 @@ public class MeetingAttendDao {
 					
 					rs = ps.executeQuery();
 					
-					List<MeetingAttendDto> meetingAttendDtos = new ArrayList();
+					List<MeetingAttendeesDto> meetingAttendDtos = new ArrayList<MeetingAttendeesDto>();
+					
 					while(rs.next()) {
-						MeetingAttendDto meetingAttendDto = new MeetingAttendDto(); 
+						MeetingAttendeesDto meetingAttendDto = new MeetingAttendeesDto(); 
+						meetingAttendDto.setAccountId(rs.getString("accounts_id"));
 						meetingAttendDto.setName(rs.getString("name"));
 						meetingAttendDto.setAddress(rs.getString("address"));
 						meetingAttendDto.setPath(rs.getString("path"));
@@ -78,11 +77,9 @@ public class MeetingAttendDao {
 					
 					return meetingAttendDtos;
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				
 				return null;
 			}
-
 }

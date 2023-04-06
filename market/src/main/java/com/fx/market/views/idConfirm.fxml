@@ -5,23 +5,35 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
 <BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="360.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fx.market.controller.IdCheckController">
-   <bottom>
+   <top>
+      <ImageView fitHeight="211.0" fitWidth="207.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+         <image>
+            <Image url="@../source/image/giphy.gif" />
+         </image>
+         <BorderPane.margin>
+            <Insets top="10.0" />
+         </BorderPane.margin>
+      </ImageView>
+   </top>
+   <center>
       <GridPane prefHeight="534.0" prefWidth="380.0" BorderPane.alignment="CENTER">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="214.0" minWidth="10.0" prefWidth="137.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="243.0" minWidth="10.0" prefWidth="243.0" />
         </columnConstraints>
         <rowConstraints>
-            <RowConstraints maxHeight="96.0" minHeight="10.0" prefHeight="96.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="80.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="201.0" minHeight="10.0" prefHeight="186.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="208.0" minHeight="10.0" prefHeight="169.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="96.0" minHeight="10.0" prefHeight="89.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="80.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="201.0" minHeight="10.0" prefHeight="149.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="208.0" minHeight="10.0" prefHeight="116.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
             <Label text="이메일" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="TOP">
@@ -32,12 +44,12 @@
                   <Insets top="4.0" />
                </GridPane.margin>
             </Label>
-            <Button fx:id="button" alignment="TOP_CENTER" mnemonicParsing="false" onMouseClicked="#userPwMethod" prefHeight="25.0" prefWidth="89.0" style="-fx-background-color: orange;" text="확인" translateX="55.0" GridPane.rowIndex="3" GridPane.valignment="TOP">
+            <Button fx:id="button" alignment="TOP_CENTER" mnemonicParsing="false" onMouseClicked="#userPwMethod" prefHeight="25.0" prefWidth="89.0" style="-fx-background-color: #FF9436;" text="확인" translateX="55.0" GridPane.rowIndex="3" GridPane.valignment="TOP">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin></Button>
             <TextField fx:id="email" maxWidth="150.0" prefHeight="25.0" prefWidth="180.0" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="TOP" />
-            <Button fx:id="button1" alignment="TOP_CENTER" mnemonicParsing="false" onMouseClicked="#userPwCancel" prefHeight="25.0" prefWidth="89.0" style="-fx-background-color: orange;" text="취소" translateX="10.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="TOP" />
+            <Button fx:id="button1" alignment="TOP_CENTER" mnemonicParsing="false" onMouseClicked="#userPwCancel" prefHeight="25.0" prefWidth="89.0" style="-fx-background-color: #FF9436;" text="취소" translateX="10.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="TOP" />
             <Label text="변경 비밀번호" translateY="3.0" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="TOP">
                <padding>
                   <Insets right="20.0" />
@@ -54,16 +66,22 @@
                   <Insets right="20.0" />
                </padding>
                <GridPane.margin>
-                  <Insets bottom="45.0" />
+                  <Insets bottom="25.0" />
                </GridPane.margin>
             </Label>
             <PasswordField fx:id="pw" maxWidth="150.0" prefHeight="25.0" prefWidth="180.0" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="TOP" />
             <PasswordField fx:id="pwC" maxWidth="150.0" prefHeight="25.0" prefWidth="180.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <GridPane.margin>
-                  <Insets bottom="40.0" />
+                  <Insets bottom="20.0" />
                </GridPane.margin>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
             </PasswordField>
          </children>
+         <BorderPane.margin>
+            <Insets top="20.0" />
+         </BorderPane.margin>
       </GridPane>
-   </bottom>
+   </center>
 </BorderPane>

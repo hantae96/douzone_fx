@@ -1,8 +1,8 @@
 package com.fx.market.dto;
 
-public class MeetingAttendDto {
+public class MeetingAttendeesDto {
 
-	private String meetingId;
+	private String boardId;
 	private String accountId;
 	private String name;
 	private String address;
@@ -27,18 +27,19 @@ public class MeetingAttendDto {
 	}
 	private String path;
 	
-	public MeetingAttendDto(String meetingId, String accountId) {
-		this.meetingId = meetingId;
+	public MeetingAttendeesDto(String boardId, String accountId) {
+		this.boardId = boardId;
 		this.accountId = accountId;
 	}
-	public MeetingAttendDto() {
+	public MeetingAttendeesDto() {
 		
 	}
-	public String getMeetingId() {
-		return meetingId;
+
+	public String getBoardId() {
+		return boardId;
 	}
-	public void setMeetingId(String meetingId) {
-		this.meetingId = meetingId;
+	public void setBoardId(String boardId) {
+		this.boardId = boardId;
 	}
 	public String getAccountId() {
 		return accountId;

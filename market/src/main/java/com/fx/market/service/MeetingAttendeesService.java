@@ -4,21 +4,21 @@ import java.util.List;
 
 import com.fx.market.common.CommonService;
 import com.fx.market.common.Viewer;
-import com.fx.market.dao.MeetingAttendDao;
-import com.fx.market.dto.MeetingAttendDto;
+import com.fx.market.dao.MeetingAttendeesDao;
+import com.fx.market.dto.MeetingAttendeesDto;
 
 import javafx.scene.control.Alert.AlertType;
 
-public class MeetingAttendService {
+public class MeetingAttendeesService {
 	
-	private MeetingAttendDao meetingAttendDao; 
+	private MeetingAttendeesDao meetingAttendDao; 
 	
 
-	public MeetingAttendService() {
-		meetingAttendDao = new MeetingAttendDao();
+	public MeetingAttendeesService() {
+		meetingAttendDao = new MeetingAttendeesDao();
 	}
 
-	public void attendMeeting(MeetingAttendDto meetingAttendDto) {
+	public void attendMeeting(MeetingAttendeesDto meetingAttendDto) {
 		
 		int result = meetingAttendDao.insertAttendMeeting(meetingAttendDto);
 		
@@ -26,13 +26,15 @@ public class MeetingAttendService {
 			CommonService.msg(AlertType.INFORMATION, "모임 참여", "모임에 참여했습니다.", "");
 		}
 		
-		Viewer.setView("meetingBoardListForm");
+		Viewer.setView("meetingBoardDetailForm");
 		
 	}
 
-	public List<MeetingAttendDto> getMeetingAttendList(String boardId) {
+	public List<MeetingAttendeesDto> getMeetingAttendList(String boardId) {
 		
 		return meetingAttendDao.selectMeetingAttendList(boardId);
 	}
+
+
 
 }

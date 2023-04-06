@@ -31,7 +31,6 @@ public class ItemService {
 			// 참이면 이미 좋아요를 누른것
 			return true;
 		}else{
-			addLike(accountId, itemId);
 			return false;
 		}
 		
