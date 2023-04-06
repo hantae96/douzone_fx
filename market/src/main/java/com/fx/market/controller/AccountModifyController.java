@@ -31,7 +31,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-public class UpdateAccountController implements Initializable{
+public class AccountModifyController implements Initializable{
 	@FXML PasswordField pw;
 	@FXML TextField name;
 	@FXML TextField address;

@@ -10,17 +10,17 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<BorderPane maxWidth="200.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fx.market.controller.CheckPasswordController">
-   <bottom>
+<BorderPane maxWidth="200.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fx.market.controller.AccountPwCheckController">
+   <center>
       <GridPane prefHeight="534.0" prefWidth="380.0" BorderPane.alignment="CENTER">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="214.0" minWidth="10.0" prefWidth="137.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="243.0" minWidth="10.0" prefWidth="243.0" />
         </columnConstraints>
         <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="201.0" minHeight="10.0" prefHeight="201.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="208.0" minHeight="10.0" prefHeight="169.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="236.0" minHeight="10.0" prefHeight="236.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="255.0" minHeight="10.0" prefHeight="250.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="208.0" minHeight="10.0" prefHeight="94.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
             <ImageView fitHeight="150.0" fitWidth="377.0" pickOnBounds="true" preserveRatio="true" GridPane.columnSpan="2" />
@@ -30,11 +30,13 @@
                </padding>
             </Label>
             <PasswordField fx:id="pw" maxWidth="150.0" prefHeight="25.0" prefWidth="180.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Button fx:id="button" alignment="TOP_CENTER" mnemonicParsing="false" onAction="#checkAccount" prefHeight="25.0" prefWidth="89.0" style="-fx-background-color: #FF9436;" text="확인" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="TOP">
+            <Button fx:id="button" alignment="TOP_CENTER" mnemonicParsing="false" onAction="#checkAccount" prefHeight="25.0" prefWidth="89.0" style="-fx-background-color: #FF9436;" text="확인" translateX="55.0" GridPane.rowIndex="2" GridPane.valignment="TOP">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin></Button>
+            <Button fx:id="button1" alignment="TOP_CENTER" mnemonicParsing="false" onAction="#cancelAccount" prefHeight="25.0" prefWidth="89.0" style="-fx-background-color: #FF9436;" text="취소" translateX="5.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP" />
+            <ImageView fx:id="photo" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" translateX="-10.0" translateY="50.0" GridPane.columnSpan="2" GridPane.halignment="CENTER" />
          </children>
       </GridPane>
-   </bottom>
+   </center>
 </BorderPane>

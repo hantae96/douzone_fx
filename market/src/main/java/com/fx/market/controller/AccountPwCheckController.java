@@ -13,9 +13,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
-public class CheckPasswordController implements Initializable{
+public class AccountPwCheckController implements Initializable{
 	@FXML PasswordField pw;
+	@FXML private ImageView photo;
 
 	
 	private UpdateAccountService updateservice;
@@ -23,6 +26,7 @@ public class CheckPasswordController implements Initializable{
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		updateservice = new UpdateAccountService();
+		String photodto = updateservice.photoInfo(Session.getInstance().getAccountId());
 		
 		// 한글 입력은 받지 않도록 해주는 TextFormatter 생성
     	TextFormatter<String> passFormatter =  new TextFormatter<String>((UnaryOperator<TextFormatter.Change>) change -> {
@@ -35,6 +39,11 @@ public class CheckPasswordController implements Initializable{
     	});
     	//TextFormatter 적용
     	pw.setTextFormatter(passFormatter);
+    	
+    	//저장된 이미지 파일 불러오기
+    			String imagePath = "file:" + System.getProperty("user.dir") + "/"+photodto;
+    			Image image = new Image(imagePath);
+    			photo.setImage(image);
 		
 	}
 
@@ -49,4 +58,13 @@ public class CheckPasswordController implements Initializable{
 				viewer.setViewCenter("update");//이동해서 -> 계정변경창으로
 			}
 		}
-}
+		
+		//정보 확인 취소 버튼 클릭
+				@FXML
+				private void cancelAccount() {
+		
+				Viewer viewer = new Viewer();
+				viewer.setViewCenter("myDouzone");
+					}
+			}
+

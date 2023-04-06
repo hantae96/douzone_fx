@@ -29,7 +29,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-public class SignUpController implements Initializable{
+public class AccountSignUpController implements Initializable{
 
     @FXML private Label idAlert;
     @FXML private Label nameAlert;
