@@ -45,6 +45,9 @@ public class FreeBoardService {
 			townDto.setContent(content);
 			townDao.insertFreeBoard(townDto);
 			
+			String id = townDao.findBoardId(title);
+			session.setTempId(id);
+			
 			alert.setHeaderText("게시물이 등록되었습니다");
 			alert.show();
 			

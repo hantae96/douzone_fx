@@ -48,8 +48,9 @@ public class FreeBoardDetailController implements Initializable{
 		username.setText(freeboard.getAcount_Id());
 		address.setText(freeboard.getAddress());
 		date.setText(freeboard.getCreatedAt());
-		
+	
 		String imagePath = "file:" + System.getProperty("user.dir") + "/"+photodto;
+		System.out.println(imagePath);
 		Image image = new Image(imagePath);
 		photo.setImage(image);
 	}
