@@ -23,6 +23,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
 public class AccountInfoListController implements Initializable{
@@ -222,6 +223,7 @@ public class AccountInfoListController implements Initializable{
 		Label starGrade = new Label();
 		starGrade.setFont(new Font(20));
 		starGrade.setText(constellation);
+		starGrade.setTextFill(Color.ORANGE);
 		bord.setLeft(starGrade);
 		
 		Label people = new Label();
