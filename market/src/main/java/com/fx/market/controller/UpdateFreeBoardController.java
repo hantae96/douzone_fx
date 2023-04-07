@@ -67,7 +67,13 @@ public class UpdateFreeBoardController implements Initializable{
 		String board_Id = session.getTempId();
 		
 		// photo insert
-			String photodto = freeboardService.photoInfo(board_Id);
+//	//		String photodto = freeboardService.photoInfo(board_Id);
+//			System.out.println("photodto : " + photodto);
+//			if(photodto == null) {
+//				
+//			}else {
+//				
+//			}
 			
 				if(filePathSession != null) {
 					InputStream inputStream = new FileInputStream(filePathSession);								//경로를 inputStream에 저장
@@ -84,8 +90,13 @@ public class UpdateFreeBoardController implements Initializable{
 	
 					 inputStream.close();
 					 outputStream.close();
-					 
-					 freeboardService.photoUpdate(new PhotoDto(board_Id,outputName,outputPass,null));
+					 String str = freeboardService.photoInfo(board_Id);
+					 System.out.println(str);
+					 if(str == null) {
+						 freeboardService.updatephotoInsert(new PhotoDto(board_Id,outputName,outputPass,null));
+					 }else {
+						 freeboardService.photoUpdate(new PhotoDto(board_Id,outputName,outputPass,null));
+					 }
 				}
 				
 			
@@ -96,7 +107,7 @@ public class UpdateFreeBoardController implements Initializable{
 		
 	public void closebtn() {
 		Viewer viewer = new Viewer();
-		viewer.setView("home");
+		viewer.setView("meetingBoardListForm");
 		
 	}
 	
