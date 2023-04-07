@@ -28,7 +28,7 @@ public class FreeBoardDao{
 	}
 	public void photosUpdate(PhotoDto photoDto) {
 		String sql = "UPDATE photos SET name=?, path=? where photos_id=?";
-		System.out.println(photoDto.getPhotos_id());
+		System.out.println("photoDao" + photoDto.getPhotos_id());
 		PreparedStatement ps = null;
 		try {
 				ps = con.prepareStatement(sql);
@@ -58,7 +58,19 @@ public class FreeBoardDao{
 			e.printStackTrace();
 		}
 	}
-	
+	public void updatephotosInsert(PhotoDto photo) {
+		PreparedStatement ps = null;
+		String sql = "INSERT INTO photos values (?,?,?,SYSDATE)";
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString(1, photo.getPhotos_id());
+			ps.setString(2, photo.getName());
+			ps.setString(3, photo.getPath());;
+			ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
 	
 	public int insertFreeBoard(FreeBoardDto townDto) {
@@ -195,6 +207,22 @@ public class FreeBoardDao{
 			
 			return freeboard;
 		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	public String selectBoard(String board_Id) {
+		String sql = "select accounts_id from boards where boards_id = ?";
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString(1, board_Id);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				return rs.getString("accounts_id");
+			}
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return null;
