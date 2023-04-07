@@ -39,7 +39,6 @@ public class FreeBoardDetailController implements Initializable{
 		Session session = Session.getInstance();
 		String board_Id = session.getTempId();
 		String user_name = session.getName();
-		System.out.println("user_name" + user_name);
 		String photodto = freeboardService.photoInfo(board_Id);
 		FreeBoardDto freeboard = freeboardService.selectAll(board_Id);
 
@@ -55,12 +54,10 @@ public class FreeBoardDetailController implements Initializable{
 		
 	
 		String imagePath = "file:" + System.getProperty("user.dir") + "/"+photodto;
-		System.out.println(imagePath);
 		Image image = new Image(imagePath);
 		photo.setImage(image);
 		
 		String myimagePath = "file:" + System.getProperty("user.dir") + "/"+myphoto_Id;
-		System.out.println(imagePath);
 		Image myimage = new Image(myimagePath);
 		myphoto.setImage(myimage);
 		

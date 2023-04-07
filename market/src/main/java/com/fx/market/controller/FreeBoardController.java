@@ -59,7 +59,8 @@ public class FreeBoardController implements Initializable{
 	
 		freeboardService.boardClick(Nmain_category,Nsub, Ntitle, Ncontent);
 	
-					// photo insert
+					// photo insert\
+					if(filePathSession != null) {
 					InputStream inputStream = new FileInputStream(filePathSession);								//경로를 inputStream에 저장
 			    	String outputName = Session.getInstance().getTempId() + fileNameSession;														//중복 안되도록 이름 수정
 			    	String outputPass = "src/main/java/com/fx/market/source/image/"+outputName;					//파일 저장 경로
@@ -75,7 +76,6 @@ public class FreeBoardController implements Initializable{
 			    	inputStream.close();
 			    	outputStream.close();
 			    	Session session = Session.getInstance();
-					System.out.println(session.getTempId());
 			    	freeboardService.photoInsert(new PhotoDto(session.getTempId(),outputName,outputPass,null));
 			    	Alert alert = new Alert(AlertType.INFORMATION);
 					alert.setHeaderText("게시물이 등록되었습니다.");
@@ -83,6 +83,7 @@ public class FreeBoardController implements Initializable{
 					
 			    	Viewer viewer = new Viewer();
 					viewer.setView("meetingBoardListForm");
+					}
 	}
 	public void closebtn() {
 		Viewer viewer = new Viewer();
@@ -98,7 +99,6 @@ public class FreeBoardController implements Initializable{
 	        Stage stage = new Stage();                            //Stage 객체 생성
 	        File selectedFile = fileChooser.showOpenDialog(stage);        //stage에 fileChooser로 고른걸 selectedFile에 저장
 	        String selectedFilePath = selectedFile.getAbsolutePath();        //selectedFile의 절대경로를 selectedFilePath에 저장
-	        System.out.println("test " + selectedFilePath);
 	        filePathSession = selectedFilePath;                        //controller에 경로 임시 저장
 	        fileNameSession = selectedFile.getName();                    //controller에 이름 임시 저장
 	        String imagePath = "file:"+selectedFilePath;                //image객체를 위한 경로 편집
@@ -108,7 +108,5 @@ public class FreeBoardController implements Initializable{
 
 	        
 	}	
-	
-//	Session session = Session.getInstance();
-	
+		
 }
