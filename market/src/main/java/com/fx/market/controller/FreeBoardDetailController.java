@@ -10,8 +10,10 @@ import com.fx.market.service.FreeBoardService;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.Circle;
@@ -39,7 +41,6 @@ public class FreeBoardDetailController implements Initializable{
 		Session session = Session.getInstance();
 		String board_Id = session.getTempId();
 		String user_name = session.getName();
-		System.out.println("user_name" + user_name);
 		String photodto = freeboardService.photoInfo(board_Id);
 		FreeBoardDto freeboard = freeboardService.selectAll(board_Id);
 
@@ -55,21 +56,30 @@ public class FreeBoardDetailController implements Initializable{
 		
 	
 		String imagePath = "file:" + System.getProperty("user.dir") + "/"+photodto;
-		System.out.println(imagePath);
 		Image image = new Image(imagePath);
 		photo.setImage(image);
 		
 		String myimagePath = "file:" + System.getProperty("user.dir") + "/"+myphoto_Id;
-		System.out.println(imagePath);
 		Image myimage = new Image(myimagePath);
 		myphoto.setImage(myimage);
 		
 
 	}
 	public void updateClick() {
+		Session session = Session.getInstance();
+		String account_id = session.getAccountId();
+		String board_Id = session.getTempId();
+		String id = freeboardService.selectId(board_Id);
+		
+		
+		if(account_id.equals(id)) {
 		Viewer viewer = new Viewer();
 		viewer.setView("updateBulletin");
-		
+		}else {
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setHeaderText("다른 사람의 글은 수정할 수 없습니다.");
+			alert.show();
+		}
 	}
 	
 	public void deleteClick() {
@@ -81,14 +91,7 @@ public class FreeBoardDetailController implements Initializable{
 		viewer.setView("meetingBoardListForm");
 	}
 	public void closeClicked() {
-		//나의 마켓에서 들어왔을 경우 나의 마켓으로 뒤로가기
-			if(Session.getInstance().getWhereToGo().equals("MyBoardList")) {
-//				Session.getInstance().setWhereToGo("");
-				Viewer.setView("home");			
-				Viewer.setViewCenterScroll("myDouzone");
-				Viewer.setViewCenterScroll("mySellList");
-			}else {
-				Viewer.setView("meetingBoardListForm");
-			}
+
+		Viewer.setView("meetingBoardListForm");
 	}
 }

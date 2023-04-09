@@ -39,7 +39,6 @@ public class FreeBoardService {
 			 session.getAccountId();
 			 String address = session.getaddress();
 			 String name = session.getName();
-			 System.out.println(name);
 			townDto.setMain_category(main_category);
 			townDto.setAcount_Id(session.getAccountId());
 			townDto.setAddress(address);
@@ -50,6 +49,12 @@ public class FreeBoardService {
 			
 			String id = townDao.findBoardId(title);
 			session.setTempId(id);
+			alert.setHeaderText("게시물이 등록되었습니다.");
+			alert.show();
+			
+	    	Viewer viewer = new Viewer();
+			viewer.setView("meetingBoardListForm");
+			
 			
 			
 		}
@@ -90,7 +95,6 @@ public class FreeBoardService {
 
 
 	public FreeBoardDto selectAll(String board_Id) {
-		System.out.println("service");
 		return townDao.selectAll(board_Id);
 	}
 
@@ -98,7 +102,6 @@ public class FreeBoardService {
 
 
 	public void deleteClick(String board_Id) {
-		System.out.println("deleteClick");
 		townDao.deleteClick(board_Id);
 		
 
@@ -108,16 +111,24 @@ public class FreeBoardService {
 	}
 
 	public String photoInfo(String board_Id) {
-		System.out.println("photoInfo");
-		
 		return townDao.selectboard_Id(board_Id);
 	}
 
 	public void photoUpdate(PhotoDto photoDto) {
+		
 		townDao.photosUpdate(photoDto);
 	}
 
 	public FreeBoardDto view(String board_Id) {
 		return townDao.view(board_Id);
+	}
+
+	public String selectId(String board_Id) {
+		return townDao.selectBoard(board_Id);
+	}
+
+	public void updatephotoInsert(PhotoDto photoDto) {
+		townDao.updatephotosInsert(photoDto);
+		
 	}
 }

@@ -48,7 +48,6 @@ public class UpdateFreeBoardController implements Initializable{
 		Session session = Session.getInstance();
 		String board_Id = session.getTempId();
 		
-		System.out.println(board_Id);
 			
 		String photodto = freeboardService.photoInfo(board_Id);
 		FreeBoardDto freeboard = freeboardService.selectAll(board_Id);
@@ -57,7 +56,6 @@ public class UpdateFreeBoardController implements Initializable{
 		content.setText(freeboard.getContent());
 		
 		String imagePath = "file:" + System.getProperty("user.dir") + "/"+photodto;
-		System.out.println(imagePath);
 		Image image = new Image(imagePath);
 		photo.setImage(image);
 	}
@@ -69,7 +67,13 @@ public class UpdateFreeBoardController implements Initializable{
 		String board_Id = session.getTempId();
 		
 		// photo insert
-			String photodto = freeboardService.photoInfo(board_Id);
+//	//		String photodto = freeboardService.photoInfo(board_Id);
+//			System.out.println("photodto : " + photodto);
+//			if(photodto == null) {
+//				
+//			}else {
+//				
+//			}
 			
 				if(filePathSession != null) {
 					InputStream inputStream = new FileInputStream(filePathSession);								//경로를 inputStream에 저장
@@ -86,8 +90,13 @@ public class UpdateFreeBoardController implements Initializable{
 	
 					 inputStream.close();
 					 outputStream.close();
-					 
-					 freeboardService.photoUpdate(new PhotoDto(board_Id,outputName,outputPass,null));
+					 String str = freeboardService.photoInfo(board_Id);
+					 System.out.println(str);
+					 if(str == null) {
+						 freeboardService.updatephotoInsert(new PhotoDto(board_Id,outputName,outputPass,null));
+					 }else {
+						 freeboardService.photoUpdate(new PhotoDto(board_Id,outputName,outputPass,null));
+					 }
 				}
 				
 			
@@ -98,7 +107,7 @@ public class UpdateFreeBoardController implements Initializable{
 		
 	public void closebtn() {
 		Viewer viewer = new Viewer();
-		viewer.setView("home");
+		viewer.setView("meetingBoardListForm");
 		
 	}
 	
@@ -108,7 +117,8 @@ public class UpdateFreeBoardController implements Initializable{
         File selectedFile = fileChooser.showOpenDialog(stage);        //stage에 fileChooser로 고른걸 selectedFile에 저장
         String selectedFilePath = selectedFile.getAbsolutePath();        //selectedFile의 절대경로를 selectedFilePath에 저장
         filePathSession = selectedFilePath;
-        fileNameSession = selectedFile.getName();                    //controller에 이름 임시 저장
+        fileNameSession = selectedFile.getName();
+        System.out.println(filePathSession);
         String imagePath = "file:"+selectedFilePath;                //image객체를 위한 경로 편집
         Image image = new Image(imagePath);                        //이미지 객체 생성
         photo.setImage(image);
