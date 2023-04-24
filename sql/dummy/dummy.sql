@@ -62,3 +62,7 @@ Insert into PHOTOS (PHOTOS_ID,NAME,PATH,CREATED_AT) values ('rlaxodud','default.
 Insert into PHOTOS (PHOTOS_ID,NAME,PATH,CREATED_AT) values ('g1','g1','src/main/java/com/fx/market/source/image/g1.jpg',to_date('23/04/06','RR/MM/DD'));
 Insert into PHOTOS (PHOTOS_ID,NAME,PATH,CREATED_AT) values ('g5','g5','src/main/java/com/fx/market/source/image/g5.jpg',to_date('23/04/06','RR/MM/DD'));
 Insert into PHOTOS (PHOTOS_ID,NAME,PATH,CREATED_AT) values ('g7','g7','src/main/java/com/fx/market/source/image/g7.jpg',to_date('23/04/06','RR/MM/DD'));
+
+commit;
+
+select * from goods;
